@@ -31,8 +31,10 @@
 % \graphicspath{{./image/}}
 
 % \numberwithin{equation}{section} %式番号を(セクション.式番号)にする
+\renewcommand{\thesection}{問題\arabic{section}}
+\renewcommand{\thesubsection}{(\arabic{section}-\arabic{subsection})}
 
-\title{...}
+\title{2010年度東大理物答案}
 \author{しゃんごん (@CEY3944)}
 \date{\today}
 
@@ -41,11 +43,11 @@
 % \twocolumn
 
 \maketitle
-\tableofcontents
 
 % コメントアウトにより master に入れるか入れないかを決める。
-% \clearpage
-% \subfile{./content/01/01.tex}
+\clearpage
+\chapter*{物理学}
+\subfile{./content/Phys01/sub.tex}
 
 
 \bibliographystyle{junsrt}

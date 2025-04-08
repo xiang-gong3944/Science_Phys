@@ -1,0 +1,516 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+
+\section{量子力学: 井戸型ポテンシャルと摂動論}
+\subsection{}
+与えられたポテンシャル中の粒子のシュレーディンガー方程式
+\begin{align}
+    -\frac{\hbar^2}{2m}\nabla^2\psi(\boldsymbol{r}) + V(\boldsymbol{r})\psi(\boldsymbol{r}) = E\psi(\boldsymbol{r})
+\end{align}
+を解く。
+\(-L\)から\(L\)の間では自由粒子、それ以外には無限に高いポテンシャルによって存在できないため、
+このシュレーディンガー方程式は
+\begin{align}
+    -\frac{\hbar^2}{2m}\nabla^2 \psi(x) &= E\psi(x) \qquad (-L<x<L)\\
+    \psi(L) &= \psi(-L) = 0
+\end{align}
+というものになる。
+この微分方程式の一般解は
+\begin{align}
+    \psi(x) = A\exp(ikx) + B\exp(-ikx)
+\end{align}
+となる。
+ここで
+\begin{align}
+    k = \sqrt{\frac{2mE}{\hbar^2}}
+\end{align}
+\(\psi(L)=\psi(-L)=0\)の境界条件から
+\begin{align}
+    A\exp(ikL) + B\exp(-ikL)
+    &= A\exp(-ikL) + B\exp(ikL)\\
+    (A-B)\exp(-ikL)\qty(\exp(2ikL)-1)&=0
+\end{align}
+\(A=B\)の場合、
+\begin{align}
+    \psi(L) = \cos(kL)=0
+\end{align}
+より波動関数とエネルギーは
+\begin{align}
+    \psi_n(x) &= A \cos(kx) &
+    E &= \frac{\hbar^2 k^2}{2m} = \frac{((2n+1)\pi\hbar)^2}{8mL^2}
+\end{align}
+と書ける。
+また、\(kL=2n\pi\)の場合、\(\psi(L)=0\)より
+\begin{align}
+    \psi(L) = A + B=0
+\end{align}
+より波動関数とエネルギーは
+\begin{align}
+    \psi_n(x) &= A \sin(kx) &
+    E &= \frac{\hbar^2 k^2}{2m} = \frac{(2n\pi\hbar)^2}{8mL^2}
+\end{align}
+と書ける。
+規格化条件より両者の比例係数は
+\begin{align}
+    1 &= \int_{-L}^{L}\abs{\psi(x)}^2 dx\\
+    &= \abs{A}^2 L\\
+    A &= \frac{1}{\sqrt{L}}
+\end{align}
+以上よりこのシュレーディンガー方程式の解は
+\begin{align}
+    \psi_n(x) &=
+    \begin{cases}
+        \frac{1}{\sqrt{L}}\cos(k_nx) \qquad(\text{nが奇数}) \\
+        \frac{1}{\sqrt{L}}\sin(k_nx) \qquad(\text{nが偶数})
+    \end{cases}\\
+    E_n &= \frac{(n\pi\hbar)^2}{8mL^2},\qquad k_n = \sqrt{\frac{2mE_n}{\hbar^2}}
+\end{align}
+\subsection{}
+(1-1)で求めたエネルギーはこのポテンシャルに閉じ込められた粒子の持つ運動エネルギーである。
+運動エネルギーの最小値が0以上になるということは、
+このポテンシャル内で粒子は止まることなく動き続けているというように古典的には解釈できる。
+こうなってしまう由来は不確定性原理\(\Delta x \Delta p \geq \hbar /2\)によるもので、このポテンシャル内部に位置がまんべんなく分散していると考えると、
+\(\Delta x = L\)として、この式に入れると
+\begin{align}
+    \Delta p = \frac{\hbar}{2L} \qquad \rightarrow \frac{\Delta p^2}{2m} = \frac{\hbar^2}{8mL^2}
+\end{align}
+となってエネルギーの最小値となっている
+\footnote{\(\pi\)ずれてるけどいいんだっけ}。
+
+\subsection{}
+量子力学の摂動論の一般論より1次摂動の範囲ではエネルギーは変わらないので
+\begin{align}
+    E_1 = \frac{(\pi\hbar)^2}{8mL^2}
+\end{align}
+これが基底状態のエネルギーを\(V_1\)の1次まで求めたものである。
+
+\subsection{}
+第1励起状態の波動関数は原点が節になっているため摂動の影響を受けない。
+よって
+\begin{align}
+    E_2 = \frac{\pi^2\hbar^2}{2mL^2}
+\end{align}
+
+\subsection{}
+基底状態の波動関数は原点での振幅が小さくなった\(\cos(kx)\),
+第1励起状態の波動関数は厳密に\(\sin(kx)\)となる。
+
+\subsection{}
+\(V_1\)が十分小さいときには(1-1)とおなじ状態、
+\(V_1\)が十分大きいときには波動関数が\(\sin(kx)\)のような形になることからエネルギーも第一励起状態に近くなる。
+なので\(E_1\)と\(E_2\)を滑らかにつなぐようなグラフを書けばよい。
+
+\subsection*{感想}
+愚直にシュレーディンガー方程式を解いていけばよいと思ったが、
+後半は実は摂動論だったり、波動関数の節だったり、定性的な議論が必要というのに気づかないと
+計算は難しいのに点はもらえないというひどいことになりそう。
+
+\subsection*{おまけ}
+摂動論や定性的な議論を使わずに考えることはできるが、
+ただただ記述が増えるし間違えやすいで推奨はできない。
+
+\(x\ge 0\)での波動関数を\(\psi_r(x)\), \(x\le 0\)での波動関数を\(\psi_l(x)\)として、
+\begin{align}
+    \psi_r(x)&=A\exp(ikx) + B\exp(-ikx)\\
+    \psi_l(x)&=C\exp(ikx) + D\exp(-ikx)
+\end{align}
+というようにおく。
+\(\psi(L)=\psi(-L)=0\)の条件より
+\begin{align}
+    B = -A\exp(2ikL),\qquad C = -D\exp(2ikL)
+\end{align}
+\(x=0\)での波動関数の値が同じであるので
+\begin{align}
+    \psi_r(0) &= \psi_l(0)\\
+    (A-D)\qty(1-\exp(2ikL)) = 0.
+\end{align}
+これより\(\exp(2ik)=1\)もしくは\(A=D\)のいずれかになっているとわかる。
+シュレーディンガー方程式を原点付近の微小区間\((-\epsilon,\,\epsilon)\)で積分すると
+\begin{align}
+    \int_{-\epsilon}^{\epsilon} dx \qty[-\frac{\hbar^2}{2m}\nabla^2 + V_1\delta(x)]\psi(x)
+    &= \int_{-\epsilon}^{\epsilon} dx E\\
+    -\frac{\hbar^2}{2m}\qty(\dv{\psi_r(0)}{x}-\dv{\psi_l(0)}{x}) + V_1 \psi(0) &= 0\\
+    (A+D)\qty(1+\exp(2ikL))
+    &=\frac{2mV_1}{i\hbar^2 k}\qty(1-\exp(2ikL))A
+\end{align}
+が条件として得られる。
+\(\exp(2ik)=1\)のとき、\(A=-B=C=-D\)とわかり、これは(1-1)のnが偶数のときの解と同じものになっている。
+\(A=D\)のとき、
+\begin{align}
+    \frac{\exp(ikL) + \exp(-ikL)}{2} &= -\frac{2mV_1}{\hbar^2 k} \frac{\exp(ikL)-\exp(-ikL)}{2i}\\
+    \cos(kL) &= -\frac{2mV_1}{\hbar^2 k} \sin(kL)\\
+    \tan(kL)&=-\frac{\hbar^2 k}{2mV_1}
+\end{align}
+となる
+\footnote{次元がおかしいように見えるが、デルタ関数自身が長さの次元を持っているため、
+\(V_1\delta\)がエネルギーの次元となるには\(V_1= [J\cdot m]\)となるためあっている。}。
+
+その後\(y=\tan(kL)\)と\(y\propto -k\)のグラフの交点を調べていったりすると解答はできる。
+
+\section{統計力学: 1次元ゴム}
+\subsection{}
+直鎖状に並んだ分子が状態\(\alpha\)と状態\(\beta\)を取りながら並ぶ状態の数は
+\begin{align}
+    W = \frac{(N_\alpha+N_\beta)!}{N_\alpha!N_\beta!}
+\end{align}
+これよりエントロピーは
+\begin{align}
+    S = k_B \ln W  = k_B\ln \frac{(N_\alpha+N_\beta)!}{N_\alpha!N_\beta!}
+\end{align}
+
+\subsection{}
+スターリングの公式をエントロピーの式に使うと
+\begin{align}
+    S &\simeq k_B\qty[(N_\alpha+N_\beta)\ln(N_\alpha+N_\beta)-N_\alpha\ln N_\alpha - N_\beta\ln N_\beta]\\
+    s &= -k_B\qty[\frac{N_\alpha}{N_\alpha+N_\beta}\ln\frac{N_\alpha}{N_\alpha+N_\beta}
+        +\frac{N_\beta}{N_\alpha+N_\beta} \ln\frac{N_\beta}{N_\alpha+N_\beta}]\\
+    &= -k_B \qty[\frac{1}{a-b}\qty(\frac{-\epsilon}{f}-b)\ln(\frac{1}{a-b}\qty(\frac{-\epsilon}{f}-b))
+    +\frac{1}{a-b}\qty(a-\frac{-\epsilon}{f})\ln(\frac{1}{a-b}\qty(a-\frac{-\epsilon}{f}))]\\
+    &= -\frac{k_B}{a-b}\qty[
+        \qty(\frac{-\epsilon}{f}-b)\ln(\frac{-\epsilon}{f}-b)
+    +\qty(a-\frac{-\epsilon}{f})\ln(a-\frac{-\epsilon}{f})
+    ] + k_B \ln(a-b)
+\end{align}
+となる。
+
+\subsection{}
+\(\partial s/\partial \epsilon = 1/T\)より
+\begin{align}
+    \frac{1}{k_BT} = \frac{1}{(a-b)f}\ln(\frac{(-\epsilon)-bf}{af-(-\epsilon)})
+\end{align}
+絶対零度では右辺の対数が発散するので、
+\begin{align}
+    -\epsilon =af
+\end{align}
+である。この時エントロピーは
+\begin{align}
+    s(T=0) = 0
+\end{align}
+また、高温極限では対数の中が1となるので、
+\begin{align}
+    -\epsilon = \frac{a+b}{2}f
+\end{align}
+このときエントロピーは
+\begin{align}
+    s(T=\infty) = k_B\ln2
+\end{align}
+
+\subsection{}
+低温では\(\epsilon=af\)より単量体はすべて長い状態\(\alpha\)にあるので、
+鎖状分子の単量体1個あたりの長さは
+\begin{align}
+    l(T=0) = a.
+\end{align}、
+高温極限では\(\epsilon=(a+b)f/2\)より状態\(\alpha\)と\(\beta\)が半々あるので、
+鎖状分子の単量体1個あたりの長さは
+\begin{align}
+    l(T=\infty) = \frac{a+b}{2}.
+\end{align}
+これより、低温側から高温側へ変化していくとき、状態\(\beta\)が増えていくことから
+鎖状分子の長さが短くなっていく。
+
+\subsection{}
+比熱を温度で割ったものはエントロピーであるので
+\begin{align}
+    \int_{0}^{\infty} \frac{c(T)}{T} dT = s(T=\infty) - s(T=0) = k_B\ln 2
+\end{align}
+
+\subsection{}
+系の自由エネルギー\(F=E-TS\)を考えると、\(E\)が単量体の状態によらなくなるので、
+エントロピー\(s\)が最大となる状態である。
+状態数が最も多いような状態\(\alpha\)と\(\beta\)の数はちょうど半々であるので単量体1個当たりの長さは
+\begin{align}
+    l=\frac{a+b}{2}
+\end{align}
+
+\subsection*{感想}
+ゴムの問題と同じことするだけではあったが、単量体が行って戻ってではなく長さを変えてだったり、
+与えられた\(\epsilon\)の符号だったりと計算ミスが怖かった。
+
+\section{電磁気学: 電磁場}
+\subsection{}
+\begin{align}
+    \div B(r) = 0,\qquad \curl E(r) -i\omega B(r)=0, \qquad \div D(r) = \rho(r),\qquad \curl H(r) + i\omega D(r) = J(r)
+\end{align}
+
+\subsection{}
+ファラデーの法則の式をアンペールの法則の式に入れることで
+\begin{align}
+    \curl (\frac{1}{i\mu\omega}\curl E(r)) + i\omega\varepsilon E(r) &= J(r)\\
+    \qty(\nabla^2+\omega^2 \varepsilon\mu)E(r) = \frac{1}{\varepsilon}\nabla\rho(r) - i\mu\omega J(r)
+\end{align}
+アンペールの法則の式をファラデーの法則に入れることで
+\begin{align}
+    \curl(\frac{1}{i\omega\varepsilon}J(r)-\frac{1}{i\omega\varepsilon\mu}\curl B(r)) - i\omega B(r) &= 0\\
+    (\nabla^2+\omega^2\varepsilon\mu)B(r)&= - \frac{1}{i\omega \varepsilon}\curl J(r)
+\end{align}
+
+\subsection{}
+(3-1)で求めたマクスウェル方程式にこれらの式を入れていく。
+電場に関するガウスの法則より
+\begin{align}
+    (ik\cdot E_0)e^{ikz} = 0
+\end{align}
+これは\(E_0\perp s\)を表している。
+磁場に関するガウスの法則より
+\begin{align}
+    (ik\times H_0)e^{ikz} =0
+\end{align}
+これは\(H_0\perp s\)を表している。
+
+ファラデーの法則より
+\begin{align}
+    (ik\times E_0 - i\omega \mu H_0)e^{ikz}=0
+\end{align}
+より\(\curl E \propto H\)であり、\(\curl E\)は\(E\)と垂直であることを合わせると\(E_0 \perp H_0\)
+
+\subsection{}
+\(\sigma=0\)であるとき、電荷密度・電流密度ともに無いときなので、
+(3-2)で求めた方程式は波動方程式になる。
+これに(3-3)の問題で与えられた解を代入すると\(\omega = \frac{1}{\sqrt{\varepsilon\mu}}k\)となるので位相速度は
+\begin{align}
+    c_0 = \frac{1}{\sqrt{\varepsilon \mu}}
+\end{align}
+また、この時の振幅の比は(3-3)で\(E_0\perp H_0\)を示すのに使った式を使う。
+\begin{align}
+    ik\times E_0 &= i\omega \mu H_0\\
+    \abs{\frac{E}{H}} &= \sqrt{\frac{\mu}{\varepsilon}}
+\end{align}
+
+\(\sigma\neq0\)のとき、電場に関する波動方程式は
+\begin{align}
+    \qty(\nabla^2+(\omega^2\varepsilon\mu+i\omega\mu\sigma))E(r)=0
+\end{align}
+となるので、
+波数と振動数の関係は
+\begin{align}
+    k^2 = \qty(1+\frac{i\sigma}{\epsilon\omega})\frac{1}{c_0^2} \omega^2
+\end{align}
+となる。分散関係に虚数が現れることからこれは電磁場が減衰していくことがわかる。
+
+\subsection{}
+導体表面では電場の接線方向の成分は0であるため電場はy成分のみある。
+また、磁場は電場と進行方向両方に直交するので、x成分のみある。
+
+\subsection{}
+オームの法則より、電流は電場と同じ方向に電流を流れるのでy方向に電流が流れ、
+z方向には系は一様であるため、z方向の電流依存はない。
+
+\subsection{}
+2枚の導体板の間隔は十分狭いため電磁場は減衰せず一定であるとみなせる。
+そのためこの導体間の電位差は\(V = Eb\)である。またオームの法則より\(J=\sigma E\)なのでこれらを合わせると
+\begin{align}
+    \frac{V}{J} = \frac{b}{\sigma}
+\end{align}
+\subsection*{感想}
+物質中の光の伝搬をやらせるのかと思いきや、
+オームの法則による光の減衰は定性的な議論で済ませてコンデンサ(レールガン?)の話になった。
+
+\section{散乱問題}
+\subsection{}
+運動エネルギーは粒子Aのエネルギーから静止エネルギーを引いたものであるので
+\begin{align}
+    T = \sqrt{M_A^2c^4+c^2P_0^2}-M_AC^2
+\end{align}
+また粒子Aのエネルギーはローレンツ因子\(\gamma=1/\sqrt{1-v^2/c^2}\)を使って
+\begin{align}
+    \sqrt{M_A^2c^4+c^2P_0^2} = \gamma M_Ac^2
+\end{align}
+と書けるのでこれを\(v\)について解いて
+\begin{align}
+    v = c \sqrt{\frac{c^2P_0^2}{M_A^2C^4+c^2P_0^2}}
+\end{align}
+となる。
+
+また運動エネルギーと速さの関係を求めていく。
+\begin{align}
+    T &= (\gamma-1)M_Ac^2\\
+    \gamma &= 1+\frac{T}{M_Ac^2}
+\end{align}
+これより、この問題の陽子のときにはローレンツ因子は
+\begin{align}
+    \gamma_p = 1.021
+\end{align}
+つまりこれを速度について整理すると
+\begin{align}
+    \frac{v_p}{c} = 0.2
+\end{align}
+同様に電子のときのローレンツ因子はおおよそ
+\begin{align}
+    \gamma = 40
+\end{align}
+これをもとに速度について整理すると有効数字1桁で
+\begin{align}
+    \frac{v_e}{c} = 1
+\end{align}
+になる\footnote{厳密には0.9997である。}。
+
+\subsection{}
+エネルギー保存則は
+\begin{align}
+    \frac{P_0^2}{2M_A} = \frac{P_A^2}{2M_A}+\frac{P_B^2}{2M_B}
+\end{align}
+運動量保存則は
+\begin{align}
+    P_0 &= P_A\cos\phi+P_B\cos\theta\\
+    0 &= P_A\sin\phi+P_B\sin\theta
+\end{align}
+である。
+これを\(P_B\)について解くと
+\begin{align}
+    P_B = \frac{2M_B}{M_A+M_B}\cos\theta P_0
+\end{align}
+
+\subsection{}
+衝突による電子に与えられる運動エネルギーは
+前問で得られた運動量に関する式を運動エネルギーに直すと、
+\begin{align}
+    \frac{P_B^2}{2M_B} = \frac{4M_AM_B}{(M_A+M_B)^2}\cos^2\theta T
+\end{align}
+電子が陽子より圧倒的軽いのでこれの最大値は
+\begin{align}
+    \frac{P_B^2}{2M_B} = \frac{4M_B}{M_A}T = 40 keV
+\end{align}
+となる。水素原子を電離するのに必要なエネルギーは 13.6 eV なのでこれに比べると 3000倍大きい
+
+\subsection{}
+\begin{align}
+    \dv{\sigma}{E} &= \dv{\sigma}{p}\dv{p}{E}\\
+    &= 8\pi\frac{z^2\alpha^2}{\beta^2}\frac{\hbar^2}{q^3}\frac{m}{q}\\
+    &= 2\pi\frac{z^2\alpha^2}{\beta^2}\frac{\hbar^2}{M_B E^2}
+\end{align}
+
+\subsection{}
+荷電粒子が失うエネルギーの期待値は
+\begin{align}
+    \ev{\Delta E} &= \int_{E_{min}}^{E_{max}}dE\, E N_e\Delta t \dv{\sigma}{E}\\
+    &= N_e\Delta t2\pi\frac{z^2\alpha^2}{\beta^2}\frac{\hbar^2}{M_B}\ln(\frac{E_{max}}{E_{min}})
+\end{align}
+
+\subsection{}
+散乱が1回生じると原子が電離するというように考えれるため、電離に必要なエネルギースケールである 10eVオーダーであると考えられる。
+
+\subsection*{感想}
+加速器みたいな条件設定で物性の人にはとっかかりにくいかと思いきや、
+相対論さえ知っていれば単なる力学の問題になっていたので以外と簡単。
+最後の問題はわからないけど、とても勘の良い人なら途中で水素原子を電離させるエネルギーの話が出たのでこれを答えればよいことがわかるかも。
+
+\section{実験: 圧力測定}
+難しそう
+
+\section{デジタル回路: }
+\subsection{}
+\begin{tabular}{ccc}
+    \hline
+    A & B & X\\
+    \hline
+    1 & 1 & 1 \\
+    1 & 0 & 0 \\
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+    \hline
+\end{tabular}
+
+\subsection{}
+\begin{tabular}{ccccc}
+    \hline
+    & R & S & Q & $\bar{\text{Q}}$\\
+    \hline
+    (a) & 0 & 0 & 0 & 1\\
+    (b) & 0 & 1 & 1 & 0\\
+    (c) & 0 & 0 & 1 & 0\\
+    (d) & 0 & 1 & 1 & 0\\
+    (a) & 1 & 0 & 0 & 1\\
+    \hline
+\end{tabular}
+\subsection{}
+写真の通り
+
+\subsection{}
+(b)について、
+\(R_1\)に流れる電流は
+\begin{align}
+    I_1 = \frac{V_{in}-V_-}{R_1}
+\end{align}
+オペアンプには電流は流れ込まないので抵抗\(R_1\)に流れる電流と\(R_2\)に流れる電流は同じである。
+これより、\(R_2\)の抵抗による電圧降伏は
+\begin{align}
+    V_2 = \frac{R_2}{R_1}(V_{in}-V_-)
+\end{align}
+これより\(V_{out}\)の電位は
+\begin{align}
+    V_{out} = V_- - V_2 = -\frac{R_2}{R_1}V_{in}+\qty(1+\frac{R_2}{R_1})V_-
+\end{align}
+\(V_+=0\)であるため、オペアンプのゲインの式より\(V_- = -V_{out}/G\)となる。
+これを入れて整理すると
+\begin{align}
+    \frac{V_{out}}{V_{in}} = \frac{1}{1+(1+R_2/R_1)/G}\times \qty(-\frac{R_2}{R_1})
+\end{align}
+\(G\to\infty\)とすると、
+\begin{align}
+    \frac{V_{out}}{V_{in}} = -\frac{R_2}{R_1}
+\end{align}
+となる。
+
+(c)について、
+\(V_-\)における電位は
+\begin{align}
+    V_- = \frac{R_1}{R_1+R_2}V_{out}
+\end{align}
+オペアンプのゲインの式より、\(V_{out} = G(V_{in}-V_-)\)なのでこれをもとに計算すると、
+\begin{align}
+    \frac{V_{out}}{V_{in}} = \qty(1+\frac{R_2}{R_1}+\frac{1}{G})
+\end{align}
+\(G\to\infty\)とすると、
+\begin{align}
+    \frac{V_{out}}{V_{in}} = 1+\frac{R_2}{R_1}
+\end{align}
+となる。
+
+\subsection{}
+\(r\)に流れる電流と\(R_M\)に流れる電流は等しいので、
+A1の出力電圧は
+\begin{align}
+    V_out =
+\end{align}
+DAは抵抗\(r\)による電圧降下を100倍するものであるのでこれの出力である
+\(V_-\)は
+\begin{align}
+    V_- = 100rI
+\end{align}
+よってアンプのゲインの式より
+\begin{align}
+    V_s - 100rI = \frac{1}{G}(r+R_M)I
+\end{align}
+\(G\to\infty\)とみなせるとき、右辺は0となるので
+\begin{align}
+    V_s = 100rI
+\end{align}
+
+\subsection{}
+前問より、\(V_s=1V\)のとき\(1mA\)の電流を流すには
+\begin{align}
+    r=10\si{\ohm}
+\end{align}
+であればよい。
+
+光の強度が0のときには\(R_M=100\si{\ohm}\)であるので図6の右側の非反転増幅回路の入力電圧は
+\begin{align}
+    V_{in} = R_MI = 0.1 V
+\end{align}
+となる。
+これが\(3V\)となるように設計するので
+\begin{align}
+    \frac{R_A}{R_2} = 29
+\end{align}
+となるような抵抗を選べばよい。
+
+\subsection*{感想}
+前半は論理回路パズル。フリップフロップ回路はやったことないと出力はわかりずらい。
+後半はオペアンプ。仮想短絡を使わせてくれ。
+
+
+\end{document}
