@@ -3,6 +3,441 @@
 \graphicspath{{./image/}}
 
 \begin{document}
+\section{量子力学: 波数表示・原子核?}
+\subsection{}
+まず\(\braket{p}{\psi}\)は完全系を入れることで
+\begin{align}
+    \braket{p}{\psi}
+    &=\int d^3x\, \braket{p}{x}\braket{x}{\psi}\\
+    &=\frac{1}{(2\pi)^{3/2}}\int d^3x\, e^{-ip\cdot x}\bra{x}\ket{\psi}
+\end{align}
+と示せる。
+同様に\(\mel{p}{\hat{O}}{p'}\)は完全系を2つ入れることで
+\begin{align}
+    \mel{p}{\hat{O}}{p'}
+    &= \int \int d^3x\,d^3x' \braket{p}{x}\mel{x}{\hat{O}}{x'}\braket{x'}{\psi}\\
+    &= \frac{1}{(2\pi)^3}\int \int d^3x\,d^3x' e^{-ip\cdot x + ip'\cdot x'}\mel{x}{\hat{O}}{x'}
+\end{align}
+と示せる。
 
+\subsection{}
+前問のように\(\mel{p}{\hat{V}}{@'}\)に完全系を挿入して
+\begin{align}
+    \mel{p}{\hat{V}}{p'}
+    &= \frac{1}{(2\pi)^3}\int \int d^3x\,d^3x' e^{-ip\cdot x + ip'\cdot x'}\qty(-\frac{\lambda}{2m}g(x)g(x'))\\
+    &= -\frac{1}{(2\pi)^3}\frac{\lambda}{2m}\int d^3x e^{-ip\cdot x}g(x) \int d^3x' e^{ip'\cdot x'} g(x')
+\end{align}
+\(h(p)\)を\(g(x)\)のフーリエ変換
+\begin{align}
+    h(p) := \int d^3x\, e^{-ip\cdot x}g(x)
+\end{align}
+とおくと、
+\begin{align}
+    \mel{p}{\hat{V}}{p'} = -\frac{1}{(2\pi)^{3/2}}\frac{\lambda}{2m}h(p)h(-p')
+\end{align}
+となり示せた。
+
+\subsection{}
+前問の結果と\(E=-\nu^2/2m\)を運動量表示のシュレーディンガー方程式に入れて
+\begin{align}
+    \frac{p^2}{2m}-\frac{1}{(2\pi)^3}\frac{\lambda}{2m}h(p)
+        \int d^3p' h(-p')\braket{p'}{\psi}
+    = -\frac{\nu^2}{2m}\braket{p}{\psi}
+\end{align}
+ここで次の量を文字\(C\)でおく。
+\begin{align}
+    C = \frac{\lambda}{(2\pi)^3}\int d^3p' h(-p')\braket{p'}{\psi}
+\end{align}
+これは定数となっている。
+これをシュレーディンガー方程式に戻して整理すると
+\begin{align}
+    \braket{p}{\psi} = C\frac{h(p)}{p^2+\nu^2}
+\end{align}
+となる。
+\subsection{}
+\begin{align}
+    h(p)
+    &= \int d^3x\, e^{-ip\cdot x} \frac{e^{-\mu\abs{x}}}{4\pi\abs{x}}\\
+    &= \int_0^\infty dr\,r^2 \int_{0}^{\pi} d\theta \,\sin\theta \int_{0}^{2\pi}\varphi
+        e^{-ipr\cos\theta}\frac{e^{-\mu r}}{4\pi r}\\
+    &= \frac{1}{2ip} \int_{0}^{\infty}dr\, e^{-\mu r}\qty(e^{ipr}-e^{-ipr})\\
+    &= \frac{1}{p^2+\mu^2}
+\end{align}
+
+\subsection{}
+(1-3.2)式の右辺に\(h(p)\)の表式と(1-3.3)式を代入して
+\begin{align}
+    C &= \frac{\lambda}{(2\pi)^3}\int d^3p' \frac{C}{(p^2+\nu^2)(p^2+\mu^2)^2}\\
+    1 &= \frac{\lambda}{8\pi\abs{\mu}(\abs{\mu}+\abs{\nu})^2}\\
+    \abs{\nu} &= \sqrt{\frac{\lambda}{8\pi\abs{\mu}}}-\abs{\mu}
+\end{align}
+このような\(\nu\)があるには
+\begin{align}
+    \sqrt{\frac{\lambda}{8\pi\abs{\mu}}}-\abs{\mu} \geq 0\\
+    \lambda \geq \abs{2\pi^{1/3}\mu}^{3/2}
+\end{align}
+となる必要がある。
+
+\subsection{}
+束縛状態の波動関数をフーリエ逆変換していって求める。
+\begin{align}
+    \braket{x}{\psi}
+    &\propto \int d^3 p e^{ip\cdot x} \braket{p}{\psi}\\
+    &= \int d^3 p \frac{e^{ip\cdot x}}{(p^2+\nu^2)(p^2+\mu^2)}\\
+    &= \frac{2}{x}\int_{0}^{\infty} dp\, \frac{\sin(px)}{p(p^2+\nu^2)(p^2+\mu^2)}\\
+    &= \frac{2}{x}\int_{0}^{\infty} dp\, \qty(
+        \frac{1}{\nu^2\mu^2}\frac{\sin(px)}{p}
+        +\frac{1}{\nu^2(\nu^2-\mu^2)}\frac{p\sin(px)}{p^2+\nu^2}
+        +\frac{1}{\mu^2(\mu^2-\nu^2)}\frac{p\sin(px)}{p^2+\mu^2})\\
+    &= \frac{2}{x}\qty(
+        \frac{1}{\nu^2\mu^2}\frac{\pi}{2}
+        +\frac{1}{\nu^2(\nu^2-\mu^2)}\frac{\pi e^{-\mu x}}{2}
+        +\frac{1}{\mu^2(\mu^2-\nu^2)}\frac{\pi e^{-\nu x}}{2})
+\end{align}
+ここで
+\begin{align}
+    \int_{0}^{\infty}dx\, \frac{p\sin(px)}{p^2+a^2} = \frac{\pi}{2}e^{-ax}
+\end{align}
+を用いた。
+
+\subsection*{感想}
+なんか元ネタありそうだけど、わかりそうでわからない。
+原子核っぽい。
+最後のところの積分はなかなか怖いけど、
+グリーン関数を知っていると波動関数の図は運動量表示の波動関数からなんとなくわかる。
+\(1/(p^2+m^2)\)は質量\(m\)もしくは相関長が\(1/m\)の状態を表していて、
+クーロンポテンシャルや湯川ポテンシャルになるとわかる。
+
+\section{統計力学: フラストレーション系}
+スピン系と言っているが、しばらくそのスピンの大きさは\(S=1/2\)ではなく一般の大きさであることに注意。
+そうでないとブリュアン関数は全く出てこない。
+\subsection{}
+この場合はスピン同士の相互作用がないので各スピンの分配関数\(z\)を考えていけばよい。
+それは
+\begin{align}
+    z
+    &= \sum_{\sigma=-S}^{S}\exp(\beta\mu H_z\sigma)\\
+    &= \exp(-\beta\mu H_z S)\frac{1-\exp[(2S+1)\beta\mu H_z]}{1-\exp[\beta\mu H_z]}\\
+    &= \exp[-\beta\mu H_z S]\exp[+\frac{2S+1}{2}\beta\mu H_z]\exp[-\frac{1}{2}\beta\mu H_z]
+        \dfrac{\exp[-\dfrac{2S+1}{2}\beta\mu H_z]-\exp[\dfrac{2S+1}{2}\beta\mu H_z]}{\exp[-\dfrac{1}{2}\beta\mu H_z]-\exp[\dfrac{1}{2}\beta\mu H_z]}\\
+    &=\dfrac{\sinh(\dfrac{2S+1}{2S}\beta\mu H_z S)}{\sinh(\dfrac{1}{2S}\beta\mu H_z S)}
+\end{align}
+である。
+これが3つあるので系全体の分配関数は
+\begin{align}
+    Z = z^3 = \qty(\dfrac{\sinh(\dfrac{2S+1}{2S}\beta\mu H_z S)}{\sinh(\dfrac{1}{2S}\beta\mu H_z S)})^3
+\end{align}
+
+\subsection{}
+系の自由エネルギーは
+\begin{align}
+    F &= -k_B T \ln Z\\
+    &= -3k_B T \qty[\ln(\sinh(\dfrac{2S+1}{2S}\beta\mu H_z S))-\ln(\sinh(\dfrac{1}{2S}\beta\mu H_z S))]
+\end{align}
+\(dF = -S dT-M_z dH_z\)より
+\begin{align}
+    M_z = -\pdv{F}{H_z} = 33\mu S B_S(\beta\mu H_z S)
+\end{align}
+また、帯磁率は
+\begin{align}
+    \chi = \lim_{H_z\to 0} \frac{M_z}{H_z} = \frac{2}{3}\beta S(S+1)\mu^2
+\end{align}
+となる。
+
+\subsection{}
+この系のエントロピーは
+\begin{align}
+    S &= -\pdv{F}{T}\\
+    &= 3k_B\qty[
+        \ln(\sinh(\dfrac{2S+1}{2S}\beta\mu H_z S))-\ln(\sinh(\dfrac{1}{2S}\beta\mu H_z S))
+        -\beta\mu H_z S B_s(\beta\mu H_z S)]
+\end{align}
+これより比熱は
+\begin{align}
+    C_v &= T\pdv{S}{T} = 3k_B(\beta\mu H_z S)^2 B_S'(\beta\mu H_zS)\\
+        &\to k_B \beta^2 S(S+1)\mu^2 H_z^2 &(\beta\to 0)
+\end{align}
+
+\subsection{}
+磁場が無いので3番目のスピンはエネルギーには関わって来ない。
+また、エネルギー固有値は1番目と2番目のスピンが揃っているかどうかなので、
+エネルギー準位は
+\begin{align}
+    E(S_1=\pm 1/2,\,S_2=\pm) &= -\frac{J}{4}\\
+    E(S_1=\pm 1/2,\,S_2=\mp) &= \frac{J}{4}\\
+\end{align}
+となる(複号同順)。
+3番目のスピンの状態も考慮して、縮重度はそれぞれ4つづつ。
+これらを踏まえるの\(H\neq 0\)の分配関数は
+\begin{align}
+    Z
+    &= 2\exp[-\beta\qty(\frac{J}{4}+\frac{\mu H_z}{2})]
+        + 2\exp[-\beta\qty(\frac{J}{4}-\frac{\mu H_z}{2})]
+        + 2\exp[-\beta\qty(-\frac{J}{4}+\frac{\mu H_z}{2})]
+        + 2\exp[-\beta\qty(-\frac{J}{4}-\frac{\mu H_z}{2})]\\
+    &= \frac{1}{2}\cosh(\frac{\beta J}{4})\cosh(\frac{\beta\mu H_z}{2})
+\end{align}
+となる。
+
+\subsection*{感想}
+ブリュアン関数を用いて表せでずっとやるのは初めて見た。
+そのため5, 6 は諦めた。
+
+\clearpage
+\section{電磁気学: サイクロトロン}
+\subsection{}
+粒子の進行方向と直交する方向に常に力が加えられていて、
+運動のxy成分だけ見ると等速円運動となるから。
+
+\subsection{}
+向心力が\(qv_0B\)の等速円運動なのでその半径\(r\)は
+\begin{align}
+    \frac{mv_0^2}{r} &= qv_0 B\\
+    r &= \frac{mv_0}{qB}
+\end{align}
+またそのときの円運動の中心座標は\((a+r,0,0)\)でこれが原点であるために
+\begin{align}
+    a = -\frac{mv_0}{qB}
+\end{align}
+という関係になる。
+時計回りに動くので
+\begin{align}
+    \begin{pmatrix}
+        x\\y
+    \end{pmatrix}
+    &= a\begin{pmatrix}
+        -\cos\frac{qB t}{m}\\
+        \sin\frac{qB t}{m}\\
+    \end{pmatrix}\\
+    \begin{pmatrix}
+        v_x\\v_y
+    \end{pmatrix}
+    &= v_0\begin{pmatrix}
+        -\cos\frac{qB t}{m}\\
+        \sin\frac{qB t}{m}\\
+    \end{pmatrix}
+\end{align}
+
+\subsection{}
+運動方程式を立てると
+\begin{align}
+    \begin{cases}
+        m\dv{v_x}{t} &= qB v_y +qE\\
+        m\dv{v_y}{t} &= -qB v_x\\
+        m\dv{v_z}{t} &= 0
+    \end{cases}
+\end{align}
+まず\(z\)成分はこれより\(v_z=0,\,z=0\)である。
+そして運動方程式の\(y\)成分を\(i\)倍して\(x\)成分に足すと
+\begin{align}
+    m\dv{t} (v_x+iv_y) &= -iqB(v_x+iv_y) +qE\\
+    v_x + v_y &= iv_0 e^{iqBt/m} + \frac{qE}{m}t
+\end{align}
+これより
+\begin{align}
+    v_x &= v_0 \sin(\frac{qB}{m}t)+\frac{qE}{m}t\\
+    v_y &= v_0 \cos(\frac{qB}{m}t)
+\end{align}
+これを積分して
+\begin{align}
+    x &= -a \cos(\frac{qB}{m}t)+\frac{qE}{2m}t^2\\
+    y &= a \sin(\frac{qB}{m}t)
+\end{align}
+円運動の中心が \((qEt^2/2m, 0)\)のように動くような螺旋運動。
+この中心は磁場が無いときの電荷の運動に対応している。
+
+\subsection{}
+磁場の非一様性のないときの運動
+\begin{align}
+    x = -a\cos\frac{qBt}{m},\quad v_x = v_0\sin\frac{qBt}{m},\quad v_y = v_0\cos\frac{qBt}{m}
+\end{align}
+を\(f(x,v)\)に入れて
+\begin{align}
+    f(x,v) = qv_0 aB'(0)\begin{pmatrix}
+        -\cos^2\frac{qBt}{m}\\
+        \sin\frac{qBt}{m}\cos\frac{qBt}{m}\\
+        0
+    \end{pmatrix}
+\end{align}
+\(\ev{\cos^2\omega t}=1/2,\,\ev{\sin\omega t\cos\omega t}=0\)より、
+\(\ev{f(x,v)}\)は\(x\)成分のみで
+\begin{align}
+    \ev{f(x,v)} = -\frac{1}{2}qv_0a B'(0)
+\end{align}
+これだと常に\(-x\)方向に加速されることになるのでもう少し評価を進める。
+\begin{align}
+    a &= - \frac{mv_0}{qB(x)} \\
+    &\simeq -\dfrac{mv_0}{qB(0)\qty(1+\frac{B'(0)}{B(0)}x)}\\
+    &\simeq -\frac{mv_0}{qB(0)}\qty(1-\frac{B'(0)}{B(0)}x)
+\end{align}
+なので\(\ev{f(x,v)}\)は
+\begin{align}
+    \ev{f(x,t)} = \frac{1}{2}mv_0^2 \frac{B'(0)}{B(0)}\qty(1-\frac{B'(0)}{B(0)}x)
+\end{align}
+となる。
+\subsection{}
+(3-4.7)式より\(B(0)=B'(0)x_0\)となる\(x_0\)では磁場の非一様性による力は働かないことがわかる。
+そこからずれたときの復元力は単振動と同じ形になるので、
+中心が\(x_0\)で単振動をしながら円運動をする。
+
+\subsection*{感想}
+問題4で加速解が出ると、
+\(f(x,v)\)が摂動に過ぎないので影響は限定的という仮定に反するのでどうしたものかという感じ。
+正直あってる気はしない。
+
+\clearpage
+\section{原子核散乱}
+\subsection{}
+\ce{^14N}と\ce{^27Al}が接触したとき、
+それぞれの重心からの距離は
+\begin{align}
+    1.2\times 14^{1/3} \si{fm} +1.2\times 27^{1/3}\si{fm} \simeq 1.2 \times 5.41 \si{fm}
+\end{align}
+この距離のクーロンポテンシャルが求めるエネルギーである。
+それは
+\begin{align}
+    \frac{e^2}{4\pi^2\varepsilon_0 r} = \frac{\alpha \hbar c}{r}
+    = \frac{1.44 \si{MeV fm}}{1.2\times 5.41 \si {fm}}\simeq 0.22 \,\text{MeV}
+\end{align}
+である。
+\subsection{}
+原子核同士の話であるので古典的なエネルギー保存則で十分である。
+\ce{^14N}の運動エネルギーを\(K\), \ce{Ca}の質量を\(M\)としたとき、
+\begin{align}
+    K &= \frac{1}{2}M(\beta c)^2\\
+    \beta &= \sqrt{\frac{2K}{Mc^2}} = \sqrt{\frac{2\times 70 \si{MeV}}{41\times 10^3 \si{MeV}}}
+        = \frac{1}{10}\sqrt{\frac{14}{41}}\\
+    &=\simeq \frac{1}{10\sqrt3} \simeq 0.058
+\end{align}
+
+\subsection{}
+図1の右方向を\(z\)軸、下方向を\(x\)方向として、
+実験室系でのガンマ線の4元運動量を\((E'/c,\,p_x',\,0,\,p_z')\),
+\ce{^33S^*}が静止する慣性系でのガンマ線を\(1.0\si{MeV/c},\,p_x,\,0,p_z\)とおく。
+ローレンツ変換の式より、
+\begin{align}
+    E'/c &= \gamma(1\si{MeV/c}-\beta p_z)\\
+    p_z' &= \gamma(-\beta\times 1\si{MeV/c} +\beta p_z)
+\end{align}
+これらから\(p_z\)を消去して
+\begin{align}
+    E'/c + \beta p_z' = \sqrt{1-\beta^2} \times 1\si{MeV/c}
+\end{align}
+このときの検出器の角度より
+\begin{align}
+    p_x' = \sqrt{3} p_z'
+\end{align}
+であり、光子の分散関係より
+\begin{align}
+    E'^2/c^2 &= p_x'^2 + p_z'^2 = 4p_z'^2\\
+    E'/c &= 2p_z'
+\end{align}
+これより
+\begin{align}
+    E &= \frac{\sqrt{1-\beta^2}}{1+\beta/2} \si{MeV}\\
+    &\simeq \qty(1-\frac{\beta^2}{2})\qty(1-\frac{\beta}{2}) \simeq 0.97 \si{MeV}
+\end{align}
+となる。
+\subsection{}
+\begin{align}
+    N = N_0 \exp(-t/\tau)
+\end{align}
+
+\subsection{}
+スペクトルの2つのピークの大きさが同じであることは、
+ストッパーで止まった後にガンマ線を出した \ce{^33S^*}の数と、
+止まる前にガンマ線を出した\ce{^33S^*}の数が同じであることを表している。
+これより\ce{^33S^*}がターゲットからストッパーに到達するまでの時間が半減期であるとわかる。
+\ce{^33S^*}の速度は\(\beta c = 1.7\times 10^m\si{m/s}\)であり、
+この速度で\(12\si{\micro m}\)を通過するのでその時間は
+\begin{align}
+    t_0 =  0.68\si{pm}
+\end{align}
+
+\subsection*{感想}
+問題4とか公式がありそうだけど、
+原子核の実験なんてやったことないから地道に連立方程式を解いていくしかないんだなぁ。
+それ以外は電卓をくださいという感じ。
+
+\clearpage
+\section{光電効果}
+
+\clearpage
+\section{Balmer線の測定}
+\subsection{}
+水素原子のエネルギー準位は
+\begin{align}
+    E_n = -13.6\times\frac{1}{n^2} \,\si{eV}
+\end{align}
+これより\(H_\alpha\)線のエネルギーは
+\begin{align}
+    E_3 - E_2 = -\frac{13.6}{9} \si{eV} + \frac{13.6}{4} \si{eV} = 1.9 eV
+\end{align}
+この時の波長は
+\begin{align}
+    E \si{(eV)} = \frac{1240 \si{nm eV}}{\lambda \si{(nm)}}
+\end{align}
+より
+\begin{align}
+    \lambda = 656 \si{nm}
+\end{align}
+の緑色
+
+\subsection{}
+1\si{\micro A}の電流を流すには電子正孔対が1秒間あたり\(5\times 10^{-7}\)個生成する必要がある。
+光子1つにつき80\%の確率で電子正孔対ができるので、必要な光子の数は
+\begin{align}
+    5\times10^{-7}/80\% = 6.25 \times 10^{-7}
+\end{align}
+個の光子が1秒あたりに必要。
+
+\subsection{}
+\subsubsection{(1)}
+pn接合の界面はキャリアの空乏そうになっていて、nからpへの電場がかかっている。
+この界面で電子正孔対が生成され、そのとき\(n\)側に電子が、
+p側に正孔が流れていくので流れる電流は正
+\subsubsection{(2)}
+また、IV特性は\(V>0\)の時には光の強さに応じた定数分だけ倍されたような格好になる。
+\(V<0\)のときはよくわかんない。
+\subsubsection{(3)}
+光の強さを直接測定するには微弱な電流でも電圧が読み取れるように、
+\(R_L\)は十分大きくしたい。
+
+\subsection{}
+オペアンプのゲインの式より
+\begin{align}
+    G(0-V_2)=V_0
+\end{align}
+\(Z_f\)による電圧変化は
+\begin{align}
+    V_2-V_0 = I_fZ_f = I_i Z_f
+\end{align}
+これらより
+\begin{align}
+    V_0 &= -\frac{1}{1+1/G}I_i Z_f\\
+    &\to -I_i Z_f &(G\to \infty)
+\end{align}
+
+\subsection{}
+\(Z_f\)は抵抗とコンデンサを並列接続したものなので
+\begin{align}
+    \frac{1}{Z_f} &= \frac{1}{R_f} + i\omega C_f\\
+    Z_f &= \frac{R_f}{1+(\omega C_fR_f)^2} -i \frac{\omega C_fR_f^2}{1+(\omega C_fR_f)^2}
+\end{align}
+\(I_i=1\,\si{\micro A}\)の直流電流を\(V_0 = 100 \,\si{mA}\)にするので
+\begin{align}
+    R_f = 100 \si{k\ohm}
+\end{align}
+またカットオフ周波数は
+\begin{align}
+    f = \frac{1}{2\pi C_fR_f}
+\end{align}
+であり、\(f=100 \si{kHz}\)で設計するので
+\begin{align}
+    C_f = 630 \si{pF}
+\end{align}
+
+\subsection*{感想}
+問題2の桁があってるのかわからない……
 
 \end{document}
