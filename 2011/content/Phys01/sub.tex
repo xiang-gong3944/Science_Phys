@@ -1,0 +1,584 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{量子力学: スピン系 Rabi振動}
+\subsection{}
+Levi-Civita の記号と Einstein の縮約を使って角運動量は\(L_i = \epsilon_{ijk}x_jp_k\)と書ける。
+これと交換子の線形性と\([A,BC]=[A,B]C+B[A,C]\),
+Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}\)を用いると
+\begin{align}
+    [L_i,\,L_j]
+    &=[\epsilon_{imn}x_mp_n\,\epsilon_{jrs}x_rp_s]\\
+    &=\epsilon_{imn}\epsilon_{jrs}\qty(x_m[p_n,x_r]p_s+x_r[x_m,p_s]p_n)\\
+    &=i\hbar\qty(\epsilon_{imn}\epsilon_{jrm}x_rp_n-\epsilon_{imn}\epsilon_{jns}x_m p_s)\\
+    &=i\hbar\qty(\delta_{ir}\delta_{jn}-\delta_{jr}\delta_{in})x_rp_n\\
+    &=i\hbar\epsilon_{ijk}(\epsilon_{kmn}x_mp_n)\\
+    &=i\hbar\epsilon_{ijk}L_k
+\end{align}
+
+\subsection{}
+交換関係\([S_z,S_x]=i\hbar S_y\)より
+\begin{align}
+    i\hbar S_y
+    &= \frac{\hbar^2}{4}\begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix}-
+    \begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix}\\
+    S_y &= \frac{\hbar}{2}\begin{pmatrix}
+        0 &-i\\
+        i & 0
+    \end{pmatrix}
+\end{align}
+
+\subsection{}
+ハミルトニアンを行列表示すると
+\begin{align}
+    H = -\mu H_xS_x = -\frac{\mu H_z}{2}\begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix}
+\end{align}
+これの固有値方程式を解くと
+\begin{align}
+    \lambda = \pm \frac{\mu H_x}{2}
+\end{align}
+となる。\(\lambda_1\)を正の方の固有値、
+\(\lambda_2\)を負の方の固有値とすると
+それぞれの固有ベクトルは
+\begin{align}
+    \ket{\lambda_1} &= \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 \\ 1
+    \end{pmatrix}\\
+    \ket{\lambda_2} &= \frac{1}{\sqrt{2}}\begin{pmatrix}
+        1 \\ -1
+    \end{pmatrix}
+\end{align}
+である。
+
+\subsection{}
+初期状態を
+\begin{align}
+    \ket{\phi(0)} = \begin{pmatrix}
+        \cos\theta\\
+        e^{i\varphi}\sin\theta
+    \end{pmatrix}
+\end{align}
+とおく。
+このもとで各スピンの調体の期待値を計算することで\(\theta,\,\varphi\)をもとめると
+初期状態は
+\begin{align}
+    \ket{\phi(0)}=\begin{pmatrix}
+        1\\0
+    \end{pmatrix}
+\end{align}
+とわかる。
+これの時間発展をもとめる。シュレーディンガー方程式より
+\begin{align}
+    i\dv{t} \ket{\phi(t)} &= H\ket{\phi(t)}\\
+    \ket{\phi(t)}&=\exp(-iHt)\ket{\phi(0)}\\
+    &=\exp(\frac{i\mu H_x t}{2}\begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix})\begin{pmatrix}
+        1\\0
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+        \cos\frac{\mu H_x t}{2}& i\sin\frac{\mu H_x t}{2}\\
+        i\sin\frac{\mu H_x t}{2} & \cos\frac{\mu H_x t}{2}
+    \end{pmatrix}\begin{pmatrix}
+        1 \\0
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+        \cos\frac{\mu H_x t}{2}\\
+        i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}
+\end{align}
+となる。途中パウリ行列\(\vec{\sigma}\)の性質
+\begin{align}
+    \exp(i\vec{a}\cdot\vec{\sigma})
+    =I\cos\abs{\vec{a}}
+    +i\qty(\frac{\vec{a}}{\abs{\vec{a}}}\cdot\vec{\sigma})\sin\abs{\vec{a}}
+\end{align}
+を使った。
+これより
+\begin{align}
+    \bra{\phi(t)}S_x\ket{\phi(t)}
+    &= \frac{\hbar}{2}\begin{pmatrix}
+        \cos\frac{\mu H_x t}{2} & -i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & 1\\
+        1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        \cos\frac{\mu H_x t}{2}\\
+        i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}=0\\
+    \bra{\phi(t)}S_y\ket{\phi(t)}
+    &= \frac{\hbar}{2}\begin{pmatrix}
+        \cos\frac{\mu H_x t}{2} & -i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & -i\\
+        i & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        \cos\frac{\mu H_x t}{2}\\
+        i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}=0\\
+    \bra{\phi(t)}S_z\ket{\phi(t)}
+    &= \frac{\hbar}{2}\begin{pmatrix}
+        \cos\frac{\mu H_x t}{2} & -i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        \cos\frac{\mu H_x t}{2}\\
+        i\sin\frac{\mu H_x t}{2}
+    \end{pmatrix}=\frac{1}{2}\cos\mu H_x t
+\end{align}
+\subsubsection{別解:Heisenberg 方程式}
+こっちでもできるはず
+
+\subsection{}
+\begin{align}
+    i\dv{t}\ket{\psi(t)}
+    &= i\dv{t}\qty(e^{iH_1t}\ket{\varphi(t)})\\
+    &=-e^{iH_1 t}H_1\ket{\varphi(t)}+e^{iH_1t}i\dv{t}\ket{\varphi(t)}\\
+    &=-e^{iH_1 t}H_1\ket{\varphi(t)}+e^{iH_1t}(H_1+H_2)\ket{\varphi(t)}\\
+    &=e^{iH_1t}H_2e^{-iH_1t} e^{iH_1 t}\ket{\varphi(t)}\\
+    &=e^{iH_1t}H_2e^{-iH_1t}\ket{\psi(t)}\\
+    &-\frac{a_0}{2}\begin{pmatrix}
+        e^{-iat/2} &0\\
+        0 & e^{iat/2}
+    \end{pmatrix}\begin{pmatrix}
+        0 & e^{i\omega t}\\
+        e^{-i\omega t}& 0
+    \end{pmatrix}\begin{pmatrix}
+        e^{iat/2} & 0\\
+        0 & e^{-iat/2}
+    \end{pmatrix}\ket{\psi(t)}\\
+    &= -\frac{a_0}{2}\begin{pmatrix}
+        0 & e^{i(\omega -a)t}\\
+        e^{-i(\omega - a)t} &0
+    \end{pmatrix}\ket{\psi(t)}
+\end{align}
+
+\subsection{}
+\begin{align}
+    \bra{\varphi(t)}S_z\ket{\varphi(t)}
+    = \bra{\varphi(t)}e^{iaS_z t}e^{-iaS_zt}S_ze^{iaS_z}e^{-iaS_z}\ket{\varphi(t)}
+    = \bra{\psi(t)}S_z\ket{\psi(t)}
+\end{align}
+である。
+このとき\(\ket{\psi(t)}\)の時間発展の式は、
+\(\omega=a\)とすると問題4で考えた\(\ket{\phi(t)}\)の時間発展と同じであることがわかる。
+これらより求める値は\(\bra{\phi(t)}S_z\ket{\phi(t)}\)と同じで
+\begin{align}
+    \bra{\varphi(t)}S_z\ket{\varphi(t)}  = \frac{1}{2}\cos at
+\end{align}
+
+\subsection*{感想}
+2準位系はqubitとみなせて、
+量子情報でよくやる計算なので覚えておきたい。
+
+\section{統計力学: 回転エネルギー、核スピン異性体の比熱}
+\subsection{}
+古典系での分配関数は位相空間での積分によって求められる。
+\begin{align}
+    Z
+    &= \frac{1}{(2\pi\hbar)^2}\int_{0}^{\pi}d\theta\sin\theta\int_{0}^{2\pi}d\varphi
+        \int_{-\infty}^{\infty}dp_\theta \int_{-\infty}^{\infty}dp_{\varphi} \exp[
+        -\frac{\beta}{2I}\qty(p_\theta^2+\frac{p_\varphi^2}{\sin^2\theta})]\\
+    &= \frac{1}{2\pi\hbar^2}\int_{0}^{\pi}d\theta \sin\theta \sqrt{\frac{2\pi I}{\beta}} \sqrt{\frac{2\pi I \sin^2\theta}{\beta}}\\
+    &= \frac{I}{\hbar^2\beta}\int_{0}^{\pi}\sin^2\theta\\
+    &=\frac{\pi I}{2\hbar^2 \beta}
+\end{align}
+これより系の内部エネルギーは
+\begin{align}
+    E = -\pdv{\beta}\ln Z = k_BT
+\end{align}
+比熱は
+\begin{align}
+    C = \dv{E}{T} = k_B
+\end{align}
+\subsection{}
+縮重度も考慮して軌道量子数の和をとることで分配関数が求まる。
+\begin{align}
+    Z = \sum_{l=0}^{\infty}(2l+1)\exp(-\frac{\beta\hbar^2}{2I}l(l+1))
+\end{align}
+高温のとき、つまり\(\beta\gg 1\)のときでは\(l\)が大きいところでしか和が効かないので、
+\begin{align}
+    Z \simeq \sum_{l=0}^{\infty} 2l\exp(-\frac{\beta\hbar^2}{2I}l^2)
+\end{align}
+\(x=\sqrt{\beta\hbar^2/2I}\times l\)と文字を置き、
+\(\beta\)が小さいことから連続和とみなすと
+\begin{align}
+    Z \simeq \frac{2I}{\beta\hbar^2}\int_{0}^{x} dx\, xe^{-x^2/2} = \frac{2I}{\beta\hbar^2}
+\end{align}
+このときの内部エネルギーと比熱は
+\begin{align}
+    E &= -\pdv{\beta}\ln Z = k_B T\\
+    C &= \dv{E}{T} = k_B
+\end{align}
+で古典的に2原子分子を扱ったときと同じ結果が現れる。
+
+\subsection{}
+低温において、熱揺らぎによる基底状態からの励起はほとんど起きないと考えられることから、
+設問2の分配関数の和は\(l=0,\,1\)まで取ればよい。よって分配関数は
+\begin{align}
+    Z \simeq 1 + 3\exp(-\frac{\beta\hbar^2}{I}).
+\end{align}
+これより内部エネルギーと比熱は
+\begin{align}
+    E &= -\pdv{\beta} \ln Z
+    = \dfrac{\dfrac{3\hbar^2}{I}\exp(-\dfrac{\beta\hbar^2}{I})}{1++ 3\exp(-\frac{\beta\hbar^2}{I})}
+        \simeq \frac{3\hbar^2}{I}\exp(-\frac{\beta\hbar^2}{I})\\
+    C &= \dv{E}{T} = -k_B\beta^2\dv{E}{\beta}
+    = 3k_B\qty(\frac{\beta\hbar^2}{I})^2\exp(-\frac{\beta\hbar^2}{I})
+\end{align}
+
+\subsection{}
+水素原子核の合成スピンは摂動によって変わらないとすると、
+遷移できる準位は同じ合成スピンを持った準位の間のみである。
+原子核の入れかえのパリティについて考えたとき、陽子自体はフェルミオンであるため、
+これを保つためにはオルソ水素では軌道の波動関数は反対称、
+パラ水素では軌道の波動関数は対称である必要がある。
+よってオルソ水素は\(l\)が奇数の準位、
+パラ水素は\(l\)が偶数の準位をとる。
+
+\subsection{}
+オルソ水素の合成スピンはシングレット状態であるので縮退度は1,
+パラ水素の合成スピンはトリプレット状態であるので縮退度は3である。
+十分高温では縮退度もこみで均等な数になるので
+\begin{align}
+    \frac{N_o}{N_p} = 3
+\end{align}
+
+\subsection{}
+低温においてパラ水素の分配関数の和は
+設問2の分配関数の和のうち\(l=0,2\)だけをとってきて
+\begin{align}
+    Z = 1 +5\exp(-\frac{3\beta\hbar^2}{I})
+\end{align}
+これの内部エネルギーは
+\begin{align}
+    E = -\pdv{\beta}\ln Z \simeq \frac{15\hbar^2}{I}\exp(-\frac{3\beta\hbar^2}{I})\sim 0
+\end{align}
+オルソ水素の分配関数の和は\(l=1,3\)だけをとってきて
+\begin{align}
+    Z = 3\exp(-\frac{\beta\hbar^2}{I}) +7\exp(-\frac{6\beta\hbar^2}{I})
+\end{align}
+これの内部エネルギーは
+\begin{align}
+    E = -\pdv{\beta}\ln Z
+    = \frac{3\hbar^2}{I}\dfrac{\exp(-\frac{\beta\hbar^2}{I}) +14\exp(-\frac{6\beta\hbar^2}{I})}{3\exp(-\frac{\beta\hbar^2}{I}) +7\exp(-\frac{6\beta\hbar^2}{I})}
+    \simeq \frac{\hbar^2 }{I}
+\end{align}
+よって内部エネルギーはオルソ水素だけ考えればよく、求める値は
+\begin{align}
+    \frac{U}{k_B} = \frac{3\hbar^2}{4k_BI} = 135 \text{ K}
+\end{align}
+
+\subsection*{感想}
+核スピン同位体の話は初めてやった。
+設問4をはじめ逆で答えてしまったのは悔しい。
+最後の問題はよくわからない。
+天文学辞典に載っていたので、星間ガスの話でも出るのだろう。
+
+\clearpage
+\section{電磁気学: ローレンツモデルと異常分散}
+\subsection{}
+\begin{align}
+    m\dv[2]{r}{t} = -m\omega_0^2r +eE\cos\omega t
+\end{align}
+\subsection{}
+\(r=R\cos\omega t\)を運動方程式に入れて
+\begin{align}
+    -m\omega^2 R\cos\omega t &= -m\omega_0^2 R\cos\omega t + eE\cos\omega t\\
+    0 &= \qty(-(\omega_0^2-\omega^2)R+\frac{eE}{m})\cos\omega t\\
+    \rightarrow \quad R &=\frac{eE}{m(\omega_0^2-\omega^2)}
+\end{align}
+このとき電流密度は
+\begin{align}
+    i_d = Nev = Ne\dot{r} = -\frac{Ne^2E_0}{m}\frac{\omega}{\omega_0^2-\omega^2}
+\end{align}
+
+\subsection{}
+Amp\'{e}re-Maxwell の式の両辺の湧き出しをとると
+\begin{align}
+    \frac{1}{\mu_0}\div(\curl B) &= \varepsilon_0 \div \pdv{E}{t} + \div i\\
+    0 &= \pdv{t}\div(\varepsilon_0 E) + \div i\\
+    &= \pdv{\rho}{t} +\div i
+\end{align}
+より電荷保存則と矛盾しない。
+
+\subsection{}
+(1)に\(i=i_d\)等を代入して
+\begin{align}
+    \curl B
+    &= \varepsilon_0\mu_0\pdv{t}E_0\cos\omega t -\frac{Ne^2\mu_0E_0}{m}\frac{\omega}{\omega_0^2-\omega^2}\\
+    &= -\qty(\varepsilon_0\mu_0+\frac{Ne^2\mu_0}{m}\frac{1}{\omega_0^2-\omega^2})\omega E_0\sin\omega t
+\end{align}
+これより
+\begin{align}
+    C = \varepsilon_0\mu_0+\frac{Ne^2\mu_0}{m}\frac{1}{\omega_0^2-\omega^2}
+\end{align}
+
+\subsection{}
+\begin{align}
+    \varepsilon\mu &= \varepsilon_0\mu_0+\frac{Ne^2\mu_0}{m}\frac{1}{\omega_0^2-\omega^2}\\
+    \frac{\varepsilon\mu}{\varepsilon_0\mu_0} &= 1+\frac{Ne^2}{m\varepsilon_0}\frac{1}{\omega_0^2-\omega^2}\\
+    n(\omega) &= \sqrt{1+\frac{\omega_p^2}{\omega_0^2-\omega^2}}
+\end{align}
+
+\subsection{}
+石英は\(\omega_0\)が紫外領域に、
+物質Fは\(\omega_0\)が可視領域になるように置き、
+\(\omega\to\infty\)で\(n(\omega)\nearrow 1\),
+\(\omega\to 0\)で\(n(\omega)\searrow \varepsilon_r \ge 1\)になるように曲線を描けばよい。
+
+\subsection*{感想}
+物質中の電磁気の古典論でよくあるモデルの1つ。
+イオン分極を説明する。
+他はドルーデモデル(電子分極), デバイモデル(配向分極)とかも復習するといいのかも。
+
+\clearpage
+\section{原子核実験:}
+
+\clearpage
+\section{中性子散乱: 液体の拡散係数}
+\subsection{}
+\(d\sin\theta = \lambda\)に\(d=3.4\) \AA \(\theta = \pi/4\)を入れると
+\begin{align}
+    \lambda = 3.4 \text{\,\AA} \times \frac{1}{\sqrt{2}} \simeq 2.4 \text{\,\AA}
+\end{align}
+また、
+\begin{align}
+    \abs{k_i-k_f}^2 &= k_i^2+k_f^2-2\abs{k_i}{k_f}\cos2\theta\\
+    &=\frac{4\pi^2}{\lambda^2}\frac{1-\cos2\theta}{2}\\
+    \abs{k_i-k_f} &= \frac{2\pi}{\lambda}\sin\theta
+\end{align}
+
+\subsection{}
+散乱前の中性子の運動エネルギーは
+\begin{align}
+    E_i = \frac{p^2}{2m} = \frac{h^2}{2m\lambda}
+\end{align}
+散乱後の中性子の速度は\(v=L/\delta t\)より運動エネルギーは
+\begin{align}
+    E_f = \frac{1}{2}mv^2 = \frac{mL^2}{2\delta t^2}
+\end{align}
+これらの差が求める\(\Delta E\)であるので
+\begin{align}
+    \Delta E = E_f - E_i = \frac{mL^2}{2\Delta t^2} - \frac{h^2}{2m\lambda^2}
+\end{align}
+
+\subsection{}
+\begin{align}
+    I(Q,\,\omega)
+    &= \frac{1}{2\pi}\int_{-\infty}^{\infty} ae^{-DQ^2\abs{t}}e^{i\omega t}dt\\
+    &= \frac{a}{2\pi}\int_{0}^{\infty}e^{(-DQ^2+i\omega)t}dt+\frac{a}{2\pi}\int_{-\infty}^{0} e^{(DQ^2+i\omega)t}dt\\
+    &= \frac{a}{2\pi}\frac{1}{DQ^2-i\omega} +\frac{a}{2\pi}\frac{1}{DQ^2+i\omega}\\
+    &=\frac{a}{\pi}\frac{DQ^2}{(DQ^2)^2+\omega^2}
+\end{align}
+
+\subsection{}
+\(I(Q,\,\Gamma)=1/2\)であるので
+\begin{align}
+    \frac{a}{\pi}\frac{DQ^2}{(DQ^2)^2+\omega^2}&=\frac{1}{2}\\
+    \Gamma = \sqrt{DQ^2\qty(\frac{2a}{\pi}-DQ^2)}
+\end{align}
+
+\subsection{}
+\subsubsection{\(Q=0.5\text{\,\AA}^{-1}\)のとき}
+グラフを読み取ると\(a/\pi DQ^2= 1.6,\quad\hbar\Gamma = 0.2\,\text{meV}\)より
+\begin{align}
+    \frac{0.2 \text{\,meV}}{6.58\times 10^{-13}\text{\,meV・s}}&=D\times (0.5 \,\text{\AA}^{-1})^2\sqrt{3.2-1}\\
+    D &= \frac{4}{5}\frac{1}{\sqrt{2.2}}\frac{1}{6.58}\times10^{-3} \,\si{cm^2/s}
+\end{align}
+ここで
+\begin{align}
+    \frac{1}{\sqrt{2.2}}=\sqrt{\frac{4}{8.8}}=\frac{2}{3\sqrt{1-1/45}}\simeq\frac{2}{3}\qty(1+\frac{1}{90})=\frac{91}{135}
+\end{align}
+を使って計算を進めると
+\begin{align}
+    D = 8.2\times 10^{-5}\,\si{cm^2/s}
+\end{align}
+\subsubsection{\(Q=0.7\text{\,\AA}^{-1}\)のとき}
+グラフを読み取ると\(a/\pi DQ^2= 0.8,\quad\hbar\Gamma = 0.4\,\text{meV}\)より
+\begin{align}
+    \frac{0.4 \text{\,meV}}{6.58\times 10^{-13}\text{\,meV・s}}&=D\times (0.7 \,\text{\AA}^{-1})^2\sqrt{1.6-1}\\
+    D &= \frac{40}{49}\frac{1}{\sqrt{0.6}}\frac{1}{6.58}\times10^{-3} \,\si{cm^2/s}
+\end{align}
+ここで
+\begin{align}
+    \frac{1}{\sqrt{0.6}}=\sqrt{\frac{25}{15}}=\frac{5}{4\sqrt{1-1/16}}\simeq\frac{5}{4}\qty(1+\frac{1}{32})=\frac{165}{128}
+\end{align}
+を使って計算を進めると
+\begin{align}
+    D = 1.6 \times 10^{-5}\,\si{cm^2/s}
+\end{align}
+\subsection{}
+\begin{align}
+    \log D = -\frac{1}{\ln 10}\frac{\Delta E_a}{RT} + \log D_0
+\end{align}
+であり、温度が 275 K から 297 K に変わったときのアレニウスプロットの傾きは
+\begin{align}
+    -\frac{1}{\ln10}\frac{\Delta E_a}{ R} &= \frac{0.042-0.255}{3.64-3.37}\times 10^3\\
+    \Delta E_a &= 1.8 \,\si{kJ/mol}
+\end{align}
+この活性化エネルギーは何に由来してるのかはわからない。
+
+\subsection*{感想}
+最後の数値計算がつらい。
+拡散係数と活性化エネルギーとか最近あついゆらぎの熱力学とかの話なのでわかりたい。
+
+
+\clearpage
+\section{電気回路: 同軸ケーブル}
+\subsection{}
+\subsubsection{静電容量}
+長さが単位長の同軸ケーブルの中心導体に電荷\(Q\)があって外部導体が接地されているものとする。
+円筒座標のもと、半径が\(a<r<b\)の円筒面でのガウスの法則より
+\begin{align}
+    2\pi r E &= \frac{Q}{\varepsilon}\\
+    E &= \frac{Q}{2\pi \varepsilon r}
+\end{align}
+これより外部導体と内部導体のポテンシャル差は
+\begin{align}
+    V = -\int_a^b dr E(r) = \frac{Q}{2\pi\varepsilon}\ln(\frac{b}{a})
+\end{align}
+となる。静電容量は\(C = Q/V\)より
+\begin{align}
+    C = \frac{2\pi \varepsilon}{\ln b/a}
+\end{align}
+\subsubsection{インダクタンス}
+中心導体に一様な電流\(I\)が流れているとき、
+内部導体内部での磁束密度はアンペールの式より
+\begin{align}
+    2\pi r B &= \frac{r^2}{a^2}\mu I\\
+    B &= \frac{\mu r}{2\pi a^2} I
+\end{align}
+絶縁体内部での磁束密度も同様に
+\begin{align}
+    2\pi r B &= \mu I\\
+    B &= \frac{\mu I}{2\pi r}
+\end{align}
+これより同軸ケーブル内部の磁束は単位長あたり
+\begin{align}
+    \Phi
+    &= \int_{0}^{b} dr B(r)\\
+    &= \int_{0}^{a} dr \frac{\mu r}{2\pi a^2} I + \int_{a}^{b} dr \frac{\mu I}{2\pi r}\\
+    &= \frac{\mu I}{2\pi}\qty(\frac{1}{2}+\ln\frac{b}{a})
+\end{align}
+\(\Phi=LI\)より自己インダクタンスは
+\begin{align}
+    L = \frac{\mu}{2\pi}\qty(\frac{1}{2}+\ln\frac{b}{a})
+\end{align}
+
+\subsection{}
+図4のF行列は
+\begin{align}
+    F = \begin{pmatrix}
+        1 & j\omega L\Delta x\\
+        0 & 1
+    \end{pmatrix}\begin{pmatrix}
+        1 & 0\\
+        j\omega C \Delta x& 1
+    \end{pmatrix}
+    \simeq\begin{pmatrix}
+        1 & j\omega L \Delta x\\
+        j\omega C  \Delta x& 1
+    \end{pmatrix}
+\end{align}
+なので
+\begin{align}
+    \begin{pmatrix}
+        V(x,\omega)\\I(x,\omega)
+    \end{pmatrix}=
+    \begin{pmatrix}
+        1 & j\omega L \Delta x\\
+        j\omega C  \Delta x& 1
+    \end{pmatrix}\begin{pmatrix}
+        V(x+\Delta x,\omega)\\
+        I(x+\Delta x,\omega)
+    \end{pmatrix}
+\end{align}
+これの上の成分より
+\begin{align}
+    V(x,\omega)&= V(x+\Delta x,\omega)+j\omega L\Delta x I(x+\Delta x,\omega)\\
+    \pdv{V(x,\omega)}{x} &= -j\omega L I(x,\omega)\\
+    \pdv{V(x,t)}{x} &= - L \pdv{I(x,t)}{t}
+\end{align}
+下の成分より
+\begin{align}
+    I(x,\omega) &= j\omega C \Delta x V(x+\Delta x,\omega) + I(x+\Delta x,\omega)\\
+    \pdv{I(x,\omega)}{x} &= -j\omega C V(x,\omega)\\
+    \pdv{I(x,t)}{x} &= - C \pdv{V(x,t)}{t}\\
+\end{align}
+となり示せた。
+
+\subsection{}
+(1)式の\(t\)微分と(2)式の\(x\)微分を組み合わせることにより
+\begin{align}
+    \pdv[2]{I}{x}-LC\pdv[2]{I}{t}=0
+\end{align}
+(1)式の\(x\)微分と(2)式の\(t\)微分を組み合わせることにより
+\begin{align}
+    \pdv[2]{V}{x}-LC\pdv[2]{V}{t}=0
+\end{align}
+が得られる。
+この波動方程式より
+\begin{align}
+    v = \frac{1}{\sqrt{LC}}
+\end{align}
+が伝送速度とわかる。
+
+\subsection{}
+\begin{align}
+    LC = \frac{\mu}{2\pi}\qty(\frac{1}{2}+\ln\frac{b}{a}) \times \frac{2\pi\varepsilon}{\ln(b/a)}
+\end{align}
+であり、\(b\gg a\)であるとすると
+\begin{align}
+    LC = \mu\varepsilon = 2 \varepsilon_0 \mu_0 = \frac{2}{c^2}
+\end{align}
+より、伝送速度を伝送速度の式に入れると
+\begin{align}
+    v = \frac{c}{\sqrt{2}} \simeq 0.7 c
+\end{align}
+となるので、伝送速度は光速の70\%となる
+
+\subsection{}
+(1)式に波動方程式の解を入れると
+\begin{align}
+    \pm\frac{\omega}{v} V &= -i\omega LI\\
+    \frac{V}{I}&= Lv = \sqrt{\frac{L}{C}}
+\end{align}
+より\(Z=V/I\)は長さに依存しないことがわかる。
+
+\subsection{}
+わかんない
+
+\subsection*{感想}
+同軸ケーブルのモデルを知れて面白かった(小並感)。
+ただ、電験で出るような問題をやったことないような私にとっては、
+最後の設問は問題文がわからなかったのでどうしようもなかった。
+
+\end{document}
