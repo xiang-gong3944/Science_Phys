@@ -139,7 +139,7 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
     \begin{pmatrix}
         \cos\frac{\mu H_x t}{2}\\
         i\sin\frac{\mu H_x t}{2}
-    \end{pmatrix}=0\\
+    \end{pmatrix}=\frac{1}{2}\sin\mu H_x t\\
     \bra{\phi(t)}S_z\ket{\phi(t)}
     &= \frac{\hbar}{2}\begin{pmatrix}
         \cos\frac{\mu H_x t}{2} & -i\sin\frac{\mu H_x t}{2}
@@ -153,6 +153,7 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
         i\sin\frac{\mu H_x t}{2}
     \end{pmatrix}=\frac{1}{2}\cos\mu H_x t
 \end{align}
+ブロッホ球を考えたときに、状態\(\ket{\phi(t)}\)は\(x\)軸を軸に回転しているといった様子となる。
 \subsubsection{別解:Heisenberg 方程式}
 こっちでもできるはず
 
@@ -183,7 +184,7 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
 \subsection{}
 \begin{align}
     \bra{\varphi(t)}S_z\ket{\varphi(t)}
-    = \bra{\varphi(t)}e^{iaS_z t}e^{-iaS_zt}S_ze^{iaS_z}e^{-iaS_z}\ket{\varphi(t)}
+    = \bra{\varphi(t)}e^{iaS_z t}e^{-iaS_zt}S_ze^{iaS_zt}e^{-iaS_zt}\ket{\varphi(t)}
     = \bra{\psi(t)}S_z\ket{\psi(t)}
 \end{align}
 である。
@@ -198,17 +199,18 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
 2準位系はqubitとみなせて、
 量子情報でよくやる計算なので覚えておきたい。
 
+\clearpage
 \section{統計力学: 回転エネルギー、核スピン異性体の比熱}
 \subsection{}
 古典系での分配関数は位相空間での積分によって求められる。
 \begin{align}
     Z
-    &= \frac{1}{(2\pi\hbar)^2}\int_{0}^{\pi}d\theta\sin\theta\int_{0}^{2\pi}d\varphi
+    &= \frac{1}{(2\pi\hbar)^2}\int_{0}^{\pi}d\theta \int_{0}^{2\pi}d\varphi
         \int_{-\infty}^{\infty}dp_\theta \int_{-\infty}^{\infty}dp_{\varphi} \exp[
         -\frac{\beta}{2I}\qty(p_\theta^2+\frac{p_\varphi^2}{\sin^2\theta})]\\
-    &= \frac{1}{2\pi\hbar^2}\int_{0}^{\pi}d\theta \sin\theta \sqrt{\frac{2\pi I}{\beta}} \sqrt{\frac{2\pi I \sin^2\theta}{\beta}}\\
-    &= \frac{I}{\hbar^2\beta}\int_{0}^{\pi}\sin^2\theta\\
-    &=\frac{\pi I}{2\hbar^2 \beta}
+    &= \frac{1}{2\pi\hbar^2}\int_{0}^{\pi}d\theta \sqrt{\frac{2\pi I}{\beta}} \sqrt{\frac{2\pi I \sin^2\theta}{\beta}}\\
+    &= \frac{I}{\hbar^2\beta}\int_{0}^{\pi}\sin\theta\\
+    &=\frac{2 I}{\hbar^2 \beta}
 \end{align}
 これより系の内部エネルギーは
 \begin{align}
@@ -258,8 +260,8 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
 水素原子核の合成スピンは摂動によって変わらないとすると、
 遷移できる準位は同じ合成スピンを持った準位の間のみである。
 原子核の入れかえのパリティについて考えたとき、陽子自体はフェルミオンであるため、
-これを保つためにはオルソ水素では軌道の波動関数は反対称、
-パラ水素では軌道の波動関数は対称である必要がある。
+これを保つためにはスピンの状態がシングレットのオルソ水素では軌道の波動関数は反対称、
+スピンの状態がトリプレットのパラ水素では軌道の波動関数は対称である必要がある。
 よってオルソ水素は\(l\)が奇数の準位、
 パラ水素は\(l\)が偶数の準位をとる。
 
@@ -295,6 +297,9 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
 \begin{align}
     \frac{U}{k_B} = \frac{3\hbar^2}{4k_BI} = 135 \text{ K}
 \end{align}
+つまり、水素分子の回転運動による準位差というのは結構大きく、
+通常の2分子原子で行うような高温近似できない。
+しかも核スピン異性体の区別も必要なので水素分子の比熱を考えるときにはいろいろと気を付けないといけないというのがわかる。
 
 \subsection*{感想}
 核スピン同位体の話は初めてやった。
@@ -317,7 +322,7 @@ Levi-Civita記号の公式\(\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-
 \end{align}
 このとき電流密度は
 \begin{align}
-    i_d = Nev = Ne\dot{r} = -\frac{Ne^2E_0}{m}\frac{\omega}{\omega_0^2-\omega^2}
+    i_d = Nev = Ne\dot{r} = -\frac{Ne^2E_0}{m}\frac{\omega}{\omega_0^2-\omega^2}\sin\omega t
 \end{align}
 
 \subsection{}
