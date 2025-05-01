@@ -1,0 +1,225 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{量子力学: コヒーレント状態}
+\subsection{}
+\begin{align}
+    \text{ア:} &\qquad \hat{a}^\dagger = \frac{1}{\sqrt{2}}\qty(\sqrt{\frac{m\omega}{\hbar}}\hat{x}-\frac{i}{\sqrt{m\hbar\omega}}\hat{p})\\
+    \text{イ:} &\qquad \qty[\hat{a},\,\hat{a}^\dagger] = 1\\
+    \text{ウ:} &\qquad \hat{x} = \sqrt{\frac{\hbar}{m\omega}}\frac{\hat{a}+\hat{a}^\dagger}{\sqrt{2}}\\
+    \text{エ:} &\qquad \hat{p} = -i\sqrt{m\hbar\omega}\frac{\hat{a}-\hat{a}^\dagger}{\sqrt{2}}\\
+    \text{オ:} &\qquad \mathcal{H} = \hbar\omega\qty(\hat{a}^\dagger \hat{a}+\frac{1}{2})\\
+    \text{カ:} &\qquad E_0 = \frac{1}{2}\hbar\omega\\
+    \text{キ:} &\qquad \ket{\phi_{n+1}}=\frac{1}{\sqrt{n+1}}\hat{a}^\dagger\ket{\phi_n}\\
+    \text{ク:} &\qquad E_n = \hbar\omega\qty(n+\frac{1}{2})
+\end{align}
+
+\subsection{}
+シュレディンガー方程式より
+\begin{align*}
+    i\hbar\dv{t}\ket{\psi(t)} &= \mathcal{H}\\
+    \sum_{n=0}^{\infty}i\hbar\dv{t}c_n(t)\ket{\phi_n}
+    &=\sum_{n=0}^{\infty}\hbar\omega\qty(\hat{a}^\dagger\hat{a}\frac{1}{2})c_n(t)\ket{\phi_n}\\
+    \sum_{n=0}^{\infty}\qty[i\hbar\dv{c_n(t)}{t}-\hbar\omega\qty(n+\frac{1}{2})]\ket{\phi_n}&=0
+\end{align*}
+これより\(c_n(t)\)の時間発展の微分方程式が得られ、これを解くと
+\begin{align*}
+    c_n(t) = c_n(0) \exp[-i\qty(n+\frac{1}{2})\omega t]
+\end{align*}
+となる。
+
+\subsection{}
+位置の期待値は
+\begin{equation}
+    \begin{aligned}[b]
+        \bra{\phi_n}\hat{x}\ket{\phi_n}
+        &=\sqrt{\frac{\hbar}{2m\omega}}\bra{\phi_n}\qty(\hat{a}+\hat{a}^\dagger)\ket{\phi_n}\\
+        &=\sqrt{\frac{\hbar}{2m\omega}}\sqrt{n+1}\Bigl[\bra{\phi_{n+1}}\ket{\phi_n}+\bra{\phi_{n}}\ket{\phi_{n+1}}\Bigr]\\
+        &=0
+    \end{aligned}
+\end{equation}
+位置の2乗の期待値は
+\begin{equation}
+    \begin{aligned}[b]
+        \bra{\phi_n}\hat{x}^2\ket{\phi_n}
+        &=\frac{\hbar}{2m\omega}\bra{\phi_n}\qty(
+            \hat{a}^\dagger\hat{a}^\dagger+\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})
+            \ket{\phi_n}\\
+        &= \frac{\hbar}{2m\omega}\bra{\phi_n}\qty(2\hat{a}^\dagger + 1)\ket{\phi_n}\\
+        &= \frac{\hbar}{m\omega}\qty(n+\frac{1}{2})
+    \end{aligned}
+\end{equation}
+となる。
+また同様にして運動量の方を計算していく。
+運動量の期待値は
+\begin{equation}\begin{aligned}[b]
+    \bra{\phi_n}\hat{p}\ket{\phi_n}
+    &= -i\sqrt{\frac{m\hbar\omega}{2}}\bra{\phi_n}\qty(\hat{a}-\hat{a}^\dagger)\ket{\phi_n}
+    &= -i\sqrt{\frac{m\hbar\omega}{2}}\sqrt{n+1}\Bigl[\bra{\phi_{n+1}}\ket{\phi_n}-\bra{\phi_{n}}\ket{\phi_{n+1}}\Bigr]\\
+    &= 0
+\end{aligned}\end{equation}
+
+運動量の2乗の期待値は
+\begin{equation}\begin{aligned}[b]
+    \bra{\phi_n}\hat{p}^2\ket{\phi_n}
+    &=-\frac{m\hbar\omega}{2}\bra{\phi_n}\qty(
+        \hat{a}^\dagger\hat{a}^\dagger-\hat{a}^\dagger\hat{a}-\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})
+        \ket{\phi_n}\\
+    &= \frac{m\hbar\omega}{2}\bra{\phi_n}\qty(2\hat{a}^\dagger + 1)\ket{\phi_n}\\
+    &= \frac{m\hbar\omega}{2}\qty(n+\frac{1}{2})
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    (\Delta x\cdot \Delta p)^2 &= \frac{\hbar}{m\omega}\qty(n+\frac{1}{2})\times\frac{m\hbar\omega}{2}\qty(n+\frac{1}{2})\\
+    \Delta x\cdot \Delta p &= \hbar\qty(n+\frac{1}{2})
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \hat{a}\ket{\alpha}
+    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^\infty\frac{\alpha^n}{\sqrt{n!}}\hat{a}\ket{\phi_n}\\
+    &= e^{-\abs{\alpha}^2/2}\sum_{n=1}^\infty\frac{\alpha^n}{\sqrt{n!}}\sqrt{n}\ket{\phi_{n-1}}\\
+    &= \alpha e^{-\abs{\alpha}^2/2}\sum_{n=1}^\infty\frac{\alpha^{n-1}}{\sqrt{(n-1)!}}\ket{\phi_{n-1}}\\
+    &= \alpha\ket{\alpha}
+\end{aligned}\end{equation}
+より\(\ket{\alpha}\)は\(\hat{a}\)の固有状態。
+
+このことを使うとこの状態での位置の期待値は
+\begin{equation}\begin{aligned}[b]
+    \bra{\alpha}\hat{x}\ket{\alpha}
+    &= \sqrt{\frac{\hbar}{2m\omega}}\bra{\alpha}\qty(\hat{a}+\hat{a}^\dagger)\ket{\alpha}\\
+    &=\sqrt{\frac{\hbar}{2m\omega}}\qty(\alpha+\alpha^*)\\
+    &= \sqrt{\frac{2\hbar}{m\omega}}r\cos\theta
+\end{aligned}\end{equation}
+運動量の期待値は
+\begin{equation}\begin{aligned}[b]
+    \bra{\alpha}\hat{p}\ket{\alpha}
+    &= -i\sqrt{\frac{m\hbar\omega}{2}}\bra{\alpha}\qty(\hat{a}-\hat{a}^\dagger)\ket{\alpha}\\
+    &= -i\sqrt{\frac{m\hbar\omega}{2}}\qty(\alpha-\alpha^*)\\
+    &= \sqrt{2m\hbar\omega}r\sin\theta
+\end{aligned}\end{equation}
+
+\subsection{}
+設問2より\(\ket{\phi_n}\)の時間発展は
+\begin{equation}\begin{aligned}[b]
+    \ket{\phi_n(t)} = c_n(0)\exp[-i\qty(n+\frac{1}{2})\omega t]
+\end{aligned}\end{equation}
+と書けるので\(\ket{\psi(0)}=\ket{\alpha=r_0}\)の時間発展は
+\begin{equation}\begin{aligned}[b]
+    \ket{\psi(t)}
+    &= e^{-r_0^2/2}\sum_{n=0}^{\infty}\frac{r_0^n}{\sqrt{n!}}e^{-in\omega t}e^{-i\omega t/2}\ket{\phi_n}\\
+    &= e^{-i\omega t/2}e^{-r_0^2/2}\sum_{n=0}^{\infty}\frac{\qty(r_0e^{-i\omega t})^n}{\sqrt{n!}}\ket{\phi_n}\\
+    &= e^{-i\omega t/2}\ket{\alpha=r_0e^{-i\omega t}}
+\end{aligned}\end{equation}
+となる。
+先頭の\(e^{-i\omega t/2}\)の位相は物理量の期待値には影響しないので無視できる。
+すると問題の無次元化した位置の期待値は設問4で求めたものに\(r=r_0,\,\theta = -\omega t\)を入れれば良いことがわかるので、
+\begin{align}
+    \bra{\psi(t)}\hat{X}\ket{\psi(t)} &= \sqrt{2}r_0\cos\omega t\\
+    \bra{\psi(t)}\hat{P}\ket{\psi(t)} &= -\sqrt{2}r_0\sin\omega t
+\end{align}
+となる。
+位置と運動量の期待値を位相空間でみると、時計回りに等速円運動するという
+古典系と同じ運動になっていることがわかる。
+
+\subsection*{感想}
+コヒーレント状態の話。
+場の量子論とか量子光学でやる計算で、
+交換子と固有状態をうまく組み合わせると楽にできるというやつ。
+
+\subsection{おまけ}
+コヒーレント状態の復習をしたくなったので、
+この問題の続きとなるものをやってみる。
+\newline
+\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ1]
+    コヒーレント状態の位置の分散\(\Delta X^2\)と運動量の分散\(\Delta P^2\)を求めよ。
+    そしてこれが極小不確定状態である、つまり\(\Delta X \Delta P = 1/2\)となることを確かめよ。
+\end{tcolorbox}
+まず位置の2乗平均については、
+\begin{equation}\begin{aligned}[b]
+    \bra{\alpha}\hat{X}^2\ket{\alpha}
+    &= \frac{1}{2}\bra{\alpha}\qty(
+        \hat{a}^\dagger\hat{a}^\dagger+\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
+    &= \frac{1}{2}\bra{\alpha}\qty(
+        \hat{a}^\dagger\hat{a}^\dagger+2\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}+1)\ket{\alpha}\\
+    &= \frac{1}{2}\qty(\alpha^2+\alpha^{*2}+2\abs{\alpha}^2)+\frac{1}{2}\\
+    &= r^2(1+\cos2\theta)+\frac{1}{2} = 2r^2\cos^2\theta+\frac{1}{2}.
+\end{aligned}\end{equation}
+これより位置の分散は
+\begin{align*}
+    \Delta X^2 = \ev{X^2}-\ev{X}^2 = \frac{1}{2}
+\end{align*}
+運動量の2乗平均については
+\begin{equation}\begin{aligned}[b]
+    \bra{\alpha}\hat{P}^2\ket{\alpha}
+    &= -\frac{1}{2}\bra{\alpha}\qty(
+        \hat{a}^\dagger\hat{a}^\dagger-\hat{a}^\dagger\hat{a}-\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
+    &= -\frac{1}{2}\qty(\alpha^2+\alpha^{*2}-2\abs{\alpha}^2-1)\\
+    &= r^2(1-\cos2\theta) +\frac{1}{2}= 2r^2\sin^2\theta + \frac{1}{2}.
+\end{aligned}\end{equation}
+これより運動量の分散は
+\begin{equation}\begin{aligned}[b]
+    \Delta P^2 = \ev{P^2}-\ev{P}^2 = \frac{1}{2}
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \Delta X \Delta P = \frac{1}{2}
+\end{aligned}\end{equation}
+これより、位置と運動量の期待値自体は古典系のときと同じであるが、
+状態は位相空間の1点ではなくて、直径\(1/2\)程度のぼんやりと広がった状態であることがわかる。
+\newline
+\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ2]
+    レーザー発振のハミルトニアンは
+    \begin{equation}\begin{aligned}[b]
+        \mathcal{H}_{\text{laser}} \propto i(\alpha\hat{a}^\dagger-\alpha^* \hat{a})
+    \end{aligned}\end{equation}
+    というように書けるらしい。
+    第一項が誘導放出、第二項が誘導吸収のイメージである。
+    これによるユニタリ発展つまり
+    \begin{equation}\begin{aligned}[b]
+        \hat{D}(\alpha) = e^{-i\mathcal{H}_{\text{laser}}}
+    \end{aligned}\end{equation}
+    が真空状態からコヒーレント状態を生成する、つまり
+    \begin{equation}\begin{aligned}[b]
+        \ket{\alpha} = \hat{D}(\alpha)\ket{0} =e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
+    \end{aligned}\end{equation}
+    となることを確かめよ。この\(\hat{D}(\alpha)\)は変位演算子という。
+    その際に\([A,[A,B]]=[B,[A,B]]=0\)の際のBCH公式
+    \begin{equation}\begin{aligned}[b]
+        e^{A+B}=e^{A}e^{B}e^{-[A,B]/2}
+    \end{aligned}\end{equation}
+    を使うとよい。
+\end{tcolorbox}
+BCH公式を使って計算を進めていくと
+\begin{equation}\begin{aligned}[b]
+    e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
+    &= e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}e^{-[\alpha \hat{a}^\dagger,-\alpha^*\hat{a}]/2}\ket{0}\\
+    &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}\ket{0}\\
+    &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger}\ket{0}\\
+    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\hat{a}^{\dagger n}\ket{0}\\
+    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\sqrt{n!}\ket{n}\\
+    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\ket{n}\\
+    &= \ket{\alpha}
+\end{aligned}\end{equation}
+
+\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ3]
+    スクイーズ状態についてなんか
+\end{tcolorbox}
+
+
+\clearpage
+\section{統計力学: BEC}
+\subsection{}
+状態\(\epsilon_i\)の状態が\(n_i\)個ある確率は
+\begin{equation}\begin{aligned}[b]
+    \frac{e^{-\beta(\epsilon_i-\mu)n_i}}{\Theta}
+\end{aligned}\end{equation}
+であるので分布関数は
+\begin{equation}\begin{aligned}[b]
+    f(\epsilon_i) =\sum_{n_i}^{\infty}n_i \frac{e^{-\beta(\epsilon_i-\mu)n_i}}{\Theta}
+\end{aligned}\end{equation}
+
+
+\end{document}
