@@ -126,87 +126,87 @@
 
 \subsection*{感想}
 コヒーレント状態の話。
-場の量子論とか量子光学でやる計算で、
+場の量子論とか量子光学にてやる計算で、
 交換子と固有状態をうまく組み合わせると楽にできるというやつ。
 
-\subsection{おまけ}
-コヒーレント状態の復習をしたくなったので、
-この問題の続きとなるものをやってみる。
-\newline
-\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ1]
-    コヒーレント状態の位置の分散\(\Delta X^2\)と運動量の分散\(\Delta P^2\)を求めよ。
-    そしてこれが極小不確定状態である、つまり\(\Delta X \Delta P = 1/2\)となることを確かめよ。
-\end{tcolorbox}
-まず位置の2乗平均については、
-\begin{equation}\begin{aligned}[b]
-    \bra{\alpha}\hat{X}^2\ket{\alpha}
-    &= \frac{1}{2}\bra{\alpha}\qty(
-        \hat{a}^\dagger\hat{a}^\dagger+\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
-    &= \frac{1}{2}\bra{\alpha}\qty(
-        \hat{a}^\dagger\hat{a}^\dagger+2\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}+1)\ket{\alpha}\\
-    &= \frac{1}{2}\qty(\alpha^2+\alpha^{*2}+2\abs{\alpha}^2)+\frac{1}{2}\\
-    &= r^2(1+\cos2\theta)+\frac{1}{2} = 2r^2\cos^2\theta+\frac{1}{2}.
-\end{aligned}\end{equation}
-これより位置の分散は
-\begin{align*}
-    \Delta X^2 = \ev{X^2}-\ev{X}^2 = \frac{1}{2}
-\end{align*}
-運動量の2乗平均については
-\begin{equation}\begin{aligned}[b]
-    \bra{\alpha}\hat{P}^2\ket{\alpha}
-    &= -\frac{1}{2}\bra{\alpha}\qty(
-        \hat{a}^\dagger\hat{a}^\dagger-\hat{a}^\dagger\hat{a}-\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
-    &= -\frac{1}{2}\qty(\alpha^2+\alpha^{*2}-2\abs{\alpha}^2-1)\\
-    &= r^2(1-\cos2\theta) +\frac{1}{2}= 2r^2\sin^2\theta + \frac{1}{2}.
-\end{aligned}\end{equation}
-これより運動量の分散は
-\begin{equation}\begin{aligned}[b]
-    \Delta P^2 = \ev{P^2}-\ev{P}^2 = \frac{1}{2}
-\end{aligned}\end{equation}
-よって
-\begin{equation}\begin{aligned}[b]
-    \Delta X \Delta P = \frac{1}{2}
-\end{aligned}\end{equation}
-これより、位置と運動量の期待値自体は古典系のときと同じであるが、
-状態は位相空間の1点ではなくて、直径\(1/2\)程度のぼんやりと広がった状態であることがわかる。
-\newline
-\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ2]
-    レーザー発振のハミルトニアンは
-    \begin{equation}\begin{aligned}[b]
-        \mathcal{H}_{\text{laser}} \propto i(\alpha\hat{a}^\dagger-\alpha^* \hat{a})
-    \end{aligned}\end{equation}
-    というように書けるらしい。
-    第一項が誘導放出、第二項が誘導吸収のイメージである。
-    これによるユニタリ発展つまり
-    \begin{equation}\begin{aligned}[b]
-        \hat{D}(\alpha) = e^{-i\mathcal{H}_{\text{laser}}}
-    \end{aligned}\end{equation}
-    が真空状態からコヒーレント状態を生成する、つまり
-    \begin{equation}\begin{aligned}[b]
-        \ket{\alpha} = \hat{D}(\alpha)\ket{0} =e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
-    \end{aligned}\end{equation}
-    となることを確かめよ。この\(\hat{D}(\alpha)\)は変位演算子という。
-    その際に\([A,[A,B]]=[B,[A,B]]=0\)の際のBCH公式
-    \begin{equation}\begin{aligned}[b]
-        e^{A+B}=e^{A}e^{B}e^{-[A,B]/2}
-    \end{aligned}\end{equation}
-    を使うとよい。
-\end{tcolorbox}
-BCH公式を使って計算を進めていくと
-\begin{equation}\begin{aligned}[b]
-    e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
-    &= e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}e^{-[\alpha \hat{a}^\dagger,-\alpha^*\hat{a}]/2}\ket{0}\\
-    &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}\ket{0}\\
-    &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger}\ket{0}\\
-    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\hat{a}^{\dagger n}\ket{0}\\
-    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\sqrt{n!}\ket{n}\\
-    &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\ket{n}\\
-    &= \ket{\alpha}
-\end{aligned}\end{equation}
+% \subsection{おまけ}
+% コヒーレント状態の復習をしたくなったので、
+% この問題の続きとなるものをやってみる。
+% \newline
+% \begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ1]
+%     コヒーレント状態の位置の分散\(\Delta X^2\)と運動量の分散\(\Delta P^2\)を求めよ。
+%     そしてこれが極小不確定状態である、つまり\(\Delta X \Delta P = 1/2\)となることを確かめよ。
+% \end{tcolorbox}
+% まず位置の2乗平均については、
+% \begin{equation}\begin{aligned}[b]
+%     \bra{\alpha}\hat{X}^2\ket{\alpha}
+%     &= \frac{1}{2}\bra{\alpha}\qty(
+%         \hat{a}^\dagger\hat{a}^\dagger+\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
+%     &= \frac{1}{2}\bra{\alpha}\qty(
+%         \hat{a}^\dagger\hat{a}^\dagger+2\hat{a}^\dagger\hat{a}+\hat{a}\hat{a}+1)\ket{\alpha}\\
+%     &= \frac{1}{2}\qty(\alpha^2+\alpha^{*2}+2\abs{\alpha}^2)+\frac{1}{2}\\
+%     &= r^2(1+\cos2\theta)+\frac{1}{2} = 2r^2\cos^2\theta+\frac{1}{2}.
+% \end{aligned}\end{equation}
+% これより位置の分散は
+% \begin{align*}
+%     \Delta X^2 = \ev{X^2}-\ev{X}^2 = \frac{1}{2}
+% \end{align*}
+% 運動量の2乗平均については
+% \begin{equation}\begin{aligned}[b]
+%     \bra{\alpha}\hat{P}^2\ket{\alpha}
+%     &= -\frac{1}{2}\bra{\alpha}\qty(
+%         \hat{a}^\dagger\hat{a}^\dagger-\hat{a}^\dagger\hat{a}-\hat{a}\hat{a}^\dagger+\hat{a}\hat{a})\ket{\alpha}\\
+%     &= -\frac{1}{2}\qty(\alpha^2+\alpha^{*2}-2\abs{\alpha}^2-1)\\
+%     &= r^2(1-\cos2\theta) +\frac{1}{2}= 2r^2\sin^2\theta + \frac{1}{2}.
+% \end{aligned}\end{equation}
+% これより運動量の分散は
+% \begin{equation}\begin{aligned}[b]
+%     \Delta P^2 = \ev{P^2}-\ev{P}^2 = \frac{1}{2}
+% \end{aligned}\end{equation}
+% よって
+% \begin{equation}\begin{aligned}[b]
+%     \Delta X \Delta P = \frac{1}{2}
+% \end{aligned}\end{equation}
+% これより、位置と運動量の期待値自体は古典系のときと同じであるが、
+% 状態は位相空間の1点ではなくて、直径\(1/2\)程度のぼんやりと広がった状態であることがわかる。
+% \newline
+% \begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ2]
+%     レーザー発振のハミルトニアンは
+%     \begin{equation}\begin{aligned}[b]
+%         \mathcal{H}_{\text{laser}} \propto i(\alpha\hat{a}^\dagger-\alpha^* \hat{a})
+%     \end{aligned}\end{equation}
+%     というように書けるらしい。
+%     第一項が誘導放出、第二項が誘導吸収のイメージである。
+%     これによるユニタリ発展つまり
+%     \begin{equation}\begin{aligned}[b]
+%         \hat{D}(\alpha) = e^{-i\mathcal{H}_{\text{laser}}}
+%     \end{aligned}\end{equation}
+%     が真空状態からコヒーレント状態を生成する、つまり
+%     \begin{equation}\begin{aligned}[b]
+%         \ket{\alpha} = \hat{D}(\alpha)\ket{0} =e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
+%     \end{aligned}\end{equation}
+%     となることを確かめよ。この\(\hat{D}(\alpha)\)は変位演算子という。
+%     その際に\([A,[A,B]]=[B,[A,B]]=0\)の際のBCH公式
+%     \begin{equation}\begin{aligned}[b]
+%         e^{A+B}=e^{A}e^{B}e^{-[A,B]/2}
+%     \end{aligned}\end{equation}
+%     を使うとよい。
+% \end{tcolorbox}
+% BCH公式を使って計算を進めていくと
+% \begin{equation}\begin{aligned}[b]
+%     e^{\alpha\hat{a}^\dagger-\alpha^* \hat{a}}\ket{0}
+%     &= e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}e^{-[\alpha \hat{a}^\dagger,-\alpha^*\hat{a}]/2}\ket{0}\\
+%     &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger} e^{-\alpha^*\hat{a}}\ket{0}\\
+%     &= e^{-\abs{\alpha}^2/2}e^{\alpha\hat{a}^\dagger}\ket{0}\\
+%     &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\hat{a}^{\dagger n}\ket{0}\\
+%     &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{n!}\sqrt{n!}\ket{n}\\
+%     &= e^{-\abs{\alpha}^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}\ket{n}\\
+%     &= \ket{\alpha}
+% \end{aligned}\end{equation}
 
-\begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ3]
-    スクイーズ状態についてなんか
-\end{tcolorbox}
+% \begin{tcolorbox}[colbacktitle=white, coltitle=black, colback=white, title=おまけ3]
+%     スクイーズ状態についてなんかやりたいね。
+% \end{tcolorbox}
 
 
 \clearpage
@@ -218,8 +218,292 @@ BCH公式を使って計算を進めていくと
 \end{aligned}\end{equation}
 であるので分布関数は
 \begin{equation}\begin{aligned}[b]
-    f(\epsilon_i) =\sum_{n_i}^{\infty}n_i \frac{e^{-\beta(\epsilon_i-\mu)n_i}}{\Theta}
+    f(\epsilon_i)
+    &=\sum_{n_i}^{\infty}n_i \frac{e^{-\beta(\epsilon_i-\mu)n_i}}{\Theta}
+    =\sum_{n_i}^{\infty}\frac{1}{\Theta} \times\qty(-\frac{1}{\beta}\pdv{\epsilon_i} e^{-\beta(\epsilon_i-\mu)n_i})\\
+    &=-\frac{1}{\beta}\frac{1}{\Theta} \pdv{\Theta_i}{\epsilon_i}
+    =-\frac{1}{\beta}\frac{1}{\Theta} \pdv{\Theta}{\epsilon_i}
+    =-k_BT\pdv{\epsilon_i}\ln\Theta\\
+    &=-k_BT\pdv{\epsilon_i} \sum_j \ln\qty[\sum_{n_j}e^{-\beta(\epsilon_j-\mu)n_j}]
+    =-k_BT\sum_{j}\pdv{\epsilon_i}\ln\qty[\frac{1}{1-e^{-\beta(\epsilon_j-\mu)}}]\\
+    &= -k_BT\frac{-\beta e^{^\beta(\epsilon_j-\mu)}}{1-e^{-\beta(\epsilon_j-\mu)}}
+    = \frac{1}{e^{\beta(\epsilon_j-\mu)}-1}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+ボース多体系において、十分低温になったとき、
+マクロな数のボーズ粒子が基底状態に落ち込む現象。
+
+\subsection{}
+\(T=T_c\)において\(\rho'\)は
+\begin{equation}\begin{aligned}[b]
+    \rho' &= A\int_{0}^{\infty}d\epsilon\,\epsilon^{1/2}f(\epsilon)\\
+    &= A\int_{0}^{\infty}d\epsilon\,\frac{\epsilon^{1/2}}{e^{\beta \epsilon}-1}\\
+    &= \frac{2}{\sqrt{\pi}}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}\int_{0}^{\infty}dx\frac{x^{1/2}}{e^x-1}
+\end{aligned}\end{equation}
+積分の中身は\(\mathcal{O}(1)\)の定数でこれを\(C\)とおくと
+\begin{equation}\begin{aligned}[b]
+    \rho' &=\frac{2C}{\sqrt{\pi}}\frac{1}{\lambda_T^3}\\
+    \lambda_T =\qty(\frac{2C}{\sqrt{\pi}C})^{1/3}
+\end{aligned}\end{equation}
+これと平均自由行程の式を見比べると\(\rho=\rho'\)で\(3/4\pi\)と\(2C/\sqrt{\pi}\)はともに\(\mathcal{O}(1)\)の量なので、
+これらの長さのオーダーが等しい。
+
+\subsection{}
+基底状態に落ち込んだ分のボーズ粒子は熱揺らぎによって励起しないので、
+比熱には寄与しない。基底状態に落ち込んでいない分のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E &= \int_{-\infty}^{\infty}d\epsilon\,D(\epsilon)f(\epsilon)\\
+    &= A\int_{0}^{\infty} d\epsilon\,\frac{\epsilon^{3/2}}{e^{\beta\epsilon}-1}\\
+    &= A(k_BT)^{5/2}\int_{0}^{\infty} dx\,\frac{x^{3/2}}{e^{x}-1}\\
+    &\propto T^{5/2}
+\end{aligned}\end{equation}
+これより比熱は
+\begin{equation}\begin{aligned}[b]
+    C &= \dv{E}{T}\propto T^{3/2}
+\end{aligned}\end{equation}
+よって\(\gamma =3/2\)
+
+\subsection{}
+エントロピーは
+\begin{equation}\begin{aligned}[b]
+    S = \int_{0}^{T}dT \frac{C(T)}{T}
+\end{aligned}\end{equation}
+であるのでこれを計算すると
+\begin{equation}\begin{aligned}[b]
+    S \propto \int_{0}^{T}dT\frac{T^3/2}{T} \propto T^{3/2}
+\end{aligned}\end{equation}
+よって\(\nu =3/2\)
+
+\subsection{}
+ゼーマンエネルギーが温度ゆらぎよりも十分小さいときには、
+ゼーマン分裂によって分かれた3つの準位をボーズ粒子は自由に遷移する。
+これより系の内部エネルギーは磁場が無いときと同じ。
+
+一方ゼーマンエネルギーが温度ゆらぎよりも十分大きいときには、
+ボーズ粒子はもとの基底状態よりも低いエネルギー準位にのみ落ち込む。
+これより系の内部エネルギーは磁場がないときよりも小さくなることがわかる。
+断熱的に磁場を掛けていて、内部エネルギーとして減ったエネルギーは周囲の温度のエネルギーになるので、
+終状態の温度は始状態の温度よりも高くなる。
+
+
+\subsection*{感想}
+最後の設問ははゼーマン分裂の分裂幅と温度ゆらぎのエネルギースケールが同じ程度というのを踏まえると、
+超伝導・超流動相の物質に磁場を掛けたときの温度ゆらぎによる影響を定性的に答えなさいというようなものなんでしょうかね?
+超伝導ちゃんとわかってたら、
+最後の設問の結果と第二種超伝導体の磁束格子との関連や臨界磁場との結びつきからの答案チェックもできそう。
+
+\clearpage
+\section{解析力学: 電磁場のラグランジアン}
+\subsection{}
+\(i\)成分のオイラーラグランジュ方程式は次のとおりである。
+\begin{align*}
+    \pdv{L}{r_i}-\dv{t}\pdv{L}{\dot{r}_i}=0
+\end{align*}
+これを展開するとそのまま設問2をやってしまうのでここまでにする。
+
+\subsection{}
+ラグランジアンをベクトルの成分とアインシュタインの縮約を使って書くと
+\footnote{ベクトル解析の表記がわからないからこれでやる。}、
+\begin{equation}\begin{aligned}[b]
+    L = \frac{1}{2}m \dot{r}_i \dot{r}_i + q\dot{r}_iA_i -q\varphi
+\end{aligned}\end{equation}
+である。
+これをオイラーラグランジュ方程式に入れて整理していく。
+\begin{equation}\begin{aligned}[b]
+    0&=\pdv{L}{r_j}-\dv{t}\pdv{L}{\dot{r}_j}\\
+    &= q \dot{r}_j \partial_j A_i - q \partial_j \varepsilon -\dv{t}\qty(
+        m\dot{r_j}+qA_j)\\
+    m\ddot{r}_j &= -q\partial_j\varepsilon-q\partial_t A_j + q\dot{r}_i\qty(\partial_jA_i-\partial_i A_j)\\
+    &= -q\partial_j\varepsilon-q\partial_t A_j + q\varepsilon_{jik}\dot{r}_i\qty(\varepsilon_{mnk}\partial_mA_n)
+\end{aligned}\end{equation}
+ここで、電場と磁場は
+\begin{equation}\begin{aligned}[b]
+    E_i &= -\partial_i \varepsilon - \partial_t A_i & B_i = \varepsilon_{ijk}\partial_j A_k
+\end{aligned}\end{equation}
+このようにかけ、
+これら使って成分からベクトル解析でのnotationに直すと
+\begin{equation}\begin{aligned}[b]
+    m\ddot{\vb*{r}} = q \vb*{E} +q\dot{\vb*{r}}\times \vb*{B}
+\end{aligned}\end{equation}
+となり示せた。
+
+\subsection{}
+ゲージ変換されたポテンシャルによる電場を\(\vb{E}'\)としてこれを整理すると
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}' = -\grad \varphi' - \pdv{\vb*{A}'}{t}
+    = -\grad \varphi - \pdv{\vb*{A}}{t} + \grad{\pdv{\Lambda}{t}}-\pdv{t}\grad{\Lambda}
+    = E
+\end{aligned}\end{equation}
+となり、電場はゲージ変換によって変わらない。
+同様にゲージ変換されたポテンシャルによる磁場を\(\vb*{B}'\)としてこれを整理すると
+\begin{equation}\begin{aligned}[b]
+    \vb{B}' = \curl{\vb*{A}'} = \curl{\vb*{A}} + \curl{\grad{\Lambda}} = B
+\end{aligned}\end{equation}
+となり、磁場もゲージ変換によって変わらない。
+
+また、ゲージ変換したときのラグランジアンは
+\begin{align*}
+    L' &= \frac{1}{2}\dot{\vb*{r}}\cdot\dot{\vb*{r}} + q\dot{\vb*{r}}\cdot\qty(\vb*{A}+\grad{\Lambda})- q\qty(\varphi-\pdv{\Lambda}{t})\\
+    &= L + q\qty(\dot{\vb*{r}}\grad{\Lambda}+\pdv{\Lambda}{t}) = L + q\dv{t}\Lambda
+\end{align*}
+となり、ラグランジアンはスカラー関数の全微分の項が余計につくようになる。
+運動方程式はラグランジアンを時間積分した作用が停留する、つまり作用の変分が0というから得られるため、
+時間の全微分の項は変分の際に消えるため同じオイラーラグランジュ方程式となる。
+
+\subsection{}
+磁場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{B} = \curl{\vb*{A}} = \qty(0,\,0,\,\pdv{x}\qty(\frac{Bx}{2})-\pdv{y}\qty(-\frac{By}{2})) = \qty(0,\,0,\,B)
+\end{aligned}\end{equation}
+電場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} = -\grad{\varphi} - \pdv{\vb*{A}}{t} = \qty(\alpha x,\,\alpha y, -2\alpha z)
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+\(z\)方向の運動方程式は
+\begin{equation}\begin{aligned}[b]
+    m\ddot{t} = -2q\alpha z
+\end{aligned}\end{equation}
+である。これは\(z\)方向に単振動する運動
+
+\subsection{}
+\(xy\)平面の運動方程式は
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        m\ddot{x} = q \alpha x + qB \dot{y}\\
+        m\ddot{y} = q \alpha y - qB \dot{x}
+    \end{cases}
+\end{aligned}\end{equation}
+である。
+これなんとか解けないかなぁという感じだけど、なかなか面倒でやってない。
+そこで、円筒座標にして考えてみる。
+電場の\(r\)方向の成分は
+\begin{equation}\begin{aligned}[b]
+    E_r = -\pdv{r}\frac{\alpha}{2}\qty(2z^2-r^2) = \alpha r
+\end{aligned}\end{equation}
+であり、磁場によるローレンツ力は
+\begin{equation}\begin{aligned}[b]
+    q \vb*{v}\times B = q \qty(\dot{r}\vb*{e}_r + r\dot{\theta}\vb*{e}_\theta)\times B \vb*{e}_z
+    = qBr\dot{\theta} \vb*{e}_r - qB\dot{r} \vb*{e}_{\theta}
+\end{aligned}\end{equation}
+これより、極座標の運動方程式は
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        m\dv[2]{r}{t} = -mr\dot{\theta}^2 + q\alpha r + qB r\dot{\theta}\\
+        \dv{t}\qty(mr^2\dot{\theta}) = -qBr\dot{r}
+    \end{cases}
+\end{aligned}\end{equation}
+これを解くと、粒子のはじめの角運動量と磁場に応じたある円周上を動径方向に振動しながら円運動すると思われる。
+
+\subsection*{感想}
+電磁場との相互作用ラグランジアンからオイラーラグランジュ方程式を使って
+ローレンツ力を出すというのは、ベクトル解析でやると大変そう。
+最後の設問は手元で大雑把に解いたけど、ちゃんと解くとどうなるかはわからない。
+
+\clearpage
+\section{電気回路: ジョンソン-ナイキストノイズ}
+\subsection{}
+与えられた運動方程式の両辺を粒子数で和をとると
+\begin{equation}\begin{aligned}[b]
+    m\dv{t}\sum_iv_i + \eta \sum_i v_i &= \sum f_i\\
+    \frac{ml}{q} \dv{t}\frac{q}{l} \sum_i v_i + \frac{\eta l}{q}\frac{q}{l}\sum_i v_i &= \frac{qN}{l}\frac{l}{N}\sum_i E_i\\
+    \frac{ml}{q} \dv{I}{t} + \frac{\eta l}{q}I &= \frac{qN}{l}V\\
+    \frac{ml^2}{q^2N}\dv{I}{t} \frac{\eta l^2}{q^2N}I &= V\\
+    \frac{ml^2}{qnA} \dv{I}{t} + \frac{\eta l}{q^2 nA} I &=V
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    L &= \frac{ml^2}{qnA} &  R &= \frac{\eta l}{q^2 nA}
 \end{aligned}\end{equation}
 
+\subsection{}
+(2)式の左辺をフーリエ変換してまとめてやれば
+\begin{equation}\begin{aligned}[b]
+    Z(\omega) = R + j\omega L
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \frac{L}{2}\ev{I^2(t)} &= \frac{L}{2} \ev{\frac{q^2}{l^2}\sum_{ij}v_iv_j}\\
+    &= \frac{ml^2}{2q^2N}\frac{q^2}{l^2}\sum_{ij}\ev{v_iv_j}\\
+    &= \frac{1}{2}m\ev{v_i^2} = \frac{1}{2}k_B T
+\end{aligned}\end{equation}
+
+\subsection{}
+自己相関関数を展開して整理していく。まず\(\tau\ge 0\)のとき
+\begin{equation}\begin{aligned}[b]
+    \ev{I(t)I(t+\tau)}
+    &= \ev{I(t)\int_{0}^{\tau}dt'\dv{I(t+t')}{t'}}\\
+    \phi_I(t)&= \int_{0}^{\tau}dt'\ev{I(t)\qty(\frac{V(t+t')}{L})-\frac{R}{L}I(t+t')}\\
+    &= \int_{0}^{\tau}dt'\qty[\frac{1}{L}\ev{I(t)V(t+t')}-\frac{R}{L}\ev{I(t)I(t+t')}]\\
+    &= -\frac{R}{L}\int_{0}^{\tau}dt'\,\phi_I(t')
+\end{aligned}\end{equation}
+ここで両辺微分して
+\begin{equation}\begin{aligned}[b]
+    \dv{\phi_I}{t} = -\frac{R}{L}\phi_I.
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \phi_I(\tau) = \phi_I(0)e^{-R\tau/L} = \frac{k_B T}{L}e^{-R\tau/L}
+\end{aligned}\end{equation}
+となる\footnote{そのままやるとこれが答えでいいやとなるけど、
+\(\tau\to-\infty\)の極限を考えるとすごい昔の電流と今の電流が似てるというのが出るので、
+\(\tau\)の正負で場合分けする必要に気づける。}。
+
+また\(\tau\le 0\)のとき、
+\begin{equation}\begin{aligned}[b]
+    \ev{I(t)I(t-\abs{\tau})}
+    = \ev{I(t+\abs{\tau})I(t+\abs{\tau}-\abs{\tau})}
+    = \ev{I(t)I(t+\abs{\tau})} = \frac{k_B T}{L}e^{-R\abs{t}/L}
+\end{aligned}\end{equation}
+となるとなる。よって自己相関関数は
+\begin{equation}\begin{aligned}[b]
+    \phi(\tau) = \frac{k_B T}{L}e^{-R\abs{t}/L}.
+\end{aligned}\end{equation}
+また、これをフーリエ変換すると
+\begin{equation}\begin{aligned}[b]
+    \tilde{\phi}_I(\omega) &:=
+    \frac{1}{2\pi}\int_{-\infty}^{\infty}d\tau\,\phi_I(\tau)e^{-i\omega\tau}\\
+    &= \frac{k_BT}{\pi L}\int_{0}^{\infty} d\tau\, e^{-R\tau/L}\cos \omega \tau\\
+    &= \frac{k_BT}{\pi L} \frac{R/L}{\omega^2 + (R/L)^2}\\
+    &= \frac{k_BT}{\pi} \frac{R}{R^2+L^2\omega^2}
+\end{aligned}\end{equation}
+
+\subsection{}
+電圧のパワースペクトルは
+\begin{equation}\begin{aligned}[b]
+    S_V(\omega)
+    &= \lim_{\mathcal{T}\to\infty}\frac{2\pi}{\mathcal{T}}\abs{\frac{1}{2\pi}\int_{-\mathcal{T}/2}^{\mathcal{T}/2}
+    dt\,V(t)e^{-i\omega t}}\\
+    &= \lim_{\mathcal{T}\to\infty}\frac{1}{2\pi \mathcal{T}} \int_{-\mathcal{T}/2}^{\mathcal{T}/2}dt\int_{-\mathcal{T}/2}^{\mathcal{T}/2}dt'\,
+    V(t)V^*(t')e^{-i\omega(t-t')}\\
+    &= \lim_{\mathcal{T}\to\infty}\frac{\abs{Z(\omega)}^2}{2\pi \mathcal{T}} \int_{-\mathcal{T}/2}^{\mathcal{T}/2}dt\int_{-\mathcal{T}/2+t}^{\mathcal{T}/2+t}dt'\,
+    I(t)I(t+t')e^{-i\omega t'}\\
+    &\overset{?}{=} \frac{\abs{Z(\omega)}^2}{2\pi}\lim_{\mathcal{T}\to\infty}\int_{-\mathcal{T}/2}^{\mathcal{T}/2}dt'\,\phi_I(t')e^{-i\omega t'}\\
+    &= \abs{Z(\omega)}^2\tilde{\phi}(\omega)\\
+    &= \qty(R^2+\omega^2 L^2)\frac{k_BT}{\pi} \frac{R}{R^2+L^2\omega^2}\\
+    &= \frac{k_BT R}{\pi}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(R_1,\,R_2,\,R_f\)に流れる電流の大きさはすべて同じである。その電流を\(I\)としたとき、
+オペアンプの入力端子間の電位差は\(0\)であるので
+\begin{equation}\begin{aligned}[b]
+    R_1 I = V \qquad \to \qquad I = V/R_1
+\end{aligned}\end{equation}
+これより\(V_A\)の電位は
+\begin{equation}\begin{aligned}[b]
+    V_A = R_1 I + R_2 I = \frac{R_1+R_2}{R_1}V
+\end{aligned}\end{equation}
+となる。(\(R\)が消えてる)
+
+\subsection*{感想}
+確率微分方程式のところは隠して非平衡系をやった問題。
+理論で確率過程を扱うにしろ、実験で測定データを分析するのにしろ、
+役立つのには違いないので覚えておきたい。
 
 \end{document}
