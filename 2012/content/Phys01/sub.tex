@@ -12,7 +12,7 @@
     \text{エ:} &\qquad \hat{p} = -i\sqrt{m\hbar\omega}\frac{\hat{a}-\hat{a}^\dagger}{\sqrt{2}}\\
     \text{オ:} &\qquad \mathcal{H} = \hbar\omega\qty(\hat{a}^\dagger \hat{a}+\frac{1}{2})\\
     \text{カ:} &\qquad E_0 = \frac{1}{2}\hbar\omega\\
-    \text{キ:} &\qquad \ket{\phi_{n+1}}=\frac{1}{\sqrt{n+1}}\hat{a}^\dagger\ket{\phi_n}\\
+    \text{キ:} &\qquad \ket{\phi_{n+1}}=\frac{1}{\sqrt{n+1}}\hat{a}^\dagger\hat{a}\ket{\phi_n}\\
     \text{ク:} &\qquad E_n = \hbar\omega\qty(n+\frac{1}{2})
 \end{align}
 
@@ -245,7 +245,7 @@
 積分の中身は\(\mathcal{O}(1)\)の定数でこれを\(C\)とおくと
 \begin{equation}\begin{aligned}[b]
     \rho' &=\frac{2C}{\sqrt{\pi}}\frac{1}{\lambda_T^3}\\
-    \lambda_T =\qty(\frac{2C}{\sqrt{\pi}C})^{1/3}
+    \lambda_T &=\qty(\frac{2C}{\sqrt{\pi}C})^{1/3}
 \end{aligned}\end{equation}
 これと平均自由行程の式を見比べると\(\rho=\rho'\)で\(3/4\pi\)と\(2C/\sqrt{\pi}\)はともに\(\mathcal{O}(1)\)の量なので、
 これらの長さのオーダーが等しい。
@@ -276,6 +276,13 @@
 \end{aligned}\end{equation}
 よって\(\nu =3/2\)
 
+別の方法として
+\begin{equation}\begin{aligned}[b]
+    C = T\pdv{S}{T}
+\end{aligned}\end{equation}
+の両辺の次元を勘定するのもいける。
+もしかしたら状態数から求めるのもいけるかもしれない。
+
 \subsection{}
 ゼーマンエネルギーが温度ゆらぎよりも十分小さいときには、
 ゼーマン分裂によって分かれた3つの準位をボーズ粒子は自由に遷移する。
@@ -287,6 +294,17 @@
 断熱的に磁場を掛けていて、内部エネルギーとして減ったエネルギーは周囲の温度のエネルギーになるので、
 終状態の温度は始状態の温度よりも高くなる。
 
+これを定量的に表すと、
+磁場がかかっているときの励起状態の密度は
+\begin{equation}\begin{aligned}[b]
+    \tilde{\rho}(\epsilon_z)
+        &= \int_{-\infty}^{\infty} d\epsilon \qty(
+            \tilde{D}(\epsilon-\epsilon_z)+\tilde{D}(\epsilon)+\tilde{D}(\epsilon-\epsilon_z))f(\epsilon)\\
+        &= \int_{-\infty}^{\infty} d\epsilon \qty(
+            3\tilde{D}(\epsilon)+\tilde{D}''\epsilon_z^2 )f(\epsilon)\\
+        &\ge \tilde{\rho}(0)
+\end{aligned}\end{equation}
+より、多くなる。これはつまり熱エネルギーをになう粒子が増えたのと同じことであるので温度が上がったと考えられる。
 
 \subsection*{感想}
 最後の設問ははゼーマン分裂の分裂幅と温度ゆらぎのエネルギースケールが同じ程度というのを踏まえると、
@@ -299,35 +317,32 @@
 \subsection{}
 \(i\)成分のオイラーラグランジュ方程式は次のとおりである。
 \begin{align*}
-    \pdv{L}{r_i}-\dv{t}\pdv{L}{\dot{r}_i}=0
+    \pdv{L}{r_i}-\dv{t}\pdv{L}{\dot{r}_i}&=0
+    m\ddot{\vb*{r}}+q\dv{\vb{A}}{t} - q\pdv{r}\qty(\dot{\vb*{r}}\cdot \vb*{A}) + q\grad{\varphi}=0
 \end{align*}
-これを展開するとそのまま設問2をやってしまうのでここまでにする。
+
 
 \subsection{}
 ラグランジアンをベクトルの成分とアインシュタインの縮約を使って書くと
 \footnote{ベクトル解析の表記がわからないからこれでやる。}、
 \begin{equation}\begin{aligned}[b]
-    L = \frac{1}{2}m \dot{r}_i \dot{r}_i + q\dot{r}_iA_i -q\varphi
-\end{aligned}\end{equation}
-である。
-これをオイラーラグランジュ方程式に入れて整理していく。
-\begin{equation}\begin{aligned}[b]
-    0&=\pdv{L}{r_j}-\dv{t}\pdv{L}{\dot{r}_j}\\
-    &= q \dot{r}_j \partial_j A_i - q \partial_j \varepsilon -\dv{t}\qty(
+    0&= q \dot{r}_j \partial_j A_i - q \partial_j \varphi-\dv{t}\qty(
         m\dot{r_j}+qA_j)\\
-    m\ddot{r}_j &= -q\partial_j\varepsilon-q\partial_t A_j + q\dot{r}_i\qty(\partial_jA_i-\partial_i A_j)\\
-    &= -q\partial_j\varepsilon-q\partial_t A_j + q\varepsilon_{jik}\dot{r}_i\qty(\varepsilon_{mnk}\partial_mA_n)
+    m\ddot{r}_j &= -q\partial_j\varphi-q\partial_t A_j + q\dot{r}_i\qty(\partial_jA_i-\partial_i A_j)\\
+    &= -q\partial_j\varphi-q\partial_t A_j + q\varepsilon_{jik}\dot{r}_i\qty(\varepsilon_{mnk}\partial_mA_n)
+\end{aligned}\end{equation}
+となる、ベクトル解析でのnotationに直すと
+\begin{equation}\begin{aligned}[b]
+    m\ddot{\vb*{r}} = -\grad \varphi - \pdv{\vb{A}}{t} + q \dot{\vb*{r}}\times \qty(\curl \vb{A})
 \end{aligned}\end{equation}
 ここで、電場と磁場は
 \begin{equation}\begin{aligned}[b]
-    E_i &= -\partial_i \varepsilon - \partial_t A_i & B_i = \varepsilon_{ijk}\partial_j A_k
+    E_i &= -\grad \varphi - \pdv{\vb{A}}{t}  & B_i = \curl \vb*{A}
 \end{aligned}\end{equation}
-このようにかけ、
-これら使って成分からベクトル解析でのnotationに直すと
+であるので、運動方程式は以下の通りである。
 \begin{equation}\begin{aligned}[b]
     m\ddot{\vb*{r}} = q \vb*{E} +q\dot{\vb*{r}}\times \vb*{B}
 \end{aligned}\end{equation}
-となり示せた。
 
 \subsection{}
 ゲージ変換されたポテンシャルによる電場を\(\vb{E}'\)としてこれを整理すると
@@ -351,6 +366,7 @@
 となり、ラグランジアンはスカラー関数の全微分の項が余計につくようになる。
 運動方程式はラグランジアンを時間積分した作用が停留する、つまり作用の変分が0というから得られるため、
 時間の全微分の項は変分の際に消えるため同じオイラーラグランジュ方程式となる。
+直接オイラーラグランジュ方程式に代入してスカラー関数が消えることを確かめてもよい。
 
 \subsection{}
 磁場は
@@ -379,30 +395,103 @@
     \end{cases}
 \end{aligned}\end{equation}
 である。
-これなんとか解けないかなぁという感じだけど、なかなか面倒でやってない。
-そこで、円筒座標にして考えてみる。
-電場の\(r\)方向の成分は
+これに\(x=C_x e^{i\omega t},\,y=C_ye^{i\omega t}\)を代入して整理すると
 \begin{equation}\begin{aligned}[b]
-    E_r = -\pdv{r}\frac{\alpha}{2}\qty(2z^2-r^2) = \alpha r
+    \begin{pmatrix}
+        q\alpha + m\omega^2 & iqB\omega\\
+        -iqB\omega & q\alpha + m\omega^2
+    \end{pmatrix}\begin{pmatrix}
+        C_x\\ C_y
+    \end{pmatrix}
+    =0
 \end{aligned}\end{equation}
-であり、磁場によるローレンツ力は
+この連立方程式に非自明な解がある条件は左の行列式の値が0であることである。
+よって周波数が\(\omega>0\)の方は
 \begin{equation}\begin{aligned}[b]
-    q \vb*{v}\times B = q \qty(\dot{r}\vb*{e}_r + r\dot{\theta}\vb*{e}_\theta)\times B \vb*{e}_z
-    = qBr\dot{\theta} \vb*{e}_r - qB\dot{r} \vb*{e}_{\theta}
+    (q\alpha m\omega^2)^2-q^2B^2\omega^2&=0\\
+    q\alpha+m\omega^2 &= qB\omega\\
+    \omega &= \frac{qB}{2m}\qty(1\pm\sqrt{1-\frac{4m\alpha}{qB^2}})
 \end{aligned}\end{equation}
-これより、極座標の運動方程式は
+となる。このときの振幅は\(m\omega^2 = qB\omega -q\alpha\)を使うと
 \begin{equation}\begin{aligned}[b]
-    \begin{cases}
-        m\dv[2]{r}{t} = -mr\dot{\theta}^2 + q\alpha r + qB r\dot{\theta}\\
-        \dv{t}\qty(mr^2\dot{\theta}) = -qBr\dot{r}
-    \end{cases}
+    \begin{pmatrix}
+        qB\omega & iqB\omega\\
+        -iqB\omega & qB\omega
+    \end{pmatrix}\begin{pmatrix}
+        C_x\\ C_y
+    \end{pmatrix}
+    &=0
+    \rightarrow \begin{pmatrix}
+        C_x\\ C_y
+    \end{pmatrix} &= C\begin{pmatrix}
+        1\\i
+    \end{pmatrix}
 \end{aligned}\end{equation}
-これを解くと、粒子のはじめの角運動量と磁場に応じたある円周上を動径方向に振動しながら円運動すると思われる。
+となる。
+\(\omega<0\)の方は
+\begin{equation}\begin{aligned}[b]
+    (q\alpha m\omega^2)^2-q^2B^2\omega^2&=0\\
+    q\alpha+m\omega^2 &= -qB\omega\\
+    \omega &= -\frac{qB}{2m}\qty(1\pm\sqrt{1-\frac{4m\alpha}{qB^2}})
+\end{aligned}\end{equation}
+となる。このときの振幅は\(m\omega^2 = -qB\omega -q\alpha\)を使うと
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        -qB\omega & iqB\omega\\
+        -iqB\omega & -qB\omega
+    \end{pmatrix}\begin{pmatrix}
+        C_x\\ C_y
+    \end{pmatrix}
+    &=0
+    \rightarrow \begin{pmatrix}
+        C_x\\ C_y
+    \end{pmatrix} &= C\begin{pmatrix}
+        1\\-i
+    \end{pmatrix}
+\end{aligned}\end{equation}
+となる。
+実際の電子の動きはいま求めた\(x,\,y\)の実部をとるので、運動としては円運動となる。
+
+% これなんとか解けないかなぁという感じだけど、なかなか面倒でやってない。
+% そこで、円筒座標にして考えてみる。
+% 電場の\(r\)方向の成分は
+% \begin{equation}\begin{aligned}[b]
+%     E_r = -\pdv{r}\frac{\alpha}{2}\qty(2z^2-r^2) = \alpha r
+% \end{aligned}\end{equation}
+% であり、磁場によるローレンツ力は
+% \begin{equation}\begin{aligned}[b]
+%     q \vb*{v}\times B = q \qty(\dot{r}\vb*{e}_r + r\dot{\theta}\vb*{e}_\theta)\times B \vb*{e}_z
+%     = qBr\dot{\theta} \vb*{e}_r - qB\dot{r} \vb*{e}_{\theta}
+% \end{aligned}\end{equation}
+% これより、極座標の運動方程式は
+% \begin{equation}\begin{aligned}[b]
+%     \begin{cases}
+%         m\dv[2]{r}{t} = -mr\dot{\theta}^2 + q\alpha r + qB r\dot{\theta}\\
+%         \dv{t}\qty(mr^2\dot{\theta}) = -qBr\dot{r}
+%     \end{cases}
+% \end{aligned}\end{equation}
+% これを解くと、粒子のはじめの角運動量と磁場に応じたある円周上を動径方向に振動しながら円運動すると思われる。
 
 \subsection*{感想}
 電磁場との相互作用ラグランジアンからオイラーラグランジュ方程式を使って
-ローレンツ力を出すというのは、ベクトル解析でやると大変そう。
-最後の設問は手元で大雑把に解いたけど、ちゃんと解くとどうなるかはわからない。
+ローレンツ力を出すというのは、ベクトル解析でやると1成分しか見ない分にはおもったより楽。
+ただ、3成分全部となると書く量が増えて面倒か。
+最後の設問は根気よく連立微分方程式を解いていくしかない。
+ゼーマン分裂を古典電磁気で説明したみたいな答えになっているが、
+電場の効き方がよくわからない。
+電場が弱いときには振動数の解は
+\begin{equation}\begin{aligned}[b]
+    \omega = \frac{qB}{m},\,\frac{\alpha}{B}
+\end{aligned}\end{equation}
+が出る。前者は単にサイクロトロン共鳴が見えるねといった感じだ。
+後者はなんなんだ?
+また、運動が減衰しない程度の電場のときには振動数は1つだけで
+\begin{equation}\begin{aligned}[b]
+    \omega = \frac{qB}{2m}
+\end{aligned}\end{equation}
+である。
+
+電場は回転座標系で見たときの遠心力、磁場はコリオリ力みたいなものなのだろうか。
 
 \clearpage
 \section{電気回路: ジョンソン-ナイキストノイズ}
@@ -489,17 +578,17 @@
     &= \frac{k_BT R}{\pi}
 \end{aligned}\end{equation}
 
-\subsection{}
-\(R_1,\,R_2,\,R_f\)に流れる電流の大きさはすべて同じである。その電流を\(I\)としたとき、
-オペアンプの入力端子間の電位差は\(0\)であるので
-\begin{equation}\begin{aligned}[b]
-    R_1 I = V \qquad \to \qquad I = V/R_1
-\end{aligned}\end{equation}
-これより\(V_A\)の電位は
-\begin{equation}\begin{aligned}[b]
-    V_A = R_1 I + R_2 I = \frac{R_1+R_2}{R_1}V
-\end{aligned}\end{equation}
-となる。(\(R\)が消えてる)
+% \subsection{}
+% \(R_1,\,R_2,\,R_f\)に流れる電流の大きさはすべて同じである。その電流を\(I\)としたとき、
+% オペアンプの入力端子間の電位差は\(0\)であるので
+% \begin{equation}\begin{aligned}[b]
+%     R_1 I = V \qquad \to \qquad I = V/R_1
+% \end{aligned}\end{equation}
+% これより\(V_A\)の電位は
+% \begin{equation}\begin{aligned}[b]
+%     V_A = R_1 I + R_2 I = \frac{R_1+R_2}{R_1}V
+% \end{aligned}\end{equation}
+% となる。(\(R\)が消えてる)
 
 \subsection*{感想}
 確率微分方程式のところは隠して非平衡系をやった問題。
