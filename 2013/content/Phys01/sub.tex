@@ -1,0 +1,156 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{量子力学: 原子単位系・サイクロトロン共鳴}
+\subsection{}
+与えられたハミルトニアンを極座標のもと、
+無次元化の単位\(r=r_0 \rho,\,E=-E_0 \varepsilon\)を使って整理していく。
+\begin{equation}\begin{aligned}[b]
+    \qty[-\frac{\hbar^2}{2m}\laplacian - \frac{q^2}{4\pi\epsilon r}]\psi &= E\psi\\
+    \qty[-\frac{\hbar^2}{2mr_0^2}\qty(\pdv[2]{\rho}
+    + \frac{2}{\rho}\dv{\rho})+\frac{L^2}{2mr_0^2}\frac{1}{\rho^2}-\frac{q^2}{4\pi\epsilon_0 r_0}\frac{1}{\rho}]\psi
+    &= -E_0 \varepsilon\psi
+\end{aligned}\end{equation}
+いま、s波状態を考えているので角度方向の分布はなく、角運動量の大きさは\(L^2=0\)である。
+さらに式を整理すると
+\begin{equation}\begin{aligned}[b]
+    \qty[\frac{\hbar^2}{2mr_0^2E_0}\qty(\pdv[2]{\rho}
+    + \frac{2}{\rho}\dv{\rho})+\frac{q^2}{4\pi\epsilon_0 r_0 E_0}\frac{1}{\rho}]\psi
+    &= -\varepsilon\psi
+\end{aligned}\end{equation}
+これが(1)式のように無次元化させるので
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        \frac{\hbar^2}{2mr_0^2 E_0} = 1\\
+        \frac{q^2}{4\pi\epsilon_0r_0 E_0} = 2
+    \end{cases}\\
+    &\rightarrow\begin{cases}
+        r_0 = \frac{4\pi\epsilon_0\hbar^2}{q^2m}    \\
+        E_0 = \frac{q^2m}{2(4\pi\epsilon_0)^2\hbar^2}
+    \end{cases}
+\end{aligned}\end{equation}
+となる。(\(r_0\)はボーア半径である。)
+
+\subsection{}
+この問では無次元化したもので計算は行う。
+(1)式に与えられた波動関数を代入すると
+\begin{equation}\begin{aligned}[b]
+    \qty(\dv[2]{\rho}+\frac{2}{\rho}\dv{\rho}+\frac{2}{\rho})e^{-\rho} &= \varepsilon e^{-\rho}\\
+    1e^{-\rho} &= \varepsilon e^{-\rho}
+\end{aligned}\end{equation}
+となる。これより基底状態の無次元化したエネルギーは\(\varepsilon = 1\)であるので求めるエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = -E_0
+\end{aligned}\end{equation}
+である。
+また、動径座標の広がりの大きさを求めていく。
+まず、与えられた波動関数の規格化因子は
+\begin{equation}\begin{aligned}[b]
+    1 &= \int_{0}^{\infty} \rho^2 d\rho \abs{\psi(\rho)}^2
+        = \abs{c}^2\int_{0}^{\infty} d\rho \rho^2 e^{-2\rho} = \frac{1}{4}\abs{c}^2\\
+    c &= 2
+\end{aligned}\end{equation}
+である。
+これより求める量は
+\begin{equation}\begin{aligned}[b]
+    \ev{\rho^2}
+    &= \int_{0}^{\infty} \rho^2 d\rho\, \psi^*(\rho)r^2\psi(\rho)\\
+    &= c^2 \int_{0}^{\infty} d\rho\, \rho^4 e^{-2\rho}\\
+    &= \frac{2}{2^5}\Gamma(5) = \frac{3}{2}\\
+    \sqrt{\ev{r^2}} &= r_0\sqrt{\frac{3}{2}}
+\end{aligned}\end{equation}
+
+\subsection{}
+まず\(p_1,\,p_2\)の交換関係について
+\begin{equation}\begin{aligned}[b]
+    [p_1,\,p_2]&= \qty[p_x-\frac{qB}{2}y,\,p_y+\frac{qB}{2}x]\\
+    &=\frac{qB}{2}[p_x,\,x]-\frac{qB}{2}[y,\,p_y]\\
+    &= -i\hbar qB
+\end{aligned}\end{equation}
+つぎに\(p_1,p_2\)と\(p_z\)の交換関係だが、
+運動量同士は交換して、
+また違う成分の位置と運動量同士も交換することから
+\begin{equation}\begin{aligned}[b]
+    [p_1,\,p_z] = [p_2,\,p_z] = 0
+\end{aligned}\end{equation}
+とわかる。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    [X,\,P] = [kp_2,\,p_1] = i\hbar qBk
+\end{aligned}\end{equation}
+より\(X,P\)が正準座標であるため、\(k=1/qB\)と決める。
+次にハミルトニアンを\(X,P\)を使って書き直していくと
+\(p_1,p_2\)と\(p_z\)は可換なので波動関数は\(x,y\)成分と\(z\)成分に分けて考えることができる。
+\(p_z\)部分の固有状態と固有エネルギーは\(e^{ikz},\,k^2=2mE_z\)書ける。
+なのでハミルトニアンを\(X,P,E_z\)で書いて行くと
+\begin{equation}\begin{aligned}[b]
+    H &= \frac{1}{2m}\qty[p_1^2 + p_2^2 +p_z^2]\\
+    &= \frac{1}{2m}P^2 + \frac{m}{2}\qty(\frac{qB}{m})^2X^2 +E_z
+\end{aligned}\end{equation}
+となる。これはまさに原点が\(E_z\)分だけずれた振動数\(\omega = qB/m\)1次元の調和振動子である。
+古典的描像では\(\omega\)はサイクロトロン振動数で磁場による円運動の角速度を表している。
+
+\subsection{}
+まず\(P'\)について、
+\begin{equation}\begin{aligned}[b]
+    [P',\,X] &= \qty[p_x+\frac{qB}{2}y,\,\frac{p_y}{qB}+\frac{x}{2}]
+    = \frac{1}{2}[p_x,\,x]+\frac{1}{2}[y,\,p_y] =0\\
+    [P',\,P] &= \qty[p_x+\frac{qB}{2}y,\,p_x-\frac{qBy}{2}] = 0
+\end{aligned}\end{equation}
+というように\(X,P\)と可換であることがわかる。
+
+次に\(X' = ap_y+bx\)とおいて、
+\(X,P\)と可換、\(P'\)と正準交換関係を満たすように\(a,b\)を決める。
+\begin{equation}\begin{aligned}[b]
+    [X',\,X] &= \qty[ap_y+bx,\,\frac{p_y}{qB}+\frac{x}{2}]
+    =0\\
+    [X',\,P] &= \qty[ap_y+bx,\,p_x-\frac{qBy}{2}] = -\frac{qBa}{2}[p_y,\,y]+b[x,\,p_x] = \frac{i\hbar qBa}{2} + i\hbar b  = 0\\
+    [X',\,P'] &= \qty[ap_y+bx,\,p_x+\frac{qBy}{2}] = \frac{qBa}{2}[p_y,\,y]+b[x,\,p_x] = - \frac{i\hbar qBa}{2} + i\hbar b = i\hbar\\
+\end{aligned}\end{equation}
+なのでこれより
+\begin{equation}\begin{aligned}[b]
+    a &=  -\frac{1}{qB} & b&= \frac{1}{2}
+\end{aligned}\end{equation}
+とわかる。しだがって\(X'\)は
+\begin{equation}\begin{aligned}[b]
+    X' &= -\frac{1}{qB}p_y + \frac{1}{2}x
+\end{aligned}\end{equation}
+
+\subsection{}
+調和振動子の基底状態\(\psi_0\)は生成演算子
+\begin{equation}\begin{aligned}[b]
+    A &= \sqrt{\frac{\hbar}{2m\omega}}X + i\sqrt{\frac{m\hbar\omega}{2}}P
+\end{aligned}\end{equation}
+を使って\(A\psi_0 = 0\)と書ける。
+\(X\)を対角化する規定、つまり\(\psi_0\)を\(X\)で表示したときの波動関数を求める。
+あとで次元を復活させることにして、\(A\psi_0 = 0\)は
+\begin{equation}\begin{aligned}[b]
+    \qty(x+\dv{x})\psi(x) = 0
+\end{aligned}\end{equation}
+と書ける。ここで\(X = \sqrt{m\omega/\hbar} x\) のことである。
+この線形微分方程式を解くと
+\begin{equation}\begin{aligned}[b]
+    \psi(x) &= \frac{1}{\pi^{1/4}}e^{-x^2/2}\\
+    \psi(X) &= \sqrt[4]{\frac{m\omega}{\pi \hbar}} \exp(-\frac{\hbar X^2}{2m\omega})
+\end{aligned}\end{equation}
+となる。
+
+また\(X\)と\(X'\)は可換であるので独立に考えることができる。
+\(X'=a\)というのはつまり\(X'\)を基底状態\(\psi_0\)に作用させると固有値が\(a\)であるということを表しているので
+\begin{equation}\begin{aligned}[b]
+    X'\psi_0 &= a \psi_0\\
+    \qty[\frac{i\hbar}{qB}\pdv{y}+\frac{x}{2}]\psi_0(x,\,y) &= a\psi_0(x,\,y)
+\end{aligned}\end{equation}
+となる。
+この偏微分方程式を変数分離で解くと、
+\(\psi_0\)には\(y\)の依存性は無いことがわかる。
+つまりこのときの\(a\)は\(\psi_0\)の位置の半分を表している?
+
+\subsection*{感想}
+無次元化、極座標ラプラシアン・角運動量、調和振動子を知ってるかを問われてたのかなという感じ。
+設問6の後半は全くわからん。
+
+\end{document}
