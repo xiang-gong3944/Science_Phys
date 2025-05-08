@@ -1,0 +1,135 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{電磁気学}
+\subsection{}
+(3)のファラデーの式の両辺の回転をとって
+\begin{equation}\begin{aligned}[b]
+    \curl(\curl{\vb*{E}})
+        &= -\curl \pdv{\vb*{E}}{t}\\
+    \grad(\div{\vb*{E}})-\laplacian{\vb*{E}}
+        &= -\mu\pdv{t}\qty(\vb*{j}+\pdv{\vb*{D}}{t})\\
+    \qty(\laplacian-\epsilon\mu\pdv[2]{t})\vb*{E}
+        &= \frac{\mu}{\epsilon}\grad{\rho}+\mu\pdv{\vb*{j}}{t}
+\end{aligned}\end{equation}
+いまは誘電体中を考えるので電荷密度\(\rho\)と電流密度\(\vb*{j}\)はない。
+
+誘電体中の誘電率と透磁率を入れて
+\begin{equation}\begin{aligned}[b]
+    \qty(\laplacian-\epsilon_d\mu_0\pdv[2]{t})\vb*{E} = 0
+\end{aligned}\end{equation}
+与えられた電場の表式を代入して
+\begin{equation}\begin{aligned}[b]
+    \qty(-k^2+\epsilon_d\mu_0\omega^2)\vb*{E}=0.
+\end{aligned}\end{equation}
+有限振幅の波が存在する条件より、
+分散関係は
+\begin{equation}\begin{aligned}[b]
+    -k^2+\epsilon_d\mu_0\omega^2 &= 0
+    \omega = \frac{1}{\sqrt{\epsilon_d\mu_0}}k
+\end{aligned}\end{equation}
+また位相測度\(c\)は
+\begin{equation}\begin{aligned}[b]
+    c = \frac{\omega}{k} = \frac{1}{\sqrt{\epsilon_d\mu_0}}
+\end{aligned}\end{equation}
+
+\subsection{}
+導体では\(\rho=0,\,\vb*{j}=\sigma_m \vb*{E}\)より(1-1)式は
+\begin{equation}\begin{aligned}[b]
+    \qty(\laplacian-\epsilon_m\mu_d\pdv[2]{t})\vb*{E}
+        &= \sigma_m\mu\pdv{\vb*{E}}{t}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+(3)式の両辺を境界を横切るような幅\(l\)厚さ\(w\)の長方形\(S\)で積分する。
+\begin{equation}\begin{aligned}[b]
+    \int_{S}d \vb*{S}\cdot \curl{\vb*{E}} &= -\int_{S}d \vb*{S}\cdot \pdv{\vb*{B}}{t}\\
+    \oint_{\partial S}d \vb*{l}\cdot \vb*{E} &= -\pdv{t} \int_{S}d \vb*{S}\cdot \vb*{B}
+\end{aligned}\end{equation}
+\(w\to0\)とすると右辺は接線成分である\(x\)方向だけ生き残り、
+右辺は0となるので誘電体中の電場を\(E_d\), 導体中の電場を\(E_m\)のように書くと
+\begin{equation}\begin{aligned}[b]
+    \int_{0}^{l}dx (E_{mx}l-E_{dx})&=0\\
+    E_{mx} &= E_{dx}\\
+    E_{i0}+E_{r0} &= E_{m0}
+\end{aligned}\end{equation}
+とわかる。
+(4)式も同じ領域で積分する。
+真電流・変位電流ともに\(w\to0\)を考えると積分の値が消えるので、
+同様に磁場の水平成分\(H_{d//}\)と\(H_{m//}\)の間には
+\begin{equation}\begin{aligned}[b]
+    H_{d//} &= H_{m//}
+\end{aligned}\end{equation}
+の関係がある。
+
+誘電体中の磁場は(3)式の左辺に入射波の電場の式を入れることで
+\begin{equation}\begin{aligned}[b]
+    \pdv{\vb*{B}}{t} &= - i \vb*{k}\times \vb*{E}\\
+    \vb*{H} &= \frac{k}{\mu_0 \omega} E_{0}e^{i(kz-\omega t)} \vb*{e}_y
+\end{aligned}\end{equation}
+とわかる。
+なので磁場の水平成分に関する境界条件を電場で書き直すと
+\begin{equation}\begin{aligned}[b]
+    \frac{k}{\mu_0 \omega}(E_{i0}-E_{r0}) &= \frac{k_m}{\mu_0 \omega}E_{m0}\\
+    k(E_{i0}-E_{r0}) &= k_m E_{m0}.
+\end{aligned}\end{equation}
+
+\subsection{}
+設問2で得られた方程式の内、左辺に時間微分は変位電位に由来する。
+なのでこれを無視して、電場の式を入れると
+\begin{equation}\begin{aligned}[b]
+    -k_m^2 \vb*{E} &= -i\sigma_m\omega \mu_0 \vb*{E}\\
+    k_m^2 &= i\sigma_m\omega\mu_0
+\end{aligned}\end{equation}
+いま\(z\)方向に進むと電場は減衰する状況を考えているので、
+これを満たすように\(k_m\)の2乗を外すと
+\begin{equation}\begin{aligned}[b]
+    k_m &= \sqrt{\frac{\sigma_m \omega \mu_0}{2}}(1+i)
+\end{aligned}\end{equation}
+よって電場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} = \vb*{E}_{m0}\exp(-\sqrt{\frac{\sigma_m \omega \mu_0}{2}}z)\exp(i\sqrt{\frac{\sigma_m \omega \mu_0}{2}}z-i\omega t).
+\end{aligned}\end{equation}
+
+\subsection{}
+導体の電気伝導度は大きいため、
+\(\sqrt{\omega\epsilon_d/\sigma_m}\)は微小量とみなせる。
+設問3で得られた境界条件を連立して\(E_{m0}\)を消去していく。
+\begin{equation}\begin{aligned}[b]
+    k_m(E_{i0}+E_{r0})&=k(E_{i0}-E_{r0})\\
+    \frac{E_{r0}}{E_{i0}} &= \frac{k-k_m}{k+k_m}
+    =\frac{\sqrt{\epsilon_d\mu_0}\omega-\sqrt{\sigma_m\omega\mu_0}e^{i\pi/4}}{\sqrt{\epsilon_d\mu_0}\omega-\sqrt{\sigma_m\omega\mu_0}e^{i\pi/4}}
+    = - \frac{1-\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}{1+\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}\\
+    &\simeq -\qty(1-\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})^2
+    \simeq -\qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})\\
+    \abs{\frac{E_{r0}}{E_{i0}}}^2
+    &= \qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})
+    \qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{i\pi/4})
+    \simeq 1-\sqrt{\frac{8\omega\epsilon_d}{\sigma_m}}
+\end{aligned}\end{equation}
+
+\subsection{}
+透過した光はすべてジュール熱となって消えるということを使って計算することができる。
+
+\begin{equation}\begin{aligned}[b]
+    \ev{\int_{0}^{\infty}\vb*{j}\cdot \vb*{E}dz}
+    &= \sigma_m \int_{0}^{\infty} \ev{\abs{E_m}^2}
+    = \sigma_m \int_{0}^{\infty} \ev{\abs{\frac{E_m}{E_i}}^2\abs{E_i}^2}dz\\
+    &= \sigma_m  \ev{1-\abs{\frac{E_r}{E_i}}^2}\ev{\abs{E_i}^2}
+    = \sqrt{8\sigma_m \omega \epsilon_d}\ev{\abs{E_i}^2}
+\end{aligned}\end{equation}
+
+\subsection*{感想}
+設問3で(4)式を使った接続条件というのがだいぶ厄介だった。
+はじめ電場だし電束密度の境界じょうけんだから(4)式じゃなくて(1)式の間違えじゃないとか思ったが、
+偏光の向き的に境界面に垂直な成分は無いので、電束密度の境界条件は意味がないんだなぁと。
+素直に(4)の磁場の接続条件を導いてそのままにしておいたら、
+条件式が足りなくて設問5で困ってしまった。
+なので磁場に関する境界条件を電場に直すと、
+それは電場が滑らかにつながるという境界条件だったのであとはそれを使って計算すると無事設問5が解けて一安心。
+\underbar{境界で電場は滑らかにつながる}というのは覚えておこう。
+
+\end{document}

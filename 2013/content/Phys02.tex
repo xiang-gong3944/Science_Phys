@@ -1,0 +1,128 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{統計力学: 半導体のフェルミ準位}
+\subsection{}
+この系シュレディンガー方程式をフーリエ変換すると
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\laplacian\psi(x,y)&=E\psi(x,y)\\
+    \frac{\hbar^2}{2m}(k_x^2+k_y^2)\tilde{\psi}(k_x,k_y) &= E \tilde{\psi}(k_x,k_y)
+\end{aligned}\end{equation}
+よりエネルギー分散は
+\begin{equation}\begin{aligned}[b]
+    \varepsilon_k = \frac{\hbar^2}{2m}(k_x^2+k_y^2)
+\end{aligned}\end{equation}
+とわかる。また固有状態も\(\psi(x,\,y)=e^{i(k_xx+k_yy)}\)とわかる。
+周期境界条件より\(n_x,n_y\)を整数として
+\begin{equation}\begin{aligned}[b]
+    \psi(x,y) &= \psi(x+L,y) = \psi(x,y+L)\\
+    \rightarrow\quad& 1 = e^{ik_xL} = e^{ik_y L}\\
+    \rightarrow\quad& k_x = \frac{2\pi}{L},  k_y = \frac{2\pi}{L}n_y
+\end{aligned}\end{equation}
+というように波数は離散化される。
+同様にエネルギーも
+\begin{equation}\begin{aligned}[b]
+    \varepsilon = \frac{2\pi^2\hbar^2}{mL^2}(n_x^2+n_y^2)
+\end{aligned}\end{equation}
+のように量子化する。
+
+いま考えているのはフェルミ粒子の系であるので、
+パウリの排他原理よりフェルミ粒子は低いエネルギー準位から埋まっていく。
+今のエネルギー分散の式よりこれは\(n_x-n_y\)平面の原点に近い順から格子点が埋まっていくのとの同じで、
+十分多い量のフェルミ粒子を考えているので格子点の数は円の面積を数えるのと同じである。
+よって面積\(N\)の円の半径は\(r^2 = N/\pi = n_x{max}^2+n_{ymax}\)であるので、求めるエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = \frac{2\pi\hbar^2}{mL^2}N
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \Xi(T,\mu)
+    &= \sum_{N=0}^{\infty}\sum_{\{n_k\}}e^{-\beta(E_N-\mu N)}
+    = \sum_{N=0}^{\infty}\sum_{\{n_k\}}e^{-\beta\sum_k(\varepsilon_k-\mu)n_k}
+    = \sum_{N=0}^{\infty}\sum_{\{n_k\}}\prod_k e^{-\beta(\varepsilon_k-\mu)n_k}\\
+    &= \prod_k \sum_{n=0,1}e^{-\beta(\varepsilon_k-\mu)n}
+    = \prod_k \qty(1+e^{-\beta(\varepsilon_k-\mu)})
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \bar{N}
+    &= \frac{1}{\Xi}\sum_{N=0}^{\infty}\sum_{\{n_k\}}Ne^{-\beta(E_N-\mu N)}
+    = \frac{1}{\Xi}\sum_{N=0}^{\infty}\sum_{\{n_k\}}\frac{1}{\beta}\pdv{\mu}e^{-\beta(E_N-\mu N)}
+    = \frac{1}{\beta\Xi}\pdv{\Xi}{\mu}
+    = \frac{1}{\beta}\pdv{\mu}\ln\Xi\\
+    &=  \frac{1}{\beta}\pdv{\mu}\sum_k\ln[1+e^{-\beta(\varepsilon_k-\mu)}]
+    = \sum_k \frac{1}{1+e^{\beta(\varepsilon_k-\mu)}} = \sum_kf(\varepsilon_k)
+\end{aligned}\end{equation}
+より(2)式がいえる。
+
+また、\(\varepsilon_k\)の分散関係の表式を使ってこの式をさらに整理していく。
+\begin{equation}\begin{aligned}[b]
+    \bar{N}
+    &= \sum_k \frac{1}{1+e^{\beta}(\varepsilon_k-\mu)}
+    = \frac{L^2}{4\pi^2}\int d^2k \frac{1}{1+e^{\beta(\varepsilon_k-\mu)}}
+    = \frac{L^2}{2\pi}\int_{0}^{\infty} \frac{kdk}{1+e^{\beta(\varepsilon_k-\mu)}}
+    = \frac{mL^2}{2\pi\hbar^2}\int_{0}^{\infty} \frac{d\varepsilon}{1+e^{\beta(\varepsilon-\mu)}}\\
+    &= \frac{mL^2}{2\pi\hbar^2}\qty[-\frac{\ln(1+e^{-\beta(\varepsilon-\mu)})}{\beta}]_0^{\infty}
+    = \frac{mL^2}{2\pi\hbar^2\beta}\ln(1+e^{\beta\mu})
+\end{aligned}\end{equation}
+
+\subsection{}
+フェルミ分布関数は\(\varepsilon=\mu\)を中心に幅\(k_BT\)のオーダーで1から0へと変化する。
+\(\varepsilon-\mu\le -k_BT\)の領域ではフェルミ粒子が詰まっていて、
+フェルミ粒子が相互作用によって散乱しようにも、
+散乱後の状態が埋まっていて遷移することができないためずっと同じ状態を保っている。
+比熱はエネルギーのゆらぎであるためこのようなフェルミ粒子は比熱への寄与を与えない。
+\(\varepsilon-\mu\ge k_BT\)の領域ではそもそもフェルミ粒子がほとんど存在しないため比熱には寄与しない。
+フェルミ面近傍にある粒子は散乱することができるため比熱に寄与することができる。
+そしてその数のことを考えると2次元系であるため状態密度\(D\)は一定であることから、
+幅\(k_BT\)の領域にあるフェルミ粒子の数は\(Dk_BT\)となる。
+比熱はキャリアの数に比例することから、比熱も温度に比例するといえる。
+
+\subsection{}
+熱ゆらぎによってエネルギーが負の状態から正の状態へと励起する。
+その分布はフェルミ分布を考えると\(\beta\to\infty\)の極限を考える系であるので
+\begin{equation}\begin{aligned}[b]
+    f(\varepsilon_{1k})
+    &=\frac{1}{1+e^{\beta(\varepsilon_{1k}-\mu)}}
+    \simeq \exp[\beta\qty(\Delta+\frac{\hbar^2}{2m}+\mu)]\\
+    f(\varepsilon_{2k})
+    &=\frac{1}{1+e^{\beta(\varepsilon_{2k}-\mu)}}
+    \simeq \exp[-\beta\qty(\Delta+\frac{\hbar^2}{2m}-\mu)]\\
+\end{aligned}\end{equation}
+というように書ける。
+\(\varepsilon_{1k}\)のフェルミ粒子が抜ける数は\(-\mu\)を原点とする反転したボルツマン分布、
+\(\varepsilon_{2k}\)のフェルミ粒子がある数は\(\mu\)を原点とするボルツマン分布になる。
+
+\subsection{}
+設問3と同様の計算ができる。
+ただし、分布関数はボルツマン分布、エネルギーの積分範囲は\(\Delta\)からになっていることに注意する。
+まず、負のエネルギー状態のフェルミ粒子の数\(\bar{N_1}(T)\)は絶対零度のときの数から抜けた数を引いたものであるので
+\begin{equation}\begin{aligned}[b]
+    \bar{N_1}(T) = \bar{N_1}(0)-\frac{ML^2}{2\pi\hbar^2}\int_{-\infty}^{-\Delta}d\varepsilon e^{\beta(\varepsilon+\mu(T))}
+    =N_1(0)-\frac{ML^2}{2\pi\hbar^2\beta}e^{-\beta(\Delta+\mu(T))}
+\end{aligned}\end{equation}
+つぎに励起によって生じた正のエネルギー状態のフェルミ粒子の数\(\bar{N_2}(T)\)を同様の計算をして
+\begin{equation}\begin{aligned}[b]
+    \bar{N_2}(T) = \frac{mL^2}{2\pi\hbar^2 \beta}e^{-\beta(\beta-\mu(T))}
+\end{aligned}\end{equation}
+となる。
+フェルミ粒子の数は温度によらず保存するので
+\begin{equation}\begin{aligned}[b]
+    \bar{N_1}(0) &= \bar{N_1}(T)+\bar{N_2}(T)\\
+    0 &= -\frac{ML^2}{2\pi\hbar^2\beta}e^{-\beta(\Delta+\mu(T))}+\frac{mL^2}{2\pi\hbar^2\beta}e^{-\beta(\Delta-\mu(T))}\\
+    e^{2\beta\mu(T)} &= \frac{M}{m}\\
+    \mu(T) &= \frac{1}{2}k_BT\ln\frac{M}{m}
+\end{aligned}\end{equation}
+
+
+\subsection*{感想}
+半導体のフェルミ準位の温度特性とか物性の人が有利だなと思う。
+電子・正孔を電子・陽電子に読み替えて、
+質量が微妙に違うと仮定して計算してみようとか、
+素核宇の人のやる教科書の章末問題にはなさそう。
+
+\end{document}
