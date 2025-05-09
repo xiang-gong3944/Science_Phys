@@ -1,0 +1,92 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{熱力学: 化学反応論}
+\subsection{}
+ギブスの自由エネルギーを全微分して
+\begin{equation}\begin{aligned}[b]
+    dG &= dU + pdV + Vdp - TdS - SdT
+    = -pdV + TdS + pdV + Vdp - TdS - SdT
+    = Vdp - SdT
+\end{aligned}\end{equation}
+と示せる。途中熱力学第1法則
+\begin{equation}\begin{aligned}[b]
+    dU = -pdV +TdS
+\end{aligned}\end{equation}
+を使った。
+\subsection{}
+平衡状態であるので、ギブスの自由エネルギーの変化は無く\(dG = 0\)、
+定温定圧条件なので\(dp=0,\,dT=0\)である。
+いま考えている反応では\(dn_A = dn_B = -dn_{AB}\)である。
+これらを使ってギブスの自由エネルギーの微分の式を整理すると
+\begin{equation}\begin{aligned}[b]
+    dG &= Vdp - SdT +\mu_A dn_A +\mu_Bdn_B +\mu_{AB}dn_{AB}\\
+    0 &= (\mu_A+\mu_B-\mu_{AB})dn_A
+\end{aligned}\end{equation}
+これより化学ポテンシャルの間には
+\begin{equation}\begin{aligned}[b]
+    \mu_A+\mu_B-\mu_{AB}=0
+\end{aligned}\end{equation}
+の関係が成り立っている必要がある。
+
+\subsection{}
+重量モル濃度を化学ポテンシャルで表すと
+\begin{equation}\begin{aligned}[b]
+    RT\ln m_i = \mu_i - \mu_i^0
+\end{aligned}\end{equation}
+である。
+これを使い、平衡定数の式である(2)式を変形していく。
+\begin{equation}\begin{aligned}[b]
+    \exp(-\frac{\Delta G^0}{RT}) &= \frac{m_{AB}}{m_Am_B}\\
+    \Delta G^0 &= RT\qty(\ln m_A + \ln m_B -\ln m_{AB})\\
+    &= \mu_A -\mu_A^0 +\mu_B - \mu_B^0 -\mu_{AB} + \mu_{AB}^0\\
+    &= \mu_{AB}^0 -\mu_A^0 -\mu_B^0
+\end{aligned}\end{equation}
+
+\subsection{}
+\(f\)があるときの反応自由エネルギー\(\Delta G_n(f)\)は前問より
+\begin{equation}\begin{aligned}[b]
+    \Delta G_n(f) = \mu_{n}^0(f) -\mu_{n-1}^0(f) -\mu_1^0(f)
+    = \mu_{n}^0 -\mu_{n-1}^0 -\mu_1^0 +N_Afd
+    = \Delta G_n^0 + N_Afd
+\end{aligned}\end{equation}
+である。
+これより平衡定数は
+\begin{equation}\begin{aligned}[b]
+    K_n(f) = \exp(-\frac{\Delta G_n(f)}{RT})
+    = \exp(-\frac{\Delta G_n^0 + N_Afd}{RT})
+    = K_n(0)\exp(-\frac{N_Afd}{RT})
+\end{aligned}\end{equation}
+と表せる。
+
+\subsection{}
+\(K_n(f)\)と\(K_n(0)\)の比を
+自由エネルギーで表したものと、重量モル濃度で表したものを等号で結ぶと
+\begin{equation}\begin{aligned}[b]
+    \frac{K_n(f)}{K_n(0)} = \dfrac{K_n(0)\exp(-\dfrac{N_Afd}{RT})}{K_n(0)}
+    &= \frac{1/m_1(f)}{1/m_1(0)}\\
+    \exp(-\frac{N_Afd}{RT}) &= \frac{2.0\times 10^{-7}}{2.0\times 10^{-5}}\\
+    fd &= 8.3\ln10 \times 10^{-23} \,\si{J}
+\end{aligned}\end{equation}
+\(d=2.7 \,\si{nm}\)と考えると
+\begin{equation}\begin{aligned}[b]
+    f = 7.0\times 10^{-12}\,\si{N}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+ゆらぎは周囲の溶媒が熱運動して、タンパク質と散乱することによって生じるもので、
+温度を下げるとゆらぎは小さくなる。
+このゆらぎによってタンパク質の自由エネルギーは平衡点で固定されなくなるため、
+タンパク質は平衡点その近傍の状態をとるようになる。
+これによりタンパク質は単に\(dG=0\)となる局所安定状態から抜け出すことができて、
+自由エネルギーが最小となる大域的な安定状態へと遷移できるようになるため、
+ゆらぎは重要である。
+
+\subsection*{感想}
+化学をちゃんとやったことないので怖かった。
+設問5の重合に伴う仕事効率の値というのがなにを指しているのかわからなかった。
+
+\end{document}

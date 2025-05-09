@@ -1,0 +1,85 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{物性実験: X線・前期量子論}
+\subsection{}
+知らないです……
+\subsection{}
+エネルギーについて
+\begin{equation}\begin{aligned}[b]
+    E = \frac{hc}{\lambda}
+\end{aligned}\end{equation}
+より、
+\(K_\alpha\)線の持つエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = \frac{
+        6.6\times 10^{-34}\,\si{Js}\times 3.0\times 10^8 \,\si{m/s}
+    }{0.72 \,\si{\AA} \times 1.6\times 10^{-19}\,\si{C}}
+    = 17.2 \,\si{keV}.
+\end{aligned}\end{equation}
+周波数について、
+\begin{equation}\begin{aligned}[b]
+    \nu = \frac{h}{\lambda}
+\end{aligned}\end{equation}
+より、
+\(K_\alpha\)線の振動数は
+\begin{equation}\begin{aligned}[b]
+    \nu = \frac{3.0\times 10^8 \,\si{m/s}}{0.72 \,\si{\AA}} = 6.25 \times 10^{18}\,\si{Hz}
+\end{aligned}\end{equation}
+
+\subsection{}
+運動エネルギーとクーロンポテンシャルをあわせた電子のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E = \frac{mv^2}{2}-\frac{Ze^2}{4\pi\epsilon_0 r}
+\end{aligned}\end{equation}
+円運動していることから向心力は
+\begin{equation}\begin{aligned}[b]
+    \frac{mv^2}{r} = \frac{Ze^2}{4\pi\epsilon_0r^2}
+\end{aligned}\end{equation}
+と表せるのでこれを使い、
+電子の全エネルギーの速度を半径で書き直すと
+\begin{equation}\begin{aligned}[b]
+    E = -\frac{Ze^2}{8\pi\epsilon_0 r}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+ボーアゾンマーフェルトの量子化条件により円運動の角運動量\(L=mvr\)は
+\begin{equation}\begin{aligned}[b]
+    nh &= \oint d\theta L = 2\pi mvr\\
+\end{aligned}\end{equation}
+この式から\(r\)と\(v\)を消去するように整理すると
+\begin{equation}\begin{aligned}[b]
+    E_n = -\frac{e^4m}{(4\pi\epsilon_0)^2(h/2\pi)^2}\frac{Z^2}{2n^2}
+    = -\frac{me^4}{8\epsilon_0^2h^2}\frac{Z^2}{n^2}
+\end{aligned}\end{equation}
+となる。(大問1でやったのを流用できるし、何なら設問6に書いてある)
+
+\subsection{}
+\(\Delta E=h\nu\)より遷移した準位を\(n_1>n_2\)とすると
+\begin{equation}\begin{aligned}[b]
+    \nu &= \frac{me^4Z^2}{8\epsilon_0^2h^3}\qty(\frac{1}{n_2^2}-\frac{1}{n_1^2})\\
+    \sqrt{\nu} &= Z\sqrt{\frac{me^4}{8\epsilon_0^2h^3}\qty(\frac{1}{n_2^2}-\frac{1}{n_1^2})}
+\end{aligned}\end{equation}
+つまり\(\sqrt{\nu}\)と\(Z\)は比例する。
+
+\subsection{}
+設問5より、
+主量子数が1と2のエネルギー準位間の遷移の時の
+\(\sqrt{\nu}\)と\(Z\)の比例定数は 1 \si{Ry^{1/2}} の \(\sqrt{3/4h}\) 倍になる。
+いま、その傾きをグラフから求めると
+\begin{equation}\begin{aligned}[b]
+    1\,\si{Ry^{1/2}}\times \sqrt{\frac{3}{4h}} &= \frac{23-6}{47-13} \times 10^8 \,\si{Hz^{1/2}}\\
+    1 \,\si{Ry} &= 2.2\times10^{-18} \,\si{J} = 13.75 \,\si{eV}
+\end{aligned}\end{equation}
+
+\subsection{}
+
+
+\subsection*{感想}
+設問1で知らね～ってなるけど、それ以降はすごい簡単。
+
+
+\end{document}
