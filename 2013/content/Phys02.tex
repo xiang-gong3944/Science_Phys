@@ -32,7 +32,7 @@
 パウリの排他原理よりフェルミ粒子は低いエネルギー準位から埋まっていく。
 今のエネルギー分散の式よりこれは\(n_x-n_y\)平面の原点に近い順から格子点が埋まっていくのとの同じで、
 十分多い量のフェルミ粒子を考えているので格子点の数は円の面積を数えるのと同じである。
-よって面積\(N\)の円の半径は\(r^2 = N/\pi = n_x{max}^2+n_{ymax}\)であるので、求めるエネルギーは
+よって面積\(N\)の円の半径は\(r^2 = N/\pi = n_{xmax}^2+n_{ymax}^2\)であるので、求めるエネルギーは
 \begin{equation}\begin{aligned}[b]
     E = \frac{2\pi\hbar^2}{mL^2}N
 \end{aligned}\end{equation}
@@ -43,10 +43,17 @@
     &= \sum_{N=0}^{\infty}\sum_{\{n_k\}}e^{-\beta(E_N-\mu N)}
     = \sum_{N=0}^{\infty}\sum_{\{n_k\}}e^{-\beta\sum_k(\varepsilon_k-\mu)n_k}
     = \sum_{N=0}^{\infty}\sum_{\{n_k\}}\prod_k e^{-\beta(\varepsilon_k-\mu)n_k}\\
-    &= \prod_k \sum_{n=0,1}e^{-\beta(\varepsilon_k-\mu)n}
+    &= \sum_{n_{k1}=0,1}\sum_{n_{k2}=0,1}\cdots \prod_k e^{-\beta(\varepsilon_k-\mu)n_k}
+    = \prod_k \sum_{n=0,1}e^{-\beta(\varepsilon_k-\mu)n}
     = \prod_k \qty(1+e^{-\beta(\varepsilon_k-\mu)})
 \end{aligned}\end{equation}
-
+\footnote{
+    ここの総和と総乗の交換をいつも雰囲気でやってたので、ここにイメージを残しておく。
+    初めの\(\sum_M\sum_{\{n_k\}}\)というのは、
+    \(N\)の制約をつけたまま足したやつをさらに\(N\)について足すということ。
+    なのでこれは\(\sum_{k_1=0,1}\sum_{k_2=0,1}\ldots\)のように書き換えることができる。
+    そうすると総和と総乗の入れ替えによって変形できる。
+}
 \subsection{}
 \begin{equation}\begin{aligned}[b]
     \bar{N}
@@ -107,7 +114,7 @@
 \end{aligned}\end{equation}
 つぎに励起によって生じた正のエネルギー状態のフェルミ粒子の数\(\bar{N_2}(T)\)を同様の計算をして
 \begin{equation}\begin{aligned}[b]
-    \bar{N_2}(T) = \frac{mL^2}{2\pi\hbar^2 \beta}e^{-\beta(\beta-\mu(T))}
+    \bar{N_2}(T) = \frac{mL^2}{2\pi\hbar^2 \beta}e^{-\beta(\Delta-\mu(T))}
 \end{aligned}\end{equation}
 となる。
 フェルミ粒子の数は温度によらず保存するので

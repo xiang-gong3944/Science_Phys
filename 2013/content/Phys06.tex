@@ -1,0 +1,51 @@
+\documentclass[../../master.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{素粒子実験: ヒッグス粒子}
+\subsection{}
+4元運動量の保存則によりヒッグス粒子のエネルギーと運動量は光子のエネルギーと運動量の和と等しく、
+\begin{equation}\begin{aligned}[b]
+    E =E_1+E_2, \vb*{p}=\vb*{p}_1+\vb*{p}_2
+\end{aligned}\end{equation}
+となる。これに\(p_\mu p^\mu=m^2\)の関係をつかうと
+\begin{equation}\begin{aligned}[b]
+    m^2 &= E^2 -\abs{\vb{p}}^2
+    = E_1^2+E_2^2+2E_1E_2 - \abs{\vb*{p}_1}^2 - \abs{\vb*{p}_2}^2 - 2\abs{\vb*{p}_1}\abs{\vb*{p}_2}\cos\psi
+    = 2E_1E_2(1-\cos\psi)\\
+    m &= \sqrt{2E_1E_2(1-\cos\psi)}=\sqrt{4E_1E_2\sin^2(\psi/2)} = 2\sqrt{E_1E_2}\sin(\psi/2)
+\end{aligned}\end{equation}
+途中、光子には質量がないことから得られる関係\(E_1=\abs{\vb*{p}_1}\)を使った。
+
+\subsection{}
+不変質量の測定には光子のエネルギー\(E_1,E_2\)の大きさと、その角度\(\psi\)の測定が必要になる。
+\subsection{}
+測定誤差が大きいと、生成した粒子のもつ質量の値がばらけてしまう、つまり event 数が広がってしまうためS/N比が悪くなってしまう。
+なのでS/N比を上げるためには測定誤差を小さくしなければならない。
+
+\subsection{}
+角度の最大値は相加相乗平均の関係より
+\begin{equation}\begin{aligned}[b]
+    m = 2\sqrt{E_1E_2}\sin(\psi/2) \le (E_1+E_2)\sin(\psi/2).
+\end{aligned}\end{equation}
+これに\(m=125\,\si{GeV/c^2}, E=250\,{\si{GeV}}\)を入れ整理すると
+\begin{equation}\begin{aligned}[b]
+    \sin(\psi/2) \ge \frac{125}{250} = \frac{1}{2}
+\end{aligned}\end{equation}
+これが成り立つ\(\psi\)の範囲は
+\begin{equation}\begin{aligned}[b]
+    \ang{60}\le \psi \le \ang{300}
+\end{aligned}\end{equation}
+これを実際の測定の言葉に直すと
+\begin{equation}\begin{aligned}[b]
+    \ang{60}\le \psi \le \ang{180}
+\end{aligned}\end{equation}
+となる。
+
+\subsection*{感想}
+素粒子実験何もわからん。
+最終的に必要な計算は相対論的力学の計算と散乱断面積の計算になるのだろうけど、
+測定装置の構造とか、どのパラメータは測定できるのとかの勘がないのでどうしようもない。
+
+\end{document}

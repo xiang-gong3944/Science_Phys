@@ -49,7 +49,7 @@
 まず、与えられた波動関数の規格化因子は
 \begin{equation}\begin{aligned}[b]
     1 &= \int_{0}^{\infty} \rho^2 d\rho \abs{\psi(\rho)}^2
-        = \abs{c}^2\int_{0}^{\infty} d\rho \rho^2 e^{-2\rho} = \frac{1}{4}\abs{c}^2\\
+        = \abs{c}^2\int_{0}^{\infty} d\rho \rho^2 e^{-2\rho} =\frac{\abs{c}^2}{8} 2! = \frac{1}{4}\abs{c}^2\\
     \abs{c} &= 2
 \end{aligned}\end{equation}
 である。
@@ -58,8 +58,8 @@
     \ev{\rho^2}
     &= \int_{0}^{\infty} \rho^2 d\rho\, \psi^*(\rho)r^2\psi(\rho)\\
     &= c^2 \int_{0}^{\infty} d\rho\, \rho^4 e^{-2\rho}\\
-    &= \frac{2}{2^5}\Gamma(5) = \frac{3}{2}\\
-    \sqrt{\ev{r^2}} &= r_0\sqrt{\frac{3}{2}}
+    &= \frac{4}{2^5}4! = \frac{3}{2}\\
+    \sqrt{\ev{r^2}} &= r_0\sqrt{3}
 \end{aligned}\end{equation}
 
 \subsection{}
@@ -122,7 +122,7 @@
 \subsection{}
 調和振動子の基底状態\(\psi_0\)は消滅演算子
 \begin{equation}\begin{aligned}[b]
-    A &= \sqrt{\frac{\hbar}{2m\omega}}X + i\sqrt{\frac{m\hbar\omega}{2}}P
+    A &= \sqrt{\frac{m\omega}{2\hbar}}X + i\sqrt{\frac{m\hbar\omega}{2}}P
 \end{aligned}\end{equation}
 を使って\(A\psi_0 = 0\)と書ける。
 \(X\)を対角化する規定、つまり\(\psi_0\)を\(X\)で表示したときの波動関数を求める。
@@ -130,14 +130,15 @@
 \begin{equation}\begin{aligned}[b]
     \qty(x+\dv{x})\psi(x) = 0
 \end{aligned}\end{equation}
-と書ける。ここで\(X = \sqrt{m\omega/\hbar} x\) のことである。
+と書ける。ここで\(X = \sqrt{\hbar/m\omega} x\) のことである。
 この線形微分方程式を解くと
 \begin{equation}\begin{aligned}[b]
     \psi(x) &= \frac{1}{\pi^{1/4}}e^{-x^2/2}\\
-    \psi(X) &= \sqrt[4]{\frac{m\omega}{\pi \hbar}} \exp(-\frac{\hbar X^2}{2m\omega})
+    \psi(X) &= \sqrt[4]{\frac{m\omega}{\pi \hbar}} \exp(-\frac{m\omega X^2}{2\hbar})
 \end{aligned}\end{equation}
 となる。
 
+以下よくわからない。
 また\(X\)と\(X'\)は可換であるので独立に考えることができる。
 \(X'=a\)というのはつまり\(X'\)を基底状態\(\psi_0\)に作用させると固有値が\(a\)であるということを表しているので
 \begin{equation}\begin{aligned}[b]

@@ -27,10 +27,10 @@
 有限振幅の波が存在する条件より、
 分散関係は
 \begin{equation}\begin{aligned}[b]
-    -k^2+\epsilon_d\mu_0\omega^2 &= 0
+    -k^2+\epsilon_d\mu_0\omega^2 = 0 \quad \rightarrow \quad
     \omega = \frac{1}{\sqrt{\epsilon_d\mu_0}}k
 \end{aligned}\end{equation}
-また位相測度\(c\)は
+また位相速度\(c\)は
 \begin{equation}\begin{aligned}[b]
     c = \frac{\omega}{k} = \frac{1}{\sqrt{\epsilon_d\mu_0}}
 \end{aligned}\end{equation}
@@ -52,7 +52,7 @@
 \(w\to0\)とすると右辺は接線成分である\(x\)方向だけ生き残り、
 右辺は0となるので誘電体中の電場を\(E_d\), 導体中の電場を\(E_m\)のように書くと
 \begin{equation}\begin{aligned}[b]
-    \int_{0}^{l}dx (E_{mx}l-E_{dx})&=0\\
+    \int_{0}^{l}dx (E_{mx}-E_{dx})&=0\\
     E_{mx} &= E_{dx}\\
     E_{i0}+E_{r0} &= E_{m0}
 \end{aligned}\end{equation}
@@ -103,11 +103,14 @@
     \frac{E_{r0}}{E_{i0}} &= \frac{k-k_m}{k+k_m}
     =\frac{\sqrt{\epsilon_d\mu_0}\omega-\sqrt{\sigma_m\omega\mu_0}e^{i\pi/4}}{\sqrt{\epsilon_d\mu_0}\omega-\sqrt{\sigma_m\omega\mu_0}e^{i\pi/4}}
     = - \frac{1-\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}{1+\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}\\
-    &\simeq -\qty(1-\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})^2
-    \simeq -\qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})\\
+    % &\simeq -\qty(1-\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})^2
+    % \simeq -\qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})\\
     \abs{\frac{E_{r0}}{E_{i0}}}^2
-    &= \qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{-i\pi/4})
-    \qty(1-2\sqrt{\frac{\omega\epsilon_d}{\sigma_m}}e^{i\pi/4})
+    &= \frac{1-\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}{1+\sqrt{\omega\epsilon_d/\sigma_m}e^{-i\pi/4}}
+    \frac{1-\sqrt{\omega\epsilon_d/\sigma_m}e^{i\pi/4}}{1+\sqrt{\omega\epsilon_d/\sigma_m}e^{i\pi/4}}
+    \simeq \frac{1-\qty(e^{i\pi/4}+e^{-i\pi/4})\sqrt{\omega\epsilon_d/\sigma_m}}{1+\qty(e^{i\pi/4}+e^{-i\pi/4})\sqrt{\omega\epsilon_d/\sigma_m}}\\
+    &=\frac{1-\sqrt{2\omega\epsilon_d/\sigma_m}}{1+\sqrt{2\omega\epsilon_d/\sigma_m}}
+    \simeq \qty(1-\sqrt{2\omega\epsilon_d/\sigma_m})^2
     \simeq 1-\sqrt{\frac{8\omega\epsilon_d}{\sigma_m}}
 \end{aligned}\end{equation}
 
@@ -124,7 +127,7 @@
 
 \subsection*{感想}
 設問3で(4)式を使った接続条件というのがだいぶ厄介だった。
-はじめ電場だし電束密度の境界じょうけんだから(4)式じゃなくて(1)式の間違えじゃないとか思ったが、
+はじめ電場だし電束密度の境界条件だから(4)式じゃなくて(1)式の間違えじゃないとか思ったが、
 偏光の向き的に境界面に垂直な成分は無いので、電束密度の境界条件は意味がないんだなぁと。
 素直に(4)の磁場の接続条件を導いてそのままにしておいたら、
 条件式が足りなくて設問5で困ってしまった。
