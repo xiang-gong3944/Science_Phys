@@ -5,7 +5,129 @@
 \begin{document}
 \section{量子力学: 周期境界条件・デルタ関数ポテンシャル・摂動論}
 \subsection{}
+シュレーディンガー方程式は
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\dv[2]{x}\psi(x)=E\psi(x)
+\end{aligned}\end{equation}
+\(E<0\)のときの解は
+\begin{equation}\begin{aligned}[b]
+    \psi(x) = Ae^{\kappa x}+Be^{-\kappa x}, \qquad \kappa = \frac{\sqrt{-2mE}}{\hbar}
+\end{aligned}\end{equation}
+となる。
+周期的境界条件より
+\begin{equation}\begin{aligned}[b]
+    0&=\psi(x+2\pi L)-\psi(x)\\
+    &= Ae^{2\pi\kappa L}e^{\kappa x} + Be^{-2\pi\kappa L}e^{-\kappa x}-Ae^{\kappa x}+Be^{-\kappa x}\\
+    &= A(e^{2\pi\kappa L}-1)e^{\kappa x} + B(e^{-2\pi\kappa L}-1)e^{-\kappa x}
+\end{aligned}\end{equation}
+これを満たす\(\kappa\)は\(\kappa=0\)のみであるので、\(E<0\)としたのと反するのでこのような解はない。
 
+\(E>0\)のときの解は
+\begin{equation}\begin{aligned}[b]
+    \psi(x) = Ae^{ik x}+Be^{-ik x}, \qquad k = \frac{\sqrt{2mE}}{\hbar}
+\end{aligned}\end{equation}
+となる。
+周期的境界条件より
+\begin{equation}\begin{aligned}[b]
+    0&=\psi(x+2\pi L)-\psi(x)\\
+    &= Ae^{2\pi ikL}e^{ik x} + Be^{-2\pi ikL}e^{-ikx}-Ae^{ikx}+Be^{-ikx}\\
+    &= A(e^{2\pi ikL}-1)e^{ikx} + B(e^{-2\pi ikL}-1)e^{-\kappa x}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    e^{2\pi ikL} &= 1\\
+    k &= \frac{n}{L},\qquad(n\text{は0以上の整数})\\
+    \rightarrow& \quad  E= \frac{\hbar^2k^2}{2m}=\frac{\hbar^2 n^2}{2mL^2}
+\end{aligned}\end{equation}
+波動関数の係数\(A,B\)が決まらないのでこれは縮退している。
+
+\subsection{}
+シュレーディンガー方程式の両辺を微小区間\((-\epsilon,\epsilon)\)で積分して\(\epsilon\to0+\)とすると
+\begin{equation}\begin{aligned}[b]
+    \int_{-\epsilon}^\epsilon dx\qty[-\frac{\hbar^2}{2m}\dv[2]{x}+\frac{\hbar^2 v}{2m}\delta(x)]\psi(x)
+    &= \int_{-\epsilon}^{\epsilon} dx\, E\psi(x)\\
+    \frac{\hbar^2}{2m}\lim_{\epsilon\to0+}-\qty(\dv{\psi(\epsilon)}{x}-\dv{\psi(-\epsilon)}{x})+\frac{\hbar^2v}{2m}\psi(0)&=0\\
+    \lim_{\epsilon\to0}\qty(\psi'(\epsilon)-\psi'(-\epsilon))&=v\psi(0)
+\end{aligned}\end{equation}
+
+\subsection{}
+\(x\in (0,2\pi L)\)でのシュレディンガー方程式に与えらえた波動関数を入れると
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\dv[2]{x}\qty(e^{\kappa x}+Ae^{-\kappa x}) &= -\frac{\hbar^2 \kappa^2}{2m}\qty(e^{\kappa x}+Ae^{-\kappa x})
+    &= -\frac{\hbar^2\kappa^2}{2m}\psi(x)
+\end{aligned}\end{equation}
+より確かに\(E=-\hbar^2\kappa^2/2m\)の解になっているのがわかる。
+次に\(x=0\)での境界条件を考える。
+周期的境界条件より\(x=0\)と\(x=2\pi L\)での波動関数の値は同じであるので
+\begin{equation}\begin{aligned}[b]
+    \psi(0) &= \psi(2\pi L)\\
+    1+A &= e^{2\pi\kappa L}+Ae^{-2\pi\kappa L}\\
+    \qty(e^{2\pi\kappa L}-1)\qty(e^{2\pi\kappa L}-A) &= 0
+\end{aligned}\end{equation}
+\(e^{2\pi\kappa L}=1\)となるのは\(\kappa=0\)であるので不適。
+よって\(A=e^{2\pi\kappa L}\)
+また、設問2で求めた条件を周期的境界条件と合わせると
+\begin{equation}\begin{aligned}[b]
+    \psi'(0)-\psi'(2\pi L) &= v\psi(0)\\
+    \kappa(1-A)-\kappa(e^{2\pi\kappa L}-Ae^{-2\pi\kappa L}) &= (1+A)v\\
+    v &= \frac{2(1-e^{2\pi\kappa L})}{1+e^{2\pi\kappa L}}\kappa \\
+    &= -2\kappa\tanh(\pi\kappa L)
+\end{aligned}\end{equation}
+となる。
+\(\kappa\tanh(\pi\kappa L)\)は単調減少で\(\kappa=0\)のとき\(v=0\)なので\(v\)と\(\kappa\)は1対1に対応する
+
+\subsection{}
+波動関数は設問1で求めた形になるので、
+波動関数の規格化定数はおいておいて、
+\begin{equation}\begin{aligned}[b]
+    \psi(x)=e^{ikx}+Ae^{-ikx}
+\end{aligned}\end{equation}
+とする。
+\(x=0\)と\(x=2\pi L\)で波動関数の値が連続であるであることより
+\begin{equation}\begin{aligned}[b]
+    \psi(0) &= \psi(2\pi L)\\
+    1+A &= e^{2\pi ikL}+Ae^{-2\pi ikL}\\
+    \qty(e^{2\pi ikL}-1)\qty(e^{2\pi ikL}-A) &= 0
+\end{aligned}\end{equation}
+
+まず\(e^{2\pi ikL}=1\)つまり\(\kappa =n/L\)のように設問1と同じ条件のとき、
+微分係数の条件から
+\begin{equation}\begin{aligned}[b]
+    \psi'(0)-\psi'(2\pi L) &= v\psi(0)\\
+    ik(1-A)-ik(e^{2\pi ikL}-Ae^{-2\pi ikL})&=v(1+A)
+    A &= -1
+\end{aligned}\end{equation}
+よってこのときのシュレーディンガー方程式の解は
+\begin{equation}\begin{aligned}[b]
+    \psi(x) \propto \sin(\frac{\pi x}{L}), \quad E=\frac{\hbar^2n^2}{2mL^2}
+\end{aligned}\end{equation}
+となり、ポテンシャルの影響を受けない解となる。
+
+次に\(e^{2\pi ikL}=A\)のとき、
+微分係数に関する境界条件より
+\begin{equation}\begin{aligned}[b]
+    \psi'(0)-\psi'(2\pi L) &= v\psi(0)\\
+    ik(1-A)-ik(e^{2\pi ikL}-Ae^{-2\pi ikL})&=v(1+A)\\
+    v &= \frac{2ik\qty(1-e^{2\pi ikL})}{1+e^{2\pi ikL}}\\
+    &= 2k\tan(\pi kL)
+\end{aligned}\end{equation}
+これもグラフを書くことにより\(v\)をあたえると\(k\)が量子化しているのがわかる。
+k について解くことはできないので波動関数の形だけ示しておくと
+\begin{equation}\begin{aligned}[b]
+    \psi(x)\propto e^{ikx}+e^{2\pi ikL}e^{-ikx}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+設問4で得られた解の内、ポテンシャルの影響がないものはエネルギー固有値の補正も受けない。
+影響を受けた方について、
+摂動論の一般論より、\(v\)の1次摂動の補正エネルギー\(\Delta E\)は
+\begin{equation}\begin{aligned}[b]
+    \Delta E &= \frac{\int dx \psi^*(x)\frac{\hbar^2v}{2m}\delta(x)\psi(x)}{\int dx \psi^*(x)\psi(x)}\\
+    &= \frac{\hbar^2 v}{2m}\frac{\int dx \,4\cos^2(kx-\pi kL)\delta(x)}{\int dx \,4\cos^2(kx-\pi kL)}
+    &= \frac{\hbar^2\cos^2(\pi kL)}{\pi mL}v
+\end{aligned}\end{equation}
+となる。
 
 \subsection*{感想}
 ただ単に周期境界条件・デルタ関数ポテンシャル・摂動論を組み合わせてみましたという感じ。

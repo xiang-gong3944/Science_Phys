@@ -4,6 +4,114 @@
 
 \begin{document}
 \section{電磁気学: 相対論的電磁気学}
+\subsection{}
+\(\abs{x}\gg a\)では並べられた荷電粒子群は線電荷密度\(q/a\)を持った直線とみなせる。
+このとき、直線を中心とした\(r=x,\,0\geq z\geq l\)の円筒のについて
+ガウスの法則を使うと、対称性より円筒の側面だけ考えればよく、
+\begin{equation}\begin{aligned}[b]
+     2\pi xlE_x &= \frac{ql}{a\epsilon_0}\\
+     E_x &= \frac{q}{2\pi\epsilon_0ax}
+\end{aligned}\end{equation}
+となる。電場に他の成分はない。
+また、磁場に関しては今の系に電流はないので
+\begin{equation}\begin{aligned}[b]
+    \vb*{B}=0
+\end{aligned}\end{equation}
+
+\subsection{}
+2つの隣接した荷電粒子を考える。
+ぞれぞれの位置を\(\mathcal{O}\)系で\(z=z_0,z_0+a\)にあるあるものとする。
+これらをLorentz変換すると
+\begin{equation}\begin{aligned}[b]
+    z_0 \to \gamma(z_0-v_zt), \quad z_0+a \to \gamma(z_0+a-v_zt)
+\end{aligned}\end{equation}
+となる。
+これらの差が\(\mathcal{O}'\)系での荷電粒子の間隔\(a'\)なので
+\begin{equation}\begin{aligned}[b]
+    a' = \gamma(z_0+a-v_zt)-\gamma(z_0-v_zt) = \gamma a
+\end{aligned}\end{equation}
+
+\subsection{}
+電場は設問1の電荷密度\(q/a\)が\(\gamma q/a\)に変わったものとなるので
+\begin{equation}\begin{aligned}[b]
+    E_x' =\gamma \frac{qx'}{2\pi\epsilon_0a(x'^2+y'^2)},\quad
+    E_y' =\gamma \frac{qy'}{2\pi\epsilon_0a(x'^2+y'^2)},\quad
+    E_z' = 0
+\end{aligned}\end{equation}
+磁場について、\(\mathcal{O}'\)系では\(-z\)方向に速度\(v\)で電荷密度\(\gamma q/a\)が動いているので
+\(-\gamma qv_z/a\)の電流が流れているとみなせる。
+アンペールの法則より磁場は円筒座標の\(\varphi\)成分だけ残って
+\begin{equation}\begin{aligned}[b]
+    2\pi\sqrt{x'^2+y'^2}B_\varphi' &= -\gamma\frac{\mu_0qv_z}{a}\\
+    B_\varphi' &= -\frac{\beta\gamma}{c}\frac{q}{2\pi\varepsilon_0 a\sqrt{x'^2+y'^2}}
+\end{aligned}\end{equation}
+よって直交座標で表すと
+\begin{equation}\begin{aligned}[b]
+    B_x' = \frac{\beta\gamma}{c}\frac{q y'}{2\pi\varepsilon_0 a(x'^2+y'^2)},\quad
+    B_y' = -\frac{\beta\gamma}{c}\frac{q x'}{2\pi\varepsilon_0 a(x'^2+y'^2)},\quad
+    B_z' = 0
+\end{aligned}\end{equation}
+
+\subsection{}
+電磁場のLorentz変換の式より
+\(E_x\)は
+\begin{equation}\begin{aligned}[b]
+    E_x &= \gamma(E_x'+c\beta B_y')
+    = \gamma\qty(\gamma \frac{qx'}{2\pi\epsilon_0a(x'^2+y'^2)}-\beta^2\gamma\frac{qx'}{2\pi\varepsilon_0 a(x'^2+y'^2)})\\
+    &= \gamma^2(1-\beta^2) \frac{qx}{2\pi\epsilon_0a(x^2+y^2)}
+    = \frac{qx}{2\pi\epsilon_0a(x^2+y^2)}
+\end{aligned}\end{equation}
+\(E_y\)は
+\begin{equation}\begin{aligned}[b]
+    E_y &= \gamma(E_y'-c\beta B_x')
+    = \gamma\qty(\gamma \frac{qy'}{2\pi\epsilon_0a(x'^2+y'^2)}-\beta^2\gamma\frac{qy'}{2\pi\varepsilon_0 a(x'^2+y'^2)})\\
+    &= \gamma^2(1-\beta^2) \frac{qy}{2\pi\epsilon_0a(x^2+y^2)}
+    = \frac{qy}{2\pi\epsilon_0a(x^2+y^2)}
+\end{aligned}\end{equation}
+\(E_z\)は
+\begin{equation}\begin{aligned}[b]
+    E_z = E_z' =0
+\end{aligned}\end{equation}
+\(B_x\)は
+\begin{equation}\begin{aligned}[b]
+    B_x &= \gamma\qty(B_x'-\frac{\beta}{c}E_y')
+    = \gamma\qty( \frac{\beta\gamma}{c}\frac{q y'}{2\pi\varepsilon_0 a(x'^2+y'^2)}- \frac{\beta\gamma}{c}\frac{q y'}{2\pi\varepsilon_0 a(x'^2+y'^2)})
+    = 0
+\end{aligned}\end{equation}
+\(B_y\)は
+\begin{equation}\begin{aligned}[b]
+    B_x &= \gamma\qty(B_y'+\frac{\beta}{c}E_x')
+    = \gamma\qty(-\frac{\beta\gamma}{c}\frac{q x'}{2\pi\varepsilon_0 a(x'^2+y'^2)}+ \frac{\beta\gamma}{c}\frac{q x'}{2\pi\varepsilon_0 a(x'^2+y'^2)})
+    = 0
+\end{aligned}\end{equation}
+\(B_z\)は
+\begin{equation}\begin{aligned}[b]
+    B_z = B_z' =0
+\end{aligned}\end{equation}
+となりコンシステントな結果が得られる。
+
+\subsection{}
+\(\mathcal{O}'\)において、電流はなく、中心に点電荷があるだけであるので
+\begin{equation}\begin{aligned}[b]
+    E_x' = \frac{qx'}{4\pi\epsilon_0a(x'^2+y'^2+z'^2)^{3/2}},\quad
+    E_y' = \frac{qy'}{4\pi\epsilon_0a(x'^2+y'^2+z'^2)^{3/2}},\quad
+    E_z' = \frac{qz'}{4\pi\epsilon_0a(x'^2+y'^2+z'^2)^{3/2}}\\
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    \vb*{B} = 0
+\end{aligned}\end{equation}
+\subsection{}
+\(x'=x,y'=y=0,z'=\gamma(z-\beta ct)=-\gamma v_zt\)に注意して電磁場のLorentz変換をすると
+\begin{equation}\begin{aligned}[b]
+    E_x = \gamma\frac{qx}{4\pi\epsilon_0(x^2+\gamma^2v_z^2 t^2)^{3/2}},\quad
+    E_y = 0,\quad
+    E_z = \gamma\frac{-q v_z t}{4\pi\epsilon_0(x^2+\gamma^2v_z^2 t^2)^{3/2}}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    B_x = 0,\quad
+    B_y = \gamma\frac{\mu_0 q x}{4\pi(x^2+\gamma^2v_z^2t^2)^{3/2}},\quad
+    B_z = 0
+\end{aligned}\end{equation}
 
 
 \subsection*{感想}

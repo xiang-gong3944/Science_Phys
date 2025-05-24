@@ -4,14 +4,118 @@
 
 \begin{document}
 \section{統計力学: 1次元ゴム}
+\subsection{}
+\(L\)個モノマーがあったときに\(+x\)方向を向いているモノマーの数を\(m\)個、
+\(-x\)方向を向いているモノマーの数を\(L-m\)とすると、
+終点が\(x\)となるには
+\begin{equation}\begin{aligned}[b]
+    m-(L-m)&=x\\
+    m &= \frac{L+x}{2}
+\end{aligned}\end{equation}
+となる。
+\(m\)は0以上の整数でなければならないので\(L+x\)が正の偶数でなければならない。
+\(-x\)方向を向いているモノマーの数である\((L-x)/2\)も正になっていなければならないので、
+配意が存在する条件として\((L+x)\)が整数であることと\(\abs{x}\leq L\)が必要である。
 
+いま知りたい配位の数は\(L\)個のモノマーのうち、\(m=(L+x)/2\)個選び、\(+x\)方向にするということなので
+\begin{equation}\begin{aligned}[b]
+    C(x,L)=~_{L}C_{(L+x)/2} = \frac{L!}{((L-x)/2)!((L+x)/2)!}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(C(x,L)\)の漸化式をフーリエ変換する。
+\begin{equation}\begin{aligned}[b]
+    C(x,L+1) &= C(x-1, L)+C(x+1,L)\\
+    0&= \frac{1}{2\pi}\int_{-\pi}^{\pi}dk\,e^{ikx}\qty[-\tilde{C}(k,L+1)+e^{-ik}\tilde{C}(k,L)+e^{ik}\tilde{C}(k,L)]
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \tilde{C}(k,L+1) = (2\cos k) \tilde{C}(k,L)
+\end{aligned}\end{equation}
+
+\subsection{}
+\(L=0\)のときの\(C{x,L}\)は\(x=0\)のときだけ考えればよく、
+\begin{equation}\begin{aligned}[b]
+    C(0,0) = \frac{0!}{0!0!} = 1
+\end{aligned}\end{equation}
+であるので
+\begin{equation}\begin{aligned}[b]
+    \tilde{C}(k,0) = \sum_{x=-\infty}^{\infty}e^{-ikx}C(x,0) = 1
+\end{aligned}\end{equation}
+なので設問2で求めた等比数列の漸化式の解は
+\begin{equation}\begin{aligned}[b]
+    \tilde{C}(k,L) =(2\cos k)^L
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \ln \tilde{C}(k,L) &= L\ln (2\cos k)
+    = L \ln 2+L\ln(1-\frac{k^2}{2}+\cdots)
+    \simeq L\ln 2-\frac{Lk^2}{2}
+\end{aligned}\end{equation}
+である。
+よって
+\begin{equation}\begin{aligned}[b]
+    C(x,L) &= \frac{1}{2\pi}\int_{-\pi}^{\pi}dk\,e^{ikx}\tilde{C}(k,L)
+    = \frac{1}{2\pi}\int_{-\pi}^{\pi}dk\,e^{ikx}e^{\ln\tilde{C}(k,L)}\\
+    &\simeq \frac{1}{2\pi}\int_{-\pi}^{\pi}dk\,e^{ikx}e^{L\ln 2-\frac{Lk^2}{2}}
+    = \frac{2^L}{2\pi}\int_{-\pi}^{\pi}dk\,e^{-Lk^2/2+ikx}
+\end{aligned}\end{equation}
+ここで\(t=\sqrt{L}k\)とすると
+\begin{equation}\begin{aligned}[b]
+    C(x,L) &= \frac{2^L}{2\pi\sqrt{L}}\int_{-\pi\sqrt{L}}^{\pi\sqrt{L}}dt\,e^{-t^2/2+ixt/\sqrt{L}}\\
+    &\simeq \frac{2^L}{2\pi\sqrt{L}}e^{-x^2/2L}\int_{-\infty}^{\infty}dt\,e^{-(t-ix/\sqrt{L})^2/2}
+    = \frac{2^L}{\sqrt{2\pi L}}e^{-x^2/2L}
+\end{aligned}\end{equation}
+
+\subsection{}
+終端が位置\(x\)にあるときのポテンシャルエネルギーは\(-qEx\)であるので、
+分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z &= \sum_{x=-L}^L C(x,L)e^{qEx/k_BT}
+    = \sum_{x=-\infty}^\infty C(x,L)e^{-i(iqEx/k_BT)}\\
+    &= \tilde{C}\qty(i\frac{qE}{k_BT}, L)
+    = \qty[2\cos(i\frac{qE}{k_BT})]^L
+    = \qty[2\cosh(\frac{qE}{k_BT})]^L
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \ev{x}
+    &= \frac{1}{Z}\sum_{x=-L}^{L}xC(x,L)e^{qEx/k_BT}
+    =\frac{k_BT}{qZ}\pdv{E}\sum_{x=-L}^{L}xC(x,L)e^{qEx/k_BT}
+    =\frac{k_BT}{q}\pdv{E} \ln Z\\
+    &= \frac{Lk_BT}{q}\pdv{E}\ln(2\cosh\frac{qE}{k_BT})
+    = L\tanh\frac{qE}{k_BT}
+\end{aligned}\end{equation}
+
+\subsection{}
+
+\begin{equation}\begin{aligned}[b]
+    \ev{x^2}
+    &=\frac{1}{Z}\sum_{x=-L}^{L}x^2C(x,L)e^{qEx/k_BT}
+    =\qty(\frac{k_BT}{q})^2\frac{1}{Z}\pdv[2]{E}\sum_{x=-L}^{L}C(x,L)e^{qEx/k_BT}\\
+    &=\qty(\frac{k_BT}{q})^2\frac{1}{Z}\pdv[2]{Z}{E}
+    = \qty(\frac{k_BT}{q})^2\qty{\pdv{E}\qty(\frac{1}{Z}\pdv{Z}{E})+\qty(\frac{1}{Z}\pdv{Z}{E})^2}\\
+    &= \qty(\frac{k_BT}{q})\pdv{\ev{x}}{E}+\ev{x}^2
+\end{aligned}\end{equation}
+\(E=0\)のときには\(C(x,L)\)は\(x\)に関して群関数であるので
+\begin{equation}\begin{aligned}[b]
+    \ev{x}=\frac{1}{Z}\sum_{x=-L}^{L}xC(x,L) =0
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \left.\ev{x^2}\right|_{E=0}=\left.\qty(\frac{k_BT}{q})\pdv{\ev{x}}{E}\right|_{E=0}
+\end{aligned}\end{equation}
 
 \subsection*{感想}
 前半の特徴はスターリングの公式ではなく、鞍点法で状態数を求めることのように感じる。
+設問の読み落としで必要なことを全て解答できてなかった。
 
 設問5で分配関数を状態数のフーリエ変換であることに気付くのがなかなか難しい。
-田崎統計とかに分配関数は状態数のラプラス変換であるということを知ってれば、
-ラプラス変換の\(s\)を解析接続のようなことをするとフーリエ変換と読めるというイメージでもありなのかなぁ。
-もしくは虚時間が温度に対応する的なことからも連想できるのかなぁ。
+他のやりかたあるのかな。
+% 田崎統計とかに分配関数は状態数のラプラス変換であるということを知ってれば、
+% ラプラス変換の\(s\)を解析接続のようなことをするとフーリエ変換と読めるというイメージでもありなのかなぁ。
+% もしくは虚時間が温度に対応する的なことからも連想できるのかなぁ。
 
 \end{document}
