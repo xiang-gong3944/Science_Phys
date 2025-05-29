@@ -1,0 +1,116 @@
+\documentclass[../../sp_2015.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{統計力学: 固体の比熱}
+\subsection{}
+この系の古典的な分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z &= \frac{1}{(2\pi\hbar)^N}\qty(\int_{-\infty}^{\infty}dp\int_{-\infty}^{\infty}dx\,e^{-\beta p^2/2m}e^{-\beta m\omega(x-a)^2/2})^N\\
+    &= \frac{1}{(2\pi\hbar)^N}\qty(\sqrt{\frac{2m\pi}{\beta}}\sqrt{\frac{2\pi}{\beta m\omega^2}})^N
+    =\qty(\frac{k_BT}{\hbar\omega})^N
+\end{aligned}\end{equation}
+よって内部エネルギーは
+\begin{equation}\begin{aligned}[b]
+    \frac{U}{N}=-\frac{1}{N}\pdv{\beta}\ln Z = k_BT^2\pdv{T}\ln\frac{k_BT}{\hbar\omega} = kB_T
+\end{aligned}\end{equation}
+比熱は
+\begin{equation}\begin{aligned}[b]
+    C = \dv{U}{T}=k_B
+\end{aligned}\end{equation}
+となる。
+位置の期待値を求める。
+1つの粒子の分配関数を考えることにより\(\ev{x_1}\)は
+\begin{equation}\begin{aligned}[b]
+    \ev{x_i} &= \frac{\int dp\,e^{-\beta p^2/2m}\int dx\, xe^{-\beta m\omega^2(x-a)^2/2}}{\int dp\,e^{-\beta p^2/2m}\int dx\, e^{-\beta m\omega^2(x-a)^2/2}}\\
+    &= a
+\end{aligned}\end{equation}
+そして\(\ev{x_1^2}\)は
+\begin{equation}\begin{aligned}[b]
+    \ev{x_i} &= \frac{\int dp\,e^{-\beta p^2/2m}\int dx\, x^2e^{-\beta m\omega^2(x-a)^2/2}}{\int dp\,e^{-\beta p^2/2m}\int dx\, e^{-\beta m\omega^2(x-a)^2/2}}\\
+    &= \frac{\int dx\, \qty[(x-a)^2+2a(x-a)+a^2]e^{-\beta m\omega^2(x-a)^2/2}}{\int dx\, e^{-\beta m\omega^2(x-a)^2/2}}\\
+    &= \frac{k_BT}{m\omega^2}+a^2
+\end{aligned}\end{equation}
+となる。よって分散は
+\begin{equation}\begin{aligned}[b]
+    \ev{x_1^2}-\ev{x_1}^2=\frac{k_BT}{m\omega^2}
+\end{aligned}\end{equation}
+
+\subsection{}
+1つの質点の分散関係は
+\begin{equation}\begin{aligned}[b]
+    Z = \sum_{n=0}^{\infty}\bra{n}e^{-\beta H}\ket{n}
+    = \sum_{n=0}^{\infty}e^{-\beta\hbar\omega(n+1/2)}
+    =\frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta\hbar\omega}}
+    = \frac{1}{2\sinh(\beta\hbar\omega/2)}
+\end{aligned}\end{equation}
+これより位置の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{x} = \frac{1}{Z}\sum_{n=0}^{\infty}\bra{n}Xe^{-\beta H}\ket{n}
+    = \frac{1}{Z}\sum_{n=0}^{\infty}e^{-\beta\hbar\omega(n+1/2)}
+        \sqrt{\frac{\hbar}{2m\omega}}\bra{n}\qty(\sqrt{n}\ket{n-1}+\sqrt{n+1}\ket{n+1})
+    = 0
+\end{aligned}\end{equation}
+なので分散は
+\begin{equation}\begin{aligned}[b]
+    \ev{x^2} &= \frac{1}{Z}\sum_{n=0}^{\infty}\bra{n}Xe^{-\beta H}\ket{n}\\
+    &= \frac{1}{Z}\sum_{n=0}^{\infty}e^{-\beta\hbar\omega(n+1/2)}
+        \frac{\hbar}{2m\omega}\bra{n}\qty(\sqrt{n(n-1)}\ket{n-2}+n\ket{n}+(n+1)\ket{n}+\sqrt{(n+1)(n+2)}\ket{n+2})\\
+    &= \frac{1}{Z}\sum_{n=0}^{\infty} \frac{1}{m\omega^2}\hbar\omega\qty(n+\frac{1}{2})e^{-\beta\hbar(n+1/2)}
+    = -\frac{1}{m\omega^2}\pdv{\beta}\ln Z =\frac{\hbar}{2m\omega}\coth\frac{\beta\hbar\omega}{2}
+\end{aligned}\end{equation}
+
+また、内部エネルギーは
+\begin{equation}\begin{aligned}[b]
+    U = -\pdv{\beta}\ln Z
+    = \pdv{\beta} \ln\sinh\frac{\beta\hbar\omega}{2}
+    =\frac{\hbar\omega}{2}\coth\frac{\beta\hbar\omega}{2}
+\end{aligned}\end{equation}
+比熱は
+\begin{equation}\begin{aligned}[b]
+    C = \dv{U}{T}
+    = -k_B\beta^2\dv{\beta}\coth\frac{\beta\hbar\omega}{2}
+    = k_B\qty(\frac{\hbar\omega}{2k_BT})^2\qty[\frac{\cosh^2\beta\hbar\omega/2}{\sinh^2\beta\hbar\omega/2}-1]
+    = k_B \qty(\frac{\hbar\omega/2k_BT}{\sinh\hbar\omega/2k_BT})^2
+\end{aligned}\end{equation}
+となる。
+\(T\to\infty\)の高温極限では\(\sinh\hbar\omega/2k_BT\simeq\hbar\omega/2k_BT\)より
+\begin{equation}\begin{aligned}[b]
+    C = k_B \qty(\frac{\hbar\omega/2k_BT}{\sinh\hbar\omega/2k_BT})^2\simeq k_B
+\end{aligned}\end{equation}
+となる。
+なので古典的に扱ったときと同じ結果になる。
+\(T\to0\)の低温極限では\(\sinh\hbar\omega/2k_BT\simeq \exp[\hbar\omega/2k_BT/2]\)より
+\begin{equation}\begin{aligned}[b]
+    C \simeq k_B \qty(\frac{\hbar\omega}{k_BT})^2e^{-\hbar\omega/2k_BT}
+\end{aligned}\end{equation}
+となり低温では温度特性があるとわかる。
+
+\subsection{}
+固定端条件の波動解になると期待されるので
+質点の位置を質点の平衡位置を基準としたフーリエ級数で表す。
+\begin{equation}\begin{aligned}[b]
+    x_n(t)-an = \sum_{l=0}^{N} \tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]
+\end{aligned}\end{equation}
+このとき\(x_0(t)=0,x_{N+1}=(N+1)a\)として、ハミルトニアンを複素振幅で表すと
+\begin{equation}\begin{aligned}[b]
+    H &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{x_n-x_{n-1}-a}^2+\frac{1}{2m}p_n^2]\\
+    &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{\sum_{l=1}^{N}\qty[1-\exp(-i\frac{\pi l}{N+1})]\tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2
+    +\frac{1}{2m}\abs{\sum_{l=1}^{N}\dot{\tilde{x}}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2]\\
+    &= (N+1)\sum_{l=1}^{N}\qty[\frac{1}{2}m\omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\abs{\tilde{x}_l(t)}^2+\frac{1}{2}m\abs{\dot{\tilde{x}}_l(t)}^2]
+\end{aligned}\end{equation}
+となり、各モード\(l\)ごとに分離した調和振動子ポテンシャルとなっている。
+ポテンシャルの形より固有振動数は
+\begin{equation}\begin{aligned}[b]
+    \omega_l^2 &= \omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\\
+    \omega_l &= \omega\sqrt{2-2\cos(\frac{l}{N+1}\pi)}
+\end{aligned}\end{equation}
+
+
+
+\subsection*{感想}
+物量が苦しい。
+固定端条件でのフォノン分散とか初めてやった気がする。
+
+\end{document}

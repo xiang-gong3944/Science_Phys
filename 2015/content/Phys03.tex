@@ -1,0 +1,66 @@
+\documentclass[../../sp_2015.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{力学: 相対論的力学}
+\subsection{}
+ロケット本体の運動量変化は
+\begin{equation}\begin{aligned}[b]
+    \dv{t}m(t)v(t) = m(t)a+\dv{m}{t}v(t)
+\end{aligned}\end{equation}
+時刻\(t\)の微小時間\(dt\)に放出されたガス\(dm\)が持っている運動量は
+\begin{equation}\begin{aligned}[b]
+    dm(v(t)-v_{gas}) = \dv{m}{t}(v(t)-v_{gas}) dt
+\end{aligned}\end{equation}
+とわかる。運動量保存則よりこれらの和が\(0\)であるので
+\begin{equation}\begin{aligned}[b]
+    m(t)a+\dv{m}{t}v(t) &= \dv{m}{t}(v(t)-v_{gas})\\
+    \dv{m}{t} &= -\frac{a}{v_{gas}}m(t)
+\end{aligned}\end{equation}
+
+\subsection{}
+線形微分方程式より解は
+\begin{equation}\begin{aligned}[b]
+    m(t) = m_0e^{-at/v_{gas}}
+\end{aligned}\end{equation}
+
+\subsection{}
+イ:
+\begin{equation}\begin{aligned}[b]
+     d\tau = cdt
+\end{aligned}\end{equation}
+
+ロ:
+\begin{equation}\begin{aligned}[b]
+    u^\mu\odot u^\mu=-u^0u^0 + u^1u^1 = \frac{-c^2dt^2+dx^2}{d\tau^2} = c^2\frac{ds^2}{-ds^2}= -c^2
+\end{aligned}\end{equation}
+
+ハ:
+\begin{equation}\begin{aligned}[b]
+    \dv{\tau} (u^\mu\odot u^\mu) &= \dv{\tau}(-c^2)\\
+        u^\mu\odot a^\mu &= 0
+\end{aligned}\end{equation}
+
+二:
+\begin{equation}\begin{aligned}[b]
+    u^0 &= \dv{t}{\tau} =\frac{1}{\sqrt{1-v^2/c^2}}\\
+    a^0 &= \dv{u^0}{\tau} = \dv{t}{\tau}\dv{\gamma}{t}
+        = \frac{v/c^2}{(1-v^2/c^2)^{2}}\dv{v}{t}
+\end{aligned}\end{equation}
+
+ホ:
+\begin{equation}\begin{aligned}[b]
+    u^1 &= \dv{x^1}{\tau} = \dv{t}{\tau}\dv{x^1}{t} = \frac{v}{\sqrt{1-v^2/c^2}}\\
+    a^1 &= \dv{u^1}{\tau} = \dv{t}{\tau}\dv{u^1}{t}
+        = \frac{1}{\sqrt{1-v^2/c^2}}\qty(\frac{1}{\sqrt{1-v^2/c^2}}+\frac{v^2/c^2}{(1-v^2/c^2)^{3/2}})\dv{v}{t}
+        = \frac{1}{(1-v^2/c^2)^2}\dv{v}{t}
+\end{aligned}\end{equation}
+
+
+
+\subsection*{感想}
+相対論的力学とか使わないからもう忘れた。
+固有時とか四元力とか何者だ。
+
+\end{document}

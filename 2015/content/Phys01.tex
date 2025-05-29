@@ -1,0 +1,151 @@
+\documentclass[../../sp_2015.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{量子力学: 周期境界条件・デルタ関数ポテンシャル・摂動論}
+\subsection{}
+\([S_x,S_y]\)は
+\begin{equation}\begin{aligned}[b]
+    [S_x,S_y]&=\frac{\hbar^2}{4}\qty[
+        \begin{pmatrix}
+            0 & 1\\ 1 & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            0 & -i\\ i & 0
+        \end{pmatrix}
+        -\begin{pmatrix}
+            0 & -i\\ i & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+            0 & 1\\ 1 & 0
+        \end{pmatrix}]
+    &= i\hbar\frac{\hbar}{2}
+    \begin{pmatrix}
+        1&0\\0&-1
+    \end{pmatrix}=i\hbar S_z
+\end{aligned}\end{equation}
+\([H, S_z]\)は
+\begin{equation}\begin{aligned}[b]
+    [H,S_z]
+    =\qty[\frac{p_x^2+p_y^2}{2m}I_{2\times2}+\frac{\hbar eB_z(x,y)}{2m}\sigma_z,\frac{\hbar}{2}\sigma_z]
+    =0
+\end{aligned}\end{equation}
+
+\subsection{}
+問題文に誤植があり、\(H=D^2/2m\)の\(H\)はゼーマン項を抜いた運動エネルギーの項のみのことを表している。
+まず
+\begin{equation}\begin{aligned}[b]
+    D &= \begin{pmatrix}
+        0 & p_x-ip_y\\p_x+ip_y & 0
+    \end{pmatrix}\\
+    D\sigma_z &= \begin{pmatrix}
+        0 & -p_x+ip_y\\p_x+ip_y & 0
+    \end{pmatrix}\\
+    \sigma_zD &= \begin{pmatrix}
+        0 & p_x-ip_y\\-p_x-ip_y & 0
+    \end{pmatrix}\\
+\end{aligned}\end{equation}
+より\(D\sigma_z=-\sigma_z D\)がわかる。
+また
+\begin{equation}\begin{aligned}[b]
+    D^2 &= \begin{pmatrix}
+        0 & p_x-ip_y\\p_x+ip_y & 0
+    \end{pmatrix}\begin{pmatrix}
+        0 & p_x-ip_y\\p_x+ip_y & 0
+    \end{pmatrix}
+    =\begin{pmatrix}
+        p_x^2+p_y^2 & 0\\ 0 & p_x^2+p_y^2
+    \end{pmatrix}\\
+    \frac{D^2}{2m}&=\frac{p_x^2+p_y^2}{2m}I_{2\times2} = H
+\end{aligned}\end{equation}
+よりハミルトニアン\(H\)を\(D\)で表すことができた。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \braket{\Phi_n}
+    =\bra{\Psi_n}D^\dagger D\ket{\Psi_n}
+    =\bra{\Psi_n}2mH\ket{\Psi_n}
+    =2mE_n\braket{\Psi_n}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\braket{\Phi_n}>0,\braket{\Psi_n}>0\)と(10)式より
+\begin{equation}\begin{aligned}[b]
+    E_n = \frac{\braket{\Phi_n}}{2m\braket{\Psi_n}}>0
+\end{aligned}\end{equation}
+また、
+\begin{equation}\begin{aligned}[b]
+    H\ket{\Phi_n}&=HD\ket{\Psi_n}=DH\ket{\Psi_n}=DE_n\ket{\Psi_n}\\
+    &= E_n\ket{\Phi_n}
+\end{aligned}\end{equation}
+より\(\ket{\Phi_n}\)は\(\ket{\Psi_n}\)とおなじ固有エネルギーを持つ。
+
+そして(3)のハミルトニアンはすでに対角化されて、
+\(\ket{\Psi_n}\)は\(\sigma_z\)の固有値が\(+1\)の状態であることから
+\begin{equation}\begin{aligned}[b]
+    \ket{\Psi_n}=\begin{pmatrix}
+        \ket{\psi_n}\\0
+    \end{pmatrix}
+\end{aligned}\end{equation}
+と書けるのがわかるこれより
+\begin{equation}\begin{aligned}[b]
+    \ket{\Phi_n}=\begin{pmatrix}
+        0 & p_x-ip_y\\p_x+ip_y & 0
+    \end{pmatrix}\begin{pmatrix}
+        \ket{\psi_n}\\0
+    \end{pmatrix}
+    =\begin{pmatrix}
+        0\\(p_x+ip_y)\ket{\psi_n}
+    \end{pmatrix}
+\end{aligned}\end{equation}
+となる。つまり\(\ket{\Phi_n}\)は\(\sigma_z\)の固有値が\(-1\)の状態である。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \abs{D\ket{\Psi}}^2=\bra{\Psi}D^\dagger D\ket{\Psi}=2mE\braket{\Psi}=0
+\end{aligned}\end{equation}
+より\(\abs{D\ket{\Psi}}=0\)である。
+ノルムの性質より
+\begin{equation}\begin{aligned}[b]
+    D\ket{\Psi}=0
+\end{aligned}\end{equation}
+そしてこの式を与えられた波動関数とベクトルポテンシャルを代入して展開していくと、
+\begin{equation}\begin{aligned}[b]
+    0&=\begin{pmatrix}
+        0 & p_x-ip_y\\p_x+ip_y & 0
+    \end{pmatrix}\begin{pmatrix}
+        \psi_{\uparrow}(x,y)\\\psi_{\downarrow}(x,y)
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+        \qty[-i\hbar\qty(\partial_x-i\partial_y)-ie(\partial_x-i\partial_y)\rho(x,y)]f_{\downarrow}(x,y)\exp[-\frac{e}{\hbar}\rho(x,y)]\\
+        \qty[-i\hbar\qty(\partial_x+i\partial_y)-ie(\partial_x+i\partial_y)\rho(x,y)]f_{\uparrow}(x,y)\exp[\frac{e}{\hbar}\rho(x,y)]
+    \end{pmatrix}\\
+    &= \begin{pmatrix}
+        \partial_w f_{\downarrow}(w,\bar{w})\\
+        \partial_{\bar{w}} f_{\uparrow}(w,\bar{w})\\
+    \end{pmatrix}
+\end{aligned}\end{equation}
+これより\(f_\downarrow\)は\(\bar{w}\)のみなる関数、\(f_\uparrow\)は\(w\)からなる関数とわかる。
+言い換えると\(f_\downarrow\)は\(\bar{w}\)の正則関数、\(f_\uparrow\)は\(w\)の正則関数である。
+
+\subsection{}
+\(r\to\infty\)のときには
+\begin{equation}\begin{aligned}[b]
+    \rho(x,y)=\frac{bR^2}{2}\qty(\frac{1}{2}+\ln\frac{r}{R})\sim\frac{bR^2}{4}
+\end{aligned}\end{equation}
+となるため、スピン上向きの波動関数にある\(\exp(e\rho/\hbar)\)が発散する。
+\(f_\uparrow\)は有限次多項式なのでこの発散は抑えられず、
+\(\psi_\uparrow\)は無限遠での存在確率が大きくなる不合理な解となるため上向きでは存在しない。
+
+\(\psi_\downarrow\)の縮退はわからなかった。
+どうやら磁場の大きさが関わっているらしい。
+
+\subsection*{感想}
+論文を元ネタにした問題で楽しかった。
+論文曰くとても単純に解けて、2次元ユークリッドDirac方程式にAtiyah-Singerの指数定理を適用した例になっているそうである。
+これはだいぶ先駆的な論文で最近だと "Topologically Protected Flatness in Chiral Moir\'{e} Heterostructures" Phys.Rev.X 15,021056
+で引かれてたりする。
+トポロジカルフラットバンドとAtiyah-Singerの指数定理って関係あるそうだ。
+
+\end{document}
