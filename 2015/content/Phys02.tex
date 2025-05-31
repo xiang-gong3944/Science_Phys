@@ -88,17 +88,25 @@
 となり低温では温度特性があるとわかる。
 
 \subsection{}
+\(x_0 = 0,x_{N+1}=a(N+1)\)とする。
+するとハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    H = \sum_{n=1}^{N+1}\qty(\frac{m\omega^2}{2}(x_n-x_{n-1}-a)^2+\frac{p_n^2}{2m})
+\end{aligned}\end{equation}
+\subsubsection*{答案1}
 固定端条件の波動解になると期待されるので
 質点の位置を質点の平衡位置を基準としたフーリエ級数で表す。
 \begin{equation}\begin{aligned}[b]
-    x_n(t)-an = \sum_{l=0}^{N} \tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]
+    x_n(t)-an &= \sum_{l=1}^{N} \tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]\\
+    p_n(t)-an &= \sum_{l=1}^{N} \tilde{p}_l(t)\exp[i\frac{\pi ln}{N+1}]\\
 \end{aligned}\end{equation}
-このとき\(x_0(t)=0,x_{N+1}=(N+1)a\)として、ハミルトニアンを複素振幅で表すと
+ハミルトニアンを複素振幅で表すと
 \begin{equation}\begin{aligned}[b]
     H &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{x_n-x_{n-1}-a}^2+\frac{1}{2m}p_n^2]\\
     &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{\sum_{l=1}^{N}\qty[1-\exp(-i\frac{\pi l}{N+1})]\tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2
-    +\frac{1}{2m}\abs{\sum_{l=1}^{N}\dot{\tilde{x}}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2]\\
-    &= (N+1)\sum_{l=1}^{N}\qty[\frac{1}{2}m\omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\abs{\tilde{x}_l(t)}^2+\frac{1}{2}m\abs{\dot{\tilde{x}}_l(t)}^2]
+    +\frac{1}{2m}\abs{\sum_{l=-N}^{N}\tilde{p}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2]\\
+    &= (N+1)\sum_{l=1}^{N}\qty[\frac{1}{2}m\omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\abs{\tilde{x}_l(t)}^2
+    +\frac{1}{2}m\abs{\tilde{p}_l(t)}^2]
 \end{aligned}\end{equation}
 となり、各モード\(l\)ごとに分離した調和振動子ポテンシャルとなっている。
 ポテンシャルの形より固有振動数は
@@ -107,6 +115,51 @@
     \omega_l &= \omega\sqrt{2-2\cos(\frac{l}{N+1}\pi)}
 \end{aligned}\end{equation}
 
+\subsubsection*{答案2}
+\(x_0 = 0,x_{N+1}=a(N+1)\)とする。
+するとハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    H = \sum_{n=1}^{N+1}\qty(\frac{m\omega^2}{2}(x_n-x_{n-1}-a)^2+\frac{p_n^2}{2m})
+\end{aligned}\end{equation}
+正準方程式より\(n=1,\cdots,N\)の運動方程式は
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        \dv{x_i}{t}&= \pdv{H}{p_i}\\
+        \dv{p_i}{t}&=-\pdv{H}{x_i}
+    \end{cases}
+    \rightarrow
+    \begin{cases}
+        \dv{x_i}{t} &= \frac{p_i}{m}\\
+        \dv{p_i}{t} &= -m\omega^2(-x_{n-1}+2x_{n}-x_{n+1})
+    \end{cases}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \dv[2]{x_i}{t} &= -\omega^2(-x_{n-1}+2x_{n}-x_{n+1})
+\end{aligned}\end{equation}
+この微分方程式の解として固定端条件を満たす形
+\begin{equation}\begin{aligned}[b]
+    x_n(t) = Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}+an,\qquad l=1,2,\cdots,N
+\end{aligned}\end{equation}
+を式に代入して整理すると
+\begin{equation}\begin{aligned}[b]
+    -\omega_l^2 Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}
+    &= -\omega^2\qty[2-2\cos(\frac{l\pi}{N+1})]Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \omega_l &= \omega \sqrt{2-2\cos(\frac{l\pi}{N+1})}
+\end{aligned}\end{equation}
+
+\subsection{}
+前問よりハミルトニアンをフーリエ変換すると独立な調和振動子になる。
+古典的に扱った時には比熱は振動数によらず、
+各モード1つあたりが質点1個当たりの自由度に対応する。
+なので比熱は設問1で求めたのと同じ
+\begin{equation}\begin{aligned}[b]
+    C_1 = k_B
+\end{aligned}\end{equation}
+となる。
 
 
 \subsection*{感想}

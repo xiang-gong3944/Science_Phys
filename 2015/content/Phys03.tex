@@ -42,14 +42,15 @@
         u^\mu\odot a^\mu &= 0
 \end{aligned}\end{equation}
 
-二:
+ニ・ホ:
+\(a^0\)について
 \begin{equation}\begin{aligned}[b]
-    u^0 &= \dv{t}{\tau} =\frac{1}{\sqrt{1-v^2/c^2}}\\
-    a^0 &= \dv{u^0}{\tau} = \dv{t}{\tau}\dv{\gamma}{t}
-        = \frac{v/c^2}{(1-v^2/c^2)^{2}}\dv{v}{t}
+    u^0 &= \dv{ct}{\tau} =\frac{c}{\sqrt{1-v^2/c^2}}\\
+    a^0 &= \dv{u^0}{\tau} = \dv{t}{\tau}\dv{u^0}{t}
+        = \frac{v/c}{(1-v^2/c^2)^{2}}\dv{v}{t}
 \end{aligned}\end{equation}
 
-ホ:
+\(a^1\)について
 \begin{equation}\begin{aligned}[b]
     u^1 &= \dv{x^1}{\tau} = \dv{t}{\tau}\dv{x^1}{t} = \frac{v}{\sqrt{1-v^2/c^2}}\\
     a^1 &= \dv{u^1}{\tau} = \dv{t}{\tau}\dv{u^1}{t}
@@ -57,10 +58,23 @@
         = \frac{1}{(1-v^2/c^2)^2}\dv{v}{t}
 \end{aligned}\end{equation}
 
+これより\(\alpha\)は
+\begin{equation}\begin{aligned}[b]
+    \alpha^2 &= -a^0a^0+a^1a^1
+    = \frac{1-v^2/c^2}{(1-v^2/c^2)^4}\qty(\dv{v}{t})^2
+    = \frac{1}{(1-v^2/c^2)^3}\qty(\dv{v}{t})^2\\
+    \alpha &= \frac{1}{(1-v^2/c^2)^{3/2}}\dv{v}{t}
+\end{aligned}\end{equation}
+
+\(\alpha\)を使って\(\alpha^0,\alpha^1\)を表すと
+\begin{equation}\begin{aligned}[b]
+    a^0 &= \alpha \frac{u^1}{c}, &
+    a^1 &= \alpha \frac{u^0}{c}
+\end{aligned}\end{equation}
 
 
 \subsection*{感想}
 相対論的力学とか使わないからもう忘れた。
-固有時とか四元力とか何者だ。
+それでもこれを知ってるよねと問われたので苦しい。
 
 \end{document}
