@@ -9,18 +9,18 @@
 \begin{equation}\begin{aligned}[b]
     \dv{t}m(t)v(t) = m(t)a+\dv{m}{t}v(t)
 \end{aligned}\end{equation}
-時刻\(t\)の微小時間\(dt\)に放出されたガス\(dm\)が持っている運動量は
+時刻\(t\)の微小時間\(dt\)に放出されたガス\(dm\)が持っていった運動量は
 \begin{equation}\begin{aligned}[b]
-    dm(v(t)-v_{gas}) = \dv{m}{t}(v(t)-v_{gas}) dt
+    dm(v(t)-v_{gas}) = \dv{m}{t}\,(v(t)-v_{gas}) dt
 \end{aligned}\end{equation}
-とわかる。運動量保存則よりこれらの和が\(0\)であるので
+とわかる。運動量保存則よりこれらが等しいので
 \begin{equation}\begin{aligned}[b]
-    m(t)a+\dv{m}{t}v(t) &= \dv{m}{t}(v(t)-v_{gas})\\
+    m(t)a+\dv{m}{t}v(t) &= \dv{m}{t}\,(v(t)-v_{gas})\\
     \dv{m}{t} &= -\frac{a}{v_{gas}}m(t)
 \end{aligned}\end{equation}
 
 \subsection{}
-線形微分方程式より解は
+前問で得られたのは線形微分方程式より解は
 \begin{equation}\begin{aligned}[b]
     m(t) = m_0e^{-at/v_{gas}}
 \end{aligned}\end{equation}
@@ -28,7 +28,7 @@
 \subsection{}
 イ:
 \begin{equation}\begin{aligned}[b]
-     d\tau = cdt
+     d\tau = \sqrt{1-\frac{v^2}{c^2}}dt
 \end{aligned}\end{equation}
 
 ロ:
@@ -72,6 +72,18 @@
     a^1 &= \alpha \frac{u^0}{c}
 \end{aligned}\end{equation}
 
+\subsection{}
+\(\alpha=(1-v^2/c^2)^{-3/2}dv/dt\)の両辺を\(t\)で積分すると
+\begin{equation}\begin{aligned}[b]
+    \int_{0}^{t}\alpha \,dt &= \int_{0}^{t}\qty(1-\frac{v^2}{c^2})^{-3/2}\dv{v}{t}dt\\
+    \alpha t&= \int_{0}^{v}\frac{dv}{(1-v^2/c^2)^{3/2}}
+\end{aligned}\end{equation}
+ここで、\(v/c=\sinh \eta\)とするとこの積分は
+\begin{equation}\begin{aligned}[b]
+    \frac{\alpha \tau}{\sqrt{1-v^2/c^2}} &= c\int_0^\eta \frac{d\eta}{\cosh^2 \eta}\\
+    &= c\tanh\eta = \frac{v}{\sqrt{1-v^2/c^2}}\\
+    v(\tau)&=\alpha\tau
+\end{aligned}\end{equation}
 
 \subsection*{感想}
 相対論的力学とか使わないからもう忘れた。

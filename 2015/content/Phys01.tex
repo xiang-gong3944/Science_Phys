@@ -33,8 +33,6 @@
 \end{aligned}\end{equation}
 
 \subsection{}
-問題文に誤植があり、\(H=D^2/2m\)の\(H\)はゼーマン項を抜いた運動エネルギーの項のみのことを表している。
-まず
 \begin{equation}\begin{aligned}[b]
     D &= \begin{pmatrix}
         0 & p_x-ip_y\\p_x+ip_y & 0
@@ -53,11 +51,11 @@
         0 & p_x-ip_y\\p_x+ip_y & 0
     \end{pmatrix}\begin{pmatrix}
         0 & p_x-ip_y\\p_x+ip_y & 0
-    \end{pmatrix}
-    =\begin{pmatrix}
-        p_x^2+p_y^2 & 0\\ 0 & p_x^2+p_y^2
     \end{pmatrix}\\
-    \frac{D^2}{2m}&=\frac{p_x^2+p_y^2}{2m}I_{2\times2} = H
+    &=\begin{pmatrix}
+        p_x^2+p_y^2 +\hbar e(\partial_xA_y-\partial_yA_x)& 0\\ 0 & p_x^2+p_y^2-\hbar e(\partial_xA_y-\partial_yA_x)
+    \end{pmatrix}\\
+    \frac{D^2}{2m}&=\frac{p_x^2+p_y^2}{2m}I_{2\times2}+\frac{\hbar eB_z(x,y)}{2m}\sigma_z = H
 \end{aligned}\end{equation}
 よりハミルトニアン\(H\)を\(D\)で表すことができた。
 
@@ -88,7 +86,8 @@
         \ket{\psi_n}\\0
     \end{pmatrix}
 \end{aligned}\end{equation}
-と書けるのがわかるこれより
+と書けるのがわかる。
+これより
 \begin{equation}\begin{aligned}[b]
     \ket{\Phi_n}=\begin{pmatrix}
         0 & p_x-ip_y\\p_x+ip_y & 0
@@ -100,6 +99,7 @@
     \end{pmatrix}
 \end{aligned}\end{equation}
 となる。つまり\(\ket{\Phi_n}\)は\(\sigma_z\)の固有値が\(-1\)の状態である。
+(8)式の交換関係を使っても示せる。
 
 \subsection{}
 \begin{equation}\begin{aligned}[b]
@@ -138,8 +138,17 @@
 \(f_\uparrow\)は有限次多項式なのでこの発散は抑えられず、
 \(\psi_\uparrow\)は無限遠での存在確率が大きくなる不合理な解となるため上向きでは存在しない。
 
-\(\psi_\downarrow\)の縮退はわからなかった。
-どうやら磁場の大きさが関わっているらしい。
+また、\(R\to\infty\)で\(\psi_\downarrow\)は\(f_\downarrow\)の多項式の次数を\(n\)とすると
+\begin{equation}\begin{aligned}[b]
+    \psi_\downarrow(x,y)= A\bar{w}^n\qty(\frac{r}{R})^{ebR^2/2\hbar}\exp(-\frac{ebR^2}{4\hbar})
+\end{aligned}\end{equation}
+これより\(n<ebR^2/2\hbar\)である必要があるので、最大の多項式の次数は\(\lceil ebR^2/2\hbar \rceil\)
+である。多項式の係数の分の自由度があるので独立な状態は
+\begin{equation}\begin{aligned}[b]
+    \left\lceil \frac{ebR^2}{2\hbar} \right\rceil = \left\lceil \frac{b \pi R^2}{2\pi\hbar/e}\right\rceil
+\end{aligned}\end{equation}
+となる。つまり2次元平面を貫く磁束を磁束量子で割った数になる。
+これが Atiyah-Singer の指数定理の具体例になっている。
 
 \subsection*{感想}
 論文を元ネタにした問題で楽しかった。

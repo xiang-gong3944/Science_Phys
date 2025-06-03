@@ -88,72 +88,54 @@
 となり低温では温度特性があるとわかる。
 
 \subsection{}
-\(x_0 = 0,x_{N+1}=a(N+1)\)とする。
-するとハミルトニアンは
-\begin{equation}\begin{aligned}[b]
-    H = \sum_{n=1}^{N+1}\qty(\frac{m\omega^2}{2}(x_n-x_{n-1}-a)^2+\frac{p_n^2}{2m})
-\end{aligned}\end{equation}
-\subsubsection*{答案1}
-固定端条件の波動解になると期待されるので
-質点の位置を質点の平衡位置を基準としたフーリエ級数で表す。
-\begin{equation}\begin{aligned}[b]
-    x_n(t)-an &= \sum_{l=1}^{N} \tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]\\
-    p_n(t)-an &= \sum_{l=1}^{N} \tilde{p}_l(t)\exp[i\frac{\pi ln}{N+1}]\\
-\end{aligned}\end{equation}
-ハミルトニアンを複素振幅で表すと
-\begin{equation}\begin{aligned}[b]
-    H &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{x_n-x_{n-1}-a}^2+\frac{1}{2m}p_n^2]\\
-    &= \sum_{n=1}^{N+1}\qty[\frac{1}{2}m\omega^2\abs{\sum_{l=1}^{N}\qty[1-\exp(-i\frac{\pi l}{N+1})]\tilde{x}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2
-    +\frac{1}{2m}\abs{\sum_{l=-N}^{N}\tilde{p}_l(t)\exp[i\frac{\pi ln}{N+1}]}^2]\\
-    &= (N+1)\sum_{l=1}^{N}\qty[\frac{1}{2}m\omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\abs{\tilde{x}_l(t)}^2
-    +\frac{1}{2}m\abs{\tilde{p}_l(t)}^2]
-\end{aligned}\end{equation}
-となり、各モード\(l\)ごとに分離した調和振動子ポテンシャルとなっている。
-ポテンシャルの形より固有振動数は
-\begin{equation}\begin{aligned}[b]
-    \omega_l^2 &= \omega^2\qty(2-2\cos(\frac{l}{N+1}\pi))\\
-    \omega_l &= \omega\sqrt{2-2\cos(\frac{l}{N+1}\pi)}
-\end{aligned}\end{equation}
 
-\subsubsection*{答案2}
 \(x_0 = 0,x_{N+1}=a(N+1)\)とする。
 するとハミルトニアンは
 \begin{equation}\begin{aligned}[b]
-    H = \sum_{n=1}^{N+1}\qty(\frac{m\omega^2}{2}(x_n-x_{n-1}-a)^2+\frac{p_n^2}{2m})
+    H = \sum_{n=0}^{N}\qty(\frac{m\omega^2}{2}(x_{n+1}-x_{n}-a)^2+\frac{p_n^2}{2m})
 \end{aligned}\end{equation}
-正準方程式より\(n=1,\cdots,N\)の運動方程式は
+となる。
+固定端条件の波動方程式のような解となると期待できるので、
+位置と運動量を
 \begin{equation}\begin{aligned}[b]
-    \begin{cases}
-        \dv{x_i}{t}&= \pdv{H}{p_i}\\
-        \dv{p_i}{t}&=-\pdv{H}{x_i}
-    \end{cases}
-    \rightarrow
-    \begin{cases}
-        \dv{x_i}{t} &= \frac{p_i}{m}\\
-        \dv{p_i}{t} &= -m\omega^2(-x_{n-1}+2x_{n}-x_{n+1})
-    \end{cases}
+    x_n(t) = \sum_{l=1}^{N}Q_l(t)\sin(\frac{l\pi}{N+1} n)+an,\qquad
+    p_n(t) = \sum_{l=1}^{N}P_l(t)\sin(\frac{l\pi}{N+1} n)
 \end{aligned}\end{equation}
-これより
+のようにおく。
+三角関数の直交性
 \begin{equation}\begin{aligned}[b]
-    \dv[2]{x_i}{t} &= -\omega^2(-x_{n-1}+2x_{n}-x_{n+1})
+    \sum_{n=0}^{N}\sin(\frac{l\pi}{N}n)\sin(\frac{l'\pi}{N}n) = \frac{N}{2}\delta_{l,l'}
 \end{aligned}\end{equation}
-この微分方程式の解として固定端条件を満たす形
+と合わせるとハミルトニアンは、
 \begin{equation}\begin{aligned}[b]
-    x_n(t) = Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}+an,\qquad l=1,2,\cdots,N
+    H &= \sum_{l,l'=1}^{N}\sum_{n=1}^{N}\qty[\frac{P_lP_{l'}}{2m}\sin(\frac{l\pi}{N+1}n)\sin(\frac{l'\pi}{N+1}n)]
+    +\sum_{n=1}^{N}\frac{m\omega^2}{2} x_n(-x_{n+1}+2x_n-x_{n-1})\\
+    &= \frac{N+1}{2}\sum_{l=1}^{N}\frac{P_l^2}{2m}
+    +\sum_{l,l'=1}^{N}\sum_{n=1}^{N}\frac{m\omega^2Q_lQ_{l'}}{2} \qty{2-2\cos(\frac{l'}{N+1}\pi)}\sin(\frac{l\pi}{N+1}n)\sin(\frac{l'\pi}{N+1}n)\\
+    &= \frac{N+1}{2}\sum_{l=1}^{N}\qty[\frac{P_l^2}{2m}
+     +\frac{mQ_l^2}{2}\qty{\omega\sqrt{2-2\cos(\frac{l}{N+1}\pi)}}]
+    \equiv \frac{N+1}{2}\sum_{l=1}^{N}\qty(\frac{P_l^2}{2m}
+     +\frac{m\omega_l^2Q_l^2}{2})
 \end{aligned}\end{equation}
-を式に代入して整理すると
+となる。
+途中
 \begin{equation}\begin{aligned}[b]
-    -\omega_l^2 Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}
-    &= -\omega^2\qty[2-2\cos(\frac{l\pi}{N+1})]Q_l\sin(\frac{l\pi}{N+1} n)e^{-i\omega_l t}
+    -x_{n+1}&+2x_n-x_{n-1}\\
+    &= \sum_{l'=1}^{N}Q_{l'}\qty[
+        -\sin(\frac{l'\pi}{N+1}(n+1))+2\sin(\frac{l'\pi}{N+1}n)
+        -\sin(\frac{l'\pi}{N+1}(n-1))]\\
+    &= \sum_{l'=1}^{N}Q_{l'}\qty[
+        -\sin(\frac{l'\pi}{N+1}n)\cos(\frac{l'\pi}{N+1}n)+2\sin(\frac{l'\pi}{N+1}n)
+        -\sin(\frac{l'\pi}{N+1}n)\cos(\frac{l'\pi}{N+1}n)]\\
+    &= \sum_{l'=1}^{n}\qty{2-2\cos(\frac{l'}{N+1}\pi)}\sin(\frac{l\pi}{N+1}n)
 \end{aligned}\end{equation}
-これより
-\begin{equation}\begin{aligned}[b]
-    \omega_l &= \omega \sqrt{2-2\cos(\frac{l\pi}{N+1})}
-\end{aligned}\end{equation}
+を使った。
+このハミルトニアンより、各モードは独立した調和振動子で固有振動数が\(\omega_l\)になっているとわかる。
+
 
 \subsection{}
-前問よりハミルトニアンをフーリエ変換すると独立な調和振動子になる。
-古典的に扱った時には比熱は振動数によらず、
+前問よりこの系は独立な調和振動子が\(N\)個ある系とみなせる。
+古典的に扱った調和振動子系では比熱は振動数によらず、
 各モード1つあたりが質点1個当たりの自由度に対応する。
 なので比熱は設問1で求めたのと同じ
 \begin{equation}\begin{aligned}[b]
@@ -161,9 +143,66 @@
 \end{aligned}\end{equation}
 となる。
 
+\subsection{}
+\subsubsection{答案1}
+低温かつ\(N\gg1\)では
+固有振動数は
+\begin{equation}\begin{aligned}[b]
+    \omega_l \simeq \omega \frac{l\pi}{N}
+\end{aligned}\end{equation}
+と近似できる。
+各モードの振動子を量子力学的扱うと設問1と同じ比熱が得られる。
+これをすべて足し合わせると比熱が求まる。
+よって\(N\)が大きく、低温では
+\begin{equation}\begin{aligned}[b]
+    C &= \frac{1}{N}\sum_{l=1}^{N} k_B \qty(\frac{\hbar\omega_l/2k_BT}{\sinh\hbar\omega_l/2k_BT})^2
+    = k_B\frac{1}{\beta\hbar\omega \pi}\sum_{l=1}^{N}\frac{\beta\hbar\omega\pi}{N}\frac{(\beta\hbar \omega_l)^2e^{\beta\hbar\omega_l}}{(e^{\beta\hbar\omega_l}-1)^2}\\
+    &\simeq k_B \frac{k_BT}{\pi\hbar\omega}\int_{0}^{\beta\hbar\omega\pi}\frac{x^2e^x}{(e^x-1)^2}dx
+    \simeq k_B \frac{k_BT}{\pi\hbar\omega}\int_{0}^{\infty}\frac{x^2e^x}{(e^x-1)^2}dx
+    = \frac{\pi k_B^2}{3\hbar\omega}T
+\end{aligned}\end{equation}
+
+\subsubsection{答案2}
+波数を\(k=l\pi/a(N+1)\)とすると
+分散関係は\(N\gg1\)では波数は連続量とみなせる。
+このとき分散関係は
+\begin{equation}\begin{aligned}[b]
+    \omega(k) = \omega_0\sqrt{2-2\cos(ka)}=2\omega_0\sin(\frac{ka}{2})\simeq a\omega_0 k
+\end{aligned}\end{equation}
+となる。
+ここで、\(\omega_0\)としたのはもとの調和振動子の結合定数、
+\(\omega(k)\)は\(\omega_l\)に対応するものである。
+これよりフォノンの状態密度\(D(\omega)\)は
+\begin{equation}\begin{aligned}[b]
+    D(\omega) = \frac{a}{\pi}\dv{k}{(\omega(k))} = \frac{1}{\pi\omega_0}
+\end{aligned}\end{equation}
+フォノンはボーズ分布に従うので、1つのフォノンの内部エネルギーと比熱は
+\begin{equation}\begin{aligned}[b]
+    E &= \int_0^\infty \hbar\omega \frac{D(\omega)}{e^{\beta\hbar\omega}-1}d\omega
+    = \frac{1}{\pi\beta^2\hbar\omega_0}\int_{0}^{\infty}\frac{\beta\hbar\omega}{e^{\beta\hbar\omega}-1}d(\beta\hbar\omega)
+    = \frac{\pi k_B^2}{6\hbar\omega_0}T^2\\
+    C &= \dv{E}{T}= \frac{\pi k_B^2}{3\hbar\omega}T
+\end{aligned}\end{equation}
+
+
 
 \subsection*{感想}
 物量が苦しい。
 固定端条件でのフォノン分散とか初めてやった気がする。
+直接ハミルトニアンをフーリエ変換して、
+各モードの和へと具体的に変形してやるというルートが楽なのかしら。
+
+この対角化の際に初見では思いつかないであろう変形をポテンシャルエネルギーにした。
+それのお気持ちとしては、
+ハミルトニアンから力
+\begin{equation*}\begin{aligned}[b]
+    F_n=-\pdv{H}{x_n}=-\frac{m\omega_0^2}{2}(-x_{n+1}+2x_n-x_{n-1})
+\end{aligned}\end{equation*}
+が得られて、
+ポテンシャルエネルギーが
+\begin{equation*}\begin{aligned}[b]
+    \sum_{n=1}^{N}U_n = \sum_{n=1}^{N}(-F_n x_n) = \sum_{n=1}^{N}\frac{m\omega_0^2}{2}x_n(-x_{n+1}+2x_n-x_{n-1})
+\end{aligned}\end{equation*}
+というにかけるというなイメージで変形した。
 
 \end{document}
