@@ -1,0 +1,136 @@
+\documentclass[../../sp_2016.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{量子力学: 調和振動子}
+\subsection{}
+微分に関しては
+\begin{equation*}\begin{aligned}[b]
+    \pdv{x_1} &= \frac{1}{2}\pdv{x}+\pdv{y},&
+    \pdv{x_2}&=\frac{1}{2}\pdv{x}-\pdv{y}\\
+    \pdv[2]{x_1} &= \frac{1}{4}\pdv[2]{x}+\pdv[2]{y}+\frac{\partial^2}{\partial x\partial y},&
+    \pdv[2]{x_2} &= \frac{1}{4}\pdv[2]{x}+\pdv[2]{y}-\frac{\partial^2}{\partial x\partial y}\\
+\end{aligned}\end{equation*}
+\begin{equation}\begin{aligned}[b]
+    \pdv[2]{x_1}+\pdv[2]{x_2} = \frac{1}{2}\pdv[2]{x}+2\pdv[2]{y}
+\end{aligned}\end{equation}
+であるので、
+運動エネルギーは
+\begin{equation}\begin{aligned}[b]
+    K = -\frac{\hbar^2}{4m}\pdv[2]{x_1}-\frac{\hbar^2}{m}\pdv[2]{y}
+\end{aligned}\end{equation}
+となる。
+
+また、
+\begin{equation}\begin{aligned}[b]
+    x^2=\frac{x_1^2+x_2^2+2xy}{4},&\quad y^2 =x_1^2+x_2^2-2xy\\
+    \rightarrow\quad& x_1^2+x_2^2 = 2x^2+\frac{1}{2}y^2
+\end{aligned}\end{equation}
+であるのでポテンシャルエネルギーは
+\begin{equation}\begin{aligned}[b]
+    V &= m\omega^2 x^2 + \frac{m\omega^2}{4}(1+\alpha)y^2
+\end{aligned}\end{equation}
+
+\subsection{}
+ポテンシャルが下に有界でなければならないので、
+\begin{equation}\begin{aligned}[b]
+    \alpha > \alpha_0 = -1
+\end{aligned}\end{equation}
+が求める\(\alpha_0\)の値である。
+
+\subsection{}
+ハミルトニアンを改めて書くと
+\begin{equation}\begin{aligned}[b]
+    H = H_x + H_y
+    = \qty[-\frac{\hbar^2}{2(2m)}\pdv[2]{x}+\frac{(2m)\omega^2}{2}x^2]+
+     \qty[-\frac{\hbar^2}{2(m/2)}\pdv[2]{y}+\frac{(m/2)(\omega\sqrt{1+\alpha})^2}{2}y^2]
+\end{aligned}\end{equation}
+というように、\(x\)成分と\(y\)成分に分けることができ、
+\(x\)成分は質量が\(2m\)、 振動数が\(\omega\)の調和振動子、
+\(y\)成分は質量が\(m/2\)、 振動数が\(\omega\sqrt{1+\alpha}\)の調和振動子となっているとわかる。
+これより\(x\)成分の調和振動子のエネルギーの基底状態は\(E_{x0}=\hbar\omega/2\)、
+\(y\)成分の調和振動子のエネルギーの基底状態は\(E_{y0}=\hbar\omega\sqrt{1+\alpha}/2\)であるので、
+系の基底状態のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E_0 = \frac{\hbar\omega}{2}\qty(1+\sqrt{1+\alpha})
+\end{aligned}\end{equation}
+である。
+
+また、調和振動子の基底状態の波動関数の\(c\)は\(m,\omega\)を使って
+\begin{equation}\begin{aligned}[b]
+    H \psi(x) &= \frac{\hbar\omega}{2} \psi(x)\\
+    \qty[-\frac{\hbar^2}{2m}\pdv[2]{x}+\frac{m\omega^2}{2}x^2]e^{-cx^2/2} &= \frac{\hbar\omega}{2}e^{-cx^2/2}\\
+    \frac{\hbar^2c_0}{2(2m)}-\frac{\hbar^2c_0^2x^2}{2(2m)}+\frac{(2m)\omega^2}{2}x^2 &= \frac{\hbar\omega}{2}\\
+    c_0 &= \frac{m\omega}{\hbar}
+\end{aligned}\end{equation}
+と書ける。
+
+なので今の系の基底状態の波動関数は
+\begin{equation}\begin{aligned}[b]
+    \psi(x,y) &= \qty[\qty(\frac{c_x}{\pi})^{1/4}e^{-c_xx^2/2}]\qty[\qty(\frac{c_y}{\pi})^{1/4}e^{-c_yy^2/2}]\\
+    &=\sqrt[4]{\frac{m^2\omega^2\sqrt{1+\alpha}}{\pi^2\hbar^2}}\exp[-\frac{m\omega}{\hbar}\qty(x^2+\frac{\sqrt{1+\alpha}}{4}y^2)]
+\end{aligned}\end{equation}
+である。
+
+\subsection{}
+\(t=0\)での波動関数とあるが、\(t=-0\)での波動関数と\(t=+0\)での波動関数が連続であるということを仮定している。
+つまり、問題で聞かれている波動関数のフーリエ変換は\(t=-0\)の\(\alpha=0\)のときの形の波動関数を使うということである。
+
+フーリエ変換をすると
+\begin{equation}\begin{aligned}[b]
+    f(x,k) &= \int_{-\infty}^{\infty}dy \sqrt{\frac{m\omega}{\pi\hbar}}\exp[-\frac{m\omega}{\hbar}\qty(x^2+\frac{y^2}{4})]e^{-iky}\\
+    &=\sqrt{\frac{m\omega}{\pi\hbar}}\exp[-\frac{m\omega x^2}{\hbar}-\frac{\hbar k^2}{m\omega}]\int_{-\infty}^{\infty}dy\exp[-\frac{m\omega}{4\hbar}\qty(y+\frac{2i\hbar k}{m\omega})^2]\\
+    &=2\exp[-\frac{m\omega x^2}{\hbar}]\exp[-\frac{\hbar k^2}{m\omega}]
+\end{aligned}\end{equation}
+
+\subsection{}
+\(t>0\)では\(y\)成分のハミルトニアンは
+\begin{equation}\begin{aligned}[b]
+    H_y = -\frac{\hbar^2}{m}\pdv[2]{y}
+\end{aligned}\end{equation}
+であるので波数は保存し、エネルギーは\(E_y = \frac{\hbar k^2}{m}\)であるとわかる。
+なので波数表示での時間発展演算子は
+\begin{equation}\begin{aligned}[b]
+    U(t) = e^{-iHt/\hbar} = \exp[-i\frac{\omega t}{2}]\exp[-i\frac{\hbar tk^2}{m}]
+\end{aligned}\end{equation}
+とわかるので、求める波動関数は
+\begin{equation}\begin{aligned}[b]
+    \Psi(x,y;t)
+    &= \frac{1}{2\pi}\int_{-\infty}^{\infty}dk U(t)f(x,k)e^{iky}\\
+    &= \frac{1}{\pi}\exp[-\frac{m\omega x^2}{\hbar}-i\frac{\omega t}{2}]
+    \int_{-\infty}^{\infty}dk\exp[-\frac{\hbar}{m\omega(1+i\omega t)}k^2+iky]\\
+    &=\sqrt{\frac{m\omega}{\pi\hbar(1+i\omega t)}}\exp[-\frac{m\omega x^2}{\hbar}-i\frac{\omega t}{2}]
+    \exp[-\frac{m\omega y^2}{4\hbar(1+i\omega t)}]
+\end{aligned}\end{equation}
+となる。
+
+\subsection*{5のおまけ}
+この波動関数の確率密度のうち、
+\(x\)の部分だけ注目すると
+\begin{equation}\begin{aligned}[b]
+    \rho(x;t) &= \int_{-\infty}^{\infty}dy\Psi^*(x,y;t)\Psi(x,y;t)\\
+    &=\sqrt{\frac{2m\omega}{\pi\hbar}}\exp[-\frac{2m\omega x^2}{\hbar}]
+\end{aligned}\end{equation}
+となる。これは2粒子の重心自体は調和振動子にトラップされていると理解できる。
+
+\(y\)の部分だけ注目すると
+\begin{equation}\begin{aligned}[b]
+    \rho(y;t) &= \int_{-\infty}^{\infty}dx \Psi^*(x,y;t)\Psi(x,y;t)\\
+    &= \sqrt{\frac{m\omega}{2\pi\hbar(1+\omega^2 t^2)}}\exp[-\frac{m\omega y^2}{2\hbar(1+\omega^2t^2)}]
+\end{aligned}\end{equation}
+となる。これはつまり、相対運動の調和振動子をなくすと両者の距離は広がっていく一方であると理解することができる。
+
+\subsection*{感想}
+問題自体は2つの粒子がいい感じの調和振動子ポテンシャルになっているのを、
+重心運動と相対運動に分けて考えるもので、誘導に従っていくだけではあるので頑張って解けばよい。
+
+しかし、ハミルトニアンが表している系の状況や、設問4以降の\(\alpha\)を変えるという操作は実際に行うことができるかなど、
+よく考えてみるとよくわからない系になっていると感じた。
+
+また、フーリエ変換でよく出てくる次の式は覚えておくと解くのも早くなるし、正確になるので覚えたい。
+\begin{equation}\begin{aligned}[b]
+    \int_{-\infty}^{\infty}dx\,\exp[-ax^2+bx] = \sqrt{\frac{\pi}{-a}}\exp[-\frac{b^2}{4a}]
+\end{aligned}\end{equation}
+
+\end{document}

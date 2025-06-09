@@ -1,0 +1,125 @@
+\documentclass[../../sp_2016.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{力学: 2重振子}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    L = \frac{m_1}{2}(\dot{x}_1^2\dot{y}_1^2)+\frac{m_2}{2}(\dot{x}_2^2\dot{y}_2^2)+m_1gy_1+m_2gy_2
+\end{aligned}\end{equation}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    x_1 &= l_1\sin\theta_1 & y_1 &= l_1\cos\theta\\
+    x_2 &= l_1\sin\theta_1+l_2\sin\theta_2 &  y_2&= l_1\cos\theta_1+l_2\cos\theta_2
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \dot{x}_1 &= l_1\dot{\theta}_1\cos\theta_1 & y_1 &= -l_1\dot{\theta}_1\sin\theta\\
+    \dot{x}_2&= l_1\dot{\theta}_1\cos\theta_1+l_2\dot{\theta}_2\cos\theta_2 &
+    \dot{y}_2&= -l_1\dot{\theta}_1\sin\theta_1-l_2\dot{\theta}_2\sin\theta_2
+\end{aligned}\end{equation}
+であるのでラグランジアンは適宜三角関数のTaylor展開を使って、
+\begin{equation}\begin{aligned}[b]
+    L &= \frac{m_1l_1^2}{2}\dot{\theta}_1^2+\frac{m_2}{2}\Bigl[
+        l_1^2\dot{\theta}_1^2+l_2^2\dot{\theta}_2^2+2l_1l_2\dot{\theta}_1\dot{\theta}_2\cos(\theta_1-\theta_2)
+    \Bigr]+mgl_1\cos\theta_1+m_2gl_1\cos\theta_1+m_2gl_2\cos\theta_2\\
+    &\simeq
+    \frac{1}{2}(m_1+m_2)l_1^2\dot{\theta}_1^2+\frac{1}{2}m_2l_2^2\dot{\theta}_2^2+m_2l_1l_2\dot{\theta}_1\dot{\theta}_2
+    -\frac{1}{2}(m_1+m_2)gl_1\theta_1-\frac{1}{2}m_2gl_2\theta_2^2+\text{const.}
+\end{aligned}\end{equation}
+
+\subsection{}
+オイラーラグランジュ方程式方程式より\(\theta_1\)から得られる微分方程式は
+\begin{equation}\begin{aligned}[b]
+    \dv{t} \pdv{L}{\dot{\theta}_1} &= \pdv{L}{\theta_1}\\
+    (m_1+m_2)l_1\ddot{\theta}_1+m_2l_2\ddot{\theta} &=-(m_1+m_2)g\theta_1,
+\end{aligned}\end{equation}
+\(\theta_2\)から得られる微分方程式は
+\begin{equation}\begin{aligned}[b]
+    \dv{t} \pdv{L}{\dot{\theta}_2} &= \pdv{L}{\theta_2}\\
+    l_1\ddot{\theta}_1+l_2\ddot{\theta} &=-g\theta_2
+\end{aligned}\end{equation}
+となる。これに\(\theta_1(t)=a_1\cos\omega t,\theta_2(t)=a_2\cos\omega t\)を代入すると
+\begin{equation}\begin{aligned}[b]
+    &\begin{cases}
+        (m_1+m_2)(g-l_1\omega^2)a_1-m_2l_2\omega^2 a_2 &=0\\
+        -l_1\omega^2 a_1 +(g-l_2\omega^2)a_2 &= 0
+    \end{cases}\\
+    &\begin{pmatrix}
+        (m_1+m_2)(g-l_1 \omega^2) & -m_2l_2\omega^2\\
+        -l_1\omega^2 &(g-l_2\omega^2)
+    \end{pmatrix}\begin{pmatrix}
+        a_1\\a_2
+    \end{pmatrix}=\begin{pmatrix}
+        0 \\ 0
+    \end{pmatrix}
+\end{aligned}\end{equation}
+これより、求める固有角振動数はこの連立方程式が非自明な解をもつような\(\omega\)のことである。
+行列式の値が0のとき、非自明な解となるので
+\begin{equation}\begin{aligned}[b]
+    0 &= (m_1+m_2)(g-l_1\omega^2)(g-l_2\omega^2)-m_2l_1l_2\omega^4\\
+    &=m_1l_1l_2\omega^4-g(m_1+m_2)(l_1+l_2)\omega^2+(m_1+m_2)g^2\\
+    \omega^2 &= \frac{g(m_1+m_2)(l_1+l_2)\pm\sqrt{g^2(m_1+m_2)^2(l_1+l_2)^2-4m_1(m_1+m_2)l_1l_2g^2}}{2m_1l_1l_2}\\
+    \omega &= \sqrt{\frac{(1+m_2/m_1)g(l_1+l_2)\pm g\sqrt{(1+m_2/m_1)^2(l_1+l_2)^2-4(1+m_2/m_1)l_1l_2}}{2l_1l_2}}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(m_1\gg m_2\)のとき固有振動数は
+\begin{equation}\begin{aligned}[b]
+    \omega^2 &= \frac{(l_1+l_2)g\pm g\sqrt{(l_1+l_2)^2-4l_1l_2}}{2l_1l_2}\\
+    &= \frac{g}{2l_1l_2}\Bigl[(l_1+l_2)\pm\abs{l_1-l_2}\Bigr]\\
+    &= \frac{g}{l_1},\,\frac{g}{l_2}
+\end{aligned}\end{equation}
+とわかる。
+
+固有振動数\(\omega_1^2\equiv g/l_1\)のとき、設問4の行列に代入すると\(m_2\ll 1\)に注意すると
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        0 & 0 \\
+        -g & g-gl_2/l_1
+    \end{pmatrix}\begin{pmatrix}
+        a_1\\a_2
+    \end{pmatrix}
+    &=\begin{pmatrix}
+        0\\ 0
+    \end{pmatrix}\\
+    \frac{a_1}{a_2} &= 1-\frac{l_2}{l_1}
+\end{aligned}\end{equation}
+となる。
+
+固有振動数\(\omega_2^2\equiv g/l_2\)のとき、設問4の行列に代入すると
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        g-gl_1/l_2 & 0 \\
+        -gl_1/l_2 & 0
+    \end{pmatrix}\begin{pmatrix}
+        a_1\\a_2
+    \end{pmatrix}
+    &=\begin{pmatrix}
+        0\\ 0
+    \end{pmatrix}\\
+    a_1 &= 0
+\end{aligned}\end{equation}
+となる。
+
+以上より
+\begin{equation}\begin{aligned}[b]
+    (a_1,a_2) = (l_1-l_2,l_2)
+\end{aligned}\end{equation}
+の振幅比で振動数が\(\omega^2=g/l_1\)のモードと
+\begin{equation}\begin{aligned}[b]
+    (a_1,a_2) = (0, 1)
+\end{aligned}\end{equation}
+の振幅比で振動数が\(\omega^2=g/l_2\)のモードの2つがある。
+
+\subsection{}
+わかんない
+
+
+\subsection*{感想}
+ニュートン力学と比べるとこっちのが楽だけど、
+それでも依然面倒ではある。
+
+\end{document}

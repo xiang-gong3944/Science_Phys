@@ -1,0 +1,85 @@
+\documentclass[../../sp_2016.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\section{統計力学: 反強磁性体}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    p_+ = \frac{e^{\mu H/k_BT}}{e^{\mu H/k_BT}+e^{-\mu H/k_BT}},\qquad
+    p_- = \frac{-e^{\mu H/k_BT}}{e^{\mu H/k_BT}+e^{-\mu H/k_BT}}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \ev{\sigma} = p_+ \times (+1) + p_- \times(-1)
+    = \frac{e^{\mu H/k_BT}-e^{-\mu H/k_BT}}{e^{\mu H/k_BT}+e^{-\mu H/k_BT}}
+    =\tanh(\frac{\mu H}{k_BT})
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \ev{\sigma_A}
+    = \tanh(\frac{\mu H_{\text{eff, A}}}{k_BT})
+    = \tanh(-\frac{zJ\ev{\sigma_B}}{k_BT}+\frac{\mu H}{k_BT})
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    \ev{\sigma_B}
+    = \tanh(\frac{\mu H_{\text{eff, B}}}{k_BT})
+    = \tanh(-\frac{zJ\ev{\sigma_A}}{k_BT}+\frac{\mu H}{k_BT})
+\end{aligned}\end{equation}
+となるので
+\begin{equation}\begin{aligned}[b]
+    f(x) = \tanh(\frac{\mu H}{k_BT}-\frac{4Jx}{k_BT})
+\end{aligned}\end{equation}
+
+\subsection{}
+\(H-0\)と\(\ev{\sigma_B}=-A\)を\(\ev{\sigma_A}=f(\ev{\sigma_B})\)に入れて、
+\begin{equation}\begin{aligned}[b]
+    \ev{\sigma_A} = \tanh(\frac{zJ\ev{\sigma_A}}{kB_T})
+\end{aligned}\end{equation}
+\(y=x\)と\(y=\tanh ax\)が\(x=0\)以外で交点を持つような\(a\)の範囲は\(a>1\)である。
+自己無撞着方程式が反強磁性の解を持つ条件はこれと同じであるので、
+求める温度であるネール温度は
+\begin{equation}\begin{aligned}[b]
+    T_N = \frac{zJ}{k_B} = \frac{4J}{k_B}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(H\to 0\)で、なおかつネール温度以上では\(\ev{\sigma}\ll 1\)より、
+自己無撞着方程式は
+\begin{equation}\begin{aligned}[b]
+    &\ev{\sigma_A} \simeq -\frac{zJ\ev{\sigma_B}}{k_BT}+\frac{\mu H}{k_BT},\quad
+    \ev{\sigma_B} \simeq -\frac{zJ\ev{\sigma_A}}{k_BT}+\frac{\mu H}{k_BT}\\
+    &\quad\rightarrow\qquad \frac{\ev{\sigma_A}+\ev{\sigma_B}}{2} = \frac{2\mu H/k_BT}{1+zJ/k_BT} = \frac{\mu H}{k_B(T+T_N)}
+\end{aligned}\end{equation}
+これより帯磁率は
+\begin{equation}\begin{aligned}[b]
+    \chi = \lim_{H\to0} \dv{H}\qty(\mu\frac{\ev{\sigma_A}+\ev{\sigma_B}}{2}) = \frac{\mu^2}{k_B(T+T_N)}
+\end{aligned}\end{equation}
+
+\subsection{}
+交換相互作用を平均場近似により、有効磁場とみなすと
+\begin{equation}\begin{aligned}[b]
+    \mu H_{\text{eff,A}} = -zJ\ev{\sigma_B}-zJ'\ev{\sigma_A}+\mu H,\quad
+    \mu H_{\text{eff,B}} = -zJ\ev{\sigma_A}-zJ'\ev{\sigma_B}+\mu H
+\end{aligned}\end{equation}
+となる。
+いま\(H=0\)のときであるので自己無撞着方程式は
+\begin{equation}\begin{aligned}[b]
+    \ev{\sigma_A} = \tanh[\frac{-zJ\ev{\sigma_B}-zJ'\ev{\sigma_A}}{k_BT}] = \tanh[\frac{z(J-J')}{k_BT}\ev{\sigma_A}]
+\end{aligned}\end{equation}
+となる。なのでこのときのネール温度は
+\begin{equation}\begin{aligned}[b]
+    T_N' = \frac{z(J-J')}{k_B}= \frac{4(J-J')}{k_B} \to 0, \qquad (J'\to J)
+\end{aligned}\end{equation}
+なので次近接の相互作用が最近接の相互作用の強さに近づくと転移温度が0になるのがわかる。
+
+\subsection*{感想}
+統計力学の問題だと\(\beta\)を使いたくなるが、
+よく問題をみると与えられていないことが多々ある。
+なので答案をちゃんと書くなら\(\beta\)を使わず\(1/k_BT\)を使うのが安全なのかもしれない。
+忘れてたら、一番最初の余白に\(\beta=1/k_BT\)として以下の答案は書いて宣言してもよいのかしら?
+
+
+\end{document}
