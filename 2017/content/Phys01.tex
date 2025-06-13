@@ -1,0 +1,131 @@
+\documentclass[../../sp_2017.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{0}
+\section{量子力学: 摂動論・断熱近似}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    (H-E_2I)\ket{2}&=V\ket{1}+E_2\ket{2}-E_2\ket{2}\\
+    \bra{2}(H-E_2I)\ket{2} &= V \braket{2}{1}=0\\
+    (H-E_2I)^2\ket{2}&=V^2\ket{2}+E_2\ket{2}-E_2\ket{2}\\
+    \bra{2}(H-E_2I)^2\ket{2} &= V^2 \braket{2}{2}=V^2
+\end{aligned}\end{equation}
+\subsection{}
+固有値方程式より
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{H-EI} = (E_1-E)(E_2-E)-V^2 = E^2-(E_1+E_2)E+E_1E_2-V^2\\
+    E &= \frac{E_1+E_2}{2}\pm\sqrt{\frac{(E_1-E_2)^2}{4}+V^2}
+\end{aligned}\end{equation}
+また、固有ベクトルは
+\begin{equation}\begin{aligned}[b]
+    \begin{pmatrix}
+        E_1-E_{\pm} & V\\
+        V & E_2-E_{\pm}
+    \end{pmatrix}\begin{pmatrix}
+        \braket{1}{\psi_\pm}\\
+        \braket{2}{\psi_\pm}
+    \end{pmatrix}=0
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    0&=(E_1-E_\pm)\braket{1}{\psi_\pm} + V\braket{2}{\psi_\pm}\\
+    \frac{\braket{2}{\psi_\pm}}{\braket{1}{\psi_\pm}} &= \frac{E_\pm-E_1}{V}\\
+    \frac{\braket{2}{\psi_+}}{\braket{1}{\psi_+}} &= \frac{E_2-E_1}{2V}+\sqrt{\frac{(E_2-E_1)^2}{4V^2}+1}\\
+    \frac{\braket{2}{\psi_-}}{\braket{1}{\psi_-}} &= \frac{E_2-E_1}{2V}-\sqrt{\frac{(E_2-E_1)^2}{4V^2}+1}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \bra{\psi_+}H\ket{\psi_-} = E_+\braket{\psi_+}{\psi_-}&=E_-\braket{\psi_+}{\psi_-}\\
+    0 &= (E_+ -E_-)\braket{\psi_+}{\psi_-}
+\end{aligned}\end{equation}
+いま、固有値は異なるので\(\braket{\psi_+}{\psi_-}=0\)がいえ、固有状態が直交しているのがわかる。
+
+\subsection{}
+設問2で得られた結果に\(E_1=E_2-\mathcal{E}\lambda\)を入れると
+\begin{equation}\begin{aligned}[b]
+    E_\pm(\lambda) = E_2 \pm \frac{\mathcal{E}\lambda}{2}\pm\sqrt{\frac{\mathcal{E}^2\lambda^2}{4}+V^2}
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    E_+(\lambda)-E_-(\lambda) = 2\frac{\mathcal{E}\lambda}{2}\pm\sqrt{\frac{\mathcal{E}^2\lambda^2}{4}+V^2}
+    \geq 2\sqrt{V^2}=2V
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsubsection{(i)}
+シュレディンガー方程式に\(\ket*{\psi_\pm^{(t/T)}}\)の完全系をいれて整理していく。
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\ket*{\psi(t)}&=H\ket*{\psi(t)}\\
+    i\hbar\pdv{t}\qty(\ket*{\psi_+^{(t/T)}}\braket*{\psi_+^{(t/T)}}{\psi(t)}
+    +\ket*{\psi_-^{(t/T)}}\braket*{\psi_-^{(t/T)}}{\psi(t)})
+    &=\ket*{\psi_+^{(t/T)}}\mel*{\psi_+^{(t/T)}}{H}{\psi_+^{(t/T)}}\braket*{\psi_+^{(t/T)}}{\psi(t)}\\
+    &\quad+\ket*{\psi_+^{(t/T)}}\mel*{\psi_+^{(t/T)}}{H}{\psi_-^{(t/T)}}\braket*{\psi_-^{(t/T)}}{\psi(t)}\\
+    &\quad+\ket*{\psi_+^{(t/T)}}\mel*{\psi_+^{(t/T)}}{H}{\psi_+^{(t/T)}}\braket*{\psi_+^{(t/T)}}{\psi(t)}\\
+    &\quad+\ket*{\psi_-^{(t/T)}}\mel*{\psi_-^{(t/T)}}{H}{\psi_-^{(t/T)}}\braket*{\psi_-^{(t/T)}}{\psi(t)}\\
+    i\hbar\pdv{t}\qty(c_+(t)\ket*{\psi_+^{(t/T)}}+c_-(t)\ket*{\psi_-^{(t/T)}})&=E_+(t/T)c_+(t)\ket*{\psi_+^{(t/T)}}+E_-(t/T)c_-(t)\ket*{\psi_-^{(t/T)}}\\
+\end{aligned}\end{equation}
+また、\(\ket*{\psi_+^{(\lambda)}}\)と\(\ket*{\psi_-^{(\lambda)}}\)が直交していることから
+\begin{equation}\begin{aligned}[b]
+    \ket*{\psi_-^{(t/T)}} = -\sin(\theta(\lambda))\ket{1}+\cos(\theta(\lambda))\ket{2}
+\end{aligned}\end{equation}
+のように書ける。
+\(\ket*{\psi_\pm^{(t/T)}}\)の基底で書いた時間発展の式を\(\ket{1},\ket{2}\)の基底で書き直すと
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}&\Bigl[\Bigl\{c_+(t)\cos(\theta(t/T))-c_-(t)\sin(\theta(t/T))\Bigr\}\ket{1}
+    +\Bigl\{c_+(t)\sin(\theta(t/T))+c_-(t)\cos(\theta(t/T))\Bigr\}\ket{2}\Bigr]\\
+    &=\Bigl\{E_+(t/T)c_+(t)\cos(\theta(t/T))-E_-(t/T)c_-(t)\sin(\theta(t/T))\Bigr\}\ket{1}\\
+    &\quad+\Bigl\{E_+(t/T)c_+(t)\sin(\theta(t/T))+E_-(t/T)c_-(t)\cos(\theta(t/T))\Bigr\}\ket{2}
+\end{aligned}\end{equation}
+これより各基底の成分を見ると
+\begin{equation}\begin{aligned}[b]
+    \qty(i\hbar\pdv{t}-E_+(t/T))c_+(t)\cos(\theta(t/T))
+    -\qty(i\hbar\pdv{t}-E_-(t/T))c_-(t)\sin(\theta(t/T))&=0\\
+    \qty(i\hbar\pdv{t}-E_+(t/T))c_+(t)\sin(\theta(t/T))
+    +\qty(i\hbar\pdv{t}-E_-(t/T))c_-(t)\cos(\theta(t/T))&=0\\
+\end{aligned}\end{equation}
+
+\subsubsection{(ii)}
+一般の関数\(f(t)\)に対し、
+\begin{equation}\begin{aligned}[b]
+    i\hbar\pdv{t}\qty[f(t)e^{-\frac{i}{\hbar}\int_{-T}^t dt'E_\pm(t'/T)}]
+    =e^{-\frac{i}{\hbar}\int_{-T}^t dt'E_\pm(t'/T)} \qty[-i\hbar\pdv{t}+E_\pm(t/T)]f(t)
+\end{aligned}\end{equation}
+となるので、\(f(t)=\tilde{c}_\pm(t)\cos(\theta(t/T)),\tilde{c}_\pm(t)\sin(\theta(t/T))\)として前問で得られた時間発展の式に入れると、
+\begin{equation}\begin{aligned}[b]
+    \pdv{t}\Bigl[\tilde{c}_+(t)\cos(\theta(t/T))-\tilde{c}_-(t)\sin(\theta(t/T))\Bigr]&=0\\
+    \pdv{t}\Bigl[\tilde{c}_+(t)\sin(\theta(t/T))+\tilde{c}_-(t)\cos(\theta(t/T))\Bigr]&=0
+\end{aligned}\end{equation}
+
+\subsection{}
+外部パラメータ\(\lambda\)は磁場で、ゼーマン分裂によるエネルギー準位のシフトを表していると見える。
+ホッピング\(V\)によって二準位は結合性軌道と反結合性軌道になり、磁場を加えてもと2準位の上下を入れ替えたとしても、
+結合性軌道と反結合性軌道は設問4により交わることはなく、反結合性軌道はいつまでたっても反結合性軌道の対称性をもつといった感じか。
+
+
+\subsection*{感想}
+その場で notation を把握しないといけないのが面倒な問題。
+
+設問6でいろいろ与えられたものを使った説明は全く思いつかなかった。
+ナイーブに設問5の結果を使うとうまくいかない。
+設問5で得られた時間発展の式と与えられた初期条件より
+\begin{equation*}\begin{aligned}[b]
+    \tilde{c}_+(t)\cos(\theta(t/T))-\tilde{c}_-(t)\sin(\theta(t/T))&=\tilde{c}_+(-T)\cos(\theta(-1))-\tilde{c}_-(-T)\sin(\theta(-1))=1\\
+    \tilde{c}_+(t)\sin(\theta(t/T))+\tilde{c}_-(t)\cos(\theta(t/T))&=\tilde{c}_+(-T)\sin(\theta(-1))+\tilde{c}_-(-T)\cos(\theta(-1))=0
+\end{aligned}\end{equation*}
+これより
+\begin{equation*}\begin{aligned}[b]
+    \tilde{c}_+(t)=\cos(\theta(t/T)),\quad
+     \tilde{c}_-(t)=-\sin(\theta(t/T))
+\end{aligned}\end{equation*}
+なので、\(t=T\)では
+\begin{equation*}\begin{aligned}[b]
+    \tilde{c}_+(T)=0,\quad
+     \tilde{c}_-(T)=1
+\end{aligned}\end{equation*}
+となって意図しない解が出てしまっている。
+
+
+\end{document}
