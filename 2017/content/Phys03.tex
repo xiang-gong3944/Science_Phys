@@ -4,10 +4,105 @@
 
 \begin{document}
 \setcounter{section}{2}
-\section{古典力学:}
+\section{電磁気学: 電磁波の放射}
+\subsection{}
+スカラーポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \phi_0(\vb*{r})
+    &=\frac{q}{4\pi\varepsilon_0\sqrt{r^2-rd\cos\theta +d^2/4}}-\frac{q}{4\pi\varepsilon_0\sqrt{r^2+rd\cos\theta +d^2/4}}\\
+    &\simeq\frac{q}{4\pi\varepsilon_0 r}\qty(1+\frac{d}{2r}\cos\theta)-\frac{q}{4\pi\varepsilon_0r}\qty(1-\frac{d}{2r}\cos\theta)\\
+    &= \frac{qd\cos\theta}{4\pi\varepsilon_0 r^2}
+    =\frac{p\cdot r}{4\pi\varepsilon_0 r^3}
+\end{aligned}\end{equation}
+これより静電場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} &= -\grad \phi_0(\vb*{r}) = \frac{qd}{4\pi\varepsilon_0r^3}\qty(2\cos\theta\vb*{e}_r+\sin\theta\vb*{e}_r)
+\end{aligned}\end{equation}
+
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}(\vb*{r},t) &= -\grad\phi(\vb*{r},t)-\pdv{\vb*{A}(\vb*{r},t)}{t}, & \vb*{B}(\vb*{r},t) &= \curl \vb*{A}(\vb*{r},t)
+\end{aligned}\end{equation}
+
+
+\subsection{}
+まず、スカラーポテンシャルについて
+\begin{equation}\begin{aligned}[b]
+    \div \vb*{E}&=\frac{\rho}{\varepsilon_0}\\
+    \div\qty(\grad\phi+\pdv{A}{t}) &=-\frac{\rho}{\varepsilon_0}\\
+    \laplacian\phi+\pdv{t}+\div{\vb*{A}} &= -\frac{\rho}{\varepsilon_0}\\
+    \laplacian\phi-\frac{1}{c^2}\pdv[2]{\phi}{t} &= -\frac{\rho}{\varepsilon_0}
+\end{aligned}\end{equation}
+次に、ベクトルポテンシャルについて
+\begin{equation}\begin{aligned}[b]
+   \curl\vb*{B}-\frac{1}{c^2}\pdv{\vb*{E}}{t} &= \mu_0 \vb*{j}\\
+   \curl(\curl\vb*{A})-\frac{1}{c^2}\pdv{t}\qty(-\grad\phi-\pdv{\vb*{A}}{t}) &= \mu_0\vb*{j}\\
+   \grad(\div\vb*{A})-\laplacian\vb*{A}+\grad\qty(\frac{1}{c^2}\pdv{\phi}{t})+\frac{1}{c^2}\pdv[2]{\vb*{A}}{t} &= \mu_0 \vb*{j}\\
+    \laplacian \vb*{A}-\frac{1}{c^2}\pdv[2]{\phi}{t} &= -\mu_0 \vb*{j}
+\end{aligned}\end{equation}
+
+\subsection{}
+電荷保存則より
+\begin{equation}\begin{aligned}[b]
+    \rho = \int j_z(\vb*{r},t) dt = \frac{I_0}{i\omega}e^{i\omega t}\delta(x)\delta(y)
+\end{aligned}\end{equation}
+
+\subsection{}
+電磁波の放射で最も低次の放射は双極子放射で、これは設問1で見たように\(1/r^2\)の依存性になるので、
+これより高次の\(1/r^3\)といった項は適宜落としていきながら変形して行く。
+よってベクトルポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    \vb*{A}(\vb*{r},t) &= \frac{\mu_0}{4\pi}\int d^3\vb*{r}'\, \frac{\vb*{j}(\vb*{r}',t-\frac{\abs{\vb*{r}-\vb*{r}'}}{c})}{\abs{\vb*{r}-\vb*{r}'}}\\
+    A_z(\vb*{r},t) &= \frac{\mu_0I_0}{4\pi}e^{i\omega t}\int d^3\vb*{r}'\,\frac{e^{-ik\abs{\vb*{r}-\vb*{r}'}}}{\abs{\vb*{r}-\vb*{r}'}}\\
+    &\simeq \frac{\mu_0I_0}{4\pi}e^{i\omega t}\int d^3\vb*{r}'\,\frac{e^{-ik\qty(r-r'\cos\theta')}}{r}\qty(1+\frac{r'\cos\theta'}{r})\delta(x)\delta(y)\\
+    &\simeq \frac{\mu_0I_0}{4\pi}\frac{e^{i(\omega t-kr)}}{r}\int_{-d/2}^{d/2}dz'\,e^{ikz'}
+    = \frac{\mu_0I_0}{2\pi}\frac{e^{i(\omega t-kr)}}{kr}\sin\frac{kd}{2}\\
+    &\simeq\frac{\mu_0I_0 d}{4\pi}\frac{e^{i(\omega t-kr)}}{r}\\
+    \vb*{A}(\vb*{r},t)
+    &= \frac{\mu_0I_0 d}{4\pi}\frac{e^{i(\omega t-kr)}}{r}\qty(\cos\theta \vb*{e}_r-\sin\theta \vb*{e}_\theta)
+\end{aligned}\end{equation}
+そして、\(r\)の次数を増やさないように磁場を求める。
+微分演算子をみると\(\nabla = \vb*{e}_r\partial_r+\vb*{e}_\theta\frac{1}{r}\partial_\theta+\vb*{e}_\varphi\frac{1}{r\sin\theta}\partial_\varphi\)
+となっていて、\(r\)方向以外の微分は\(r\)の次数を増やすことがわかる。
+なので\(r\)方向の微分だけに注目するの十分である。
+\begin{equation}\begin{aligned}[b]
+    \vb*{B}(\vb*{r},t) &= \curl \vb*{A}(\vb*{r},t)\\
+    &\simeq \pdv{r}\qty[\frac{\mu_0I_0 d}{4\pi}\frac{e^{i(\omega t-kr)}}{r}]\vb*{e}_r\times\qty(\cos\theta \vb*{e}_r-\sin\theta \vb*{e}_\theta)\\
+    &\simeq -i\frac{\mu_0I_0 kd}{4\pi}\frac{e^{i(\omega t-kr)}}{r}\sin\theta \vb*{e}_\varphi
+    = -i\frac{\mu_0I_0 d\omega}{4\pi c}\frac{e^{i(\omega t-kr)}}{r}\sin\theta \vb*{e}_\varphi
+\end{aligned}\end{equation}
+となる。2つ目の近似は考えているスケールでは分母の\(r\)はほぼ一定とみなして振動成分の微分だけ見るというものに対応する。
+次に電場は、\(r\)付近に電流源はないので
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{c^2}\pdv{\vb*{E}(\vb*{r},t)}{t}
+    &=\curl \vb*{B}(\vb*{r},t)\\
+    i\omega\vb*{E}(\vb*{r},t)
+    &\simeq \vb*{e}_r\times\vb*{e}_\varphi \pdv{r}\qty[-i\frac{\mu_0I_0 d\omega}{4\pi c}\frac{e^{i(\omega t-kr)}}{r}\sin\theta]\\
+    \vb*{E}(\vb*{r},t)
+    &\simeq -i\frac{\mu_0I_0 d\omega}{4\pi}\frac{e^{i(\omega t-kr)}}{r}\sin\theta \vb*{e}_\theta
+\end{aligned}\end{equation}
+
+
+\subsection{}
+問題の指示に従わず、複素表示でポインティングベクトルを計算する。
+そのままだと実表示した電磁場の時間平均と同じ値にならず、
+同じ値にするには少し定義が変わって以下のように計算する。
+\begin{equation}\begin{aligned}[b]
+    \vb*{S} = \frac{1}{2\mu_0}\vb*{E}^{*}\times \vb*{B}
+    = \frac{\mu_0}{2c}\qty(\frac{I_0 d\omega}{4\pi})^2\frac{\sin^2\theta}{r^2} \vb*{e}_r
+\end{aligned}\end{equation}
+
+\subsection{}
 
 
 \subsection*{感想}
+砂川理論電磁気とかジャクソン電磁気を読んだことあるかを聞かれてるのかと思った。
+この本だと計算がただただ面倒という印象しかなかったが、
+試験問題に収まるように設定を見直すと思ったより単純な計算で双極子放射を求められたので、
+勉強になった。
 
+設問5以降の近似は、双極子放射なので影響は何もかも\(1/r\)に依存して、
+\(1/r^2\)より高次の項は4極子以上の放射であるので無視するというのが肝。
 
 \end{document}

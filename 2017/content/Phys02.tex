@@ -4,10 +4,132 @@
 
 \begin{document}
 \setcounter{section}{1}
-\section{統計力学:}
+\section{統計力学: 理想気体}
+\subsection{}
+\subsubsection{(i)}
+\begin{equation}\begin{aligned}[b]
+    Z &= \frac{1}{N!}\qty[\frac{1}{(2\pi\hbar)^3}\int_V d^3r\int d^3p\, \exp(-\frac{\beta p^2}{2m})]^N\\
+    &= \frac{1}{N!}\qty[V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}]
+\end{aligned}\end{equation}
+これより内部エネルギーは
+\begin{equation}\begin{aligned}[b]
+    V &= -\pdv{\beta}\ln Z = -\pdv{\beta}\qty[N\ln\frac{V}{N}\qty(\frac{m}{2\pi\hbar^2\beta})^{3/2}2]\\
+    &= \frac{3N}{2\beta}=\frac{3}{2}Nk_BT
+\end{aligned}\end{equation}
+
+\subsubsection{(ii)}
+\begin{equation}\begin{aligned}[b]
+    F &= -k_BT\ln Z=-Nk_BT\ln\qty[\frac{V}{N}\qty(\frac{m}{2\pi\hbar^2\beta})^{3/2}e]\\
+    p &= -\pdv{F}{V} = \frac{Nk_BT}{V}
+\end{aligned}\end{equation}
+
+\subsubsection{(iii)}
+\begin{equation}\begin{aligned}[b]
+    S &= -\pdv{F}{T} =Nk_B\ln\qty[\frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e]+\frac{3}{2}Nk_B
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    \Delta S(T_0,T_0/2) &= S(T_0)-S(T_0/2) = Nk_B\ln 2
+\end{aligned}\end{equation}
+
+
+\subsection{}
+\subsubsection{(i)}
+大分配関数は
+\begin{equation}\begin{aligned}[b]
+    \Xi &= \sum_{n=0}^{\infty} \frac{1}{n!}\qty[V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}]^n e^{\beta \mu n}
+    =\exp[V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}]
+\end{aligned}\end{equation}
+より、
+グランドポテンシャルは
+\begin{equation}\begin{aligned}[b]
+    J = -k_BT\ln\Xi = -Vk_BT\qty[\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}]
+\end{aligned}\end{equation}
+となる。なので粒子数は
+\begin{equation}\begin{aligned}[b]
+    \ev{N(T)}&=-\pdv{J}{\mu}=V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}\\
+    \frac{\ev{N(T_1)}}{\ev{N(T_2)}} &= \frac{T_1^{3/2}e^{\mu/k_BT_1}}{T_2^{3/2}e^{\mu/k_BT_2}}
+\end{aligned}\end{equation}
+
+\subsubsection{(ii)}
+圧力は
+\begin{equation}\begin{aligned}[b]
+    p = -\pdv{J}{V} = -kB_T\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    \frac{\ev{N(T)}}{V}=\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}=\frac{p}{k_BT}
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsubsection{(i)}
+\((n_x,n_y,n_z)=(1,1,1)\)の状態が基底状態なので、これのエネルギー\(E_0\)は
+\begin{equation}\begin{aligned}[b]
+    E_0 &=\frac{\pi^2}{2m}\frac{\hbar^2(1+1+1/4)}{L^2}=\frac{9\pi^2\hbar^2}{8mL^2}
+\end{aligned}\end{equation}
+である。
+第1励起状態は\((n_x,n_y,n_z)=(1,1,2)\)であるので、これのエネルギー\(E_1\)は
+\begin{equation}\begin{aligned}[b]
+    E_1 &=\frac{\pi^2}{2m}\frac{\hbar^2(1+1+1)}{L^2}=\frac{3\pi^2\hbar^2}{2mL^2}
+\end{aligned}\end{equation}
+である。
+
+\subsubsection{(ii)}
+系が十分低温であるので分配関数を考えるときの状態は基底状態と第1励起状態だけを考えればよい。
+なので分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z = \sum_{k=0}^{N}~_NC_ke^{-(N-k)\beta E_0}e^{-k\beta E_1}
+    = \qty(e^{-\beta E_0}+e^{-\beta E_1})^N
+\end{aligned}\end{equation}
+これより、内部エネルギーは
+\begin{equation}\begin{aligned}[b]
+    Z = -\pdv{\beta}\ln Z= N\frac{E_0e^{-\beta E_0}+E_1e^{-\beta}}{e^{-\beta E_0}+e^{-\beta E_1}}
+    =NE_0 +N\frac{E_1-E_0}{1+e^{\beta(E_1-E_0)}}
+\end{aligned}\end{equation}
+となる。
+古典系とは違い、内部エネルギーは温度に比例せず基底状態のエネルギーに漸近していく。
+
+\subsubsection{(iii)}
+\begin{equation}\begin{aligned}[b]
+    \dv{U}{t} = -k_B\beta^2\pdv{U}{\beta}=Nk_B\qty(\frac{(E_1-E_0)/2k_BT}{\cosh(E_1-E_0)/2k_BT})^2
+\end{aligned}\end{equation}
+
+\subsection{(iv)}
+\begin{equation}\begin{aligned}[b]
+    \delta S(T_0,T_0/2) = \int_{T_0/2}^{T_0} \frac{C_V(T)}{T}dT
+    \simeq \frac{C_V(T_0/2)}{T_0/2}\qty(T_0-\frac{T_0}{2})
+    = C_V(T_0/2) \to 0
+    \qquad (T_0\to0)
+\end{aligned}\end{equation}
+
+\subsubsection{}
+古典的には\(3N\)次元位相空間の半径\(\sqrt{2mE}\)の球の表面積に比例する。
+これの対数をとったのがボルツマンエントロピーなので、\(\Delta S\)は状態数の比の対数となる。
+実際状態を求めると
+\begin{equation}\begin{aligned}[b]
+    W(E)dE &= \frac{a_d}{N!}\qty[V\qty(\frac{mE}{2\pi\hbar^2})^{3/2}]^{N}\frac{dE}{E}\\
+\end{aligned}\end{equation}
+となる。\(E\propto T\)になることを使うと
+\begin{equation}\begin{aligned}[b]
+    \frac{W(T_0)}{W(T_0/2)} &= 2^N\\
+    \Delta S(T_0,T_0/2) &= Nk_B\ln 2
+\end{aligned}\end{equation}
+同じ結果が得られる。
+
+量子的に扱ったときの振る舞いは\(T_0\to0\)とすると、ボース粒子がとれる状態は基底状態の1通りのみになる。
+なのでボルツマンエントロピーは
+\begin{equation}\begin{aligned}[b]
+    S = k_B\ln 1 =0
+\end{aligned}\end{equation}
+となる。このことから\(T_0\to 0\)の振る舞いがわかる。
 
 
 \subsection*{感想}
+理想気体を古典・量子ともに、
+ミクロカノニカル分布・カノニカル分布・グランドカノニカル分布にして調べていく問題。
+よく短くまとめたなぁという感じた。
+最後の古典系でのボルツマンエントロピーが\(\Delta S \propto Nk_B\)になるのは、
+これで十分な感じもするが、量子系みたいにもっと直感的で完結に説明できないものだろうかと思ってしまった。
 
 
 \end{document}
