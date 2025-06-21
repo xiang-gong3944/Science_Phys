@@ -94,7 +94,67 @@
 \end{aligned}\end{equation}
 
 \subsection{}
+波源との距離は
+\begin{equation}\begin{aligned}[b]
+    \begin{cases}
+        R_1^2 &= r^2 +\frac{D^2}{4}-rD\cos(\frac{\pi}{2}+\varphi)\\
+        R_2^2 &= r^2 +\frac{D^2}{4}-rD\cos(\frac{\pi}{2}-\varphi)
+    \end{cases} \quad\to\quad
+    \begin{cases}
+        R_1 &\simeq r \sqrt{1+\frac{D}{r}\sin\varphi}\\
+        R_2 &\simeq r \sqrt{1-\frac{D}{r}\sin\varphi}
+    \end{cases}\quad\to\quad
+    \begin{cases}
+        R_1 &\simeq r + \frac{D}{2}\sin\varphi\\
+        R_2 &\simeq r - \frac{D}{2}\sin\varphi
+    \end{cases}
+\end{aligned}\end{equation}
+である。
+なので電場は
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} &= \vb*{E}_1+\vb*{E}_2\\
+    &= \vb*{e}_zE_0\qty[\cos(\omega t-kR_1-\delta_1)+\cos(\omega t-kR_2-\delta_2)]\\
+    &= \vb*{e}_z 2E_0\cos(\frac{k(R_1-R_2)+\delta_1-\delta_2}{2})\cos(\omega t-\frac{k(R_1+R_2)+\delta_1+\delta_2}{2})\\
+    &= \vb*{e}_z 2E_0\cos(\frac{kD\sin\varphi+\delta_1-\delta_2}{2})\cos(\omega t-kr-\frac{\delta_1+\delta_2}{2})\\
+\end{aligned}\end{equation}
+となる。
 
+\(\delta_n=0\)のときには
+\begin{equation}\begin{aligned}[b]
+    \vb*{E} &=  \vb*{e}_z 2E_0\cos(\frac{kD\sin\varphi}{2})\cos(\omega t-kr)\\
+    I &= 4\cos^2\qty(\frac{kD\sin\varphi}{2})\cos^2(\omega t-kr)
+\end{aligned}\end{equation}
+となる。
+強度が最大値となる角度は
+\begin{equation}\begin{aligned}[b]
+    \frac{kD\sin\varphi}{2} &= n\pi\\
+    \sin\varphi &= \frac{2\pi}{kD}n
+\end{aligned}\end{equation}
+である。
+問題文の書き方だとわかりにくいが、
+波動の位相は\(kr\)のスケールで変化するので、
+電磁波の波長は\(r\)程度である。よって
+\(r\gg D\)というのは\(kD\sim D/r \ll 1\)というのを表している。
+なのでここで現れた整数は\(n=0\)しかとることができない。
+つまり強度が最大になる角度は\(\varphi=0\)である。
+
+これを中心として強度が最大値の半分になる角度は
+\begin{equation}\begin{aligned}[b]
+    \frac{kD\sin\varphi}{2} &=  \pm\frac{\pi}{4}\\
+    \sin\varphi &= \pm \frac{\pi}{2kD}
+\end{aligned}\end{equation}
+とわかる。よってその角度幅は
+\begin{equation}\begin{aligned}[b]
+    \delta\varphi = \arcsin(\frac{\pi}{2kD})-\arcsin(-\frac{\pi}{2kD}) = 2\arcsin(\frac{\pi}{2kD})
+\end{aligned}\end{equation}
+である。
+この値を小さくするには\(kD\)を小さくすればよい。よって\(D\)を小さくすればよい。
+
+次に電場の強度が最大になる方向が\(\varphi=\varphi_0\)となるには
+\begin{equation}\begin{aligned}[b]
+    0 &= \frac{kD\sin\varphi_0+\delta_1-\delta_2}{2}\\
+    \delta_2-\delta_1 &= kD\sin\varphi_0
+\end{aligned}\end{equation}
 
 \subsection*{感想}
 砂川理論電磁気とかジャクソン電磁気を読んだことあるかを聞かれてるのかと思った。
@@ -102,7 +162,7 @@
 試験問題に収まるように設定を見直すと思ったより単純な計算で双極子放射を求められたので、
 勉強になった。
 
-設問5以降の近似は、双極子放射なので影響は何もかも\(1/r\)に依存して、
+設問5の近似は、双極子放射なので影響は何もかも\(1/r\)に依存して、
 \(1/r^2\)より高次の項は4極子以上の放射であるので無視するというのが肝。
 
 \end{document}

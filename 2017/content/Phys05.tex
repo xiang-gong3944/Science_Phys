@@ -1,0 +1,84 @@
+\documentclass[../../sp_2017.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{4}
+\section{物性: X線回折}
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    I &= C \abs{\int_V\sum_{p=0}^{N-1}n_0\delta(x)\delta(y)\delta(z-ap)e^{i q\cdot r}dr}^2\\
+    &= C\abs{\sum_{p=0}^{N-1}n_0e^{iq_z ap}}^2
+    = C\abs{n_0\frac{1-e^{iq_zaN}}{1-e^{iq_za}}}^2\\
+    &= Cn_0^2\frac{1-e^{iq_zaN}}{1-e^{iq_za}}\frac{1-e^{-iq_zaN}}{1-e^{-iq_za}}
+    =Cn_0^2\frac{1-\cos(q_zaN)}{1-\cos(q_za)}
+\end{aligned}\end{equation}
+
+\subsection{}
+前問と同様にやると
+\begin{equation}\begin{aligned}[b]
+    I &= C \abs{\int_V\sum_{p_x,p_y,p_z}n_0\delta(x-ap_x)\delta(y-ap_y)\delta(z-ap_z)e^{i q\cdot r}dr}^2\\
+    &= C\abs{\sum_{p_x,p_y,p_z}^{N-1}n_0e^{iq_x ap_x}e^{iq_y ap_y}e^{iq_z ap_z}}^2
+    = C\abs{n_0\frac{1-e^{iq_xaN}}{1-e^{iq_xa}}\frac{1-e^{iq_yaN}}{1-e^{iq_ya}}\frac{1-e^{iq_zaN}}{1-e^{iq_za}}}^2\\
+    &=Cn_0^2\frac{1-\cos(q_xaN)}{1-\cos(q_xa)}\frac{1-\cos(q_yaN)}{1-\cos(q_ya)}\frac{1-\cos(q_zaN)}{1-\cos(q_za)}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(q= \vb*{e}_z\frac{4\pi}{\lambda}\sin\theta\)より
+\begin{equation}\begin{aligned}[b]
+    I = Cn_0^2\frac{1-\cos(q_zaN)}{1-\cos(q_za)}
+\end{aligned}\end{equation}
+散乱強度が大きくなるのはこれの分母が\(0\)になるようなとき、つまり\(\cos q_za=1\)のときなので、
+\begin{equation}\begin{aligned}[b]
+    q_za &= 2\pi n\\
+    \frac{4\pi}{\lambda}\sin\theta a&=2\pi n\\\
+    2a\sin\theta &= n\lambda
+\end{aligned}\end{equation}
+
+\subsection{}
+\(n=1\)のピークが\(\ang{13}\)にあるので、
+\begin{equation}\begin{aligned}[b]
+    a = \frac{\lambda}{2\sin\ang{13}}= \frac{0.15\,\si{nm}}{2\times0.23}=3.26\,\si{\AA}
+\end{aligned}\end{equation}
+
+\subsection{}
+散乱振幅は\(\delta=a(1/2,1/2,1/2)\)とおいて、
+\begin{equation}\begin{aligned}[b]
+    \int (n(r)+n(r-\delta))e^{iqr}dr = (1+e^{iq\delta})\int n(r)e^{iqr}
+\end{aligned}\end{equation}
+と書けるので、散乱強度は
+\begin{equation}\begin{aligned}[b]
+    I &= C\abs{(1+e^{iq\delta})\int n(r)e^{iqr}dr}^2\\
+    &= C\abs{n_0(1+e^{iq\delta})\frac{1-e^{iq_xaN}}{1-e^{iq_xa}}\frac{1-e^{iq_yaN}}{1-e^{iq_ya}}\frac{1-e^{iq_zaN}}{1-e^{iq_za}}}^2\\
+    &= 2Cn_0^2(1+\cos(q\delta))\frac{1-\cos(q_zaN)}{1-\cos(q_za)}
+\end{aligned}\end{equation}
+となる。
+\(1+\cos(q\delta)=0\)となる波数、つまり
+\begin{equation}\begin{aligned}[b]
+    q\delta &= (2n+1)\pi\\
+    \frac{4\pi}{\lambda}\sin\theta \frac{a}{2} &= (2n+1)\pi\\
+    2a\sin\theta &= (2n+1)
+\end{aligned}\end{equation}
+を満たすときには、ピークが消える。
+なので、アとウのピークは消える。
+
+\subsection{}
+全問より原子Bの副格子によって消えないピークの強度は
+\begin{equation}\begin{aligned}[b]
+    I &=4Cn_0^2\frac{1-\cos(q_zaN)}{1-\cos(q_za)}\\
+\end{aligned}\end{equation}
+そして、\(\epsilon=0\)のときに消えるピークの強度は
+\begin{equation}\begin{aligned}[b]
+    I &=2Cn_0^2(1+\cos(q(\delta+\epsilon)))\frac{1-\cos(q_zaN)}{1-\cos(q_za)}\\
+    &\simeq 2Cn_0^2\qty(1+\cos(q\delta)-(q\epsilon)\sin(q\delta)-\frac{(q\epsilon)^2}{2}\cos(q\epsilon))\frac{1-\cos(q_zaN)}{1-\cos(q_za)}\\
+    &=C(q\epsilon)^2\frac{1-\cos(q_zaN)}{1-\cos(q_za)}
+\end{aligned}\end{equation}
+となる。
+つまり、ピークの強さの比が\((q\epsilon)^2/4\)に対応するので、これから変位量を求められる。
+
+
+\subsection*{感想}
+最後の設問の解答あってるのかわからん。
+
+
+\end{document}

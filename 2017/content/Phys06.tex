@@ -1,0 +1,110 @@
+\documentclass[../../sp_2017.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{5}
+\section{天文学: スペクトル}
+\subsection{}
+リュードベリ定数と\(k_BT\)とが同じになる温度が求める温度であるので、
+\begin{equation}\begin{aligned}[b]
+    T = \frac{R_y}{k_B}=\frac{13.6 \,\si{eV}}{8.6\times 10^5 \,\si{eV K^{-1}}}= 2\times10^5 \,\si{K}
+\end{aligned}\end{equation}
+\subsection{}
+問題文の地の文の前半で\(\omega \tau\gg 1\)のときに\(\tilde{\vb*{d}}=0\)というのが何を指しているのかわからなかったので、
+それも追ってみる。
+今の系はプラズマ化した水素ガス中を動き回る電子の運動を考えている。
+そのため、電子は陽子に束縛されず、図1のような軌跡で動き回る。
+この特徴的な時間スケールは\(\tau\)の電子が陽子を横切るじかんであるので、
+時間の単位を\(\tau\)として考えてみたいというのがある。
+すると\(\omega\)を単位とすると、\(\omega \tau\gg 1\)は
+\begin{equation}\begin{aligned}[b]
+    \frac{2\pi}{T}\tau &\gg 1\\
+    \tau &\gg T
+\end{aligned}\end{equation}
+と書き直せる。
+なので双極子の振動がとても遅いとき、
+見方を変えると双極子の振動の周期よりも圧倒的に早く電子が陽子のそばを通過したとき調べている。
+
+このとき、(1)式は計算すると
+\begin{equation}\begin{aligned}[b]
+    -\omega^2\tilde{\vb*{d}}(\omega)
+        &= -\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{t}e^{i\omega t}dt\\
+    -\frac{4\pi^2}{T^2}\tilde{\vb*{d}}(\omega)
+        &\leq-\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{t}dt
+        = -\frac{e}{2\pi}\int dv
+        = -\frac{e\delta \vb*{v}}{2\pi}\\
+    \tilde{\vb*{d}}(\omega)
+        &= \frac{e\delta \vb*{v}}{(2\pi)^3}T^2
+        \ll \frac{e\delta \vb*{v}}{(2\pi)^3}\tau^2
+\end{aligned}\end{equation}
+となる。途中の不等式は三角不等式を使った。
+この系で生き残るオーダーの量は\(\tau\)であるので、消えてしまうのがわかる。
+
+次に、\(\omega\tau \ll 1\)のときを考える。
+このとき、\(s = t/\tau\)の無次元量で(1)式の積分を表すと
+\begin{equation}\begin{aligned}[b]
+    -\omega^2\tilde{\vb*{d}}(\omega)
+        &= -\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{s}e^{i\omega\tau s}ds
+        = -\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{s}\,(e^{i\omega\tau})^sds\\
+        &\simeq -\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{s}\qty(1+i\omega \tau -\frac{(\omega \tau)^2}{2}+\mathcal{O}(\omega\tau)^3)^sds\\
+        &\simeq -\frac{e}{2\pi}\int_{-\infty}^\infty\dv{\vb*{v}}{s}ds
+        =-\frac{e\delta \vb*{v}}{2\pi}\\
+    \tilde{\vb*{d}}(\omega)
+     &= \frac{e \delta\vb*{v}}{2\pi\omega^2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \dv{W}{t}
+        = \frac{2\omega^4}{3\epsilon_0c^3}\abs{\tilde{\vb*{d}(\omega)}}^2
+        = \frac{2\omega^4}{3\epsilon_0c^3}\abs{\frac{e \delta\vb*{v}}{2\pi\omega^2}}^2
+        = \frac{e^2}{6\pi^2 \epsilon_0c^3}\abs{\delta \vb*{v}}^2
+        = \frac{2}{3\pi c^3}\frac{e^2}{4\pi\epsilon_0}\abs{\delta \vb*{v}}^2
+\end{aligned}\end{equation}
+
+\subsection{}
+\(t=0\)の時に電子が陽子に引き付けられる力は電子の速度が光速ほど早くないのでクーロン相互作用によるものとすると、
+速さの変化は
+\begin{equation}\begin{aligned}[b]
+    \abs{\delta \vb*{v}} = \int_{-\tau/2}^{\tau/2} \frac{e^2}{4\pi\epsilon_0 mb^2} dt = \frac{e^2\tau}{4\pi\epsilon_0 mb^2}
+\end{aligned}\end{equation}
+これよりスペクトルは
+\begin{equation}\begin{aligned}[b]
+    \dv{W}{\omega} = \frac{2\tau}{3\pi mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{1}{b^2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsubsection*{ア}
+半径\(b\), 幅\(db\)の円環の面積は\(2\pi b\,db\)でこの面を速度\(v\), 密度\(n\)の電子が通り抜けるので
+\begin{equation}\begin{aligned}[b]
+    2\pi bnv\, db
+\end{aligned}\end{equation}
+
+\subsubsection*{イ}
+設問4の結果は1個の電子が最近接距離\(b\)で散乱するとき話なので、これがアの分だけあるので
+\begin{equation}\begin{aligned}[b]
+    \dv{W}{\omega}\times 2\pi bnv\, db = \frac{4nv\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+\end{aligned}\end{equation}
+
+\subsubsection*{ウ}
+イの過程が陽子の数だけ起こるので
+\begin{equation}\begin{aligned}[b]
+    \text{イ}\times n = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+\end{aligned}\end{equation}
+
+\subsection{}
+全放射スペクトルは
+\begin{equation}\begin{aligned}[b]
+    \int_{b_\text{min}}^{b_\text{max}} \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+    = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\ln(\frac{b_\text{max}}{b_\text{min}})
+    = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3G
+\end{aligned}\end{equation}
+
+\subsection*{感想}
+設問2の地の文にあるように物理的描像で\(e^{i\omega t}\)を処理するのはわかるけど、
+ちゃんと形式的な評価でやれるのか気になったのでやってみた。
+解析学みたいにきっちりやってはないけどこれくらいでどうだろうか。
+ただ、後の設問を進めるとスペクトルになってないのでどこか間違えているのは確かである。
+
+\end{document}
