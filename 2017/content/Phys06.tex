@@ -4,7 +4,7 @@
 
 \begin{document}
 \setcounter{section}{5}
-\section{天文学: スペクトル}
+\section{天文学: プラズマ放射}
 \subsection{}
 リュードベリ定数と\(k_BT\)とが同じになる温度が求める温度であるので、
 \begin{equation}\begin{aligned}[b]
@@ -71,7 +71,9 @@
 \end{aligned}\end{equation}
 これよりスペクトルは
 \begin{equation}\begin{aligned}[b]
-    \dv{W}{\omega} = \frac{2\tau}{3\pi mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{1}{b^2}
+    \dv{W}{\omega}
+    = \frac{2\tau^2}{3\pi m^2c^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{1}{b^4}
+    = \frac{8}{3\pi m^2v^2c^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{1}{b^2}
 \end{aligned}\end{equation}
 
 \subsection{}
@@ -84,27 +86,29 @@
 \subsubsection*{イ}
 設問4の結果は1個の電子が最近接距離\(b\)で散乱するとき話なので、これがアの分だけあるので
 \begin{equation}\begin{aligned}[b]
-    \dv{W}{\omega}\times 2\pi bnv\, db = \frac{4nv\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+    \dv{W}{\omega}\times 2\pi bnv\, db = \frac{16n}{3 m^2vc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
 \end{aligned}\end{equation}
 
 \subsubsection*{ウ}
 イの過程が陽子の数だけ起こるので
 \begin{equation}\begin{aligned}[b]
-    \text{イ}\times n = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+    \text{イ}\times n = \frac{16n^2}{3 m^2vc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
 \end{aligned}\end{equation}
 
 \subsection{}
 全放射スペクトルは
 \begin{equation}\begin{aligned}[b]
-    \int_{b_\text{min}}^{b_\text{max}} \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
-    = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\ln(\frac{b_\text{max}}{b_\text{min}})
-    = \frac{4n^2v\tau}{3 mc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3G
+    \int_{b_\text{min}}^{b_\text{max}} \frac{16n^2}{3 m^2vc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\frac{db}{b}
+    = \frac{16n^2}{3 m^2vc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3\ln(\frac{b_\text{max}}{b_\text{min}})
+    = \frac{16n^2}{3 m^2vc^3}\qty(\frac{e^2}{4\pi\epsilon_0})^3G
 \end{aligned}\end{equation}
+一見、\(\omega\)の依存性がないように見えるが、\(G\)の中の\(b_\text{min},b_\text{max}\)にある。
+例えば、電子が陽子のより近くを通って向きを大きく変えられるときには、
+双極子の変化する速さが大きく、振動数が大きいというのを表している。
 
 \subsection*{感想}
 設問2の地の文にあるように物理的描像で\(e^{i\omega t}\)を処理するのはわかるけど、
 ちゃんと形式的な評価でやれるのか気になったのでやってみた。
 解析学みたいにきっちりやってはないけどこれくらいでどうだろうか。
-ただ、後の設問を進めるとスペクトルになってないのでどこか間違えているのは確かである。
 
 \end{document}

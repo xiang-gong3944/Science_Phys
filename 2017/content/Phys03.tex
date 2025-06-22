@@ -16,7 +16,10 @@
 \end{aligned}\end{equation}
 これより静電場は
 \begin{equation}\begin{aligned}[b]
-    \vb*{E} &= -\grad \phi_0(\vb*{r}) = \frac{qd}{4\pi\varepsilon_0r^3}\qty(2\cos\theta\vb*{e}_r+\sin\theta\vb*{e}_r)
+    \vb*{E} &= -\grad \phi_0(\vb*{r}) \\
+    &=-\qty(\vb*{e}_r\pdv{r}+\vb*{e}_\theta\frac{\partial}{r\partial\theta}+\vb*{e}_\varphi\frac{\partial}{r\sin\theta\partial\varphi})
+    \frac{qd\cos\theta}{4\pi\varepsilon_0 r^2}\\
+    &= \frac{qd}{4\pi\varepsilon_0r^3}\qty(2\cos\theta\vb*{e}_r+\sin\theta\vb*{e}_\theta)
 \end{aligned}\end{equation}
 
 
@@ -45,7 +48,7 @@
 \subsection{}
 電荷保存則より
 \begin{equation}\begin{aligned}[b]
-    \rho = \int j_z(\vb*{r},t) dt = \frac{I_0}{i\omega}e^{i\omega t}\delta(x)\delta(y)
+    q = \int dt\int dS  j_z(\vb*{r},t) dt = \frac{I_0}{i\omega}e^{i\omega t}
 \end{aligned}\end{equation}
 
 \subsection{}
