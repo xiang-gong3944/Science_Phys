@@ -1,0 +1,125 @@
+\documentclass[../../sp_2018.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{0}
+\section{量子力学: 調和振動子・摂動論}
+\subsection{}
+交換関係は
+\begin{equation}\begin{aligned}[b]
+    [a,a^\dagger] &= \frac{m\omega}{2\hbar}\qty[x+\frac{ip}{m\omega},x-\frac{ip}{m\omega}]\\
+    &= \frac{m\omega}{2\hbar}\qty[x,-\frac{ip}{m\omega}]+\frac{m\omega}{2h}\qty[\frac{ip}{m\omega},x]\\
+    &= \frac{-i}{2\hbar}i\hbar+\frac{i}{2\hbar}(-i\hbar)
+    = 1
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    [N,a] = [a^\dagger a,a] = [a^\dagger,a]a = -a
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    [N,a^\dagger] = [a^\dagger a,a^\dagger] = a^\dagger[a,a^\dagger]a = a^\dagger
+\end{aligned}\end{equation}
+また、
+\begin{equation}\begin{aligned}[b]
+    N &= \frac{m\omega}{2\hbar}\qty(x-\frac{ip}{m\omega})\qty(x-\frac{ip}{m\omega})\\
+    &=\frac{m\omega}{2\hbar}\qty(x^2+\frac{i}{m\omega}[x,p]+\frac{p^2}{m^2\omega^2})\\
+    \hbar\omega &= \frac{1}{2}m\omega^2+\frac{1}{2m}p^2-\frac{1}{2}\hbar\omega = H_0-\frac{1}{2}\hbar\omega\\
+    H_0 &= \hbar\omega\qty(N+\frac{1}{2})
+\end{aligned}\end{equation}
+よって
+\begin{equation}\begin{aligned}[b]
+    \alpha = 1,\,\beta =\frac{1}{2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsubsection*{(i)}
+\(N\)の固有ケットを\(\ket{\phi_0}\), 固有値を\(n_0\)とする。
+\begin{equation}\begin{aligned}[b]
+    \mel{\psi_0}{N}{\psi_0}&=n\braket{\psi_0}{\psi_0} = n\\
+    \mel{\psi_0}{a^\dagger a}{\psi_0} &= \abs{a\ket[\psi_0]}^2 \geq 0
+\end{aligned}\end{equation}
+より\(N\)の固有値\(n\)は非負である。
+\subsubsection*{(ii)}
+最低固有値を取るケットを\(\ket{0}\), 固有値を\(n_0\)とする。
+\(n_0\neq0\)とすると、
+\begin{equation}\begin{aligned}[b]
+    Na\ket{0} = (aN+[N,a])\ket{0}=(n_0-1)a\ket{0}
+\end{aligned}\end{equation}
+となり、\(n_0\)より小さい固有値を作ることができるので、矛盾。
+なので、最小の固有値は\(n_0=0\)である。
+
+適当な固有ケット\(\ket{k}\)と固有値\(k\)を考える。
+\begin{equation}\begin{aligned}[b]
+    Na^\dagger\ket{k} &= (a^\dagger N+[N,a^\dagger])\ket{k} = (k+1)\ket{k}\\
+    N\ket{k+1} &= (k+1)\ket{k+1}
+\end{aligned}\end{equation}
+なので、\(a^\dagger\)は固有値を1つ増やす状態であるのがわかる。
+これと最低固有値が\(0\)であることを組み合わせると、
+\(N\)の固有値は整数であるとわかる。
+
+\subsection{}
+前問より、\(N\)の\(n\)番目の固有値は\(n\)であるので、ハミルトニアンの\(n\)番目のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E_n = \hbar\omega\qty(n+\frac{1}{2})
+\end{aligned}\end{equation}
+
+前問より、\(\ket{n}\propto (a^\dagger)^n\ket{0}\)になることがわかる。
+規格化条件により帰納的に比例定数を求める。
+\begin{equation}\begin{aligned}[b]
+    1 &= \abs{\ket{n}}^2\\
+    &\propto \abs{a^\dagger\ket{n-1}}^2
+    =\bra{n-1}aa^\dagger\ket{n-1} = \bra{n-1}(N+1)\ket{n-1} =n
+\end{aligned}\end{equation}
+これより
+\begin{equation}\begin{aligned}[b]
+    \ket{n} =\frac{a^\dagger}{n}\ket{n-1} = \frac{(a^\dagger)^n}{\sqrt{n!}}\ket{0}
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsubsection*{(i)}
+摂動を受けた固有ケットを
+\begin{equation}\begin{aligned}[b]
+    \ket{n}' = \ket{n}+\ket{n^{(1)}}+\ket{n^{(2)}}+\cdots
+\end{aligned}\end{equation}
+のように右上に\(V\)の次数を書く。
+
+このときの固有値方程式は
+\begin{equation}\begin{aligned}[b]
+    (H_0+V)\ket{n}' = (E_n^{(0)}+E_n^{(2)}+E_n^{(2)}+\cdots)\ket{n}
+\end{aligned}\end{equation}
+のように書かれる。
+この式について、\(V\)の1次の項を取り出すと
+\begin{equation}\begin{aligned}[b]
+    H_0\ket{n^{(1)}}+V\ket{n} = E_n^{(0)}\ket{n^{(1)}}+E_n^{(1)}\ket{n}
+\end{aligned}\end{equation}
+これの左から\(\bra{m}\)を作用させると
+\begin{equation}\begin{aligned}[b]
+    E_m^{(0)}\braket{m}{n^{(1)}}+V_{mn} = E_n^{(0)}\braket{m}{n^{(1)}}+E_n^{(1)}\delta_{mn}
+\end{aligned}\end{equation}
+\(m=n\)の場合を考えると
+\begin{equation}\begin{aligned}[b]
+    E_n^{(1)} = V_{nn}
+\end{aligned}\end{equation}
+\(m\neq n\)の場合を考えると
+\begin{equation}\begin{aligned}[b]
+    \braket{m}{n^{(1)}} = -\frac{V_{mn}}{E_m^{(0)}-E_n^{(0)}}
+\end{aligned}\end{equation}
+
+固有値方程式の\(V\)の2次の項は
+\begin{equation}\begin{aligned}[b]
+    H_0\ket{n^{(2)}}+V\ket{n^{(1)}} =E_n^{(0)}\ket{n^{(2)}}+E_n^{(1)}\ket{n^{(1)}}+E_n^{(2)}\ket{n}
+\end{aligned}\end{equation}
+これに\(\bra{n}\)を左から作用させると、
+\begin{equation}\begin{aligned}[b]
+    \bra{n}V\ket{n^{(1)}} =E_n^{(2)}\\
+    E_n^{(2)} &= \sum_{l=0}^{\infty}\bra{n}V\ket{l}\braket{l}{n^{(1)}}=-\sum_{l=0}^{\infty}\frac{\abs{V_{lm}}^2}{E_{l}^{(0)}-E_n^{(0)}}
+\end{aligned}\end{equation}
+
+
+\subsubsection*{(ii)}
+
+\subsection*{感想}
+
+
+
+\end{document}
