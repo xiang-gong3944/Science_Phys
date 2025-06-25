@@ -4,12 +4,139 @@
 
 \begin{document}
 \setcounter{section}{1}
-\section{統計力学:}
+\section{統計力学:1次元スピン鎖・転送行列}
 \subsection{}
+スピンの取りうる状態は
+\begin{equation}\begin{aligned}[b]
+    (S_1,S_2) =(x,x),\,(y,y),\,(x,y),\,(y,x)
+\end{aligned}\end{equation}
+であり、これらの状態のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E(x,x)=E(y,y)=-J,\,E(x,y)=E(y,x)=0
+\end{aligned}\end{equation}
+である。よって分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z_2(\beta)=2+2e^{\beta J}
+\end{aligned}\end{equation}
 
+\subsection{}
+スピンの取る状態は
+\begin{equation}\begin{aligned}[b]
+    (S_1,S_2,S_3) &=(x,x,x),\,(x,x,y),\,(x,y,x),\,(x,y,y),\,
+    (y,x,x),\,(y,x,y),\,(y,y,x),\,(y,y,y)
+\end{aligned}\end{equation}
+で、
+それぞれの状態のエネルギーは
+\begin{equation}\begin{aligned}[b]
+    E(x,x,x)&=E(y,y,y)=-2J\\
+    E(x,x,y)&=E(y,y,x)=E(x,y,y)=E(y,x,x)=-J\\
+    E(x,y,x)&=E(y,x,y)=0
+\end{aligned}\end{equation}
+である。
+よって分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z_3(\beta)=2+4e^{\beta J}+2e^{2\beta J}
+\end{aligned}\end{equation}
+である。
+
+\subsection{}
+\(L-1\)のスピン鎖の右側に新たにスピンを付け加えるときのことを考える。
+右端のスピンと同じ向きのスピンと違う向きのスピンが加えられるときの2通りある。
+これらのボルツマン因子は\(e^{\beta J},1\)であるので、
+分配関数は
+\begin{equation}\begin{aligned}[b]
+    Z_L(\beta) = \qty(e^{\beta J}+1)Z_{L-1}(\beta)=\qty(e^{\beta J}+1)^{L-1}Z_1(\beta)=2\qty(e^{\beta J}+1)^{L-1}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    F_L(\beta)=-\frac{1}{\beta}\ln Z_L(\beta) = -\frac{L-1}{\beta}\ln(e^{\beta J}+1)-\frac{1}{\beta}\ln2
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    Lu(\beta) &= -\pdv{\beta}\ln Z_L(\beta) \simeq -L\pdv{\beta}\ln(e^{\beta J}+1)\\
+    u(\beta) &= -\frac{Je^{\beta J}}{e^{\beta J}+1} = \frac{-J}{1+e^{-\beta J}}
+\end{aligned}\end{equation}
+これより
+低温極限\(\beta\to\infty\)では\(u(\beta)\to-J\)と、
+高温極限\(\beta\to\infty\)では\(u(\beta)\to-J/2\)となる。
+これが表しているのは、
+低温では熱揺らぎがなく、基底状態であるスピンの向きがすべて揃っている状態で、
+高温では熱揺らぎによってスピン間相互作用が効かずランダムな方向を向いている状態と理解できる。
+
+\subsection{}
+\(Q(a,b)\)は右端に\(a\)があるとき、\(b\)が付け加わる確率のことである。
+これは設問[3]での考察と同じように考えて、ボルツマン因子より
+\begin{equation}\begin{aligned}[b]
+    Q(a,b)=\frac{e^{\beta J \delta_{ab}}}{e^{\beta J}+1}
+\end{aligned}\end{equation}
+のように書ける。
+
+\subsection{}
+行列\(Q(a,b)\)の固有値は固有値方程式より
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{Q(a,b)-\lambda I} = \frac{\qty(e^{\beta J}-\lambda(e^{\beta J}+1)^2)-1}{\lambda(e^{\beta J}+1)}\\
+    \lambda &=\frac{e^{\beta J}\pm 1}{e^{\beta J}+1} = 1,\,\tanh\frac{\beta J}{2}
+\end{aligned}\end{equation}
+となる。
+このときの\(\ev{S_1\cdot S_L}\)は
+\begin{equation}\begin{aligned}[b]
+    \ev{S_1\cdot S_L}
+    &=(+1)\times \Pr[S_1=x,S_L=x]
+    +(+1)\times \Pr[S_1=y,S_L=y]\\
+    &=\begin{pmatrix}
+        1/2 & 0
+    \end{pmatrix}Q(a,b)^{L-1}\begin{pmatrix}
+        1 \\ 0
+    \end{pmatrix}+\begin{pmatrix}
+        0 & 1/2
+    \end{pmatrix}Q(a,b)^{L-1}\begin{pmatrix}
+        0 \\ 1
+    \end{pmatrix}\\
+    &= \frac{1}{2}\tr(Q^{L-1})
+    = \frac{1}{2}\qty[1+\qty(\tanh\frac{\beta J}{2})^{L-1}]
+\end{aligned}\end{equation}
+となる。
+この式の2行目について、左端のスピンの向いている方向の確率は半々であるので、
+始状態は\((1/2\,0),(0,1/2)\)と表されている。
+\(Q(a,b)^{L^1}\)が途中のスピン鎖との相互作用により左端のスピンの向く確率が変わっていくことを表している。
+そして右端で\(x\)方向を向いている確率を取り出すために\((1,0)^\mathsf{T}\),
+\(y\)方向を向いている確率を取り出すために\((0,1)^\mathsf{T}\)を作用させていている。
+
+3行目はトレースと固有値の性質を使っている。
+
+相関長を求める。
+\begin{equation}\begin{aligned}[b]
+    \tanh\frac{\beta J}{2} = \exp(-\ln\frac{1}{\tanh\frac{\beta J}{2}})
+    =\exp(-\ln\frac{e^{\beta J}+1}{e^{\beta J}-1})
+\end{aligned}\end{equation}
+なので
+\begin{equation}\begin{aligned}[b]
+    \ev{S_1\cdot S_L} = \frac{1}{2}+\frac{1}{2}\exp[-(L-1)\ln\frac{e^{\beta J}+1}{e^{\beta J}-1}]
+\end{aligned}\end{equation}
+と書けるため、相関長は
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{\xi} = \ln\frac{e^{\beta J}+1}{e^{\beta J}-1}
+\end{aligned}\end{equation}
+と表せる。
+
+低温極限\(\beta\to \infty\)では
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{\xi} &= \ln(1+\frac{2}{e^{\beta J}-1}) \simeq \frac{2}{e^{\beta J}}\\
+    \xi &= \frac{e^{\beta J}}{2}
+\end{aligned}\end{equation}
+となる。
+
+高温極限\(\beta\to 0\)では
+\begin{equation}\begin{aligned}[b]
+    \frac{1}{\xi} &\to \ln \frac{2}{0} \to \infty\\
+    \xi &= 0
+\end{aligned}\end{equation}
+となる。
 
 
 \subsection*{感想}
-
+テンソルネットワークとか、操作論的確率論とかでやる話で楽しかった。
 
 \end{document}

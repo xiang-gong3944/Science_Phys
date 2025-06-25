@@ -111,15 +111,53 @@
 \end{aligned}\end{equation}
 これに\(\bra{n}\)を左から作用させると、
 \begin{equation}\begin{aligned}[b]
-    \bra{n}V\ket{n^{(1)}} =E_n^{(2)}\\
+    \bra{n}V\ket{n^{(1)}} &=E_n^{(2)}\\
     E_n^{(2)} &= \sum_{l=0}^{\infty}\bra{n}V\ket{l}\braket{l}{n^{(1)}}=-\sum_{l=0}^{\infty}\frac{\abs{V_{lm}}^2}{E_{l}^{(0)}-E_n^{(0)}}
 \end{aligned}\end{equation}
 
-
 \subsubsection*{(ii)}
+\begin{equation}\begin{aligned}[b]
+    V_{k0}=\mel{k}{\lambda x^4}{0} = \lambda\qty(\frac{\hbar}{2m\omega})^2\mel{k}{(a+a^\dagger)^4}{0}
+\end{aligned}\end{equation}
+これより、\(k>4\)のときには
+\begin{equation}\begin{aligned}[b]
+    V_{k0} = 0
+\end{aligned}\end{equation}
+\(k=4\)のときには、
+\begin{equation}\begin{aligned}[b]
+    V_{40}&=\lambda\qty(\frac{\hbar}{2m\omega})^2\mel{4}{(a^\dagger)^4}{0}=\sqrt{24}\lambda\qty(\frac{\hbar}{2m\omega})^2
+\end{aligned}\end{equation}
+\(k=3\)のときには、
+\begin{equation}\begin{aligned}[b]
+    V_{30}=0
+\end{aligned}\end{equation}
+\(k=2\)のときには、
+\begin{equation}\begin{aligned}[b]
+    V_{20}
+    &=\lambda\qty(\frac{\hbar}{2m\omega})^2\mel{4}{(aa^\dagger a^\dagger a^\dagger+a^\dagger a a^\dagger a^\dagger+ a^\dagger a^\dagger a a^\dagger)}{0}
+    =\qty(3\sqrt{2}+2\sqrt{3}+\sqrt{6})\lambda\qty(\frac{\hbar}{2m\omega})^2
+\end{aligned}\end{equation}
+\(k=1\)のときには、
+\begin{equation}\begin{aligned}[b]
+    V_{10}=0
+\end{aligned}\end{equation}
+\(k=0\)のときには、
+\begin{equation}\begin{aligned}[b]
+    V_{00}
+    &=\lambda\qty(\frac{\hbar}{2m\omega})^2\mel{4}{(aaa^\dagger a^\dagger+aa^\dagger aa^\dagger)}{0}
+    =3\lambda\qty(\frac{\hbar}{2m\omega})^2
+\end{aligned}\end{equation}
+
+よって
+\begin{equation}\begin{aligned}[b]
+    E_0 &= E_0^{(0)}+E_0^{(1)}+E_0^{(2)}\\
+    &= \frac{1}{2}\hbar\omega + 3\lambda\qty(\frac{\hbar}{2m\omega})^2
+        -6(4+\sqrt{6}+\sqrt{3}+\sqrt{2})\frac{\lambda^2}{\hbar\omega}\qty(\frac{\hbar}{2m\omega})^4
+\end{aligned}\end{equation}
+
 
 \subsection*{感想}
-
+教科書みたいな問題で驚いた。
 
 
 \end{document}
