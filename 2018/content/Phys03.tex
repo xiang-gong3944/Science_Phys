@@ -4,9 +4,94 @@
 
 \begin{document}
 \setcounter{section}{2}
-\section{電磁気学:}
+\section{力学:万有引力}
 \subsection{}
+EL.eq より\(r\)方向は
+\begin{equation}\begin{aligned}[b]
+    \pdv{\mathcal{L}}{r}-\dv{t}\pdv{\mathcal{L}}{\dot{r}} &=0\\
+    \mu r\dot{\varphi}^2-\frac{G\mu M}{r^2} -\mu\ddot{r} &=0\\
+    \mu\ddot{r} &= \mu r\dot{\varphi}^2 - \frac{G\mu M}{r^2}
+\end{aligned}\end{equation}
+\(\varphi\)方向は
+\begin{equation}\begin{aligned}[b]
+    \pdv{\mathcal{L}}{\varphi}-\dv{t} \pdv{\mathcal{L}}{\dot{\varphi}} &= 0\\
+    \dv{t}\mu r^2\varphi^2 &= 0
+\end{aligned}\end{equation}
 
+\subsection{}
+\(r\)に共役な運動量\(p\)は
+\begin{equation}\begin{aligned}[b]
+    p = \pdv{\mathcal{L}}{\dot{r}} = \mu\dot{r}
+\end{aligned}\end{equation}
+\(\varphi\)に共役な運動量\(J\)は
+\begin{equation}\begin{aligned}[b]
+    J = \pdv{\mathcal{L}}{\dot{\varphi}} = \mu r^2\dot{\varphi}
+\end{aligned}\end{equation}
+エネルギーとハミルトニアンは今の場合等しいので
+\begin{equation}\begin{aligned}[b]
+    E = p\dot{r} + J\dot{\varphi} -\mathcal{L} = \frac{p^2}{2\mu}+\frac{J^2}{2\mu r^2}-\frac{G\mu M}{r}
+\end{aligned}\end{equation}
+
+\subsection{}
+設問1より角運動量は
+\begin{equation}\begin{aligned}[b]
+    \dv{J}{t} = \dv{t} \mu r^2\dot{\varphi} = 0
+\end{aligned}\end{equation}
+となるので、\(J\)は時間によらない運動の定数とわかる。
+
+エネルギーについて、
+\begin{equation}\begin{aligned}[b]
+    \dv{E}{t} &= \dv{r}{t}\pdv{E}{r}+\dv{p}{t}\pdv{E}{p}\\
+    &= \frac{p}{\mu}\qty(-\frac{J^2}{\mu r^3}+\frac{G\mu M}{r^2})+\qty(\frac{J^2}{\mu r^3}-\frac{G\mu M}{r^2})\frac{p}{\mu}\\
+    &= 0
+\end{aligned}\end{equation}
+より、これも時間によらない運動の定数とわかる。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \dv{E}{t} &= -L_{GW}\\
+    \frac{G\mu M}{2a^2}\dv{a}{t} &= -\frac{32G^4}{5c^5}\frac{\mu^2M^3}{a^5}\\
+    \dv{a}{t} &=-\frac{64G^3}{5c^5}\frac{\mu M^2}{a^3}
+\end{aligned}\end{equation}
+
+\subsection{}
+初期条件を満たすように与え垂れた一階の微分方程式を解くと
+\begin{equation}\begin{aligned}[b]
+    \dv{P}{t} &= -A\qty{\frac{P_c}{P}}^{5/3}\\
+    \qty(\frac{P}{P_c})^{5/3} \dv{P}{t} &= -A\\
+    \frac{3}{8}\qty(\frac{P}{P_c})^{8/3} &= -A\frac{t}{P_c}+\frac{3}{8}\qty(\frac{P_0}{P_c})^{8/3}
+\end{aligned}\end{equation}
+これより\(P=0\)となる時間は
+\begin{equation}\begin{aligned}[b]
+    0 &= -A\frac{\tau_{GW}}{P_c}+\frac{3}{8}\qty(\frac{P_0}{P_c})^{8/3}\\
+    \tau_{GW} &=\frac{3P_c}{8A}\qty(\frac{P_0}{P_c})^{8/3}
+\end{aligned}\end{equation}
+
+\subsection{}
+ケプラーの方程式の両辺を時間微分すると
+\begin{equation}\begin{aligned}[b]
+    GMP\dv{P}{t} &= 12\pi^2 a^2\dv{a}{t}\\
+    \dv{P}{t} &= \frac{6\pi^2}{GN}\frac{a^2}{P}\qty(-\frac{64G^3}{c^5}\frac{\mu M^2}{a^3})\\
+    &= -\frac{2^6\cdot 3\pi (2\pi)^{5/3}}{5}\qty(\frac{G\mu^{3/5}M^{2/5}c^{-3}}{P})^{5/3}\\
+    &\equiv -A \qty(\frac{P_c}{P})^{5/3}
+\end{aligned}\end{equation}
+より
+\begin{equation}\begin{aligned}[b]
+    P_c &=G\mu^{3/5}M^{2/5}c^{-3} & A &= \frac{192\pi (2\pi)^{5/3}}{5}
+\end{aligned}\end{equation}
+とすれは式(6)が得られる。
+
+\subsection{}
+\(m=kM_{\odot}\)とすると、\(M=2kM_{\odot},\mu=kM_{\odot}/2\)となり、
+\begin{equation}\begin{aligned}[b]
+    P_c =G\mu^{3/5}M^{2/5}c^{-3}=\frac{k}{2^{1/5}}GM_\odot c^{-3}=\frac{k}{2.2}\times10^{-5}\,\si{sec}
+\end{aligned}\end{equation}
+とわかる。
+これと設問5の結果を合わせると
+\begin{equation}\begin{aligned}[b]
+    \tau_{GW} &=\frac{3P_c}{8A}\qty(\frac{P_0}{P_c})^{8/3}\\
+    0.15 \,\si{sec} &= \frac{3}{8\times2500}\frac{k}{2.2}\qty(\frac{0.06\,\si{sec}}{k/2.2\si{sec}}\times 10^5)^{8/3}\,\si{sec}
+\end{aligned}\end{equation}
 
 \subsection*{感想}
 
