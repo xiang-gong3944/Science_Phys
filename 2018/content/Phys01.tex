@@ -36,7 +36,7 @@
 \(N\)の固有ケットを\(\ket{\phi_0}\), 固有値を\(n_0\)とする。
 \begin{equation}\begin{aligned}[b]
     \mel{\psi_0}{N}{\psi_0}&=n\braket{\psi_0}{\psi_0} = n\\
-    \mel{\psi_0}{a^\dagger a}{\psi_0} &= \abs{a\ket[\psi_0]}^2 \geq 0
+    \mel{\psi_0}{a^\dagger a}{\psi_0} &= \abs{a\ket{\psi_0}}^2 \geq 0
 \end{aligned}\end{equation}
 より\(N\)の固有値\(n\)は非負である。
 \subsubsection*{(ii)}
@@ -155,9 +155,35 @@
         -6(4+\sqrt{6}+\sqrt{3}+\sqrt{2})\frac{\lambda^2}{\hbar\omega}\qty(\frac{\hbar}{2m\omega})^4
 \end{aligned}\end{equation}
 
+\subsection{}
+いま、\(x^4\)の項は摂動と見なせないときを考える。
+するとこれは\(x^2\)のポテンシャル以上に効いているということなので、
+\(x^2\)を無視することができる。
+このとき
+\begin{equation}\begin{aligned}[b]
+    E_n &= \frac{p^2}{2m}+\lambda x^4\\
+    p &= \pm 2m\sqrt{E_n-\lambda x^4}
+\end{aligned}\end{equation}
+とわかる。
+
+ボーアゾンマーフェルトの量子化条件より、
+\begin{equation}\begin{aligned}[b]
+    nh &= \oint p dx\\
+    &\propto \oint\sqrt{E_n-\lambda x^4} dx
+\end{aligned}\end{equation}
+いま、\(x=(\frac{E_n}{\lambda})^{1/4}t\)というように\(x\)を無次元した変数\(t\)を考える。
+すると積分は単なる定数となるので、
+\begin{equation}\begin{aligned}[b]
+    nh &\propto \oint \sqrt{E_n}\sqrt{1-t^4} \qty(\frac{E_n}{\lambda})^{1/4}dt\\
+    &\propto E_n^{3/4}\\
+    E_n &\propto n^{4/3}
+\end{aligned}\end{equation}
+
 
 \subsection*{感想}
-教科書みたいな問題で驚いた。
+設問5以外は教科書みたいな問題で驚いた。
+
+設問5はボーアゾンマーフェルトの量子化条件を使いどころというのを教えてもらってなかなか感動した。
 
 
 \end{document}
