@@ -1,0 +1,195 @@
+\documentclass[../../sp_2019.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{0}
+\section{量子力学: エンタングルメント・局所実在性}
+測定結果がとりうる状態というのを、
+一般の状態にたいして、観測量がとりうる値つまり、観測量の固有値と解釈する。
+\subsection{}
+\(\sigma_z\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    \qty(s_z=+1;\,\ket{\uparrow}),
+    \qty(s_z=-1;\,\ket{\downarrow})
+\end{aligned}\end{equation}
+である。\(s_z\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_z} &= +1\times P(\uparrow)-1\times P(\downarrow) \\
+    &= \abs{\braket{\uparrow}{\uparrow}}^2-\abs{\braket{\downarrow}{\uparrow}}^2\\
+    &= 1
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\sigma_x\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    \qty(s_x=+1;\,\ket{+}\equiv \frac{\ket{\uparrow}+\ket{\downarrow}}{\sqrt{2}}),
+    \qty(s_x=-1;\,\ket{-}\equiv \frac{\ket{\uparrow}-\ket{\downarrow}}{\sqrt{2}})
+\end{aligned}\end{equation}
+である。\(s_x\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_x} &= +1\times P(+)-1\times P(-) \\
+    &= \abs{\braket{+}{\uparrow}}^2-\abs{\braket{-}{\uparrow}}^2\\
+    &= \frac{1}{2}-\frac{1}{2} =0
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\sigma(\theta)\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    \qty(s_\theta = +1;\,\ket{+\theta}\equiv \cos\frac{\theta}{2}\ket{\uparrow}+\sin\frac{\theta}{2}\ket{\downarrow}),
+    \qty(s_\theta = -1;\,\ket{-\theta}\equiv \sin\frac{\theta}{2}\ket{\uparrow}-\cos\frac{\theta}{2}\ket{\downarrow})
+\end{aligned}\end{equation}
+である。\(s_x\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_x} &= +1\times P(+\theta)-1\times P(-\theta) \\
+    &= \abs{\braket{+\theta}{\uparrow}}^2-\abs{\braket{-\theta}{\uparrow}}^2\\
+    &= \cos^2\frac{\theta}{2}-\sin^2\frac{\theta}{2} =\cos\theta
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\sigma_z^A\sigma_z^B\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    &\qty(s_z^A = +1,s_z^B = +1;\,\ket{\uparrow\uparrow} \equiv \ket{\uparrow}_A\ket{\uparrow}_B)\\
+    &\qty(s_z^A = +1,s_z^B = -1;\,\ket{\uparrow\downarrow} \equiv \ket{\uparrow}_A\ket{\downarrow}_B)\\
+    &\qty(s_z^A = -1,s_z^B = +1;\,\ket{\downarrow\uparrow} \equiv \ket{\downarrow}_A\ket{\uparrow}_B)\\
+    &\qty(s_z^A = -1,s_z^B = -1;\,\ket{\downarrow\downarrow} \equiv \ket{\downarrow}_A\ket{\downarrow}_B)
+\end{aligned}\end{equation}
+である。\(s_z^As_z^B\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_z^As_z^B}
+    &= +1\times P(\uparrow\uparrow) -1\times P(\uparrow\downarrow)
+        -1\times P(\downarrow\uparrow) +1\times P(\downarrow\downarrow)\\
+    &= \abs{\braket{\uparrow\uparrow}{\Psi}}^2 -\abs{\braket{\uparrow\downarrow}{\Psi}}^2
+        -\abs{\braket{\downarrow\uparrow}{\Psi}}^2+\abs{\braket{\downarrow\downarrow}{\Psi}}^2\\
+    &= 0 -\frac{1}{2} -\frac{1}{2} +0 = -1
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\sigma_x^A\sigma_x^B\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    &\qty(s_x^A = +1,s_x^B = +1;\,\ket{++} \equiv \ket{+}_A\ket{+}_B=\frac{\ket{\uparrow\uparrow}+\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}+\ket{\downarrow\downarrow}}{2})\\
+    &\qty(s_x^A = +1,s_x^B = -1;\,\ket{+-} \equiv \ket{+}_A\ket{-}_B=\frac{\ket{\uparrow\uparrow}-\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}-\ket{\downarrow\downarrow}}{2})\\
+    &\qty(s_x^A = -1,s_x^B = +1;\,\ket{-+} \equiv \ket{-}_A\ket{+}_B=\frac{\ket{\uparrow\uparrow}+\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}-\ket{\downarrow\downarrow}}{2})\\
+    &\qty(s_x^A = -1,s_x^B = -1;\,\ket{--} \equiv \ket{-}_A\ket{-}_B=\frac{\ket{\uparrow\uparrow}-\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}+\ket{\downarrow\downarrow}}{2})
+\end{aligned}\end{equation}
+である。\(s_x^As_x^B\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_x^As_x^B}
+    &= +1\times P(++) -1\times P(+-)
+        -1\times P(-+) +1\times P(--)\\
+    &= \abs{\braket{++}{\Psi}}^2 -\abs{\braket{+-}{\Psi}}^2
+        -\abs{\braket{-+}{\Psi}}^2+\abs{\braket{--}{\Psi}}^2\\
+    &= 0 -\frac{1}{2} -\frac{1}{2} +0 = -1
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\sigma_\theta^A\sigma_\theta^B\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    &\qty(s_\theta^A = +1,s_\theta^B = +1;\,\ket{+\theta+\theta} \equiv \ket{+\theta}_A\ket{+\theta}_B
+        =\cos^2\frac{\theta}{2}\ket{\uparrow\uparrow}+\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\uparrow\downarrow}
+        +\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\downarrow\uparrow}+\sin^2\frac{\theta}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = +1,s_\theta^B = -1;\,\ket{+\theta-\theta} \equiv \ket{+\theta}_A\ket{-\theta}_B
+        =\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\uparrow\uparrow}-\cos^2\frac{\theta}{2}\ket{\uparrow\downarrow}
+        +\sin^2\frac{\theta}{2}\ket{\downarrow\uparrow}-\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = -1,s_\theta^B = +1;\,\ket{-\theta+\theta} \equiv \ket{-\theta}_A\ket{+\theta}_B
+        =\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\uparrow\uparrow}+\sin^2\frac{\theta}{2}\ket{\uparrow\downarrow}
+        -\cos^2\frac{\theta}{2}\ket{\downarrow\uparrow}-\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = -1,s_\theta^B = -1;\,\ket{-\theta-\theta} \equiv \ket{-\theta}_A\ket{-\theta}_B
+        =\sin^2\frac{\theta}{2}\ket{\uparrow\uparrow}-\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\uparrow\downarrow}
+        -\cos\frac{\theta}{2}\sin\frac{\theta}{2}\ket{\downarrow\uparrow}+\cos^2\frac{\theta}{2}\ket{\downarrow\downarrow})
+\end{aligned}\end{equation}
+である。初期状態\(\ket{\Psi}\)での確率は
+\begin{equation}\begin{aligned}[b]
+    P(+\theta+\theta) &= \abs{\braket{+\theta+\theta}{\Psi}}^2 = 0\\
+    P(+\theta-\theta) &= \abs{\braket{+\theta-\theta}{\Psi}}^2 = \frac{1}{2}\\
+    P(-\theta+\theta) &= \abs{\braket{-\theta+\theta}{\Psi}}^2 = \frac{1}{2}\\
+    P(-\theta-\theta) &= \abs{\braket{-\theta-\theta}{\Psi}}^2 = 0
+\end{aligned}\end{equation}
+となる。
+この結果は\(s_\theta^A=s_\theta^B\)になることはなく、
+必ず\(s_\theta^A=-s_\theta^B=\pm 1\)になるということを表す。
+
+\subsection{}
+\(\sigma_\theta^A\sigma_\varphi^B\)の固有値固有状態のペアは
+\begin{equation}\begin{aligned}[b]
+    &\qty(s_\theta^A = +1,s_\varphi^B = +1;\,\ket{+\theta+\varphi} \equiv \ket{+\theta}_A\ket{+\varphi}_B
+        =\cos\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\uparrow\uparrow}+\cos\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\uparrow\downarrow}
+        +\sin\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\downarrow\uparrow}+\sin\frac{\theta}{2}\frac{{\varphi}}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = +1,s_\varphi^B = -1;\,\ket{+\theta-\varphi} \equiv \ket{+\theta}_A\ket{-\varphi}_B
+        =\cos\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\uparrow\uparrow}-\cos\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\uparrow\downarrow}
+        +\sin\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\downarrow\uparrow}-\sin\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = -1,s_\varphi^B = +1;\,\ket{-\theta+\varphi} \equiv \ket{-\theta}_A\ket{+\varphi}_B
+        =\sin\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\uparrow\uparrow}+\sin\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\uparrow\downarrow}
+        -\cos\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\downarrow\uparrow}-\cos\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\downarrow\downarrow})\\
+    &\qty(s_\theta^A = -1,s_\varphi^B = -1;\,\ket{-\theta-\varphi} \equiv \ket{-\theta}_A\ket{-\varphi}_B
+        =\sin\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\uparrow\uparrow}-\cos\frac{\theta}{2}\sin\frac{\varphi}{2}\ket{\uparrow\downarrow}
+        -\sin\frac{\theta}{2}\cos\frac{\varphi}{2}\ket{\downarrow\uparrow}+\cos\frac{\theta}{2}\frac{\varphi}{2}\ket{\downarrow\downarrow})\\
+\end{aligned}\end{equation}
+である。\(s_\theta^As_\varphi^B\)の期待値は
+\begin{equation}\begin{aligned}[b]
+    \ev{s_x^As_x^B}
+    &= +1\times P(+\theta+\varphi) -1\times P(+\theta-\varphi)
+        -1\times P(-\theta+\varphi) +1\times P(-\theta-\varphi)\\
+    &= \abs{\braket{+\theta+\varphi}{\Psi}}^2 -\abs{\braket{+\theta-\varphi}{\Psi}}^2
+        -\abs{\braket{-\theta+\varphi}{\Psi}}^2+\abs{\braket{-\theta-\varphi}{\Psi}}^2\\
+    &= \frac{1}{2}\sin^2(\theta-\varphi) -\frac{1}{2}\cos^2(\theta-\varphi) -\frac{1}{2}\cos^2(\theta-\varphi) + \frac{1}{2}\sin^2(\theta-\varphi) \\
+    &= -\cos(2\theta-2\varphi)
+\end{aligned}\end{equation}
+
+\subsection{}
+\(s^As^B\)の散りうる値は
+\begin{equation}\begin{aligned}[b]
+    (s^A,s^B)=(+1,+1),(+1,-1),(-1,+1),(-1,-1)
+\end{aligned}\end{equation}
+\(s^As^B\)の期待値を考える。
+\(\theta\)と\(\varphi\)が同じ角度になる確率は\(1/3\)で期待値は\(-1\)である。
+\(\theta\)と\(\varphi\)が違う角度になる確率は\(2/3\)で期待値は\(-\cos(\ang{120})=\frac{1}{2}\)である。
+なので
+\begin{equation}\begin{aligned}[b]
+    \ev{s^As^B}  -1\times\frac{1}{3} + \frac{1}{2}\times \frac{2}{3} = 0
+\end{aligned}\end{equation}
+
+\subsection{}
+\subsection*{(i)}
+\(\theta\)と\(\varphi\)がどの方向でも\(s^As^B=-1\)なので、
+\begin{equation}\begin{aligned}[b]
+    \ev{s^As^B} = -1
+\end{aligned}\end{equation}
+\subsection*{(ii)}
+A が \(\ang{0},\,\ang{120}\)、かつBが\(\ang{0},\ang{120}\)のとなる確率は\(4/9\)
+A が \(\ang{240}\)、かつBが\(\ang{240}\)のとなる確率は\(1/9\)である。
+なので\(s^As^B=-1\)となる確率は\(5/9\)。
+残りが\(s^As^B=1\)となる状況で、その確率は\(4/9\).
+なので
+\begin{equation}\begin{aligned}[b]
+    \ev{s^As^B} = -1\times \frac{5}{9}+1\times\frac{4}{9} = -\frac{1}{9}
+\end{aligned}\end{equation}
+
+\subsection*{(iii)}
+考えるべき場合は一見\(8\)通りあるが、
+\(s\)の値がすべて同じとき、
+\(s\)の値が1つだけ違うときの2種類にわけれて、
+このときの\(\ev{s^As^B}\)の値は既に(i)(ii)で調べた。
+両者とも期待値の値は負であるので、古典的に扱ったときの\(s^As^B\)の期待値は
+量子的に扱った場合と違って負の値となる。
+
+
+
+\subsection*{感想}
+量子情報をやったことない人には"測定した"の意味が分かりくく、
+やるべきことを読み取れなかったら大門全部落としだし、
+やったことある人にとっては簡単で同じ内容をただひたすら書くだけのただ手が疲れて時間がとられるというひどい問題。
+
+量子情報が流行り始めたは2019年10月のGoogleによる実機の量子計算機での量子超越性が示されたというのがきっかけで、
+この試験が行われた直後での話なので、本番でのできはひどそう。
+これ解けた人はJ.J.SakuraiでのSG実験の問題をやっていたか、
+上田先生まわりの量子光学をやってる人ぐらいな気がする。
+
+この問題では量子力学の物理量は測定する前には決まっていないということを追っかけていたが、
+部分系Aと部分系Bを十分離して片方だけ測定するという設定にしてこれをナイーブに考えると、
+測定による相互作用が光速を超えるという結果が得られて相対論に反する結果となるのがわかる。
+これを問題にするのは難しそう。
+
+
+
+\end{document}

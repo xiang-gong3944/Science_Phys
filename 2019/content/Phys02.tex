@@ -1,0 +1,122 @@
+\documentclass[../../sp_2019.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{0}
+\section{統計力学: 理想気体}
+\subsection{}
+(2)式にハミルトニアンを代入する。
+分配関数は位置の積分を先にやって
+\begin{equation}\begin{aligned}[b]
+    Z(T,V,N)
+    &= \frac{V^N}{N!h^{3N}}\qty(\int\dd{p_x}\dd{p_y}\dd{p_z}e^{-\frac{\beta\hbar^2}{2m}(p_x^2+p_y^2+p_z^2)})^N\\
+    &= \frac{V^N}{N!}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3N/2}
+\end{aligned}\end{equation}
+これより、自由エネルギーは
+\begin{equation}\begin{aligned}[b]
+    F &= -k_BT \ln Z \\
+    &= -Nk_BT\ln\qty[\frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})e]
+\end{aligned}\end{equation}
+よって圧力は
+\begin{equation}\begin{aligned}[b]
+    p = -\pdv{F}{V} = \frac{Nk_BT}{V}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(1/N!\)の因子がついていないときの分配関数\(Z'\)は
+\begin{equation}\begin{aligned}[b]
+    Z' = V^N \qty(\frac{mk_BT}{2\pi\hbar^2})^{3N/2}
+\end{aligned}\end{equation}
+より、
+これから得られるヘルムホルツの自由エネルギー\(F'\)は
+\begin{equation}\begin{aligned}[b]
+    F' = -Nk_BT\ln\qty[V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}]
+\end{aligned}\end{equation}
+である。
+ヘルムホルツの自由エネルギーは示量性を持つはずだが、
+右辺の体積と粒子数を\(\lambda\)倍しても\(F'\)が\(\lambda\)倍になっていないことから、
+示量性という熱力学的性質を満たしていないのがわかる。
+
+\subsection{}
+エントロピーは
+\begin{equation}\begin{aligned}[b]
+    S = -\pdv{F}{T} = Nk_B\ln\qty[\frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e] + \frac{3}{2}Nk_B
+    = Nk_B\ln\qty[\frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{5/2}]
+\end{aligned}\end{equation}
+\(T\to0\)では\(S\to -\infty\)になり、
+発散するため熱力学第3法則に反する結果となっている。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \frac{C_V}{T} &= -\pdv[2]{F}{T} = -\pdv{S}{T}\\
+    C_V &=  \frac{3}{2}Nk_B
+\end{aligned}\end{equation}
+
+\subsection{}
+自由粒子の波動関数は
+\begin{equation}\begin{aligned}[b]
+    \psi(x,y,z)=e^{i(k_xx+k_yy+k_zz)}
+\end{aligned}\end{equation}
+のように書け、
+周期境界条件
+\begin{equation}\begin{aligned}[b]
+    \psi(x+L,y,z)=\psi(x,y+L,z)=\psi(x,y,z+L)=\psi(x,y,z)
+\end{aligned}\end{equation}
+を満たさないといけないので波数は整数\(n_x,n_y,n_z\)を用いて
+\begin{equation}\begin{aligned}[b]
+    (k_x,k_y,k_z)= \frac{2\pi}{L}(n_x,n_y,n_z)
+\end{aligned}\end{equation}
+のように書ける。
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \bar{N} &= \frac{1}{\Xi}\prod_k\sum_{n_k=0,1} n_ke^{-\beta(\varepsilon_k-\mu)n_k}
+    = \frac{1}{\Xi}\frac{\partial}{\beta\partial\mu}\prod_k(1+e^{-\beta(\varepsilon_k-\mu)})\\
+    &= \frac{\partial}{\beta\partial\mu}\ln\Xi
+    = \frac{\partial}{\beta\partial\mu}\sum_k\ln(1+e^{-\beta(\varepsilon_k-\mu)})
+    = \sum_k \frac{1}{e^{\beta(\varepsilon_k-\mu)}+1} = \sum_k f(\varepsilon_k)
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    N &= \sum_k e^{-\beta(\varepsilon_k-\mu)}
+        = \frac{V}{(2\pi)^3}e^{\beta\mu}\int \dd[3]{k} e^{-\beta\varepsilon_k}\\
+    &= \frac{V}{2\pi^2}e^{\beta\mu}\int_{0}^{\infty}k^2\dd{k}e^{-\frac{\beta \hbar^2}{2m}k^2}
+        =\frac{V}{2\pi^2}\frac{\sqrt{\pi}}{4}\qty(\frac{2mk_BT}{\hbar^2})^{3/2}e^{\beta\mu}
+        =V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}e^{\beta\mu}\\
+    e^{-\beta\mu}&= \frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}\\
+    \mu &= -k_BT\ln\qty[\frac{V}{N}\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}]
+\end{aligned}\end{equation}
+
+\subsection{}
+エントロピーはグランドポテンシャル\(J=-k_BT\ln\Xi\)を使って\(S=-\partial J/\partial T\)と表せるので、
+\begin{equation}\begin{aligned}[b]
+    S &= \pdv{T}\sum_k k_BT\ln(1+e^{-\beta(\varepsilon_k-\mu)})\\
+    & \simeq \pdv{T}\sum_k k_BTe^{-\beta(\varepsilon_k-\mu)}
+        =\pdv{T}Nk_BT
+        = k_BT\pdv{N}{T}+Nk_B
+        = Nk_B\qty[\frac{5}{2}-\frac{\mu}{k_BT}]\\
+    &\simeq -\frac{\mu}{T}N
+\end{aligned}\end{equation}
+
+\subsection{}
+温度が高いときの比熱の温度特性は
+\begin{equation}\begin{aligned}[b]
+    C_V &= T\pdv{S}{T}
+        = -\frac{\mu}{T}N -N\pdv{\mu}{T}
+        = -\frac{\mu}{T}N +\frac{3}{2}Nk_B +\frac{\mu}{T}N
+        =  \frac{3}{2}Nk_B
+\end{aligned}\end{equation}
+となり、古典的に扱ったときと同じ結果になる。
+
+これとフェルミオンの比熱が低温では\(T\)に比例することと併せてグラフを書ける。
+
+\subsection*{感想}
+理想気体の典型問題。
+
+最後、自由フェルミ気体の比熱の高温極限を調べるとき、\(\partial\mu/\partial T\)じゃなくて、
+\(\partial N/\partial T\)でやってしまって変な答えになってしまった。
+
+
+\end{document}
