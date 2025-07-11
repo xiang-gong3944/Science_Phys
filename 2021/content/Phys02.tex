@@ -1,0 +1,139 @@
+\documentclass[../../sp_2021.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{1}
+\section{統計力学: BEC}
+\subsection{}
+自由粒子のシュレーディンガー方程式は
+\begin{equation}\begin{aligned}[b]
+    -\frac{\hbar^2}{2m}\laplacian \Psi(x,y,z) = E\Psi(x,y,z)
+\end{aligned}\end{equation}
+である。
+これの解は
+\begin{equation}\begin{aligned}[b]
+    (k_x,k_y,k_z)&=\frac{\sqrt{2m}}{\hbar}\qty(E_x,E_y,E_z)\\
+    E &= E_x+E_y+E_z
+\end{aligned}\end{equation}
+を用いて
+\begin{equation}\begin{aligned}[b]
+    \Psi(x,y,z)\propto \exp(i(k_xx+k_yy+k_zz))
+\end{aligned}\end{equation}
+と表せる。
+周期境界条件より、
+\begin{equation}\begin{aligned}[b]
+    \Psi(x+L,y,z)=\Psi(x,y+L,z)=\Psi(x,y,z+L)&=\Psi(x,y,z)\\
+    \exp(ik_xx)\Psi(x,y,z)=\exp(ik_yy)\Psi(x,y,z)=\exp(ik_zz)\Psi(x,y,z)&=\Psi(x,y,z)
+\end{aligned}\end{equation}
+となるので、波数とエネルギーは量子化され、
+\begin{equation}\begin{aligned}[b]
+    k_xL &= 2\pi n_x,
+    k_yL = 2\pi n_y,
+    k_zL = 2\pi n_z\\
+    E &= \frac{\hbar^2}{2mL^2}\qty(n_x^2+n_y^2+n_z^2)
+\end{aligned}\end{equation}
+となる。
+波動関数は
+\begin{equation}\begin{aligned}[b]
+    \Psi(x,y,z) &\propto \exp(i\frac{2\pi}{L}(n_xx+n_yy+n_zz))
+\end{aligned}\end{equation}
+
+\subsection{}
+分配関数の和は
+\begin{equation}\begin{aligned}[b]
+    \Xi_i = \sum_{n_i=0}^{\infty}\exp(-\frac{(E_i-\mu)n_i}{k_BT}) = \frac{1}{1-\exp(-\frac{(E_i-\mu)}{k_BT})}
+\end{aligned}\end{equation}
+のようにまとめれる。
+
+ボーズ分布関数は
+\begin{equation}\begin{aligned}[b]
+    f(E_i,\mu)&=\frac{1}{\Xi_i}\sum_{n_i=0}^{\infty}n_i\exp(-\frac{(E_i-\mu)n_i}{k_BT})
+        =\frac{k_BT}{\Xi_i}\pdv{\mu}\sum_{n_i=0}^{\infty}\exp(-\frac{(E_i-\mu)n_i}{k_BT})\\
+    &=\frac{k_BT}{\Xi_i}\pdv{\Xi_i}{\mu}
+        =k_BT\pdv{\mu}\ln\Xi_i
+        = -k_BT\pdv{\mu}\ln(1-\exp(-\frac{E_i-\mu}{k_BT}))\\
+    &= \frac{\exp(-\frac{E_i-\mu}{k_BT})}{1-\exp(-\frac{E_i-\mu}{k_BT})}
+        =\frac{1}{\exp(\frac{E_i-\mu}{k_BT})-1}
+\end{aligned}\end{equation}
+
+\subsection{}
+1粒子固有状態の数は次のような積分で求められる。
+\begin{equation}\begin{aligned}[b]
+    \Omega(E) = \qty(\frac{L}{2\pi})^3\int_{0\leq E_{\vb*{k}}\leq E}\dd[3]{\vb*{k}}
+        = \frac{V}{8\pi^3}\times \frac{4}{3}\pi\qty(\frac{2mE}{\hbar^2})^{3/2}
+        = \frac{V}{6\pi^2}\qty(\frac{2mE}{\hbar^2})^{3/2}
+\end{aligned}\end{equation}
+なので、状態密度は
+\begin{equation}\begin{aligned}[b]
+    D(E)=\dv{\Omega(E)}{E} = \frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    N &= \int_{0}^{\infty}\frac{1}{\exp(\frac{E}{k_BT})-1}\times \frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E} \dd{E}
+        = \frac{V}{4\pi^2}\qty(\frac{2mk_BT}{\hbar^2})^{3/2}\int_{0}^{\infty}\frac{\sqrt{x}}{e^x-1}\dd{x}\\
+    &= \frac{V}{4\pi^2}\qty(\frac{2mk_BT}{\hbar^2})^{3/2}\times \frac{\sqrt{\pi}}{2}\zeta(3/2)
+    = \zeta(3/2)V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\(T_c\)では\(N_0=0,\mu=0\)と考えられるので、
+前問の結果が使えて
+\begin{equation}\begin{aligned}[b]
+    N &= \zeta(3/2)V\qty(\frac{mk_BT_c}{2\pi\hbar^2})^{3/2}\\
+    T_c &= \qty(\frac{N}{\zeta(3/2)V})^{2/3}\frac{2\pi\hbar^2}{mk_B}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    N_0 &= N-\int_{0}^{\infty}f(E,\mu=0)D(E)\dd{E}
+        = N-\zeta(3/2)V\qty(\frac{mk_BT}{2\pi\hbar^2})^{3/2}
+        = N-N\qty(\frac{T}{T_c})^{3/2}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    E &= N_0E_g +\int_{0}^{\infty}Ef(E,\mu=0)D(E)\dd{E}\\
+    C &\propto \dv{T} \int_{0}^{\infty}\frac{E^{3/2}}{\exp(\frac{E}{k_BT})-1}\dd{E}
+        = \dv{T}(k_BT)^{5/2}\int_{0}^{\infty}\frac{x^{3/2}}{e^x-1}\dd{x}
+        \propto T^{3/2}
+\end{aligned}\end{equation}
+より、\(\gamma=3/2\)
+
+\subsection{}
+スピン縮重度は\(2S+1\)より、
+(1)式は
+\begin{equation}\begin{aligned}[b]
+    N =(2S+1)\int_{0}^{\infty}f(E,\mu)D(E)\dd{E}
+\end{aligned}\end{equation}
+のようになる。
+なので設問5での式を読み替えることで転移温度は
+\begin{equation}\begin{aligned}[b]
+    N &= \zeta(3/2)(2S+1)V\qty(\frac{mk_BT_c'}{2\pi\hbar^2})^{3/2}\\
+    T_c' &=  \qty(\frac{N}{\zeta(3/2)(2S+1)V})^{2/3}\frac{2\pi\hbar^2}{mk_B}
+\end{aligned}\end{equation}
+のように書ける。
+
+\subsection{}
+ゼーマン分裂したときの状態密度は
+\begin{equation}\begin{aligned}[b]
+    D(E)=\sum_{m_z=-S}^{S}\frac{1}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB}
+\end{aligned}\end{equation}
+となるので、\(T_c'\)を決める方程式は
+\begin{equation}\begin{aligned}[b]
+    N &= \sum_{m_z=-S}^{S}\int_{-cm_zB}^{\infty}\frac{1}{\exp(\frac{E}{k_BT_c'})-1}\times \frac{1}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB} \dd{E}\\
+    &= \frac{1}{4\pi^2}\qty(\frac{2mk_BT_c'}{\hbar^2})^{3/2}\sum_{m_z=-S}^{S}\int_{0}^{\infty} \frac{\sqrt{x}}{e^xe^{-\frac{cm_zB}{k_BT_c'}}-1}\dd{x}
+\end{aligned}\end{equation}
+となる。
+
+\subsection{}
+\(m_z<0\)のとき、被積分関数の分母が\(cB\gg k_BT_c'\)では発散するので、
+この場合の総和は考えなくてよい。
+
+
+\subsection*{感想}
+
+
+
+\end{document}
