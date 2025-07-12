@@ -118,22 +118,47 @@
 \subsection{}
 ゼーマン分裂したときの状態密度は
 \begin{equation}\begin{aligned}[b]
-    D(E)=\sum_{m_z=-S}^{S}\frac{1}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB}
+    D(E)=\sum_{m_z=-S}^{S}\frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB}
 \end{aligned}\end{equation}
-となるので、\(T_c'\)を決める方程式は
+となる。
+\(T_c'\)において基底状態のエネルギーと化学ポテンシャルは等しくて\(\mu=-cSB\)となるので、\(T_c'\)を決める方程式は
 \begin{equation}\begin{aligned}[b]
-    N &= \sum_{m_z=-S}^{S}\int_{-cm_zB}^{\infty}\frac{1}{\exp(\frac{E}{k_BT_c'})-1}\times \frac{1}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB} \dd{E}\\
-    &= \frac{1}{4\pi^2}\qty(\frac{2mk_BT_c'}{\hbar^2})^{3/2}\sum_{m_z=-S}^{S}\int_{0}^{\infty} \frac{\sqrt{x}}{e^xe^{-\frac{cm_zB}{k_BT_c'}}-1}\dd{x}
+    N &= \sum_{m_z=-S}^{S}\int_{-cm_zB}^{\infty}\frac{1}{\exp(\frac{E+cSB}{k_BT_c'})-1}\times \frac{V}{4\pi^2}\qty(\frac{2m}{\hbar^2})^{3/2}\sqrt{E+cm_zB} \dd{E}\\
+    &= \frac{V}{4\pi^2}\qty(\frac{2mk_BT_c'}{\hbar^2})^{3/2}\sum_{m_z=-S}^{S}\int_{0}^{\infty} \frac{\sqrt{x}}{e^xe^{\frac{c(S-m_z)B}{k_BT_c'}}-1}\dd{x}
 \end{aligned}\end{equation}
 となる。
 
 \subsection{}
-\(m_z<0\)のとき、被積分関数の分母が\(cB\gg k_BT_c'\)では発散するので、
-この場合の総和は考えなくてよい。
+\(m_z=S\)のときは
+\begin{equation}\begin{aligned}[b]
+    \int_{0}^{\infty}\frac{\sqrt{x}}{e^x-1}\dd{x} = \frac{\sqrt{\pi}}{2}\zeta(3/2)
+\end{aligned}\end{equation}
 
+\(m_z<S\)のときの和について、
+\begin{equation}\begin{aligned}[b]
+    \sum_{m_z=-S}^{S-1}\int_{0}^{\infty} \frac{\sqrt{x}}{e^xe^{\frac{c(S-m_z)B}{k_BT_c'}}-1}\dd{x}
+    &=\sum_{m_z=-S}^{S-1}\exp(-\frac{c(S-m_z)B}{k_BT_c'})\int_{0}^{\infty} \frac{\sqrt{x}}{e^x-e^{-\frac{c(S-m_z)B}{k_BT_c'}}}\dd{x}\\
+    &\simeq\sum_{m_z=-S}^{S-1}\exp(\frac{c(S-m_z)B}{k_BT_c'})\int_{0}^{\infty} \sqrt{x}e^{-x}\dd{x}\\
+    &= \frac{\sqrt{\pi}}{2}\exp(\frac{2cSB}{k_BT_c'})\frac{1-\exp(-\frac{2cSB}{k_BT_c'})}{1-\exp(-\frac{cB}{k_BT_c'})}\to 0
+\end{aligned}\end{equation}
+
+よって
+\begin{equation}\begin{aligned}[b]
+    N&= \frac{V}{4\pi^2}\qty(\frac{2mk_BT_c'}{\hbar^2})^{3/2}\sum_{m_z=-S}^{S}\int_{-\frac{cm_zB}{k_BT}}^{\infty} \frac{\sqrt{x}}{e^xe^{\frac{cm_zB}{k_BT_c'}}-1}\dd{x}\\
+    &\simeq V\zeta(3/2)\qty(\frac{mk_BT_c'}{2\pi\hbar^2})^{3/2}\\
+    T_c' &= \qty(\frac{N}{\zeta(3/2)V})^{2/3}\frac{2\pi\hbar^2}{mk_B}
+\end{aligned}\end{equation}
+となる。
 
 \subsection*{感想}
+H25年度にもあったBECに磁場を加えたときの話。
+以前は断熱消磁してみたときの系の温度の話だったが、
+ここでは転移温度の話になってる。
 
-
+直感的には温度が高いと温度ゆらぎがゼーマン分裂幅以上になるため、
+これらの準位の区別がつかないので磁場がないときと同じ結果になる。
+磁場を加えると、基底状態は\(m_z=S\)の状態になるので、
+磁気量子数による縮絨度がないので\(2S+1\)の分がなくなる。
+本番ではこっちの定性的なことを記述して\(B-T_c'\)グラフを作るのが安牌か。
 
 \end{document}
