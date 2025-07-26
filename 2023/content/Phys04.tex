@@ -1,0 +1,142 @@
+\documentclass[../../sp_2023.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{3}
+\section{物理数学}
+\subsection{}
+\subsubsection{(a)}
+\begin{equation}\begin{aligned}[b]
+    \hat{g}_\alpha(-\omega)=\int_{-\infty}^{\infty}e^{i\omega x}\frac{1}{\pi}\frac{\alpha}{x^2+\alpha^2}\dd{x}
+    = \int_{\infty}^{-\infty}e^{i\omega (-x)}\frac{1}{\pi}\frac{\alpha}{(-x)^2+\alpha^2}(-\dd{x})
+    = \int_{-\infty}^{\infty}e^{-i\omega x}\frac{1}{\pi}\frac{\alpha}{x^2+\alpha^2}\dd{x}
+    =\hat{g}_\alpha(\omega)
+\end{aligned}\end{equation}
+より\(\hat{g}_\alpha(\omega)\)は偶関数
+
+\subsubsection{(b)}
+\begin{equation}\begin{aligned}[b]
+    e^{-i\omega z}g_\alpha(z) = \frac{e^{-i\omega z}\alpha}{\pi(z-i\alpha)(z+i\alpha)}
+\end{aligned}\end{equation}
+より極は\(z=\pm i\alpha\)
+
+\subsubsection{(c)}
+\begin{equation}\begin{aligned}[b]
+    \hat{g}_\alpha(\omega)=\lim_{R\to\infty}\int_{C_R}e^{-i\omega z}g_\alpha(z)\dd{z}
+    = 2\pi i\Res[e^{-i\omega z}g_\alpha(z);z=i\alpha]
+    = 2\pi i \frac{\alpha e^{-i\omega (i\alpha)}}{2\pi i \alpha}=e^{\omega \alpha}
+\end{aligned}\end{equation}
+
+\subsubsection{(d)}
+\begin{equation}\begin{aligned}[b]
+    (\widehat{g_i* f})(\omega)
+    &= \int_{-\infty}^{\infty}\dd{y}\int_{-\infty}^{\infty}\dd{x} g_1(x-y)f(y)e^{-i\omega x}\\
+    &= \int_{-\infty}^{\infty}\dd{y}f(y)e^{-i\omega y}\int_{-\infty}^{\infty}\dd{(x-y)} g_1(x-y)fe^{-i\omega (x-y)}
+    = \hat{g}_1(\omega)\hat{f}(\omega)
+\end{aligned}\end{equation}
+
+\subsubsection{(e)}
+(3)式をフーリエ変換して整理した後、逆変換をする。
+\begin{equation}\begin{aligned}[b]
+    \hat{f}(\omega) &= \lim_{\alpha\to0} \qty[\hat{g}_1(\omega)\hat{f}(\omega)+\hat{g}_\alpha(\omega)-\hat{g}_2(\omega)]\\
+    \hat{f}(\omega) &= \lim_{\alpha\to0}\frac{\hat{g}_\alpha(\omega)-\hat{g}_2(\omega)}{1-\hat{g}_1(\omega)}
+    = \frac{1-e^{2\omega}}{1-e^{\omega}}=1+e^{\omega}
+\end{aligned}\end{equation}
+これの右辺は
+\begin{equation}\begin{aligned}[b]
+    f(x)=\delta(x)+g_1(x)
+\end{aligned}\end{equation}
+をフーリエ変換したものとわかるので、これが答えである。
+
+\subsection{}
+\subsubsection{(a)}
+\begin{equation}\begin{aligned}[b]
+    \tr A(z)=z+z^{-1},\qquad \det A(z) = -(z+z^{-1})
+\end{aligned}\end{equation}
+
+\subsubsection{}
+余因子行列を用いて逆行列を求めると
+\begin{equation}\begin{aligned}[b]
+    A(z)^{-1}=-\frac{1}{z+z^{-1}}\begin{pmatrix}
+        -1 & -z^{-1} & 1\\
+        -z^{-1} & 1 & -z\\
+        1 & -z & -1
+    \end{pmatrix}
+    =\frac{1}{z+z^{-1}}\begin{pmatrix}
+        1 & z^{-1} & -1\\
+        z^{-1} & -1 & z\\
+        -1 & z & 1
+    \end{pmatrix}
+\end{aligned}\end{equation}
+
+\subsubsection{(c)}
+固有値方程式より
+\begin{equation}\begin{aligned}[b]
+    0 &= \abs{A(z)-\lambda I}
+    =\lambda^3-(z+z^{-1})\lambda^2-\lambda+(z+z^{-1})
+    =(\lambda-1)(\lambda+1)(\lambda-(z+z^{-1}))\\
+    \lambda &= \pm 1, \quad z+z^{-1}
+\end{aligned}\end{equation}
+
+また、\(\lambda\)が実数となる条件を調べる。\(z=re^{i\theta}\)とおくと
+\begin{equation}\begin{aligned}[b]
+    z+z^{-1}=\qty(r+\frac{1}{r})\cos\theta+i\qty(r-\frac{1}{r})\sin\theta
+\end{aligned}\end{equation}
+これより、\(r=1,\,\text{or}\,\theta = 0\)
+
+\subsubsection{(d)}
+重複するのは
+\begin{equation}\begin{aligned}[b]
+    z+z^{-1}&=1\\
+    \qty(r+\frac{1}{r})\cos\theta+i\qty(r-\frac{1}{r})\sin\theta &= 1
+\end{aligned}\end{equation}
+のときである。
+なので、\(r=1,\theta=\frac{\pi}{3}\)のとき、固有値\(\lambda=1\)で重複する。
+
+このときの固有空間の次元は
+\begin{equation}\begin{aligned}[b]
+    A(e^{i\pi/3})-I &= \begin{pmatrix}
+        e^{i\pi/3}- 1& 1 & 0\\
+        1 & -1 & 1\\
+        0 & 1 & e^{-i\pi/3}-1
+    \end{pmatrix}
+    \to \begin{pmatrix}
+        e^{i2\pi/3}& 1 & 0\\
+        0 & 0 & 0\\
+        0 & 1 & e^{-2i\pi/3}
+    \end{pmatrix}
+\end{aligned}\end{equation}
+より固有空間の次元は1である。重複しているのにもかかわらず、固有空間の次元が1であるため、
+対角化することはできない。
+
+\subsubsection{}
+\(B\)をスペクトル分解すると
+\begin{equation}\begin{aligned}[b]
+    B = \lambda_1 v_1v_1^\mathsf{T}+\lambda_2v_2v_2^\mathsf{T}+\lambda_3v_3v_3^\mathsf{T}
+\end{aligned}\end{equation}
+である。
+なので、これの2次形式を調べると
+\begin{equation}\begin{aligned}[b]
+    x^\mathsf{T}Bx &= \lambda_1 \abs{x^\mathsf{T}v_1}^2 + \lambda_2 \abs{x^\mathsf{T}v_2}^2 + \lambda_3 \abs{x^\mathsf{T}v_3}^2
+\end{aligned}\end{equation}
+となる。
+この式を考えると、仮に、\(B\)が負の固有値を持つことがあれば任意の\(x\)に対して\(x^\mathsf{T}Bx\geq 0\)は成り立たない。
+
+\(A(1)\)の固有値は\(\lambda=-1,1,2\)であり、これらの固有ベクトルを\(u_1,u_2,u_3\)とすると、
+(5)式の右辺は
+\begin{equation}\begin{aligned}[b]
+    B &= -1u_1u_1^\mathsf{T}+1u_2u_2^\mathsf{T}+2u_3u_3^\mathsf{T}+1u_1u_1^\mathsf{T}+1u_2u_2^\mathsf{T}+1u_3u_3^\mathsf{T}+vv^\mathsf{T}\\
+    &= 2u_2u_2^\mathsf{T}+3u_3u_3^\mathsf{T}+vv^\mathsf{T}
+\end{aligned}\end{equation}
+これより、
+\begin{equation}\begin{aligned}[b]
+    x^\mathsf{T} B x = 2\abs{x^\mathsf{T}u_2}^2+3\abs{x^\mathsf{T}u_3}^2+\abs{x^\mathsf{T}v}^2 \geq 0
+\end{aligned}\end{equation}
+となるため、任意の\(x\)に対して\(x^\mathsf{T}Bx\geq 0\)は成り立つことから\(B\)の固有値は0以上とわかる。
+
+\subsection*{感想}
+
+
+
+\end{document}
