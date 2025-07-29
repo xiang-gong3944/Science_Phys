@@ -1,0 +1,77 @@
+\documentclass[../../sp_2022.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{0}
+\section{量子力学: 2次元等方調和振動子・隠れた対称性}
+\subsection{}
+
+
+\subsection*{感想}
+
+\subsection*{おまけ: 隠れた対称性とリー群・リー代数}
+
+\subsubsection*{SO(2)対称性と軌道角運動量}
+ハミルトニアンはxy平面内の回転に対して不変である。この連続的な回転対称性はリー群 SO(2) で記述され、その生成子はz軸周りの軌道角運動量演算子 $L_z$ である。
+\begin{equation}
+    L_z = xp_y - yp_x = -i\hbar(a_x^\dagger a_y - a_y^\dagger a_x)
+\end{equation}
+$[H, L_z] = 0$ であるため、エネルギー固有状態は同時に $L_z$ の固有状態でもあり、軌道角運動量量子数 $m$ でラベル付けできる。
+しかし、SO(2)対称性だけでは、なぜ $n+1$ 個もの状態が同じエネルギーを持つのか（偶然の縮退）を説明できない。
+
+この系の真の動的対称性は、2x2ユニタリ行列の群 {U(2)} である。この対称性の下では、同じエネルギーを持つ縮退した状態が互いに変換される。この対称性を記述するのが、リー代数 \(\mathfrak{u}(2)\) である。
+
+\(\mathfrak{u}(2)\) 代数の生成子は、4つの演算子 $\hat{E}_{ij} = \hat{a}_i^\dagger \hat{a}_j \ (i,j=1,2)$ で構成される。これらの演算子は、ハミルトニアンと可換である。
+\begin{equation}
+    [\hat{H}, \hat{E}_{ij}] = 0
+\end{equation}
+この \(\mathfrak{u}(2)\) 代数は、物理的に重要な2つの部分、すなわち中心 \(\mathfrak{u}(1)\) と \(\mathfrak{su}(2)\) の直和に分解できる。
+\begin{equation}
+    \mathfrak{u}(2) \cong \mathfrak{u}(1) \oplus \mathfrak{su}(2)
+\end{equation}
+\begin{itemize}
+    \item {\(\mathfrak{u}(1)\)部分}: 全数演算子 $\hat{N} = \hat{E}_{11} + \hat{E}_{22}$ で生成される。その固有値 $n$ がエネルギー準位 $E_n$ を決定し、ヒルベルト空間を縮退した部分空間にブロック分けする。
+    \item {\(\mathfrak{su}(2)\)部分}: エネルギーが同じ縮退部分空間内での対称性を記述する。
+\end{itemize}
+
+\subsubsection*{\(\mathfrak{su}(2)\)代数と試験問題の演算子}
+\(\mathfrak{su}(2)\)リー代数の3つの生成子は、以下のように構成できる。
+\begin{align}
+    \hat{J}_x &= \frac{\hbar}{2}(\hat{a}_1^\dagger \hat{a}_2 + \hat{a}_2^\dagger \hat{a}_1) \\
+    \hat{J}_y &= \frac{\hbar}{2i}(\hat{a}_1^\dagger \hat{a}_2 - \hat{a}_2^\dagger \hat{a}_1) \\
+    \hat{J}_z &= \frac{\hbar}{2}(\hat{a}_1^\dagger \hat{a}_1 - \hat{a}_2^\dagger \hat{a}_2)
+\end{align}
+これらの演算子は、角運動量と同様の交換関係 $[\hat{J}_i, \hat{J}_j] = i\hbar\epsilon_{ijk}\hat{J}_k$ を満たす。
+
+ここで、試験問題で定義された角運動量演算子 $\hat{L} = \hat{X}_1\hat{P}_2 - \hat{X}_2\hat{P}_1$ を生成・消滅演算子で書き直すと（設問5）、
+\begin{equation}
+    \hat{L} = -i\hbar(\hat{a}_1^\dagger \hat{a}_2 - \hat{a}_2^\dagger \hat{a}_1)
+\end{equation}
+となる。これを上記の生成子と比較すると、
+\begin{equation}
+    \hat{L} = 2\hat{J}_y
+\end{equation}
+であることがわかる。すなわち、{この問題で扱う角運動量演算子 $\hat{L}$ は、隠れた\(\mathfrak{su}(2)\)対称性の生成子そのもの}なのである。
+
+\subsubsection*{\(\mathfrak{su}(2)\)の既約表現と物理状態}
+群論によれば、エネルギー $E_n$ を持つ $n+1$ 個の縮退した状態は、\(\mathfrak{su}(2)\) の1つの{既約表現}を形成する。
+\begin{itemize}
+    \item {カシミア演算子}: \(\mathfrak{su}(2)\) の全ての生成子と可換なカシミア演算子 $\hat{J}^2 = \hat{J}_x^2 + \hat{J}_y^2 + \hat{J}_z^2$ は、既約表現を特徴づける。
+    計算すると、$\hat{J}^2 = \hbar^2 \frac{\hat{N}}{2}(\frac{\hat{N}}{2}+1)$ となり、表現のラベル $j$ が $j=n/2$ であることとわかる。
+    これにより、縮重度が $2j+1 = n+1$ と正しく与えられる。
+
+    \item {昇降演算子}: 試験問題の設問6, 7で構成する演算子 $\hat{A}_\pm^\dagger$ は物理的には{円偏光の量子を生成する演算子}であり、
+    SU(2)代数の観点からは{昇降演算子}に対応する。
+    これらは、$\hat{L}$（すなわち $\hat{J}_y$）の固有値を変化させる。
+    \begin{equation}
+        [\hat{L}, \hat{A}_\pm^\dagger] = \pm\hbar \hat{A}_\pm^\dagger
+    \end{equation}
+    これは、同じエネルギー準位（同じ既約表現）の中で、異なる角運動量の状態へと遷移させる演算子であることを意味する。
+\end{itemize}
+最終的に、設問8で構成する状態 $\ket{n, l} = c_{n,l}(\hat{A}_+^\dagger)^{l}(\hat{A}_-^\dagger)^{n-l}\ket{0}$ は基底状態 $|0\rangle$ から始めて、
+昇降演算子を繰り返し作用させることで、
+\(\mathfrak{su}(2)\) の $(n+1)$ 次元既約表現の全ての基底状態を網羅的に作り出していることに他ならない。
+
+
+\end{document}

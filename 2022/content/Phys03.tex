@@ -1,0 +1,164 @@
+\documentclass[../../sp_2022.tex]{subfiles}
+
+\graphicspath{{./image/}}
+
+\begin{document}
+\setcounter{section}{2}
+\section{電磁気学: 電気多極子}
+\subsection{}
+\(r_0\)と\(r\)の間の角を\(\theta_0\)とすると
+\begin{equation}\begin{aligned}[b]
+    \abs{\vb*{r}-\vb*{r}_0} = \sqrt{r^2-2r_0r\cos\theta_0+r_0^2} = r\qty(1-\cos\theta\frac{r_0}{r})
+\end{aligned}\end{equation}
+
+\subsection{}
+\(\vb*{d}\)と\(\vb*{r}\)の間のなす角を\(\theta_1\)とすると
+\begin{equation}\begin{aligned}[b]
+    \varphi(\vb*{r})
+    &= \frac{e}{4\pi\varepsilon_0\abs{\vb*{r}-\vb*{d}/2}}-\frac{e}{4\pi\varepsilon_0\abs{\vb*{r}+\vb*{d}/2}}
+    = \frac{e}{4\pi\varepsilon_0 r}\qty(1+\cos\theta_1\frac{r_0}{r})-\frac{e}{4\pi\varepsilon_0 r}\qty(1+\cos\theta_1\frac{r_0}{r})\\
+    &= \frac{ed\cos\theta_1}{4\varepsilon_0r^2}
+    = \frac{edy}{4\varepsilon_0r^3}
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}(\vb*{r})
+    &=-\grad\varphi(\vb*{r})
+    =-\frac{ed}{4\pi\varepsilon_0r^3}\vb*{e}_y+\frac{3edy}{4\pi\varepsilon_0r^4}\qty(
+        \frac{x}{r}\vb*{e}_x+\frac{y}{r}\vb*{e}_y+\frac{z}{r}\vb*{e}_z)\\
+    &= \frac{3edxy}{4\pi\varepsilon_0r^5}\vb*{e}_x
+    +\frac{ed(3y^2-r^2)}{4\pi\varepsilon_0r^5}\vb*{e}_y
+    +\frac{3edyz}{4\pi\varepsilon_0r^5}\vb*{e}_z
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \vb*{E}(0,a,0) = \frac{ed}{2\pi\varepsilon_0a^3}\vb*{e}_y
+\end{aligned}\end{equation}
+より、
+\begin{equation}\begin{aligned}[b]
+    U = - \frac{ed}{2\pi\varepsilon_0a^3} \cdot ed \cos(\frac{\pi}{2}-\theta)
+    = - \frac{e^2d^2}{2\pi\varepsilon_0 a^3}\sin\theta
+\end{aligned}\end{equation}
+
+\subsection{}
+前問より、\(\theta = \pi/2\)が最小。
+
+\subsection{}
+電気単極子は
+\begin{equation}\begin{aligned}[b]
+    q = \int \rho(\vb*{r}')\dd[3]{r}
+    = \int \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}
+    = 0
+\end{aligned}\end{equation}
+
+電気双極子は
+\begin{equation}\begin{aligned}[b]
+    p_i = \int x_i'\rho(\vb*{r}')\dd[3]{r}
+    = \int x_i \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}
+    = 0
+\end{aligned}\end{equation}
+
+電気四極子は
+\begin{equation}\begin{aligned}[b]
+    Q_{11}
+    &= \frac{1}{2} \int(2x'^2-y'^2-z'^2)\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int(2x'^2-y'^2-z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= \frac{ed^2}{4}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    Q_{22}
+    &= \frac{1}{2} \int(-x'^2+2y'^2-z'^2)\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int(-x'^2+2y'^2-z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= -\frac{ed^2}{2}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    Q_{33}
+    &= \frac{1}{2} \int(-x'^2-y'^2+2z'^2)\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int(-x'^2-y'^2+2z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= \frac{ed^2}{4}
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    Q_{12} = Q_{21}
+    &= \frac{1}{2} \int 3x_i'y_i'\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int 3x_i'y_i' \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= 0
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    Q_{13} = Q_{31}
+    &= \frac{1}{2} \int 3x_i'z_i'\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int 3x_i'z_i' \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= 0
+\end{aligned}\end{equation}
+\begin{equation}\begin{aligned}[b]
+    Q_{23} = Q_{32}
+    &= \frac{1}{2} \int 3y_i'z_i'\rho(\vb*{r}')\dd[3]{r}\\
+    &= \frac{1}{2} \int 3y_i'z_i' \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
+    &= 0
+\end{aligned}\end{equation}
+
+\subsection{}
+\begin{equation}\begin{aligned}[b]
+    \varphi(\vb*{r}) &= \frac{1}{4\pi\varepsilon_0r^5}\times \frac{e^2d^2(x^2-2y^2+z^2)}{4}
+    =-\frac{3ed^2y^2}{16\pi\varepsilon_0r^5}+\frac{ed^2}{16\pi\varepsilon_0 r^3}
+    = -\frac{ed^2(3y^2-r^2)}{16\pi\varepsilon_0r^5}\\
+    E_x &= -\pdv{\phi(\vb*{r})}{x}
+        = -\frac{15ed^2xy^2}{16\pi\varepsilon_0r^7}+\frac{3ed^2x}{16\pi\varepsilon_0 r^5}
+        =-\frac{3ed^2x(5y^2-r^2)}{16\pi\varepsilon_0r^7}\\
+    E_y &= -\pdv{\phi(\vb*{r})}{y}
+        = -\frac{15ed^2y^3}{16\pi\varepsilon_0r^7}+\frac{6ed^2y}{16\pi\varepsilon_0r^5}
+        +\frac{3ed^2y}{16\pi\varepsilon_0 r^5}
+        = -\frac{15ed^2y^3}{16\pi\varepsilon_0r^7}+\frac{9ed^2y}{16\pi\varepsilon_0r^5}
+        = -\frac{3ed^2y(5y^2-3r^2)}{16\pi\varepsilon_0r^7}\\
+    E_z &= -\pdv{\phi(\vb*{r})}{z}
+        = -\frac{15ed^2y^2z}{16\pi\varepsilon_0r^7}+\frac{3ed^2x}{16\pi\varepsilon_0 r^5}
+        =-\frac{3ed^2z(5y^2-r^2)}{16\pi\varepsilon_0r^7}\\
+\end{aligned}\end{equation}
+
+\subsection{}
+(c1)の配置だと電気四極子の両端にある負の電荷が反発しあうのに対し、
+(c2)の配置だと原点にある負電荷は\(a\)にある電気四極子のうち一番近くにある正電荷を感じてその次に負電荷を感じて引き付けあうと考えられる。
+なので、(c2)の方がエネルギーは小さいと考えられる。
+
+実際(c1)
+では
+\begin{equation}\begin{aligned}[b]
+    U &= -\frac{1}{3} \qty(Q_{11}\pdv{E_x(a)}{x}+Q_{22}\pdv{E_y(a)}{y}+Q_{33}\pdv{E_z(a)}{z})\\
+    &= -\frac{ed^2}{12} \qty( \div \vb*{E}(a)-3\pdv{E_y(a)}{y})
+    = \frac{ed^2}{4} \pdv{E_y(a)}{y}\\
+    &= \frac{ed^2}{4} \left[-\frac{45ed^2y^2}{16\pi\varepsilon_0r^7}+\frac{105ed^2y^4}{16\pi\varepsilon_0r^9}
+    +\frac{9ed^2}{16\pi\varepsilon_0r^5}-\frac{45ed^2y^2}{16\pi\varepsilon_0r^7}\right]_{y=a,r=a}\\
+    &= \frac{3e^2d^4}{2\pi\varepsilon_0a^5}
+\end{aligned}\end{equation}
+
+であるのに対し、
+(c2)では電気四極子モーメントは
+\begin{equation}\begin{aligned}[b]
+    -\frac{Q_{11}}{2} &= Q_{22} = Q_{33} = \frac{ed^2}{4},\\
+    Q_{12} &= Q_{21} = Q_{13} = Q_{31} = Q_{23} = Q_{32} = 0
+\end{aligned}\end{equation}
+であるので、
+\begin{equation}\begin{aligned}[b]
+    U &= -\frac{1}{3} \qty(Q_{11}\pdv{E_x(a)}{x}+Q_{22}\pdv{E_y(a)}{y}+Q_{33}\pdv{E_z(a)}{z})\\
+    &= -\frac{ed^2}{12} \qty(\div \vb*{E}(a)-3\pdv{E_x(a)}{x})
+    = \frac{ed^2}{4} \pdv{E_x(a)}{x}\\
+    &= \left.-\frac{ed^2}{4} \times \frac{3ed^2(5y^2-r^2)}{16\pi\varepsilon_0r^7}\right|_{y=a,r=a}
+    = -\frac{3e^2d^4}{16\pi\varepsilon_0a^5}
+\end{aligned}\end{equation}
+
+となるので結果としても正しいし、\(-\partial_a\)をすることで力を求めると確かにそれぞれ斥力と引力になるのがわかる。
+
+\subsection*{感想}
+多極子は地道に具体例を扱って馴染んでいくしかない。
+その触ってみる具体例としてとても良い問題ではあるが、
+試験問題としては誘導に乗るだけではあるので面白くはない。
+
+電気単極子や双極子はそれぞれ \(r^{-1},r^{-2}\)で広がるので電気四極子よりも強くなってしまう。
+なのでもし設問6で電気単極子や双極子が生き残るとそれ以降の設問が成り立たないので、
+それで答えはある程度分かってしまう。
+
+設問8も計算せずに絵をみてわかるでしょとやっても実は当てられるので、
+本番は時間が余らない限りポテンシャルの計算はしないだろうな。
+
+\end{document}
