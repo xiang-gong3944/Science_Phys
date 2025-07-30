@@ -65,19 +65,19 @@
     Q_{11}
     &= \frac{1}{2} \int(2x'^2-y'^2-z'^2)\rho(\vb*{r}')\dd[3]{r}\\
     &= \frac{1}{2} \int(2x'^2-y'^2-z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
-    &= \frac{ed^2}{4}
+    &= \frac{ed^2}{8}
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}[b]
     Q_{22}
     &= \frac{1}{2} \int(-x'^2+2y'^2-z'^2)\rho(\vb*{r}')\dd[3]{r}\\
     &= \frac{1}{2} \int(-x'^2+2y'^2-z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
-    &= -\frac{ed^2}{2}
+    &= -\frac{ed^2}{4}
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}[b]
     Q_{33}
     &= \frac{1}{2} \int(-x'^2-y'^2+2z'^2)\rho(\vb*{r}')\dd[3]{r}\\
     &= \frac{1}{2} \int(-x'^2-y'^2+2z'^2) \qty[-e\delta\qty(y-\frac{d}{2})+2e\delta\qty(y)-e\delta\qty(y+\frac{d}{2})]\delta(x)\delta(z)\dd[3]{r'}\\
-    &= \frac{ed^2}{4}
+    &= \frac{ed^2}{8}
 \end{aligned}\end{equation}
 \begin{equation}\begin{aligned}[b]
     Q_{12} = Q_{21}
@@ -100,20 +100,20 @@
 
 \subsection{}
 \begin{equation}\begin{aligned}[b]
-    \varphi(\vb*{r}) &= \frac{1}{4\pi\varepsilon_0r^5}\times \frac{e^2d^2(x^2-2y^2+z^2)}{4}
-    =-\frac{3ed^2y^2}{16\pi\varepsilon_0r^5}+\frac{ed^2}{16\pi\varepsilon_0 r^3}
-    = -\frac{ed^2(3y^2-r^2)}{16\pi\varepsilon_0r^5}\\
+    \varphi(\vb*{r}) &= \frac{1}{4\pi\varepsilon_0r^5}\times \frac{e^2d^2(x^2-2y^2+z^2)}{8}
+    =-\frac{3ed^2y^2}{32\pi\varepsilon_0r^5}+\frac{ed^2}{32\pi\varepsilon_0 r^3}
+    = -\frac{ed^2(3y^2-r^2)}{32\pi\varepsilon_0r^5}\\
     E_x &= -\pdv{\phi(\vb*{r})}{x}
-        = -\frac{15ed^2xy^2}{16\pi\varepsilon_0r^7}+\frac{3ed^2x}{16\pi\varepsilon_0 r^5}
-        =-\frac{3ed^2x(5y^2-r^2)}{16\pi\varepsilon_0r^7}\\
+        = -\frac{15ed^2xy^2}{32\pi\varepsilon_0r^7}+\frac{3ed^2x}{32\pi\varepsilon_0 r^5}
+        =-\frac{3ed^2x(5y^2-r^2)}{32\pi\varepsilon_0r^7}\\
     E_y &= -\pdv{\phi(\vb*{r})}{y}
-        = -\frac{15ed^2y^3}{16\pi\varepsilon_0r^7}+\frac{6ed^2y}{16\pi\varepsilon_0r^5}
-        +\frac{3ed^2y}{16\pi\varepsilon_0 r^5}
-        = -\frac{15ed^2y^3}{16\pi\varepsilon_0r^7}+\frac{9ed^2y}{16\pi\varepsilon_0r^5}
-        = -\frac{3ed^2y(5y^2-3r^2)}{16\pi\varepsilon_0r^7}\\
+        = -\frac{15ed^2y^3}{32\pi\varepsilon_0r^7}+\frac{6ed^2y}{32\pi\varepsilon_0r^5}
+        +\frac{3ed^2y}{32\pi\varepsilon_0 r^5}
+        = -\frac{15ed^2y^3}{32\pi\varepsilon_0r^7}+\frac{9ed^2y}{32\pi\varepsilon_0r^5}
+        = -\frac{3ed^2y(5y^2-3r^2)}{32\pi\varepsilon_0r^7}\\
     E_z &= -\pdv{\phi(\vb*{r})}{z}
-        = -\frac{15ed^2y^2z}{16\pi\varepsilon_0r^7}+\frac{3ed^2x}{16\pi\varepsilon_0 r^5}
-        =-\frac{3ed^2z(5y^2-r^2)}{16\pi\varepsilon_0r^7}\\
+        = -\frac{15ed^2y^2z}{32\pi\varepsilon_0r^7}+\frac{3ed^2x}{32\pi\varepsilon_0 r^5}
+        =-\frac{3ed^2z(5y^2-r^2)}{32\pi\varepsilon_0r^7}\\
 \end{aligned}\end{equation}
 
 \subsection{}
@@ -127,9 +127,9 @@
     U &= -\frac{1}{3} \qty(Q_{11}\pdv{E_x(a)}{x}+Q_{22}\pdv{E_y(a)}{y}+Q_{33}\pdv{E_z(a)}{z})\\
     &= -\frac{ed^2}{12} \qty( \div \vb*{E}(a)-3\pdv{E_y(a)}{y})
     = \frac{ed^2}{4} \pdv{E_y(a)}{y}\\
-    &= \frac{ed^2}{4} \left[-\frac{45ed^2y^2}{16\pi\varepsilon_0r^7}+\frac{105ed^2y^4}{16\pi\varepsilon_0r^9}
-    +\frac{9ed^2}{16\pi\varepsilon_0r^5}-\frac{45ed^2y^2}{16\pi\varepsilon_0r^7}\right]_{y=a,r=a}\\
-    &= \frac{3e^2d^4}{2\pi\varepsilon_0a^5}
+    &= \frac{ed^2}{4} \left[-\frac{45ed^2y^2}{32\pi\varepsilon_0r^7}+\frac{105ed^2y^4}{32\pi\varepsilon_0r^9}
+    +\frac{9ed^2}{32\pi\varepsilon_0r^5}-\frac{45ed^2y^2}{32\pi\varepsilon_0r^7}\right]_{y=a,r=a}\\
+    &= \frac{3e^2d^4}{4\pi\varepsilon_0a^5}
 \end{aligned}\end{equation}
 
 であるのに対し、
@@ -143,8 +143,8 @@
     U &= -\frac{1}{3} \qty(Q_{11}\pdv{E_x(a)}{x}+Q_{22}\pdv{E_y(a)}{y}+Q_{33}\pdv{E_z(a)}{z})\\
     &= -\frac{ed^2}{12} \qty(\div \vb*{E}(a)-3\pdv{E_x(a)}{x})
     = \frac{ed^2}{4} \pdv{E_x(a)}{x}\\
-    &= \left.-\frac{ed^2}{4} \times \frac{3ed^2(5y^2-r^2)}{16\pi\varepsilon_0r^7}\right|_{y=a,r=a}
-    = -\frac{3e^2d^4}{16\pi\varepsilon_0a^5}
+    &= \left.-\frac{ed^2}{4} \times \frac{3ed^2(5y^2-r^2)}{32\pi\varepsilon_0r^7}\right|_{y=a,r=a}
+    = -\frac{3e^2d^4}{32\pi\varepsilon_0a^5}
 \end{aligned}\end{equation}
 
 となるので結果としても正しいし、\(-\partial_a\)をすることで力を求めると確かにそれぞれ斥力と引力になるのがわかる。
